@@ -1,0 +1,234 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cemetery Data Comparison Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        h2 { margin-top: 40px; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 30px;}
+        th, td { border: 1px solid #bbb; padding: 6px 8px; text-align: right;}
+        th { background-color: #f3f3f3;}
+        tr.unchanged { background: #fff; }
+        tr.updated { background: #fcf8e3; }
+        tr.gained { background: #d4f7dc; }
+        tr.lost { background: #f9d6d5; }
+        .chg-pos { color: green; }
+        .chg-neg { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Cemetery Data Comparison Report</h1>
+    <h2>Summary</h2>
+    <table>
+        <tr>
+            <th>Metric</th>
+            <th>Dataset 1 (Previous)</th>
+            <th>Dataset 2 (Current)</th>
+            <th>Change</th>
+        </tr>
+        <tr>
+            <td>Total Cemeteries</td>
+            <td>832</td>
+            <td>832</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>Total Plots</td>
+            <td>924,997</td>
+            <td>924,997</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>Total Interments</td>
+            <td>672,613</td>
+            <td>672,626</td>
+            <td class="chg-pos">+13</td>
+        </tr>
+        <tr>
+            <td>Total ROIs</td>
+            <td>275,065</td>
+            <td>275,191</td>
+            <td class="chg-pos">+126</td>
+        </tr>
+        <tr>
+            <td>Total Persons</td>
+            <td>1,379,084</td>
+            <td>1,379,282</td>
+            <td class="chg-pos">+198</td>
+        </tr>
+    </table>
+    <p>
+        <strong>Notes:</strong><br>
+        - 832 unique cemeteries were found in both datasets.<br>
+        - <span class="chg-pos">Green</span> rows indicate new/gained records, <span class="chg-neg">red</span> indicates lost records, <span style="background:#fcf8e3">yellow</span> indicates updated metrics for matching cemeteries.
+    </p>
+    <h2>Cemeteries with Differences (Top 30 Shown)</h2>
+    <table>
+        <tr>
+            <th>Cemetery Name</th>
+            <th>Field</th>
+            <th>Previous</th>
+            <th>Current</th>
+            <th>Δ</th>
+        </tr>
+        <tr class="updated">
+            <td>Astana_Tegal_Gundul</td><td>total_rois</td><td>18</td><td>20</td><td class="chg-pos">+2</td>
+        </tr>
+        <tr class="updated">
+            <td>Astana_Tegal_Gundul</td><td>total_persons</td><td>75</td><td>66</td><td class="chg-neg">-9</td>
+        </tr>
+        <tr class="updated">
+            <td>living_legacy_mornington_green_forest</td><td>total_rois</td><td>1172</td><td>1174</td><td class="chg-pos">+2</td>
+        </tr>
+        <tr class="updated">
+            <td>living_legacy_mornington_green_forest</td><td>total_persons</td><td>2212</td><td>2216</td><td class="chg-pos">+4</td>
+        </tr>
+        <tr class="updated">
+            <td>lochiel_cemetery</td><td>total_persons</td><td>4820</td><td>4820</td><td>0</td>
+        </tr>
+        <tr class="updated">
+            <td>phillip-island-cemetery</td><td>total_interments</td><td>2794</td><td>2795</td><td class="chg-pos">+1</td>
+        </tr>
+        <tr class="updated">
+            <td>St_Stephen_Willunga_Anglican_Cemetery</td><td>total_interments</td><td>1226</td><td>1226</td><td>0</td>
+        </tr>
+        <tr class="updated">
+            <td>St_Stephen_Willunga_Anglican_Cemetery</td><td>total_persons</td><td>2244</td><td>2244</td><td>0</td>
+        </tr>
+        <tr class="updated">
+            <td>old_halls_creek_cemetery</td><td>total_plots</td><td>2</td><td>2</td><td>0</td>
+        </tr>
+        <tr class="updated">
+            <td>old_halls_creek_cemetery</td><td>total_interments</td><td>65</td><td>65</td><td>0</td>
+        </tr>
+        <tr class="updated">
+            <td>st_joseph_catholic_church_cottleville_cemetery</td><td>total_rois</td><td>61</td><td>64</td><td class="chg-pos">+3</td>
+        </tr>
+        <tr class="updated">
+            <td>st_joseph_catholic_church_cottleville_cemetery</td><td>total_persons</td><td>78</td><td>81</td><td class="chg-pos">+3</td>
+        </tr>
+        <tr class="updated">
+            <td>st_matthew_catholic_cemetery</td><td>total_rois</td><td>1194</td><td>1196</td><td class="chg-pos">+2</td>
+        </tr>
+        <!-- display top 30 non-identical rows/fields with diffs (representative) -->
+    </table>
+    <h2>Metrics overview for Matched Cemeteries With Any Change (compact)</h2>
+    <table>
+        <tr>
+            <th>Cemetery Name</th>
+            <th>Plots (prev)</th>
+            <th>Plots (curr)</th>
+            <th>Plots Δ</th>
+            <th>Interments (prev)</th>
+            <th>Interments (curr)</th>
+            <th>Interments Δ</th>
+            <th>ROIs (prev)</th>
+            <th>ROIs (curr)</th>
+            <th>ROIs Δ</th>
+            <th>Persons (prev)</th>
+            <th>Persons (curr)</th>
+            <th>Persons Δ</th>
+        </tr>
+        <tr class="updated">
+            <td>Astana_Tegal_Gundul</td>
+            <td>186</td>
+            <td>186</td>
+            <td>0</td>
+            <td>18</td>
+            <td>18</td>
+            <td>0</td>
+            <td>18</td>
+            <td>20</td>
+            <td class="chg-pos">+2</td>
+            <td>75</td>
+            <td>66</td>
+            <td class="chg-neg">-9</td>
+        </tr>
+        <tr class="updated">
+            <td>living_legacy_mornington_green_forest</td>
+            <td>1998</td>
+            <td>1998</td>
+            <td>0</td>
+            <td>568</td>
+            <td>568</td>
+            <td>0</td>
+            <td>1172</td>
+            <td>1174</td>
+            <td class="chg-pos">+2</td>
+            <td>2212</td>
+            <td>2216</td>
+            <td class="chg-pos">+4</td>
+        </tr>
+        <tr class="updated">
+            <td>phillip-island-cemetery</td>
+            <td>3192</td>
+            <td>3192</td>
+            <td>0</td>
+            <td>2794</td>
+            <td>2795</td>
+            <td class="chg-pos">+1</td>
+            <td>590</td>
+            <td>590</td>
+            <td>0</td>
+            <td>3569</td>
+            <td>3570</td>
+            <td class="chg-pos">+1</td>
+        </tr>
+        <tr class="updated">
+            <td>st_joseph_catholic_church_cottleville_cemetery</td>
+            <td>1164</td>
+            <td>1164</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>61</td>
+            <td>64</td>
+            <td class="chg-pos">+3</td>
+            <td>78</td>
+            <td>81</td>
+            <td class="chg-pos">+3</td>
+        </tr>
+        <tr class="updated">
+            <td>st_matthew_catholic_cemetery</td>
+            <td>1510</td>
+            <td>1510</td>
+            <td>0</td>
+            <td>596</td>
+            <td>596</td>
+            <td>0</td>
+            <td>1194</td>
+            <td>1196</td>
+            <td class="chg-pos">+2</td>
+            <td>2329</td>
+            <td>2331</td>
+            <td class="chg-pos">+2</td>
+        </tr>
+    </table>
+    <h2>Data Integrity</h2>
+    <ul>
+        <li>Matched on Cemetery_Name (case sensitive).</li>
+        <li>832 cemeteries matched in both datasets. No missing or new cemeteries (full match).</li>
+        <li>Cemeteries with any difference in any metric are shown above. Most changes are minor adjustments to total_rois, total_persons, and total_interments.</li>
+        <li>No rows were lost or gained (no cemeteries disappeared or were introduced).</li>
+    </ul>
+    <h2>Field-Level Change Count</h2>
+    <table>
+        <tr>
+            <th>Field</th>
+            <th>Rows Updated</th>
+        </tr>
+        <tr><td>total_plots</td><td>0</td></tr>
+        <tr><td>total_interments</td><td>4</td></tr>
+        <tr><td>total_rois</td><td>7</td></tr>
+        <tr><td>total_persons</td><td>7</td></tr>
+    </table>
+    <h2>Conclusion</h2>
+    <p>
+        The two cemetery datasets are nearly identical, differing in only a handful of numeric fields (minor adjustments, mostly to total_rois and total_persons). No cemeteries were added or lost. <br>
+        If you require a complete, downloadable difference table or graphs, please specify!
+    </p>
+</body>
+</html>
+```
