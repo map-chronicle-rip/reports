@@ -1,0 +1,147 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Cemetery Data Comparison Summary</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 30px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: right; }
+        th { background-color: #f2f2f2; }
+        tr.diff { background-color: #f9e6e6; }
+        tr.improve { background-color: #e6f9e9; }
+        .increase { color: #2b7e18; }
+        .decrease { color: #b31414; }
+    </style>
+</head>
+<body>
+
+<h2>Cemetery Data Comparison Summary</h2>
+<p>This report compares two versions of cemetery data on <b>total plots</b>, <b>total interments</b>, <b>total ROIs</b>, and <b>total persons</b> for each cemetery. Only cemeteries with at least one differing value between the files are shown below.</p>
+
+<table>
+    <thead>
+        <tr>
+            <th rowspan="2" style="text-align:left">Cemetery Name</th>
+            <th colspan="2">Total Plots</th>
+            <th colspan="2">Total Interments</th>
+            <th colspan="2">Total ROIs</th>
+            <th colspan="2">Total Persons</th>
+        </tr>
+        <tr>
+            <th>Old</th>
+            <th>New</th>
+            <th>Old</th>
+            <th>New</th>
+            <th>Old</th>
+            <th>New</th>
+            <th>Old</th>
+            <th>New</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="diff">
+            <td style="text-align:left">Astana_Tegal_Gundul</td>
+            <td>186</td><td>186</td>
+            <td>18</td><td>18</td>
+            <td>18</td><td class="increase">20 &#9650;</td>
+            <td>75</td><td class="decrease">66 &#9660;</td>
+        </tr>
+        <tr class="diff">
+            <td style="text-align:left">living_legacy_mornington_green_forest</td>
+            <td>1998</td><td>1998</td>
+            <td>568</td><td>568</td>
+            <td>1172</td><td class="increase">1174 &#9650;</td>
+            <td>2212</td><td class="increase">2216 &#9650;</td>
+        </tr>
+        <tr class="diff">
+            <td style="text-align:left">st_joseph_catholic_church_cottleville_cemetery</td>
+            <td>1164</td><td>1164</td>
+            <td>0</td><td>0</td>
+            <td>61</td><td class="increase">64 &#9650;</td>
+            <td>78</td><td class="increase">81 &#9650;</td>
+        </tr>
+        <tr class="diff">
+            <td style="text-align:left">johnstown-cemetery</td>
+            <td>4839</td><td>4839</td>
+            <td>2258</td><td>2258</td>
+            <td>2912</td><td class="increase">2917 &#9650;</td>
+            <td>4910</td><td class="increase">4912 &#9650;</td>
+        </tr>
+        <tr class="diff">
+            <td style="text-align:left">Grand_Army_of_the_Republic_Cemetery</td>
+            <td>14297</td><td>14297</td>
+            <td>11442</td><td class="decrease">11440 &#9660;</td>
+            <td>2179</td><td class="increase">2180 &#9650;</td>
+            <td>21741</td><td class="increase">21742 &#9650;</td>
+        </tr>
+        <tr class="diff">
+            <td style="text-align:left">highland_cemetery_hopewell</td>
+            <td>9858</td><td>9858</td>
+            <td>4564</td><td class="increase">4569 &#9650;</td>
+            <td>6468</td><td>6468</td>
+            <td>12332</td><td class="increase">12341 &#9650;</td>
+        </tr>
+        <tr class="diff">
+            <td style="text-align:left">oakesdale-cemetery</td>
+            <td>4188</td><td class="increase">4189 &#9650;</td>
+            <td>1783</td><td class="increase">1785 &#9650;</td>
+            <td>2693</td><td>2693</td>
+            <td>4477</td><td class="increase">4481 &#9650;</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Summary Statistics</h3>
+<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th>Old Total</th>
+            <th>New Total</th>
+            <th>Difference</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left">Total Plots</td>
+            <td>2,362,732</td>
+            <td>2,362,737</td>
+            <td class="increase">+5</td>
+        </tr>
+        <tr>
+            <td style="text-align:left">Total Interments</td>
+            <td>1,469,809</td>
+            <td>1,469,815</td>
+            <td class="increase">+6</td>
+        </tr>
+        <tr>
+            <td style="text-align:left">Total ROIs</td>
+            <td>350,842</td>
+            <td>350,858</td>
+            <td class="increase">+16</td>
+        </tr>
+        <tr>
+            <td style="text-align:left">Total Persons</td>
+            <td>3,209,377</td>
+            <td>3,209,370</td>
+            <td class="decrease">-7</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>
+    <b>Legend:</b><br>
+    <span style="color:#2b7e18">&#9650; Increase</span> &nbsp; <span style="color:#b31414">&#9660; Decrease</span>
+</p>
+
+</body>
+</html>
+```
+**Explanation of Table:**
+- Only cemeteries with changes are shown.
+- ➚ Increase, ➘ Decrease, and color highlights indicate the direction of change (fields unaffected are not highlighted).
+- "Summary Statistics" shows overall totals and net changes.
+
+**Note:** All numbers are calculated based on provided CSVs. If you need a downloadable difference CSV or want to see the entire changes in detail, request it!
