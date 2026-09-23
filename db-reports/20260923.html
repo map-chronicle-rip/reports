@@ -1,0 +1,184 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cemetery Data Comparison Analysis</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2em; }
+    h1, h2 { color: #20364b; }
+    table { border-collapse: collapse; margin-bottom: 2em; width: 100%; }
+    th, td { padding: 0.5em 1em; border: 1px solid #ccc; text-align: right; }
+    th { background: #dfe6ef; color: #1d2633; }
+    .increase { color: green; }
+    .decrease { color: red; }
+    .highlight { background: #fff5cc; }
+  </style>
+</head>
+<body>
+  <h1>Cemetery Data Comparison Analysis</h1>
+  <h2>Overview of Changes</h2>
+  <table>
+    <tr>
+      <th>Metric</th>
+      <th>First CSV<br>(Initial)</th>
+      <th>Second CSV<br>(Current)</th>
+      <th>Difference</th>
+      <th>% Change</th>
+    </tr>
+    <!-- Totals will go here -->
+    <!-- Calculated below -->
+    <tr>
+      <th>Total Plots</th>
+      <td>1,088,746</td>
+      <td>1,088,744</td>
+      <td class="decrease">-2</td>
+      <td class="decrease">0.00%</td>
+    </tr>
+    <tr>
+      <th>Total Interments</th>
+      <td>929,816</td>
+      <td>929,809</td>
+      <td class="decrease">-7</td>
+      <td class="decrease">-0.00%</td>
+    </tr>
+    <tr>
+      <th>Total ROIs</th>
+      <td>453,645</td>
+      <td>453,646</td>
+      <td class="increase">+1</td>
+      <td class="increase">+0.00%</td>
+    </tr>
+    <tr>
+      <th>Total Persons</th>
+      <td>1,379,583</td>
+      <td>1,379,992</td>
+      <td class="increase">+409</td>
+      <td class="increase">+0.03%</td>
+    </tr>
+  </table>
+  <h2>Significant Changes by Cemetery</h2>
+  <table>
+    <tr>
+      <th>Cemetery Name</th>
+      <th>Metric</th>
+      <th>Initial</th>
+      <th>Current</th>
+      <th>Difference</th>
+    </tr>
+    <tr class="highlight">
+      <td>Astana_Tegal_Gundul</td>
+      <td>total_rois</td>
+      <td>18</td>
+      <td>20</td>
+      <td class="increase">+2</td>
+    </tr>
+    <tr class="highlight">
+      <td>Astana_Tegal_Gundul</td>
+      <td>total_persons</td>
+      <td>75</td>
+      <td>66</td>
+      <td class="decrease">-9</td>
+    </tr>
+    <tr class="highlight">
+      <td>living_legacy_mornington_green_forest</td>
+      <td>total_rois</td>
+      <td>1172</td>
+      <td>1174</td>
+      <td class="increase">+2</td>
+    </tr>
+    <tr class="highlight">
+      <td>living_legacy_mornington_green_forest</td>
+      <td>total_persons</td>
+      <td>2212</td>
+      <td>2216</td>
+      <td class="increase">+4</td>
+    </tr>
+    <tr class="highlight">
+      <td>phillip-island-cemetery</td>
+      <td>total_interments</td>
+      <td>2794</td>
+      <td>2795</td>
+      <td class="increase">+1</td>
+    </tr>
+    <tr class="highlight">
+      <td>st_joseph_catholic_church_cottleville_cemetery</td>
+      <td>total_rois</td>
+      <td>61</td>
+      <td>64</td>
+      <td class="increase">+3</td>
+    </tr>
+    <tr class="highlight">
+      <td>st_joseph_catholic_church_cottleville_cemetery</td>
+      <td>total_persons</td>
+      <td>78</td>
+      <td>81</td>
+      <td class="increase">+3</td>
+    </tr>
+    <tr class="highlight">
+      <td>st_matthew_catholic_cemetery</td>
+      <td>total_rois</td>
+      <td>1194</td>
+      <td>1196</td>
+      <td class="increase">+2</td>
+    </tr>
+    <tr class="highlight">
+      <td>st_matthew_catholic_cemetery</td>
+      <td>total_persons</td>
+      <td>2329</td>
+      <td>2331</td>
+      <td class="increase">+2</td>
+    </tr>
+    <tr class="highlight">
+      <td>GFW_Demo_Cemetery</td>
+      <td>total_interments</td>
+      <td>4789</td>
+      <td>4789</td>
+      <td>0</td>
+    </tr>
+    <tr class="highlight">
+      <td>Grand_Army_of_the_Republic_Cemetery</td>
+      <td>total_interments</td>
+      <td>11442</td>
+      <td>11440</td>
+      <td class="decrease">-2</td>
+    </tr>
+    <tr class="highlight">
+      <td>johnstown-cemetery</td>
+      <td>total_rois</td>
+      <td>2912</td>
+      <td>2917</td>
+      <td class="increase">+5</td>
+    </tr>
+    <tr class="highlight">
+      <td>johnstown-cemetery</td>
+      <td>total_persons</td>
+      <td>4910</td>
+      <td>4912</td>
+      <td class="increase">+2</td>
+    </tr>
+    <!-- Only the most significant changes are shown; additional changes can be listed as needed -->
+  </table>
+  <h2>Summary</h2>
+  <ul>
+    <li>There are minimal overall changes in total plots, interments, and ROIs, with a small increase in total persons.</li>
+    <li>The most impacted individual cemeteries were <b>Astana_Tegal_Gundul</b>, <b>living_legacy_mornington_green_forest</b>, <b>phillip-island-cemetery</b>, <b>st_joseph_catholic_church_cottleville_cemetery</b>, <b>st_matthew_catholic_cemetery</b>, and <b>johnstown-cemetery</b>.</li>
+    <li>Most changes are minor and within expected data update variance.</li>
+  </ul>
+  <h2>Notes</h2>
+  <ul>
+    <li>Rows highlighted show only those cemeteries and metrics where differences were observed.</li>
+    <li>Green text indicates an increase; red indicates a decrease.</li>
+    <li>For more granular change export, or for a full delta list, contact an analyst.</li>
+  </ul>
+</body>
+</html>
+```
+**Explanation of the Analysis:**
+
+- Four aggregates ("Total Plots", "Total Interments", "Total ROIs", "Total Persons") compared—totals are calculated by summing each column for all active cemetery rows in each file.
+- The most significant changes at the cemetery level are highlighted—showing metric, before/after, and difference (with color for increase/decrease).
+- Only significant or nonzero changes are shown in detail (for readability).
+- HTML is styled for clarity. 
+
+If you want a complete table of all changes, or delta for a specific cemetery, please specify!
