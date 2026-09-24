@@ -1,0 +1,173 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Cemetery Data Comparison Overview</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        h2 { color: #354a5f; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+        th, td { border: 1px solid #e7e7e7; padding: 8px 6px; text-align: right; }
+        th { background: #f0f7fa; color: #123; }
+        .highlight-positive { color: #256029; background: #d0f9e6; font-weight: bold; }
+        .highlight-negative { color: #a41e24; background: #fae3df; font-weight: bold; }
+        .highlight-zero { color: #555; background: #faf7de; }
+        td:first-child, th:first-child { text-align: left; }
+        summary { cursor: pointer; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Cemetery Data Change Analysis</h2>
+    <p>This report compares the latest two exports ("previous" and "current") of cemetery statistics. Only cemeteries with <b>changes in any field</b> (total plots, interments, ROIs, or persons) are shown here. Negative values indicate a decrease; positive, an increase.</p>
+    <details open>
+        <summary>Total Cemeteries with at least one change: <span id="total-change"></span></summary>
+        <table id="summary-table">
+            <thead>
+                <tr>
+                    <th>Cemetery Name</th>
+                    <th>Total Plots Δ</th>
+                    <th>Total Interments Δ</th>
+                    <th>Total ROIs Δ</th>
+                    <th>Total Persons Δ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Rows will be inserted here -->
+            </tbody>
+        </table>
+    </details>
+    <details>
+        <summary>Full List of All Changes (with before/after values)</summary>
+        <table>
+            <thead>
+                <tr>
+                    <th>Cemetery Name</th>
+                    <th>Prev Plots</th>
+                    <th>Curr Plots</th>
+                    <th>Δ</th>
+                    <th>Prev Interments</th>
+                    <th>Curr Interments</th>
+                    <th>Δ</th>
+                    <th>Prev ROIs</th>
+                    <th>Curr ROIs</th>
+                    <th>Δ</th>
+                    <th>Prev Persons</th>
+                    <th>Curr Persons</th>
+                    <th>Δ</th>
+                </tr>
+            </thead>
+            <tbody id="full-list">
+                <!-- Full detail rows will be inserted here -->
+            </tbody>
+        </table>
+    </details>
+    <script>
+    // Data diff content; produced manually from CSVs
+    const diffData = [
+        {
+            name: "Astana_Tegal_Gundul",
+            prev: {plots: 186, interments: 18, rois: 18, persons: 75},
+            curr: {plots: 186, interments: 18, rois: 20, persons: 66}
+        },
+        {
+            name: "living_legacy_mornington_green_forest",
+            prev: {plots: 1998, interments: 568, rois: 1172, persons: 2212},
+            curr: {plots: 1998, interments: 568, rois: 1174, persons: 2216}
+        },
+        {
+            name: "phillip-island-cemetery",
+            prev: {plots: 3192, interments: 2794, rois: 590, persons: 3569},
+            curr: {plots: 3192, interments: 2795, rois: 590, persons: 3570}
+        },
+        {
+            name: "st_joseph_catholic_church_cottleville_cemetery",
+            prev: {plots: 1164, interments: 0, rois: 61, persons: 78},
+            curr: {plots: 1164, interments: 0, rois: 64, persons: 81}
+        },
+        {
+            name: "st_matthew_catholic_cemetery",
+            prev: {plots: 1510, interments: 596, rois: 1194, persons: 2329},
+            curr: {plots: 1510, interments: 596, rois: 1196, persons: 2331}
+        },
+        {
+            name: "johnstown-cemetery",
+            prev: {plots: 4839, interments: 2258, rois: 2912, persons: 4910},
+            curr: {plots: 4839, interments: 2258, rois: 2917, persons: 4912}
+        },
+        {
+            name: "Grand_Army_of_the_Republic_Cemetery",
+            prev: {plots: 14297, interments: 11442, rois: 2179, persons: 21741},
+            curr: {plots: 14297, interments: 11440, rois: 2180, persons: 21742}
+        },
+        {
+            name: "highland_cemetery_hopewell",
+            prev: {plots: 9858, interments: 4564, rois: 6468, persons: 12332},
+            curr: {plots: 9858, interments: 4569, rois: 6468, persons: 12341}
+        },
+        {
+            name: "oakesdale-cemetery",
+            prev: {plots: 4188, interments: 1783, rois: 2693, persons: 4477},
+            curr: {plots: 4189, interments: 1785, rois: 2693, persons: 4481}
+        }
+    ];
+    function fmt(n) { return n==null ? '' : n.toLocaleString(); }
+    function delta(a, b) { return b - a; }
+    function highlight(d) {
+        if(d > 0) return 'highlight-positive';
+        if(d < 0) return 'highlight-negative';
+        return 'highlight-zero';
+    }
+    // Summary Table
+    const sumBody = document.querySelector('#summary-table tbody');
+    diffData.forEach(e => {
+        const deltas = {
+            dPlots: delta(e.prev.plots, e.curr.plots),
+            dInter: delta(e.prev.interments, e.curr.interments),
+            dRois: delta(e.prev.rois, e.curr.rois),
+            dPersons: delta(e.prev.persons, e.curr.persons),
+        };
+        // Only show those with some difference.
+        if(deltas.dPlots || deltas.dInter || deltas.dRois || deltas.dPersons) {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td>${e.name}</td>` +
+                `<td class="${highlight(deltas.dPlots)}">${deltas.dPlots>0?'+':''}${deltas.dPlots||''}</td>` +
+                `<td class="${highlight(deltas.dInter)}">${deltas.dInter>0?'+':''}${deltas.dInter||''}</td>` +
+                `<td class="${highlight(deltas.dRois)}">${deltas.dRois>0?'+':''}${deltas.dRois||''}</td>` +
+                `<td class="${highlight(deltas.dPersons)}">${deltas.dPersons>0?'+':''}${deltas.dPersons||''}</td>`;
+            sumBody.appendChild(tr);
+        }
+    });
+    document.getElementById('total-change').textContent = diffData.length;
+    // Full list with before/after
+    const fullBody = document.querySelector('#full-list');
+    diffData.forEach(e=>{
+        const dPlots = delta(e.prev.plots, e.curr.plots),
+              dInter = delta(e.prev.interments, e.curr.interments),
+              dRois = delta(e.prev.rois, e.curr.rois),
+              dPersons = delta(e.prev.persons, e.curr.persons);
+        if (dPlots===0 && dInter===0 && dRois===0 && dPersons===0) return;
+        const tr = document.createElement('tr');
+        tr.innerHTML =
+            `<td>${e.name}</td>` +
+            `<td>${fmt(e.prev.plots)}</td><td>${fmt(e.curr.plots)}</td><td class="${highlight(dPlots)}">${dPlots>0?'+':''}${dPlots||''}</td>` +
+            `<td>${fmt(e.prev.interments)}</td><td>${fmt(e.curr.interments)}</td><td class="${highlight(dInter)}">${dInter>0?'+':''}${dInter||''}</td>` +
+            `<td>${fmt(e.prev.rois)}</td><td>${fmt(e.curr.rois)}</td><td class="${highlight(dRois)}">${dRois>0?'+':''}${dRois||''}</td>` +
+            `<td>${fmt(e.prev.persons)}</td><td>${fmt(e.curr.persons)}</td><td class="${highlight(dPersons)}">${dPersons>0?'+':''}${dPersons||''}</td>`;
+        fullBody.appendChild(tr);
+    });
+    </script>
+</body>
+</html>
+```
+**How to use:**  
+- This HTML displays cemeteries with any data changes (plots, interments, ROIs, persons).
+- A summary table shows the change for each field (Δ = new minus old, + for increase, – for decrease).
+- The detailed table below it shows both the previous and current values per field and the change.
+
+**Highlights**:  
+- Green = increase,  
+- Red = decrease,  
+- Tan = zero/no change (for fields with no change).
+
+> Only cemeteries with at least one change between the files are shown. Adjust the `diffData` variable inside `<script>` for more changes if needed.
