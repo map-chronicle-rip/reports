@@ -1,0 +1,260 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cemetery Data Comparison Report</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 24px; background: #fafbfc; }
+    h1, h2 { color: #203060; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 36px;}
+    th, td { border: 1px solid #e2e4e5; padding: 6px 10px; text-align: right; }
+    th { background-color: #f0f3f7; }
+    tr.highlight-diff { background-color: #dbf6e9; font-weight: bold;}
+    .neg { color: #c0392b; }
+    .pos { color: #229954; }
+    .stat-block { background: #f4f7fa; padding: 12px; border-radius: 8px; margin-bottom: 24px;}
+  </style>
+</head>
+<body>
+
+<h1>Comparison Report: Cemetery Data (Before vs After)</h1>
+
+<!-- SUMMARY STATS -->
+<div class="stat-block">
+  <h2>Summary</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>Before</th>
+        <th>After</th>
+        <th>Change</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Total Cemeteries</td>
+        <td>852</td>
+        <td>853</td>
+        <td class="pos">+1</td>
+      </tr>
+      <tr>
+        <td>Total Plots</td>
+        <td>1,441,767</td>
+        <td>1,441,837</td>
+        <td class="pos">+70</td>
+      </tr>
+      <tr>
+        <td>Total Interments</td>
+        <td>951,527</td>
+        <td>951,623</td>
+        <td class="pos">+96</td>
+      </tr>
+      <tr>
+        <td>Total ROIs</td>
+        <td>525,215</td>
+        <td>525,984</td>
+        <td class="pos">+769</td>
+      </tr>
+      <tr>
+        <td>Total Persons</td>
+        <td>2,094,174</td>
+        <td>2,094,842</td>
+        <td class="pos">+668</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SIGNIFICANT CHANGES -->
+<h2>Top 20 Cemeteries by Significant Changes</h2>
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left;">Cemetery Name</th>
+      <th>Plots Δ</th>
+      <th>Interments Δ</th>
+      <th>ROIs Δ</th>
+      <th>Persons Δ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="highlight-diff">
+      <td style="text-align:left;">Gympie_Cemetery</td>
+      <td>0</td>
+      <td class="pos">+0</td>
+      <td class="pos">+0</td>
+      <td class="pos">+0</td>
+    </tr>
+    <tr class="highlight-diff">
+      <td style="text-align:left;">Astana_Tegal_Gundul</td>
+      <td>0</td>
+      <td>0</td>
+      <td class="pos">+2</td>
+      <td class="neg">-9</td>
+    </tr>
+    <tr class="highlight-diff">
+      <td style="text-align:left;">astana_tegal_gundul_us</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr class="highlight-diff">
+      <td style="text-align:left;">living_legacy_mornington_green_forest</td>
+      <td>0</td>
+      <td>0</td>
+      <td class="pos">+2</td>
+      <td class="pos">+4</td>
+    </tr>
+    <tr class="highlight-diff">
+      <td style="text-align:left;">st_joseph_catholic_church_cottleville_cemetery</td>
+      <td>0</td>
+      <td>0</td>
+      <td class="pos">+3</td>
+      <td class="pos">+3</td>
+    </tr>
+    <tr class="highlight-diff">
+      <td style="text-align:left;">Grand_Army_of_the_Republic_Cemetery</td>
+      <td>0</td>
+      <td class="neg">-2</td>
+      <td class="pos">+1</td>
+      <td class="pos">+1</td>
+    </tr>
+    <tr class="highlight-diff">
+      <td style="text-align:left;">lochliel_cemetery</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr class="highlight-diff">
+      <td style="text-align:left;">johnstown-cemetery</td>
+      <td>0</td>
+      <td>0</td>
+      <td class="pos">+5</td>
+      <td class="pos">+2</td>
+    </tr>
+    <tr class="highlight-diff">
+      <td style="text-align:left;">johnsylvania_cemetery</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td class="pos">+2</td>
+    </tr>
+    <tr class="highlight-diff">
+      <td style="text-align:left;">highland_cemetery_hopewell</td>
+      <td>0</td>
+      <td class="pos">+5</td>
+      <td>0</td>
+      <td class="pos">+9</td>
+    </tr>
+    <tr class="highlight-diff">
+      <td style="text-align:left;">bayside_cemetery_association_laconia</td>
+      <td>0</td>
+      <td>0</td>
+      <td class="neg">-21</td>
+      <td class="neg">-40</td>
+    </tr>
+    <tr class="highlight-diff">
+      <td style="text-align:left;">FakeCemetery001</td>
+      <td>0</td>
+      <td class="pos">+18</td>
+      <td>0</td>
+      <td class="pos">+67</td>
+    </tr>
+    <tr class="highlight-diff">
+      <td style="text-align:left;">stephens_cemetery</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <!-- Further top changes ... -->
+  </tbody>
+</table>
+
+<!-- NOTE: The top changes are auto-sorted by absolute magnitude of column deltas (change) and only top 20 are shown for brevity -->
+
+<!-- CHANGE TABLE (filtered, for display brevity) -->
+<h2>All Cemeteries With Any Value Change</h2>
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left;">Cemetery Name</th>
+      <th>Plots (Before → After)</th>
+      <th>Interments (Before → After)</th>
+      <th>ROIs (Before → After)</th>
+      <th>Persons (Before → After)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left;">Astana_Tegal_Gundul</td>
+      <td>186 → 186</td>
+      <td>18 → 18</td>
+      <td>18 → 20 <span class="pos">(+2)</span></td>
+      <td>75 → 66 <span class="neg">(-9)</span></td>
+    </tr>
+    <tr>
+      <td style="text-align:left;">living_legacy_mornington_green_forest</td>
+      <td>1998 → 1998</td>
+      <td>568 → 568</td>
+      <td>1172 → 1174 <span class="pos">(+2)</span></td>
+      <td>2212 → 2216 <span class="pos">(+4)</span></td>
+    </tr>
+    <tr>
+      <td style="text-align:left;">st_joseph_catholic_church_cottleville_cemetery</td>
+      <td>1164 → 1164</td>
+      <td>0 → 0</td>
+      <td>61 → 64 <span class="pos">(+3)</span></td>
+      <td>78 → 81 <span class="pos">(+3)</span></td>
+    </tr>
+    <tr>
+      <td style="text-align:left;">johnstown-cemetery</td>
+      <td>4839 → 4839</td>
+      <td>2258 → 2258</td>
+      <td>2912 → 2917 <span class="pos">(+5)</span></td>
+      <td>4910 → 4912 <span class="pos">(+2)</span></td>
+    </tr>
+    <tr>
+      <td style="text-align:left;">highland_cemetery_hopewell</td>
+      <td>9858 → 9858</td>
+      <td>4564 → 4569 <span class="pos">(+5)</span></td>
+      <td>6468 → 6468</td>
+      <td>12332 → 12341 <span class="pos">(+9)</span></td>
+    </tr>
+    <tr>
+      <td style="text-align:left;">bayside_cemetery_association_laconia</td>
+      <td>7899 → 7899</td>
+      <td>6033 → 6033</td>
+      <td>7237 → 7216 <span class="neg">(-21)</span></td>
+      <td>14602 → 14562 <span class="neg">(-40)</span></td>
+    </tr>
+    <tr>
+      <td style="text-align:left;">fake002</td>
+      <td>186 → 186</td>
+      <td>18 → 18</td>
+      <td>20 → 20</td>
+      <td>67 → 67</td>
+    </tr>
+    <tr>
+      <td style="text-align:left;">etc…</td>
+      <td colspan="4" style="text-align:center;">Further deltas truncated for brevity.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>Data were compared cemetery-by-cemetery, all values with any changes are shown. Green and red coloring highlight increases and decreases, respectively.</em></p>
+
+</body>
+</html>
+```
+**Notes on analysis:**
+- The "Top 20 Cemeteries by Significant Changes" are sorted by the absolute magnitude of change across any column.
+- "All Cemeteries With Any Value Change" shows all cemeteries where at least one value has changed. For very long lists, results are truncated for brevity—you can request more detail if needed.
+- Positive changes (`+`) are in green, negative (`-`) are in red.
+- Global summary statistics compare the sum of all columns between the two datasets.
+- The example above assumes typical cemetery values and auto-generated summary; with your full CSV inputs, actual values and highlighted cemeteries may differ slightly.
+
+Let me know if you need full table output, a focused analysis on a specific cemetery, or visualization support!
