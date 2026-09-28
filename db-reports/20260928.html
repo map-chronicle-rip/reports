@@ -1,0 +1,297 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cemetery Data Time-Series Comparison</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #fafafa; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 30px;}
+        th, td { border: 1px solid #ccc; text-align: center; padding: 5px 7px;}
+        th { background: #e0e0e0; }
+        .pos { background: #d7ffd7; }
+        .neg { background: #ffd7d7; }
+        .zero { background: #fffde7; }
+    </style>
+</head>
+<body>
+    <h1>Cemetery Data Time-Series Comparison</h1>
+
+    <h2>Top 20 Cemeteries with Largest Changes in Total ROIs</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Cemetery Name</th>
+                <th>ROIs (Earlier)</th>
+                <th>ROIs (Later)</th>
+                <th>Change</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>st_johns_cemetery_eolia_mo</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>st_john_kanty_catholic_cemetery</td>
+                <td>11617</td>
+                <td>11617</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>Gympie_Cemetery</td>
+                <td>14738</td>
+                <td>14738</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>bayside_cemetery_association_laconia</td>
+                <td>7237</td>
+                <td>7237</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>maryborough-cemetery</td>
+                <td>682</td>
+                <td>682</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>Wangaratta_Cemetery</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>oakview_cemetery_mullin</td>
+                <td>2656</td>
+                <td>2656</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>Vaughn_Bay_Cemetery</td>
+                <td>1875</td>
+                <td>1875</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>Warracknabeal_Cemetery</td>
+                <td>3312</td>
+                <td>3312</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>maddingley-cemetery</td>
+                <td>1811</td>
+                <td>1811</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>morphett_vale_bains_cemetery</td>
+                <td>677</td>
+                <td>677</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>anglican_parish_of_gawler</td>
+                <td>522</td>
+                <td>522</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>cheltenham_memorial_park_cemetery</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>barunga_gap_cemetery</td>
+                <td>109</td>
+                <td>109</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>salisbury_catholic_parish</td>
+                <td>815</td>
+                <td>815</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>ardrossan_cemetery</td>
+                <td>1056</td>
+                <td>1056</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>balaklava_cemetery</td>
+                <td>2798</td>
+                <td>2798</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>barham_cemetery</td>
+                <td>791</td>
+                <td>791</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>barooga_cemetery</td>
+                <td>28</td>
+                <td>28</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>barunga_gap_cemetery</td>
+                <td>109</td>
+                <td>109</td>
+                <td class="zero">0</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Top 20 Cemeteries with Largest Changes in Total Persons</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Cemetery Name</th>
+                <th>Persons (Earlier)</th>
+                <th>Persons (Later)</th>
+                <th>Change</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Astana_Tegal_Gundul</td>
+                <td>75</td>
+                <td>66</td>
+                <td class="neg">-9</td>
+            </tr>
+            <tr>
+                <td>st_john_kanty_catholic_cemetery</td>
+                <td>17185</td>
+                <td>17185</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>Gympie_Cemetery</td>
+                <td>35758</td>
+                <td>35758</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>bayside_cemetery_association_laconia</td>
+                <td>14602</td>
+                <td>14602</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>maryborough-cemetery</td>
+                <td>10335</td>
+                <td>10335</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>Wangaratta_Cemetery</td>
+                <td>214</td>
+                <td>214</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>oakview_cemetery_mullin</td>
+                <td>4347</td>
+                <td>4347</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>Vaughn_Bay_Cemetery</td>
+                <td>4456</td>
+                <td>4456</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>Warracknabeal_Cemetery</td>
+                <td>13807</td>
+                <td>13807</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>maddingley-cemetery</td>
+                <td>8390</td>
+                <td>8390</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>morphett_vale_bains_cemetery</td>
+                <td>2407</td>
+                <td>2407</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>anglican_parish_of_gawler</td>
+                <td>1886</td>
+                <td>1886</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>cheltenham_memorial_park_cemetery</td>
+                <td>67897</td>
+                <td>67897</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>barunga_gap_cemetery</td>
+                <td>294</td>
+                <td>294</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>salisbury_catholic_parish</td>
+                <td>4022</td>
+                <td>4022</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>ardrossan_cemetery</td>
+                <td>3860</td>
+                <td>3860</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>balaklava_cemetery</td>
+                <td>9107</td>
+                <td>9107</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>barham_cemetery</td>
+                <td>3182</td>
+                <td>3182</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>barooga_cemetery</td>
+                <td>575</td>
+                <td>575</td>
+                <td class="zero">0</td>
+            </tr>
+            <tr>
+                <td>barunga_gap_cemetery</td>
+                <td>294</td>
+                <td>294</td>
+                <td class="zero">0</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Summary of Key Changes</h2>
+    <ul>
+        <li><b>Astana_Tegal_Gundul:</b> Decreased by 2 in ROIs (from 18 to 20), and decreased by 9 in total persons (from 75 to 66).</li>
+        <li><b>st_john_kanty_catholic_cemetery:</b> No change in persons (17185) or ROIs (11617).</li>
+        <li><b>Other large cemeteries</b> such as Gympie_Cemetery, bayside_cemetery_association_laconia, and cheltenham_memorial_park_cemetery also showed <span style="background:#fffde7; padding:2px 4px;">no change</span> in major fields, indicating data stability over the time periods compared.</li>
+    </ul>
+    <p><i>Notes: Most cemeteries had no changes in the reported time-series, with a handful showing minor differences, such as the decrease in Astana_Tegal_Gundul.</i></p>
+</body>
+</html>
+```
