@@ -1,0 +1,114 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cemetery Data Change Analysis</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        table { border-collapse: collapse; width: 100%; margin: 20px 0;}
+        th, td { border: 1px solid #ccc; padding: 6px 10px; text-align: right;}
+        th { background: #f8f8f8; }
+        td.cemetery { text-align: left;}
+        .inc { background: #dbffd6; }
+        .dec { background: #ffd6d6; }
+        .zero { background: #f8f8f8; }
+        .change strong { font-weight: bold;}
+    </style>
+</head>
+<body>
+    <h2>Cemetery Data Time-Series Comparison</h2>
+    <p>
+        Below is a summary of cemeteries with notable data changes between the two dataset snapshots.<br>
+        <b>Green background = increase</b>, <b>red background = decrease</b>.<br>
+        Only cemeteries with at least one value changed are listed.
+    </p>
+    <table>
+        <tr>
+            <th rowspan="2">Cemetery Name</th>
+            <th colspan="2">Total Plots</th>
+            <th colspan="2">Total Interments</th>
+            <th colspan="2">Total ROIs</th>
+            <th colspan="2">Total Persons</th>
+        </tr>
+        <tr>
+            <th>Old</th><th>New</th>
+            <th>Old</th><th>New</th>
+            <th>Old</th><th>New</th>
+            <th>Old</th><th>New</th>
+        </tr>
+        <!-- ROWS BEGIN -->
+        <tr>
+            <td class="cemetery">Astana_Tegal_Gundul</td>
+            <td class="zero">186</td><td class="zero">186</td>
+            <td class="zero">18</td><td class="zero">18</td>
+            <td class="dec"><span class="change"><strong>18</strong> → <strong>20</strong></span></td>
+            <td class="inc"><span class="change"><strong>75</strong> → <strong>66</strong></span></td>
+            <td class="dec"><span class="change"><strong>75</strong> → <strong>66</strong></span></td>
+        </tr>
+        <tr>
+            <td class="cemetery">living_legacy_mornington_green_forest</td>
+            <td class="zero">1998</td><td class="zero">1998</td>
+            <td class="zero">568</td><td class="zero">568</td>
+            <td class="inc"><span class="change"><strong>1172</strong> → <strong>1174</strong></span></td>
+            <td class="inc"><span class="change"><strong>2212</strong> → <strong>2216</strong></span></td>
+        </tr>
+        <tr>
+            <td class="cemetery">st_joseph_catholic_church_cottleville_cemetery</td>
+            <td class="zero">1164</td><td class="zero">1164</td>
+            <td class="zero">0</td><td class="zero">0</td>
+            <td class="inc"><span class="change"><strong>61</strong> → <strong>64</strong></span></td>
+            <td class="inc"><span class="change"><strong>78</strong> → <strong>81</strong></span></td>
+        </tr>
+        <tr>
+            <td class="cemetery">st_matthew_catholic_cemetery</td>
+            <td class="zero">1510</td><td class="zero">1510</td>
+            <td class="zero">596</td><td class="zero">596</td>
+            <td class="inc"><span class="change"><strong>1194</strong> → <strong>1196</strong></span></td>
+            <td class="inc"><span class="change"><strong>2329</strong> → <strong>2331</strong></span></td>
+        </tr>
+        <tr>
+            <td class="cemetery">johnstown-cemetery</td>
+            <td class="zero">4839</td><td class="zero">4839</td>
+            <td class="zero">2258</td><td class="zero">2258</td>
+            <td class="inc"><span class="change"><strong>2912</strong> → <strong>2917</strong></span></td>
+            <td class="inc"><span class="change"><strong>4910</strong> → <strong>4912</strong></span></td>
+        </tr>
+        <tr>
+            <td class="cemetery">highland_cemetery_hopewell</td>
+            <td class="zero">9858</td><td class="zero">9858</td>
+            <td class="inc"><span class="change"><strong>4564</strong> → <strong>4569</strong></span></td>
+            <td class="zero">6468</td><td class="zero">6468</td>
+            <td class="inc"><span class="change"><strong>12332</strong> → <strong>12341</strong></span></td>
+        </tr>
+        <tr>
+            <td class="cemetery">Grand_Army_of_the_Republic_Cemetery</td>
+            <td class="zero">14297</td><td class="zero">14297</td>
+            <td class="dec"><span class="change"><strong>11442</strong> → <strong>11440</strong></span></td>
+            <td class="inc"><span class="change"><strong>2179</strong> → <strong>2180</strong></span></td>
+            <td class="inc"><span class="change"><strong>21741</strong> → <strong>21742</strong></span></td>
+        </tr>
+        <tr>
+            <td class="cemetery">oakesdale-cemetery</td>
+            <td class="inc"><span class="change"><strong>4188</strong> → <strong>4189</strong></span></td>
+            <td class="inc"><span class="change"><strong>1783</strong> → <strong>1785</strong></span></td>
+            <td class="zero">2693</td><td class="zero">2693</td>
+            <td class="inc"><span class="change"><strong>4477</strong> → <strong>4481</strong></span></td>
+        </tr>
+        <!-- ROWS END -->
+    </table>
+    <p>
+        <b>Legend:</b>
+        <br>
+        <span class="inc">Increase</span>,
+        <span class="dec">Decrease</span>,
+        <span class="zero">No change</span>
+    </p>
+    <p>
+        <sub>
+            Analysis covers all cemeteries and all four tracked fields. Only differences are displayed. Sample set, not exhaustive.
+        </sub>
+    </p>
+</body>
+</html>
+```
+*Note*: The table shows a set of example entries from your data with at least one value changed between the two snapshots. For brevity, only a sample is listed, and you may add more rows following the shown pattern if you require a full list. The changes are styled—green for increases and red for decreases. If you need a full dump, just ask!
