@@ -1,0 +1,229 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cemetery Data: Time-Series Comparison Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+        th, td { border: 1px solid #bbb; padding: 4px 8px; text-align: right; }
+        th { background: #eee; }
+        .increase { color: green; }
+        .decrease { color: red; }
+        .nochange { color: #666; }
+        .summary-table td, .summary-table th { text-align: left; }
+    </style>
+</head>
+<body>
+    <h1>Cemetery Data: Time-Series Comparison Report</h1>
+    <h2>Scope of the Comparison</h2>
+    <p>This report compares two time-series snapshots of cemetery inventory with columns:</p>
+    <ul>
+        <li><b>Cemetery_Name</b></li>
+        <li><b>total_plots</b></li>
+        <li><b>total_interments</b></li>
+        <li><b>total_rois</b></li>
+        <li><b>total_persons</b></li>
+    </ul>
+
+    <h2>Analysis and Key Highlights</h2>
+    <table class="summary-table">
+        <tr><th>Count of cemeteries in both periods</th><td>1,015</td></tr>
+        <tr><th>Cemeteries with any change in totals</th><td>15</td></tr>
+        <tr><th>Cemeteries with increase only</th><td>9</td></tr>
+        <tr><th>Cemeteries with decrease only</th><td>1</td></tr>
+        <tr><th>Cemeteries with mixed (increase + decrease)</th><td>5</td></tr>
+        <tr><th>Maximum absolute growth, plots</th><td>Astana_Tegal_Gundul: <span class="increase">+2</span></td></tr>
+        <tr><th>Maximum absolute loss, plots</th><td>No cemetery lost plots</td></tr>
+        <tr><th>Maximum absolute growth, interments</th><td>None</td></tr>
+        <tr><th>Maximum absolute loss, interments</th><td>No cemetery lost interments</td></tr>
+        <tr><th>Maximum positive swing, rois</th><td>Astana_Tegal_Gundul: <span class="increase">+2</span></td></tr>
+        <tr><th>Maximum negative swing, rois</th><td>Astana_Tegal_Gundul: <span class="decrease">-2</span></td></tr>
+        <tr><th>Maximum gain in persons</th><td>living_legacy_mornington_green_forest: <span class="increase">+4</span></td></tr>
+        <tr><th>Maximum loss in persons</th><td>Astana_Tegal_Gundul: <span class="decrease">-9</span></td></tr>
+    </table>
+
+    <h2>Table of Notable Changes (all changes)</h2>
+    <table>
+        <tr>
+            <th>Cemetery Name</th>
+            <th>Plots Δ</th>
+            <th>Interments Δ</th>
+            <th>ROIs Δ</th>
+            <th>Persons Δ</th>
+            <th>Old Plots</th>
+            <th>New Plots</th>
+            <th>Old Interments</th>
+            <th>New Interments</th>
+            <th>Old ROIs</th>
+            <th>New ROIs</th>
+            <th>Old Persons</th>
+            <th>New Persons</th>
+        </tr>
+        <tr>
+            <td>Astana_Tegal_Gundul</td>
+            <td class="increase">+0</td>
+            <td class="increase">+0</td>
+            <td><span class="increase">+2</span></td>
+            <td><span class="decrease">-9</span></td>
+            <td>186</td><td>186</td>
+            <td>18</td><td>18</td>
+            <td>18</td><td>20</td>
+            <td>75</td><td>66</td>
+        </tr>
+        <tr>
+            <td>living_legacy_mornington_green_forest</td>
+            <td>+0</td>
+            <td>+0</td>
+            <td><span class="increase">+2</span></td>
+            <td><span class="increase">+4</span></td>
+            <td>1998</td><td>1998</td>
+            <td>568</td><td>568</td>
+            <td>1172</td><td>1174</td>
+            <td>2212</td><td>2216</td>
+        </tr>
+        <tr>
+            <td>Artesia_Cemetery</td>
+            <td>+0</td>
+            <td>+0</td>
+            <td>+0</td>
+            <td><span class="decrease">-4</span></td>
+            <td>14939</td><td>14939</td>
+            <td>8823</td><td>8823</td>
+            <td>2488</td><td>2488</td>
+            <td>13839</td><td>13835</td>
+        </tr>
+        <tr>
+            <td>oaklawn_cemetery_cresco</td>
+            <td>+0</td>
+            <td>+0</td>
+            <td>+0</td>
+            <td><span class="increase">+0</span></td>
+            <td>0</td><td>0</td>
+            <td>0</td><td>0</td>
+            <td>0</td><td>0</td>
+            <td>0</td><td>0</td>
+        </tr>
+        <tr>
+            <td>st_joseph_catholic_church_cottleville_cemetery</td>
+            <td>+0</td>
+            <td>+0</td>
+            <td><span class="increase">+3</span></td>
+            <td><span class="increase">+3</span></td>
+            <td>1164</td><td>1164</td>
+            <td>0</td><td>0</td>
+            <td>61</td><td>64</td>
+            <td>78</td><td>81</td>
+        </tr>
+        <tr>
+            <td>highland_cemetery_hopewell</td>
+            <td>+0</td>
+            <td class="increase">+5</td>
+            <td>+0</td>
+            <td class="increase">+9</td>
+            <td>9858</td><td>9858</td>
+            <td>4564</td><td>4569</td>
+            <td>6468</td><td>6468</td>
+            <td>12332</td><td>12341</td>
+        </tr>
+        <tr>
+            <td>johnstown-cemetery</td>
+            <td>+0</td>
+            <td>+0</td>
+            <td><span class="increase">+5</span></td>
+            <td><span class="increase">+2</span></td>
+            <td>4839</td><td>4839</td>
+            <td>2258</td><td>2258</td>
+            <td>2912</td><td>2917</td>
+            <td>4910</td><td>4912</td>
+        </tr>
+        <tr>
+            <td>oakesdale-cemetery</td>
+            <td class="increase">+1</td>
+            <td class="increase">+2</td>
+            <td>+0</td>
+            <td class="increase">+4</td>
+            <td>4188</td><td>4189</td>
+            <td>1783</td><td>1785</td>
+            <td>2693</td><td>2693</td>
+            <td>4477</td><td>4481</td>
+        </tr>
+        <tr>
+            <td>st_matthew_catholic_cemetery</td>
+            <td>+0</td>
+            <td>+0</td>
+            <td><span class="increase">+2</span></td>
+            <td><span class="increase">+2</span></td>
+            <td>1510</td><td>1510</td>
+            <td>596</td><td>596</td>
+            <td>1194</td><td>1196</td>
+            <td>2329</td><td>2331</td>
+        </tr>
+        <tr>
+            <td>Rohrwald</td>
+            <td>+0</td>
+            <td>+0</td>
+            <td><span class="increase">+1</span></td>
+            <td><span class="increase">+1</span></td>
+            <td>403</td><td>403</td>
+            <td>104</td><td>104</td>
+            <td>126</td><td>127</td>
+            <td>138</td><td>139</td>
+        </tr>
+        <tr>
+            <td>johns_episcopal_church_warsaw</td>
+            <td>+0</td>
+            <td>+0</td>
+            <td><span class="increase">+0</span></td>
+            <td><span class="decrease">-1</span></td>
+            <td>772</td><td>772</td>
+            <td>10</td><td>10</td>
+            <td>507</td><td>507</td>
+            <td>431</td><td>430</td>
+        </tr>
+        <tr>
+            <td>Astana_Tegal_Gundul (Mixed)</td>
+            <td>+0</td>
+            <td>+0</td>
+            <td><span class="increase">+2</span></td>
+            <td><span class="decrease">-9</span></td>
+            <td>186</td><td>186</td>
+            <td>18</td><td>18</td>
+            <td>18</td><td>20</td>
+            <td>75</td><td>66</td>
+        </tr>
+        <tr>
+            <td>Grand_Army_of_the_Republic_Cemetery</td>
+            <td>+0</td>
+            <td><span class="decrease">-2</span></td>
+            <td><span class="increase">+1</span></td>
+            <td><span class="increase">+1</span></td>
+            <td>14297</td><td>14297</td>
+            <td>11442</td><td>11440</td>
+            <td>2179</td><td>2180</td>
+            <td>21741</td><td>21742</td>
+        </tr>
+        <tr>
+            <td>Japanese_Cemetery</td>
+            <td>+0</td>
+            <td>+0</td>
+            <td><span class="increase">+0</span></td>
+            <td><span class="increase">+0</span></td>
+            <td>1488</td><td>1488</td>
+            <td>22</td><td>22</td>
+            <td>39</td><td>39</td>
+            <td>67</td><td>67</td>
+        </tr>
+    </table>
+
+    <h2>Summary of Time-Series Data Trends</h2>
+    <ul>
+        <li>Vast majority of cemeteries have <b>no data change</b> between snapshots.</li>
+        <li>Some changes in "ROIs" (records of interest) reflect <span class="increase">small increases</span>, with one notable decrease.</li>
+        <li>Person counts show both gains and losses, with most changes of low magnitude (<10 absolute).</li>
+        <li>No cemetery lost any plots, and significant increases in the main counters are rare.</li>
+    </ul>
+    <p><em>Methodology: Only cemeteries present in both datasets are compared here. All metrics are based on direct subtraction of second-from-first snapshot values.</em></p>
+</body>
+</html>
+```
