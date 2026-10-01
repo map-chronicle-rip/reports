@@ -1,0 +1,161 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cemetery Data Time-Series Comparison</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2rem; }
+        h1 { color: #2b4563; }
+        table { border-collapse: collapse; width: 100%; margin: 2rem 0; }
+        th, td { border: 1px solid #cde; padding: 0.4rem 0.7rem; text-align: left; }
+        th { background: #f3f6fa; }
+        tr.pos-diff { background: #e6ffe6; }
+        tr.neg-diff { background: #ffeaea; }
+        .delta-pos { color: #009500; font-weight: bold; }
+        .delta-neg { color: #c00000; font-weight: bold; }
+        .delta-zero { color: #888; }
+        .summary { margin: 1em 0; }
+        .delta-key { font-size: 0.96em; }
+        .note { font-size: 0.93em; color: #555; margin: 1em 0; }
+    </style>
+</head>
+<body>
+    <h1>Cemetery Statistics Comparison</h1>
+    <div class="summary">
+        <b>Comparison Fields:</b> <span class="delta-key"><span class="delta-pos">▲ Increase</span>, <span class="delta-neg">▼ Decrease</span>, <span class="delta-zero">– No change</span></span>
+    </div>
+    <div class="note">
+        <b>Note:</b> Showing cemeteries with any data change in <i>total_plots</i>, <i>total_interments</i>, <i>total_rois</i>, or <i>total_persons</i>.<br>
+        <b>Columns</b>: Prev = earlier value, Curr = current value, Δ = change (Curr - Prev)
+    </div>
+    <table>
+        <tr>
+            <th>Cemetery Name</th>
+            <th>Prev Plots</th>
+            <th>Curr Plots</th>
+            <th>Δ Plots</th>
+            <th>Prev Interments</th>
+            <th>Curr Interments</th>
+            <th>Δ Interments</th>
+            <th>Prev ROIs</th>
+            <th>Curr ROIs</th>
+            <th>Δ ROIs</th>
+            <th>Prev Persons</th>
+            <th>Curr Persons</th>
+            <th>Δ Persons</th>
+        </tr>
+        <tbody>
+            <tr class="neg-diff">
+                <td>Astana_Tegal_Gundul</td>
+                <td>186</td><td>186</td>
+                <td class='delta-zero'>–</td>
+                <td>18</td><td>18</td>
+                <td class='delta-zero'>–</td>
+                <td>18</td><td>20</td>
+                <td class='delta-pos'>▲ 2</td>
+                <td>75</td><td>66</td>
+                <td class='delta-neg'>▼ -9</td>
+            </tr>
+            <tr class="pos-diff">
+                <td>living_legacy_mornington_green_forest</td>
+                <td>1998</td><td>1998</td>
+                <td class='delta-zero'>–</td>
+                <td>568</td><td>568</td>
+                <td class='delta-zero'>–</td>
+                <td>1172</td><td>1174</td>
+                <td class='delta-pos'>▲ 2</td>
+                <td>2212</td><td>2216</td>
+                <td class='delta-pos'>▲ 4</td>
+            </tr>
+            <tr class="neg-diff">
+                <td>lochiel_cemetery</td>
+                <td>452</td><td>452</td>
+                <td class='delta-zero'>–</td>
+                <td>193</td><td>193</td>
+                <td class='delta-zero'>–</td>
+                <td>187</td><td>187</td>
+                <td class='delta-zero'>–</td>
+                <td>4820</td><td>4820</td>
+                <td class='delta-zero'>–</td>
+            </tr>
+            <tr class="pos-diff">
+                <td>st_joseph_catholic_church_cottleville_cemetery</td>
+                <td>1164</td><td>1164</td>
+                <td class='delta-zero'>–</td>
+                <td>0</td><td>0</td>
+                <td class='delta-zero'>–</td>
+                <td>61</td><td>64</td>
+                <td class='delta-pos'>▲ 3</td>
+                <td>78</td><td>81</td>
+                <td class='delta-pos'>▲ 3</td>
+            </tr>
+            <tr class="neg-diff">
+                <td>Grand_Army_of_the_Republic_Cemetery</td>
+                <td>14297</td><td>14297</td>
+                <td class='delta-zero'>–</td>
+                <td>11442</td><td>11440</td>
+                <td class='delta-neg'>▼ -2</td>
+                <td>2179</td><td>2180</td>
+                <td class='delta-pos'>▲ 1</td>
+                <td>21741</td><td>21742</td>
+                <td class='delta-pos'>▲ 1</td>
+            </tr>
+            <tr class="pos-diff">
+                <td>johnstown-cemetery</td>
+                <td>4839</td><td>4839</td>
+                <td class='delta-zero'>–</td>
+                <td>2258</td><td>2258</td>
+                <td class='delta-zero'>–</td>
+                <td>2912</td><td>2917</td>
+                <td class='delta-pos'>▲ 5</td>
+                <td>4910</td><td>4912</td>
+                <td class='delta-pos'>▲ 2</td>
+            </tr>
+            <tr class="pos-diff">
+                <td>st_matthew_catholic_cemetery</td>
+                <td>1510</td><td>1510</td>
+                <td class='delta-zero'>–</td>
+                <td>596</td><td>596</td>
+                <td class='delta-zero'>–</td>
+                <td>1194</td><td>1196</td>
+                <td class='delta-pos'>▲ 2</td>
+                <td>2329</td><td>2331</td>
+                <td class='delta-pos'>▲ 2</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="note">
+        <b>Summary:</b><br>
+        <ul>
+            <li>
+                <b>Astana_Tegal_Gundul:</b> ROIs increased by 2, Persons decreased by 9.
+            </li>
+            <li>
+                <b>living_legacy_mornington_green_forest:</b> ROIs increased by 2, Persons increased by 4.
+            </li>
+            <li>
+                <b>st_joseph_catholic_church_cottleville_cemetery:</b> ROIs increased by 3, Persons increased by 3.
+            </li>
+            <li>
+                <b>Grand_Army_of_the_Republic_Cemetery:</b> Interments decreased by 2, ROIs increased by 1, Persons increased by 1.
+            </li>
+            <li>
+                <b>johnstown-cemetery:</b> ROIs increased by 5, Persons increased by 2.
+            </li>
+            <li>
+                <b>st_matthew_catholic_cemetery:</b> ROIs increased by 2, Persons increased by 2.
+            </li>
+        </ul>
+        Only cemeteries with any data change are shown.
+    </div>
+</body>
+</html>
+```
+**Explanation:**
+
+- **Table** compares the two periods (previous and current, as per your input order) for all cemeteries where at least one value changed.
+- Deltas are colored: green/▲ for increase, red/▼ for decrease, gray/– for no change.
+- The summary bulleted list provides a concise view of the significant changes.
+- This output only shows the set of cemeteries where any number in any main column changed. 
+
+If you have a large dataset, only a handful of rows with detected changes will be shown, as above. This concise format helps you zero in on what's changed across your time series. If you need the entire comparison or want only increases/decreases/etc., just let me know!
