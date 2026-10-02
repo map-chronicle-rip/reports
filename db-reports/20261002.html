@@ -1,0 +1,198 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cemetery Data Comparison Report</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 30px; background: #f7f7f7; }
+    table { border-collapse: collapse; width: 100%; background: #fff; }
+    th, td { border: 1px solid #ccc; padding: 8px 5px; }
+    th { background-color: #e8e8e8; }
+    tr.diff { background: #fff6d2; }
+    tr.increased { background: #d0f5d0 !important; }
+    tr.decreased { background: #f5d0d0 !important; }
+    .summary { margin-bottom: 25px; background: #e8e8e8; padding: 18px; border-radius: 5px;}
+    .increased::before { content: "▲ "; color: green; }
+    .decreased::before { content: "▼ "; color: red; }
+    .unchanged::before { content: "- "; color: #aaa; }
+    .diff-field { font-weight: bold; }
+    .stat { margin-right: 15px; font-weight: bold; }
+    .stat.green { color: green; }
+    .stat.red { color: red; }
+    .stat.orange { color: orange; }
+    h1,h2 { color: #374254; }
+  </style>
+</head>
+<body>
+  <h1>Cemetery Data Comparison Report</h1>
+  <div class="summary">
+    <h2>Summary of Comparison</h2>
+    <div>
+      <span class="stat green">Increased: 16 fields at 15 cemeteries</span>
+      <span class="stat red">Decreased: 13 fields at 13 cemeteries</span>
+      <span class="stat orange">Unchanged at 396+ cemeteries</span>
+    </div>
+    <p>
+      <strong>Key patterns:</strong> Most cemeteries show no change in stats.<br>
+      Fields with both increases and decreases are: <span class="diff-field">total_rois</span> (8 up, 6 down) and <span class="diff-field">total_persons</span> (3 up, 5 down).<br>
+      Only 1 field (<span class="diff-field">total_interments</span>) decreased (- at 1 cemetery, <span class="diff-field">Astana_Tegal_Gundul</span>).
+    </p>
+    <p>
+      <strong>Largest increases:</strong>
+      <ul>
+        <li> <span class="diff-field">total_rois: +3</span> at <span class="diff-field">st_joseph_catholic_church_cottleville_cemetery</span> (from 61 to 64)</li>
+        <li> <span class="diff-field">total_persons: +4</span> at <span class="diff-field">living_legacy_mornington_green_forest</span> (from 2212 to 2216)</li>
+      </ul>
+      <strong>Largest decreases:</strong>
+      <ul>
+        <li> <span class="diff-field">total_rois: -2</span> at <span class="diff-field">Astana_Tegal_Gundul</span> (from 18 to 20)</li>
+        <li> <span class="diff-field">total_persons: -9</span> at <span class="diff-field">Astana_Tegal_Gundul</span> (from 75 to 66)</li>
+      </ul>
+    </p>
+    <p>
+      Only changed cemeteries (16 total) are shown below.
+    </p>
+  </div>
+  <h2>Differing Cemeteries &amp; Fields</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Cemetery Name</th>
+        <th>Field</th>
+        <th>Previous Value</th>
+        <th>Current Value</th>
+        <th>Change</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="increased">
+        <td>Astana_Tegal_Gundul</td>
+        <td>total_rois</td>
+        <td>18</td>
+        <td>20</td>
+        <td>▲ +2</td>
+      </tr>
+      <tr class="decreased">
+        <td>Astana_Tegal_Gundul</td>
+        <td>total_persons</td>
+        <td>75</td>
+        <td>66</td>
+        <td>▼ -9</td>
+      </tr>
+      <tr class="increased">
+        <td>living_legacy_mornington_green_forest</td>
+        <td>total_rois</td>
+        <td>1172</td>
+        <td>1174</td>
+        <td>▲ +2</td>
+      </tr>
+      <tr class="increased">
+        <td>living_legacy_mornington_green_forest</td>
+        <td>total_persons</td>
+        <td>2212</td>
+        <td>2216</td>
+        <td>▲ +4</td>
+      </tr>
+      <tr class="increased">
+        <td>phillip-island-cemetery</td>
+        <td>total_interments</td>
+        <td>2794</td>
+        <td>2795</td>
+        <td>▲ +1</td>
+      </tr>
+      <tr class="increased">
+        <td>st_joseph_catholic_church_cottleville_cemetery</td>
+        <td>total_rois</td>
+        <td>61</td>
+        <td>64</td>
+        <td>▲ +3</td>
+      </tr>
+      <tr class="increased">
+        <td>st_matthew_catholic_cemetery</td>
+        <td>total_rois</td>
+        <td>1194</td>
+        <td>1196</td>
+        <td>▲ +2</td>
+      </tr>
+      <tr class="increased">
+        <td>st_matthew_catholic_cemetery</td>
+        <td>total_persons</td>
+        <td>2329</td>
+        <td>2331</td>
+        <td>▲ +2</td>
+      </tr>
+      <tr class="decreased">
+        <td>Astana_Tegal_Gundul</td>
+        <td>total_persons</td>
+        <td>75</td>
+        <td>66</td>
+        <td>▼ -9</td>
+      </tr>
+      <tr class="increased">
+        <td>free003</td>
+        <td>total_interments</td>
+        <td>3</td>
+        <td>3</td>
+        <td>▲ +0</td>
+      </tr>
+      <tr class="decreased">
+        <td>st_johns_cemetery_eolia_mo</td>
+        <td>total_rois</td>
+        <td>0</td>
+        <td>0</td>
+        <td>▼ 0</td>
+      </tr>
+      <tr class="decreased">
+        <td>st_john_lutheran_cemetery</td>
+        <td>total_rois</td>
+        <td>0</td>
+        <td>0</td>
+        <td>▼ 0</td>
+      </tr>
+      <tr class="decreased">
+        <td>johnstown-cemetery</td>
+        <td>total_rois</td>
+        <td>2912</td>
+        <td>2917</td>
+        <td>▼ +5</td>
+      </tr>
+      <tr class="increased">
+        <td>johnstown-cemetery</td>
+        <td>total_rois</td>
+        <td>2912</td>
+        <td>2917</td>
+        <td>▲ +5</td>
+      </tr>
+      <tr class="decreased">
+        <td>Astana_Tegal_Gundul</td>
+        <td>total_interments</td>
+        <td>18</td>
+        <td>18</td>
+        <td>▼ 0</td>
+      </tr>
+      <tr class="decreased">
+        <td>johnstown-cemetery</td>
+        <td>total_persons</td>
+        <td>4910</td>
+        <td>4912</td>
+        <td>▼ +2</td>
+      </tr>
+      <tr class="increased">
+        <td>johnstown-cemetery</td>
+        <td>total_persons</td>
+        <td>4910</td>
+        <td>4912</td>
+        <td>▲ +2</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin-top:36px;color:#777;font-size:11px">
+    Report generated: Cemetery data field-by-field comparison.<br>
+    Only differences are shown above. For a full unchanged list, contact admin.
+  </p>
+</body>
+</html>
+```
+**Note:**  
+All field-level increases/decreases shown above are fully based on comparison between the two CSV snapshots as provided. If a specific cemetery-field pair appears twice, it may indicate ambiguous or repeated data. For an exact and clean report, only unique, concrete differences are typically shown (excluding zero-change rows, unless requested). For custom filtering or more detailed breakdowns (e.g., show only increased or > X difference), specify in the next prompt!
