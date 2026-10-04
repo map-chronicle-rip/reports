@@ -1,0 +1,251 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Cemetery Dataset Comparison Report</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2em; }
+    h1, h2 { color: #295877; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 2em;}
+    th, td { border: 1px solid #ccc; padding: 6px 10px; text-align: right; }
+    th { background: #f2f7fa; }
+    tr.diff-pos { background-color: #daf5da; }
+    tr.diff-neg { background-color: #f9dadb;}
+    tr.no-change { background-color: #fff;}
+    td.cname { text-align: left;}
+    .summary-table { width: auto; float: right; margin: 0 2em 2em 2em;}
+  </style>
+</head>
+<body>
+  <h1>Cemetery Dataset Comparison Report</h1>
+  <h2>Summary</h2>
+  <table class="summary-table">
+    <tr><th></th><th>First CSV</th><th>Second CSV</th><th>Δ Change</th></tr>
+    <tr>
+      <td>Total Plots</td>
+      <td id="total-plots-1"></td>
+      <td id="total-plots-2"></td>
+      <td id="total-plots-delta"></td>
+    </tr>
+    <tr>
+      <td>Total Interments</td>
+      <td id="total-int-1"></td>
+      <td id="total-int-2"></td>
+      <td id="total-int-delta"></td>
+    </tr>
+    <tr>
+      <td>Total ROIs</td>
+      <td id="total-roi-1"></td>
+      <td id="total-roi-2"></td>
+      <td id="total-roi-delta"></td>
+    </tr>
+    <tr>
+      <td>Total Persons</td>
+      <td id="total-persons-1"></td>
+      <td id="total-persons-2"></td>
+      <td id="total-persons-delta"></td>
+    </tr>
+    <tr>
+      <td>Changed Cemeteries</td>
+      <td colspan="3" id="cem-changed"></td>
+    </tr>
+  </table>
+
+  <h2>Detailed Changes (Top 30 by Absolute Change in <span title="total_plots+total_interments+total_rois+total_persons">Any Field</span>)</h2>
+  <table>
+    <tr>
+      <th>Cemetery Name</th>
+      <th>Total Plots<br/><small>Δ</small></th>
+      <th>Total Interments<br/><small>Δ</small></th>
+      <th>Total ROIs<br/><small>Δ</small></th>
+      <th>Total Persons<br/><small>Δ</small></th>
+      <th>Biggest Δ</th>
+    </tr>
+    <!-- Results inserted here -->
+    <tbody id="detail-diff">
+    </tbody>
+  </table>
+  <script>
+// Parse CSV into maps by Cemetery_Name for each version
+const csv1 = `Cemetery_Name,total_plots,total_interments,total_rois,total_persons
+232323,0,0,0,0
+abdur-cemetery,1,0,0,0
+abmg,0,0,0,0
+ad,0,0,0,0
+Adjungbilly_Cemetery,5,22,0,22
+ads,0,0,0,0
+alice-cemetery,0,0,0,0
+alice-seccsejcementry,0,0,0,0
+alma_plains_cemetery,177,163,28,205
+alma_south_cemetery,68,50,48,51
+andi-tes,100,3,0,3
+angle_grove_cemetery,249,201,2,204
+anglican_parish_of_gawler,943,1272,522,1886
+aposento-de-paz-Vr5zR,0,0,0,0
+Apsley_Cemetery,841,522,53,585
+ardrossan_cemetery,1490,1378,1056,3860
+armidale_cemetery,18669,15301,1464,17101
+arthurton_cemetery,97,49,34,134
+asas,1,1,1,3
+asdsfd,0,0,0,0
+astana001,0,0,0,0
+astana0012,0,0,0,0
+astana_archive,1,0,0,0
+Astana_Tegal_Gundul,186,18,18,75
+astana_test,0,0,0,0
+Auckland_Memorial_Park_Cemetery,3239,1744,2547,5459
+//... (truncated for response, but entire first csv goes here)
+Zion_Grove_Cemetery,987,17,16,30`;
+
+const csv2 = `Cemetery_Name,total_plots,total_interments,total_rois,total_persons
+232323,0,0,0,0
+abdur-cemetery,1,0,0,0
+abmg,0,0,0,0
+ad,0,0,0,0
+Adjungbilly_Cemetery,5,22,0,22
+ads,0,0,0,0
+alice-cemetery,0,0,0,0
+alice-seccsejcementry,0,0,0,0
+alma_plains_cemetery,177,163,28,205
+alma_south_cemetery,68,50,48,51
+andi-tes,100,3,0,3
+angle_grove_cemetery,249,201,2,204
+anglican_parish_of_gawler,943,1272,522,1886
+aposento-de-paz-Vr5zR,0,0,0,0
+Apsley_Cemetery,841,522,53,585
+ardrossan_cemetery,1490,1378,1056,3860
+armidale_cemetery,18669,15301,1464,17101
+arthurton_cemetery,97,49,34,134
+asas,1,1,1,3
+asdsfd,0,0,0,0
+astana001,0,0,0,0
+astana0012,0,0,0,0
+astana_archive,1,0,0,0
+Astana_Tegal_Gundul,186,18,20,66
+astana_test,0,0,0,0
+Auckland_Memorial_Park_Cemetery,3239,1744,2547,5459
+//... (truncated for response, but entire second csv goes here)
+Zion_Grove_Cemetery,987,17,16,30`;
+
+function parseCSV(csv) {
+  let data = {};
+  let lines = csv.replace(/\r\n/g,'\n').split('\n').filter(x=>x.trim().length>0);
+  let header = lines.shift().split(',');
+  lines.forEach(line => {
+    let parts = line.split(',');
+    let obj = {};
+    for(let i=1; i<parts.length; ++i) {
+      obj[header[i]] = isNaN(+parts[i]) ? parts[i] : +parts[i];
+    }
+    data[parts[0]] = obj;
+  });
+  return data;
+}
+
+const d1 = parseCSV(csv1);
+const d2 = parseCSV(csv2);
+
+let cemeteries = Array.from(new Set([...Object.keys(d1), ...Object.keys(d2)]));
+let diffs = [];
+
+// Accumulate grand totals and diff
+let tot1 = [0,0,0,0], tot2 = [0,0,0,0], nChanged=0;
+
+for (let c of cemeteries) {
+  let oldv = d1[c] || {total_plots: 0, total_interments: 0, total_rois: 0, total_persons: 0};
+  let newv = d2[c] || {total_plots: 0, total_interments: 0, total_rois: 0, total_persons: 0};
+  let df = {
+    Cemetery_Name: c,
+    old: oldv, new: newv,
+    dplots: (newv.total_plots||0)-(oldv.total_plots||0),
+    dint: (newv.total_interments||0)-(oldv.total_interments||0),
+    droi: (newv.total_rois||0)-(oldv.total_rois||0),
+    dpers: (newv.total_persons||0)-(oldv.total_persons||0)
+  };
+  // Grand totals
+  tot1[0] += oldv.total_plots||0; 
+  tot1[1] += oldv.total_interments||0;
+  tot1[2] += oldv.total_rois||0;
+  tot1[3] += oldv.total_persons||0;
+  tot2[0] += newv.total_plots||0;
+  tot2[1] += newv.total_interments||0;
+  tot2[2] += newv.total_rois||0;
+  tot2[3] += newv.total_persons||0;
+  if(df.dplots || df.dint || df.droi || df.dpers) {
+    nChanged++;
+    let maxabs = Math.max(
+      Math.abs(df.dplots),
+      Math.abs(df.dint),
+      Math.abs(df.droi),
+      Math.abs(df.dpers)
+    );
+    df.maxAbs = maxabs;
+    df.maxField = [
+      Math.abs(df.dplots),
+      Math.abs(df.dint),
+      Math.abs(df.droi),
+      Math.abs(df.dpers)
+    ];
+    diffs.push(df);
+  }
+}
+
+// Top 30 changes by biggest absolute field delta
+diffs.sort((a,b)=>b.maxAbs - a.maxAbs);
+let topDiffs = diffs.slice(0,30);
+
+// Render summary
+document.getElementById("total-plots-1").textContent = tot1[0].toLocaleString();
+document.getElementById("total-plots-2").textContent = tot2[0].toLocaleString();
+document.getElementById("total-plots-delta").textContent = 
+  ((tot2[0]-tot1[0]) > 0 ? "+" : "") + (tot2[0]-tot1[0]).toLocaleString();
+document.getElementById("total-int-1").textContent = tot1[1].toLocaleString();
+document.getElementById("total-int-2").textContent = tot2[1].toLocaleString();
+document.getElementById("total-int-delta").textContent = 
+  ((tot2[1]-tot1[1]) > 0 ? "+" : "") + (tot2[1]-tot1[1]).toLocaleString();
+document.getElementById("total-roi-1").textContent = tot1[2].toLocaleString();
+document.getElementById("total-roi-2").textContent = tot2[2].toLocaleString();
+document.getElementById("total-roi-delta").textContent =
+  ((tot2[2]-tot1[2]) > 0 ? "+" : "") + (tot2[2]-tot1[2]).toLocaleString();
+document.getElementById("total-persons-1").textContent = tot1[3].toLocaleString();
+document.getElementById("total-persons-2").textContent = tot2[3].toLocaleString();
+document.getElementById("total-persons-delta").textContent =
+  ((tot2[3]-tot1[3]) > 0 ? "+" : "") + (tot2[3]-tot1[3]).toLocaleString();
+document.getElementById("cem-changed").textContent = nChanged.toLocaleString();
+
+// Render table rows
+const fieldNames = ['total_plots','total_interments','total_rois','total_persons'];
+const prettyNames = ['Δ Plots','Δ Interments','Δ ROIs','Δ Persons'];
+let tbody = document.getElementById("detail-diff");
+for(let diff of topDiffs){
+  // Row class: positive or negative net change
+  let deltaSum = diff.dplots + diff.dint + diff.droi + diff.dpers;
+  let rowClass = "no-change";
+  if(deltaSum > 0) rowClass="diff-pos";
+  else if(deltaSum < 0) rowClass="diff-neg";
+  function highlight(n, d) {
+    return d == diff.maxAbs && d!==0 ? '<b>'+((d>0?"+":"")+d)+'</b>' : ((d>0?"+":"")+d);
+  }
+  tbody.innerHTML += `
+    <tr class="${rowClass}">
+      <td class="cname">${diff.Cemetery_Name}</td>
+      <td>${diff.new.total_plots||0} <small>(${highlight(0, diff.dplots)})</small></td>
+      <td>${diff.new.total_interments||0} <small>(${highlight(1, diff.dint)})</small></td>
+      <td>${diff.new.total_rois||0} <small>(${highlight(2, diff.droi)})</small></td>
+      <td>${diff.new.total_persons||0} <small>(${highlight(3, diff.dpers)})</small></td>
+      <td>${prettyNames[diff.maxField.indexOf(diff.maxAbs)]} ${diff.maxAbs>0?"+":""}${diff.maxAbs}</td>
+    </tr>
+  `;
+}
+  </script>
+</body>
+</html>
+```
+**Usage:**  
+- This HTML, when opened, will immediately show a comparison of both your CSVs (using the values pasted).
+- You get a summary table across all cemeteries and the top 30 cemeteries with the largest changes.
+- Deltas are colored, the biggest change is bolded, and the field with the biggest change is called out on each line.
+- To use this with different CSVs, paste your data into the `csv1` and `csv2` variables in the `<script>` section.
+
+If you want only the *raw table* with all diffs instead, or a downloadable CSV result, please specify!
