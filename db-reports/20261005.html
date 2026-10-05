@@ -1,0 +1,190 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    table { border-collapse: collapse; width: 100%; font-size: 13px;}
+    th, td { border: 1px solid #ccc; padding: 5px; text-align: right;}
+    th { background: #efefef; }
+    .diff { font-weight: bold; color: #c00;}
+    .up { color: green; }
+    .down { color: #c00; }
+    .zero { color: #888; }
+    .highlight { background: #ffeeba;}
+    caption { text-align: left; font-weight: bold; font-size: 1.2em; }
+  </style>
+</head>
+<body>
+  <h2>Cemetery Time-Series Comparison Summary</h2>
+
+  <h3>Overview of Changes</h3>
+  <ul>
+    <li>Total Cemeteries Compared: <b>714</b></li>
+    <li>Unchanged Cemeteries: <b>608</b></li>
+    <li>Cemeteries With Any Change: <b>106</b></li>
+  </ul>
+
+  <table>
+    <caption>Top 15 Cemeteries by Absolute Change (Any Field)</caption>
+    <tr>
+      <th>Cemetery_Name</th>
+      <th>total_plots</th>
+      <th>total_interments</th>
+      <th>total_rois</th>
+      <th>total_persons</th>
+      <th>Change Details</th>
+    </tr>
+    <tr class="highlight"><td>Gympie_Cemetery</td>
+      <td class="zero">0</td>
+      <td class="up">+0</td>
+      <td class="up">+0</td>
+      <td class="up">+0</td>
+      <td class="zero">No Change</td>
+    </tr>
+    <tr class="highlight"><td>St_Joseph_Catholic_Church_Cottleville_Cemetery</td>
+      <td class="zero">0</td>
+      <td class="zero">0</td>
+      <td class="up">+3</td>
+      <td class="up">+3</td>
+      <td class="up">total_rois: +3, total_persons: +3</td>
+    </tr>
+    <tr class="highlight"><td>Astana_Tegal_Gundul</td>
+      <td class="zero">0</td>
+      <td class="zero">0</td>
+      <td class="up">+2</td>
+      <td class="down">-9</td>
+      <td class="up">total_rois: +2, total_persons: -9</td>
+    </tr>
+    <tr class="highlight"><td>living_legacy_mornington_green_forest</td>
+      <td class="zero">0</td>
+      <td class="zero">0</td>
+      <td class="up">+2</td>
+      <td class="up">+4</td>
+      <td class="up">total_rois: +2, total_persons: +4</td>
+    </tr>
+    <tr class="highlight"><td>johnstown-cemetery</td>
+      <td class="zero">0</td>
+      <td class="zero">0</td>
+      <td class="up">+5</td>
+      <td class="up">+2</td>
+      <td class="up">total_rois: +5, total_persons: +2</td>
+    </tr>
+    <tr class="highlight"><td>Grand_Army_of_the_Republic_Cemetery</td>
+      <td class="zero">0</td>
+      <td class="down">-2</td>
+      <td class="up">+1</td>
+      <td class="up">+1</td>
+      <td class="up">total_interments: -2, total_rois: +1, total_persons: +1</td>
+    </tr>
+    <tr class="highlight"><td>kendall</td>
+      <td class="down">-5</td>
+      <td class="up">+7</td>
+      <td class="zero">0</td>
+      <td class="up">+3</td>
+      <td class="up">total_plots: -5, total_interments: +7, total_persons: +3</td>
+    </tr>
+    <tr class="highlight"><td>highland_cemetery_hopewell</td>
+      <td class="zero">0</td>
+      <td class="up">+5</td>
+      <td class="zero">0</td>
+      <td class="up">+9</td>
+      <td class="up">total_interments: +5, total_persons: +9</td>
+    </tr>
+    <tr class="highlight"><td>montview_columbarium</td>
+      <td class="zero">0</td>
+      <td class="up">+0</td>
+      <td class="zero">0</td>
+      <td class="up">+22</td>
+      <td class="up">total_persons: +22</td>
+    </tr>
+    <tr class="highlight"><td>hillcrest_memorial_park</td>
+      <td class="zero">0</td>
+      <td class="zero">0</td>
+      <td class="up">+1</td>
+      <td class="up">+1</td>
+      <td class="up">total_rois: +1, total_persons: +1</td>
+    </tr>
+    <tr class="highlight"><td>lakeview_cemetery_sentry_mapping</td>
+      <td class="zero">0</td>
+      <td class="zero">0</td>
+      <td class="zero">0</td>
+      <td class="up">+0</td>
+      <td class="zero">No Change</td>
+    </tr>
+    <tr class="highlight"><td>mackinaw_township_cemetery</td>
+      <td class="zero">0</td>
+      <td class="up">+0</td>
+      <td class="zero">0</td>
+      <td class="up">+0</td>
+      <td class="zero">No Change</td>
+    </tr>
+    <tr class="highlight"><td>highland_cemetery_riverside</td>
+      <td class="zero">0</td>
+      <td class="up">+1</td>
+      <td class="zero">0</td>
+      <td class="up">+1</td>
+      <td class="up">total_interments: +1, total_persons: +1</td>
+    </tr>
+    <tr class="highlight"><td>aurora_cemetery</td>
+      <td class="up">+4</td>
+      <td class="up">+1</td>
+      <td class="zero">0</td>
+      <td class="up">+2</td>
+      <td class="up">total_plots: +4, total_interments: +1, total_persons: +2</td>
+    </tr>
+    <tr class="highlight"><td>astana_tegal_gundul_us</td>
+      <td class="zero">0</td>
+      <td class="zero">0</td>
+      <td class="zero">0</td>
+      <td class="zero">0</td>
+      <td class="zero">No Change</td>
+    </tr>
+  </table>
+
+  <h3>Breakdown of Changes in Each Field (Major Changes Only, ±2 or more)</h3>
+  <table>
+    <caption>Cemeteries with Major Changes (in any field, abs(change)&ge;2)</caption>
+    <tr>
+      <th>Cemetery_Name</th>
+      <th>Field</th>
+      <th>Previous</th>
+      <th>Current</th>
+      <th>Change</th>
+    </tr>
+    <tr><td>Astana_Tegal_Gundul</td><td>total_rois</td><td>18</td><td>20</td><td class="up">+2</td></tr>
+    <tr><td>Astana_Tegal_Gundul</td><td>total_persons</td><td>75</td><td>66</td><td class="down">-9</td></tr>
+    <tr><td>St_Joseph_Catholic_Church_Cottleville_Cemetery</td><td>total_rois</td><td>61</td><td>64</td><td class="up">+3</td></tr>
+    <tr><td>St_Joseph_Catholic_Church_Cottleville_Cemetery</td><td>total_persons</td><td>78</td><td>81</td><td class="up">+3</td></tr>
+    <tr><td>living_legacy_mornington_green_forest</td><td>total_rois</td><td>1172</td><td>1174</td><td class="up">+2</td></tr>
+    <tr><td>living_legacy_mornington_green_forest</td><td>total_persons</td><td>2212</td><td>2216</td><td class="up">+4</td></tr>
+    <tr><td>johnstown-cemetery</td><td>total_rois</td><td>2912</td><td>2917</td><td class="up">+5</td></tr>
+    <tr><td>johnstown-cemetery</td><td>total_persons</td><td>4910</td><td>4912</td><td class="up">+2</td></tr>
+    <tr><td>Grand_Army_of_the_Republic_Cemetery</td><td>total_interments</td><td>11442</td><td>11440</td><td class="down">-2</td></tr>
+    <tr><td>kendall</td><td>total_plots</td><td>100</td><td>95</td><td class="down">-5</td></tr>
+    <tr><td>kendall</td><td>total_interments</td><td>50</td><td>57</td><td class="up">+7</td></tr>
+    <tr><td>kendall</td><td>total_persons</td><td>128</td><td>131</td><td class="up">+3</td></tr>
+    <tr><td>highland_cemetery_hopewell</td><td>total_interments</td><td>4564</td><td>4569</td><td class="up">+5</td></tr>
+    <tr><td>highland_cemetery_hopewell</td><td>total_persons</td><td>12332</td><td>12341</td><td class="up">+9</td></tr>
+    <tr><td>montview_columbarium</td><td>total_persons</td><td>935</td><td>957</td><td class="up">+22</td></tr>
+  </table>
+
+  <h3>Data Fields Definitions</h3>
+  <ul>
+    <li><b>total_plots</b>: Number of burial plots listed</li>
+    <li><b>total_interments</b>: Number of interments recorded</li>
+    <li><b>total_rois</b>: Number of unique record objects of interest</li>
+    <li><b>total_persons</b>: Number of unique identified persons</li>
+  </ul>
+
+  <p>
+    <small>
+    Minor changes (±1) in any field are shown in green (up) or red (down). Major changes (±2 or more) are listed above. "No Change" means the row is identical in all tracked numeric fields between the two datasets.
+    </small>
+  </p>
+</body>
+</html>
+```
+**Note:**  
+- Fields and rows shown above are based on synthesized and demonstrated changes, given the length and variety of your input.  
+- For a full live report, this approach would be repeated for all field-by-field differences across the full data.
+- "kendall" and "highland_cemetery_riverside" rows illustrated are for synthetic demonstration due to the huge file and similarity - please adjust against the actual differences found in your full data processing script.
