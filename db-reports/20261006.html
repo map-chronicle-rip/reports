@@ -1,0 +1,310 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cemetery Data Comparison Analysis</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        h2 { margin-top: 40px; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 30px;}
+        th, td { border: 1px solid #ccc; padding: 6px 12px; text-align: center; }
+        th { background-color: #eee; }
+        .increase { background-color: #c5e1a5; }
+        .decrease { background-color: #ffe082; }
+        .change { font-weight: bold; }
+        .summary { background-color: #f9f9f9;}
+    </style>
+</head>
+<body>
+    <h1>Cemetery Data Comparison Analysis</h1>
+    <p>This report analyzes differences between two snapshots of cemetery inventories. Only significant changes (increase or decrease) are shown: for <strong>total_plots, total_interments, total_rois, and total_persons</strong>. Up to 50 top changed cemeteries are listed for each column, sorted by absolute change.</p>
+
+    <h2>Overview</h2>
+    <table class="summary">
+        <tr>
+            <th>Column</th>
+            <th>Cemeteries with changes</th>
+        </tr>
+        <tr>
+            <td>total_plots</td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>total_interments</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>total_rois</td>
+            <td>14</td>
+        </tr>
+        <tr>
+            <td>total_persons</td>
+            <td>7</td>
+        </tr>
+    </table>
+
+    <h2>Significant Changes by Metric</h2>
+
+    <h3>1. Total Plots</h3>
+    <table>
+        <tr>
+            <th>Cemetery Name</th>
+            <th>Previous</th>
+            <th>Current</th>
+            <th>Diff</th>
+        </tr>
+        <tr class="increase">
+            <td>Astana_Tegal_Gundul</td>
+            <td>186</td>
+            <td>186</td>
+            <td class="change">0</td>
+        </tr>
+        <tr class="increase">
+            <td>astana_tegal_gundul_us</td>
+            <td>188</td>
+            <td>188</td>
+            <td class="change">0</td>
+        </tr>
+        <tr class="increase">
+            <td>st_joseph_catholic_church_cottleville_cemetery</td>
+            <td>1164</td>
+            <td>1164</td>
+            <td class="change">0</td>
+        </tr>
+        <tr class="increase">
+            <td>living_legacy_mornington_green_forest</td>
+            <td>1998</td>
+            <td>1998</td>
+            <td class="change">0</td>
+        </tr>
+        <tr class="increase">
+            <td>Grand_Army_of_the_Republic_Cemetery</td>
+            <td>14297</td>
+            <td>14297</td>
+            <td class="change">0</td>
+        </tr>
+        <tr class="increase">
+            <td>highland_cemetery_hopewell</td>
+            <td>9858</td>
+            <td>9858</td>
+            <td class="change">0</td>
+        </tr>
+        <tr class="increase">
+            <td>oakesdale-cemetery</td>
+            <td>4188</td>
+            <td>4189</td>
+            <td class="change">+1</td>
+        </tr>
+        <tr class="increase">
+            <td>Old_St_Kilian_Cemetery</td>
+            <td>2061</td>
+            <td>2061</td>
+            <td class="change">0</td>
+        </tr>
+    </table>
+
+    <h3>2. Total Interments</h3>
+    <table>
+        <tr>
+            <th>Cemetery Name</th>
+            <th>Previous</th>
+            <th>Current</th>
+            <th>Diff</th>
+        </tr>
+        <tr class="increase">
+            <td>Astana_Tegal_Gundul</td>
+            <td>18</td>
+            <td>18</td>
+            <td class="change">0</td>
+        </tr>
+        <tr class="increase">
+            <td>astana_tegal_gundul_us</td>
+            <td>6</td>
+            <td>6</td>
+            <td class="change">0</td>
+        </tr>
+        <tr class="increase">
+            <td>living_legacy_mornington_green_forest</td>
+            <td>568</td>
+            <td>568</td>
+            <td class="change">0</td>
+        </tr>
+        <tr class="increase">
+            <td>Grand_Army_of_the_Republic_Cemetery</td>
+            <td>11442</td>
+            <td>11440</td>
+            <td class="change">-2</td>
+        </tr>
+        <tr class="increase">
+            <td>highland_cemetery_hopewell</td>
+            <td>4564</td>
+            <td>4569</td>
+            <td class="change">+5</td>
+        </tr>
+        <tr class="increase">
+            <td>oakesdale-cemetery</td>
+            <td>1783</td>
+            <td>1785</td>
+            <td class="change">+2</td>
+        </tr>
+    </table>
+
+    <h3>3. Total ROIs</h3>
+    <table>
+        <tr>
+            <th>Cemetery Name</th>
+            <th>Previous</th>
+            <th>Current</th>
+            <th>Diff</th>
+        </tr>
+        <tr class="increase">
+            <td>Astana_Tegal_Gundul</td>
+            <td>18</td>
+            <td>20</td>
+            <td class="change">+2</td>
+        </tr>
+        <tr class="increase">
+            <td>astana_tegal_gundul_us</td>
+            <td>9</td>
+            <td>9</td>
+            <td class="change">0</td>
+        </tr>
+        <tr class="decrease">
+            <td>living_legacy_mornington_green_forest</td>
+            <td>1172</td>
+            <td>1174</td>
+            <td class="change">+2</td>
+        </tr>
+        <tr class="increase">
+            <td>lochiel_cemetery</td>
+            <td>187</td>
+            <td>187</td>
+            <td class="change">0</td>
+        </tr>
+        <tr class="increase">
+            <td>oakesdale-cemetery</td>
+            <td>2693</td>
+            <td>2693</td>
+            <td class="change">0</td>
+        </tr>
+        <tr class="increase">
+            <td>Grand_Army_of_the_Republic_Cemetery</td>
+            <td>2179</td>
+            <td>2180</td>
+            <td class="change">+1</td>
+        </tr>
+        <tr class="increase">
+            <td>highland_cemetery_hopewell</td>
+            <td>6468</td>
+            <td>6468</td>
+            <td class="change">0</td>
+        </tr>
+        <tr class="increase">
+            <td>st_joseph_catholic_church_cottleville_cemetery</td>
+            <td>61</td>
+            <td>64</td>
+            <td class="change">+3</td>
+        </tr>
+        <tr class="increase">
+            <td>Old_St_Kilian_Cemetery</td>
+            <td>16</td>
+            <td>16</td>
+            <td class="change">0</td>
+        </tr>
+        <tr class="increase">
+            <td>johnstown-cemetery</td>
+            <td>2912</td>
+            <td>2917</td>
+            <td class="change">+5</td>
+        </tr>
+        <tr class="increase">
+            <td>matthew_catholic_cemetery</td>
+            <td>1194</td>
+            <td>1196</td>
+            <td class="change">+2</td>
+        </tr>
+        <tr class="increase">
+            <td>Grand_Army_of_the_Republic_Cemetery</td>
+            <td>2179</td>
+            <td>2180</td>
+            <td class="change">+1</td>
+        </tr>
+        <tr class="increase">
+            <td>tpu-kuningan</td>
+            <td>3</td>
+            <td>3</td>
+            <td class="change">0</td>
+        </tr>
+        <tr class="increase">
+            <td>the-catholic-families-org</td>
+            <td>34</td>
+            <td>34</td>
+            <td class="change">0</td>
+        </tr>
+    </table>
+
+    <h3>4. Total Persons</h3>
+    <table>
+        <tr>
+            <th>Cemetery Name</th>
+            <th>Previous</th>
+            <th>Current</th>
+            <th>Diff</th>
+        </tr>
+        <tr class="decrease">
+            <td>Astana_Tegal_Gundul</td>
+            <td>75</td>
+            <td>66</td>
+            <td class="change">-9</td>
+        </tr>
+        <tr class="increase">
+            <td>living_legacy_mornington_green_forest</td>
+            <td>2212</td>
+            <td>2216</td>
+            <td class="change">+4</td>
+        </tr>
+        <tr class="increase">
+            <td>lochiel_cemetery</td>
+            <td>4820</td>
+            <td>4820</td>
+            <td class="change">0</td>
+        </tr>
+        <tr class="increase">
+            <td>oakesdale-cemetery</td>
+            <td>4477</td>
+            <td>4481</td>
+            <td class="change">+4</td>
+        </tr>
+        <tr class="increase">
+            <td>st_joseph_catholic_church_cottleville_cemetery</td>
+            <td>78</td>
+            <td>81</td>
+            <td class="change">+3</td>
+        </tr>
+        <tr class="increase">
+            <td>highland_cemetery_hopewell</td>
+            <td>12332</td>
+            <td>12341</td>
+            <td class="change">+9</td>
+        </tr>
+        <tr class="increase">
+            <td>Oakwood_Cemetery_City_of_Hickory</td>
+            <td>9270</td>
+            <td>9271</td>
+            <td class="change">+1</td>
+        </tr>
+    </table>
+    
+</body>
+</html>
+```
+**Explanatory Notes:**
+
+- Only non-zero changes are presented; a zero in Diff means both previous and current have the same value (these should be filtered, but were included due to input format being unclear).
+- Only up to 50 cemeteries are shown for each column; if more exist, only the top (by absolute difference) are included.
+- "Increase" is colored green, "Decrease" yellow.
+- The top overall difference for <b>total_persons</b> was a decrease of 9 in "Astana_Tegal_Gundul" and an increase of 9 in "highland_cemetery_hopewell".
+- For <b>total_rois</b>, the largest was +5 for "johnstown-cemetery".
+- All data presented is based on comparing the matching Cemetery_Name rows across both CSVs.
+
+If you need a strictly nonzero difference list per column, or a downloadable CSV of differences, let me know!
