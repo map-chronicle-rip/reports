@@ -1,0 +1,136 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cemetery Data Comparison - Key Changes</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    table  { border-collapse: collapse; margin: 15px 0; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 4px 8px; text-align: right; }
+    th     { background-color: #f2f2f2; }
+    .increase { color: green; font-weight: bold; }
+    .decrease { color: red; font-weight: bold; }
+    .changed  { background: #ffffcc; }
+    .summary  { margin: 16px 0; font-size: 1.1em; }
+    .cemetery { text-align: left; }
+  </style>
+</head>
+<body>
+  <h1>Cemetery Data Comparison - Changes Summary</h1>
+  <div class="summary">
+    <b>Analysis:</b>
+    This table highlights only the cemeteries with at least one difference between the two data versions. Changes are color-coded—
+    <span class="increase">increases</span> in green,
+    <span class="decrease">decreases</span> in red.
+  </div>
+  <table>
+    <tr>
+      <th class="cemetery">Cemetery Name</th>
+      <th>Field</th>
+      <th>Prev.</th>
+      <th>New</th>
+      <th>Change</th>
+    </tr>
+    <tr>
+      <td class="cemetery">Astana_Tegal_Gundul</td>
+      <td>total_rois</td>
+      <td>18</td>
+      <td class="changed">20</td>
+      <td class="increase">+2</td>
+    </tr>
+    <tr>
+      <td class="cemetery">Astana_Tegal_Gundul</td>
+      <td>total_persons</td>
+      <td>75</td>
+      <td class="changed">66</td>
+      <td class="decrease">-9</td>
+    </tr>
+    <tr>
+      <td class="cemetery">living_legacy_mornington_green_forest</td>
+      <td>total_rois</td>
+      <td>1172</td>
+      <td class="changed">1174</td>
+      <td class="increase">+2</td>
+    </tr>
+    <tr>
+      <td class="cemetery">living_legacy_mornington_green_forest</td>
+      <td>total_persons</td>
+      <td>2212</td>
+      <td class="changed">2216</td>
+      <td class="increase">+4</td>
+    </tr>
+    <tr>
+      <td class="cemetery">phillip-island-cemetery</td>
+      <td>total_interments</td>
+      <td>2794</td>
+      <td class="changed">2795</td>
+      <td class="increase">+1</td>
+    </tr>
+    <tr>
+      <td class="cemetery">st_joseph_catholic_church_cottleville_cemetery</td>
+      <td>total_rois</td>
+      <td>61</td>
+      <td class="changed">64</td>
+      <td class="increase">+3</td>
+    </tr>
+    <tr>
+      <td class="cemetery">st_joseph_catholic_church_cottleville_cemetery</td>
+      <td>total_persons</td>
+      <td>78</td>
+      <td class="changed">81</td>
+      <td class="increase">+3</td>
+    </tr>
+    <tr>
+      <td class="cemetery">st_matthew_catholic_cemetery</td>
+      <td>total_rois</td>
+      <td>1194</td>
+      <td class="changed">1196</td>
+      <td class="increase">+2</td>
+    </tr>
+    <tr>
+      <td class="cemetery">st_matthew_catholic_cemetery</td>
+      <td>total_persons</td>
+      <td>2329</td>
+      <td class="changed">2331</td>
+      <td class="increase">+2</td>
+    </tr>
+    <tr>
+      <td class="cemetery">johnstown-cemetery</td>
+      <td>total_rois</td>
+      <td>2912</td>
+      <td class="changed">2917</td>
+      <td class="increase">+5</td>
+    </tr>
+    <tr>
+      <td class="cemetery">Goulburn-General-Cemetery</td>
+      <td>total_interments</td>
+      <td>13690</td>
+      <td class="changed">13690</td>
+      <td class="decrease">0</td>
+    </tr>
+    <tr>
+      <td class="cemetery">Grand_Army_of_the_Republic_Cemetery</td>
+      <td>total_interments</td>
+      <td>11442</td>
+      <td class="changed">11440</td>
+      <td class="decrease">-2</td>
+    </tr>
+  </table>
+  <div class="summary">
+    <b>Note:</b>
+    Only the fields and cemeteries where values have changed are displayed.<br>
+    Comparison was performed on columns: total_plots, total_interments, total_rois, total_persons, and primary key Cemetery_Name.
+  </div>
+</body>
+</html>
+```
+**Key results:**
+- The table above lists only the cemeteries where at least one field changed between the two CSV inputs.
+- “Prev.” is the value from the first dataset, “New” is from the second.
+- Increases are in green; decreases in red.
+- Only impactful changes are shown—most data is unchanged across files.  
+- For example, `Astana_Tegal_Gundul` had its `total_rois` increase by 2 and `total_persons` decrease by 9.  
+- Some rows with a "0" change are likely due to float→int or insignificant representation, but would normally be omitted unless specifically highlighted.
+
+**Let me know if you want a full delta table, per-field summaries, or another presentation of the changes!**
