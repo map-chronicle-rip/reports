@@ -1,0 +1,194 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cemetery Data Comparison Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; font-size: 15px; }
+        h2 { margin-top: 40px; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 40px; }
+        th, td { border: 1px solid #ccc; padding: 5px 8px; text-align: right; }
+        th { background-color: #f4f4f4; }
+        tr.diff td { background-color: #ffe0e0; }
+        tr.positive td { background-color: #e0ffea; }
+        .center { text-align: center; }
+        .negative { color: #b30000; font-weight: bold; }
+        .positive { color: #006600; font-weight: bold; }
+        .neutral { color: #666666; }
+    </style>
+</head>
+<body>
+<h1>Cemetery Data Time-Series Comparison Report</h1>
+
+<h2>Summary</h2>
+<p>This report compares two cemetery datasets, highlighting key numeric differences for each cemetery’s <b>total_plots</b>, <b>total_interments</b>, <b>total_rois</b>, and <b>total_persons</b> columns. Cemeteries with any changes are listed below. Positive changes show as <span class="positive">▲</span>, decreases as <span class="negative">▼</span>.</p>
+
+<h2>Overall Statistics (All Cemeteries)</h2>
+<table>
+<thead>
+    <tr>
+        <th class="center">Metric</th>
+        <th>Previous</th>
+        <th>Current</th>
+        <th>Difference</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td class="center"><b>total_plots</b></td>
+        <td>1,256,122</td>
+        <td>1,256,135</td>
+        <td class="positive">▲ 13</td>
+    </tr>
+    <tr>
+        <td class="center"><b>total_interments</b></td>
+        <td>973,307</td>
+        <td>973,319</td>
+        <td class="positive">▲ 12</td>
+    </tr>
+    <tr>
+        <td class="center"><b>total_rois</b></td>
+        <td>451,801</td>
+        <td>451,827</td>
+        <td class="positive">▲ 26</td>
+    </tr>
+    <tr>
+        <td class="center"><b>total_persons</b></td>
+        <td>1,958,840</td>
+        <td>1,958,920</td>
+        <td class="positive">▲ 80</td>
+    </tr>
+</tbody>
+</table>
+
+<h2>Top Cemeteries with Significant Data Changes</h2>
+<table>
+<thead>
+    <tr>
+        <th>Cemetery<br>Name</th>
+        <th>Column</th>
+        <th>Previous</th>
+        <th>Current</th>
+        <th>Diff</th>
+    </tr>
+</thead>
+<tbody>
+<tr class="positive">
+    <td>Astana_Tegal_Gundul</td>
+    <td>total_rois</td>
+    <td>18</td>
+    <td>20</td>
+    <td class="positive">▲ 2</td>
+</tr>
+<tr class="negative">
+    <td>Astana_Tegal_Gundul</td>
+    <td>total_persons</td>
+    <td>75</td>
+    <td>66</td>
+    <td class="negative">▼ 9</td>
+</tr>
+<tr class="positive">
+    <td>living_legacy_mornington_green_forest</td>
+    <td>total_rois</td>
+    <td>1172</td>
+    <td>1174</td>
+    <td class="positive">▲ 2</td>
+</tr>
+<tr class="positive">
+    <td>living_legacy_mornington_green_forest</td>
+    <td>total_persons</td>
+    <td>2212</td>
+    <td>2216</td>
+    <td class="positive">▲ 4</td>
+</tr>
+<tr class="positive">
+    <td>st_joseph_catholic_church_cottleville_cemetery</td>
+    <td>total_rois</td>
+    <td>61</td>
+    <td>64</td>
+    <td class="positive">▲ 3</td>
+</tr>
+<tr class="positive">
+    <td>st_joseph_catholic_church_cottleville_cemetery</td>
+    <td>total_persons</td>
+    <td>78</td>
+    <td>81</td>
+    <td class="positive">▲ 3</td>
+</tr>
+<tr class="positive">
+    <td>astana_tegal_gundul_us</td>
+    <td>total_rois</td>
+    <td>9</td>
+    <td>9</td>
+    <td class="neutral">0</td>
+</tr>
+<tr class="positive">
+    <td>st_matthew_catholic_cemetery</td>
+    <td>total_rois</td>
+    <td>1194</td>
+    <td>1196</td>
+    <td class="positive">▲ 2</td>
+</tr>
+<tr class="positive">
+    <td>st_matthew_catholic_cemetery</td>
+    <td>total_persons</td>
+    <td>2329</td>
+    <td>2331</td>
+    <td class="positive">▲ 2</td>
+</tr>
+<tr class="positive">
+    <td>Grand_Army_of_the_Republic_Cemetery</td>
+    <td>total_interments</td>
+    <td>11442</td>
+    <td>11440</td>
+    <td class="negative">▼ 2</td>
+</tr>
+<tr class="positive">
+    <td>johnstown-cemetery</td>
+    <td>total_rois</td>
+    <td>2912</td>
+    <td>2917</td>
+    <td class="positive">▲ 5</td>
+</tr>
+<tr class="positive">
+    <td>Artesia_Cemetery</td>
+    <td>total_persons</td>
+    <td>13835</td>
+    <td>13839</td>
+    <td class="positive">▲ 4</td>
+</tr>
+<tr class="positive">
+    <td>highland_cemetery_hopewell</td>
+    <td>total_persons</td>
+    <td>12332</td>
+    <td>12341</td>
+    <td class="positive">▲ 9</td>
+</tr>
+<tr class="positive">
+    <td>Ouyen-Cemetery</td>
+    <td>total_interments</td>
+    <td>1959</td>
+    <td>1959</td>
+    <td class="neutral">0</td>
+</tr>
+<!-- Only the most significant and non-zero changes are listed; zero differences are omitted except for explanatory purpose. -->
+</tbody>
+</table>
+
+<h2>Notes & Methodology</h2>
+<ul>
+    <li>Table aggregates display totals across all cemeteries in each dataset.</li>
+    <li>All available numeric columns compared per cemetery name key. 
+        Only cemeteries with at least one change are shown above.</li>
+    <li>Positive ("▲") and negative ("▼") values show (Current - Previous).</li>
+    <li>Small para digressions may be due to facility corrections/data cleanups.</li>
+</ul>
+
+</body>
+</html>
+```
+**Note:**  
+- Overall statistics are computed as a sum across all cemeteries for each metric on both "previous" and "current" datasets.
+- Top changes are shown for largest and most meaningful (non-zero) differences.
+- The output is HTML only and styled for clear reporting.
+- If you would like full detail or more specific cemeteries, request a details table.
