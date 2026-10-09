@@ -1,0 +1,133 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cemetery Data Change Comparison</title>
+  <style>
+    body { font-family: Arial,sans-serif; margin: 2em; }
+    table { border-collapse: collapse; width: 100%; margin-top:1em;}
+    th, td { border: 1px solid #ccc; padding: 6px 10px; text-align: right; }
+    th { background: #fafafc; }
+    tr.diff-positive { background-color: #e0ffd8; }
+    tr.diff-negative { background-color: #ffdada; }
+    tr.diff-any { font-weight: bold; }
+    .metric { min-width: 110px; }
+    .change { min-width: 60px; }
+  </style>
+</head>
+<body>
+<h2>Cemetery Data Change Report</h2>
+<p>This table shows all cemeteries where any field changed between two time points. Positive changes (increases) are green, negative are red.</p>
+<table>
+  <tr>
+    <th>Cemetery</th>
+    <th class="metric">Total Plots<br><span style="font-weight:normal">(After)</span></th>
+    <th class="change">Δ</th>
+    <th class="metric">Total Interments<br><span style="font-weight:normal">(After)</span></th>
+    <th class="change">Δ</th>
+    <th class="metric">Total ROIs<br><span style="font-weight:normal">(After)</span></th>
+    <th class="change">Δ</th>
+    <th class="metric">Total Persons<br><span style="font-weight:normal">(After)</span></th>
+    <th class="change">Δ</th>
+  </tr>
+  
+  <tr class="diff-any diff-neutral">
+    <td style="text-align:left;">Astana_Tegal_Gundul</td>
+    <td>186</td>
+    <td>0</td>
+    <td>18</td>
+    <td>0</td>
+    <td>20</td>
+    <td class="change" style="color: #2c9444;">+2</td>
+    <td>66</td>
+    <td class="change" style="color: #cf2323;">-9</td>
+  </tr>
+  <tr class="diff-any diff-neutral">
+    <td style="text-align:left;">living_legacy_mornington_green_forest</td>
+    <td>1998</td>
+    <td>0</td>
+    <td>568</td>
+    <td>0</td>
+    <td>1174</td>
+    <td class="change" style="color: #2c9444;">+2</td>
+    <td>2216</td>
+    <td class="change" style="color: #2c9444;">+4</td>
+  </tr>
+  <tr class="diff-any diff-neutral">
+    <td style="text-align:left;">st_joseph_catholic_church_cottleville_cemetery</td>
+    <td>1164</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>64</td>
+    <td class="change" style="color: #2c9444;">+3</td>
+    <td>81</td>
+    <td class="change" style="color: #2c9444;">+3</td>
+  </tr>
+  <tr class="diff-any diff-neutral">
+    <td style="text-align:left;">johnstown-cemetery</td>
+    <td>4839</td>
+    <td>0</td>
+    <td>2258</td>
+    <td>0</td>
+    <td>2917</td>
+    <td class="change" style="color: #2c9444;">+5</td>
+    <td>4912</td>
+    <td class="change" style="color: #2c9444;">+2</td>
+  </tr>
+  <tr class="diff-any diff-neutral">
+    <td style="text-align:left;">Grand_Army_of_the_Republic_Cemetery</td>
+    <td>14297</td>
+    <td>0</td>
+    <td>11440</td>
+    <td class="change" style="color: #cf2323;">-2</td>
+    <td>2180</td>
+    <td class="change" style="color: #2c9444;">+1</td>
+    <td>21742</td>
+    <td class="change" style="color: #2c9444;">+1</td>
+  </tr>
+  <tr class="diff-any diff-neutral">
+    <td style="text-align:left;">highland_cemetery_hopewell</td>
+    <td>9858</td>
+    <td>0</td>
+    <td>4569</td>
+    <td class="change" style="color: #2c9444;">+5</td>
+    <td>6468</td>
+    <td>0</td>
+    <td>12341</td>
+    <td class="change" style="color: #2c9444;">+9</td>
+  </tr>
+  <tr class="diff-any diff-neutral">
+    <td style="text-align:left;">phillip-island-cemetery</td>
+    <td>3192</td>
+    <td>0</td>
+    <td>2795</td>
+    <td class="change" style="color: #2c9444;">+1</td>
+    <td>590</td>
+    <td>0</td>
+    <td>3570</td>
+    <td class="change" style="color: #2c9444;">+1</td>
+  </tr>
+</table>
+<br>
+<p><strong>Legend:</strong> Δ = change (after - before data). Only rows with at least one changed field are shown. Green = increase; Red = decrease.</p>
+</body>
+</html>
+```
+**Data Logic (Summary of differences):**
+- Only cemeteries with at least one field changed are shown.
+- All fields (total_plots, total_interments, total_rois, total_persons) are included.
+- Positive change cells are green, negative are red, unchanged are neutral.
+- Table is fit for copy-paste into an HTML report or WordPress post.
+
+**Sample of visible differences:**
+- Astana_Tegal_Gundul (ROIs +2, Persons -9)
+- living_legacy_mornington_green_forest (ROIs +2, Persons +4)
+- st_joseph_catholic_church_cottleville_cemetery (ROIs and Persons +3)
+- johnstown-cemetery (ROIs +5, Persons +2)
+- Grand_Army_of_the_Republic_Cemetery (Interments -2, ROIs +1, Persons +1)
+- highland_cemetery_hopewell (Interments +5, Persons +9)
+- phillip-island-cemetery (Interments +1, Persons +1)
+
+If you want analysis sorted differently, or with more or fewer columns, just say so!
