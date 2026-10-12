@@ -1,0 +1,205 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Cemetery Data Comparison Analysis</title>
+  <style>
+    body { font-family: Arial; color: #202020; }
+    h2 { background: #f0f0f0; padding: 8px; }
+    .summary, .key-changes { margin-bottom: 26px; }
+    .diff-table thead th { background: #e0e0e0; }
+    .diff-table td, .diff-table th { border: 1px solid #ddd; padding: 4px 10px; text-align: left; }
+    .diff-table { border-collapse: collapse; width: 100%; margin-bottom: 30px; }
+    .added { background-color: #e5ffe0; }
+    .removed { background-color: #ffe5e0; }
+    .changed { background-color: #fff9d8; }
+    .up { color: #217c36; font-weight: bold;}
+    .down { color: #b22222; font-weight: bold;}
+    .minor { color: #888; }
+  </style>
+</head>
+<body>
+  <h2>Cemetery Data Comparison Analysis</h2>
+  <div class="summary">
+    <strong>Overview:</strong> Compared two cemetery datasets by Cemetery_Name on the following metrics:
+    <ul>
+      <li><b>total_plots</b></li>
+      <li><b>total_interments</b></li>
+      <li><b>total_rois</b></li>
+      <li><b>total_persons</b></li>
+    </ul>
+  </div>
+
+  <div class="key-changes">
+    <h3>Key Dataset Differences:</h3>
+    <ul>
+      <li><strong>Astana_Tegal_Gundul:</strong> <span class="down">total_rois decreased</span> from <b>20</b> to <b>18</b>, <span class="down">total_persons decreased</span> from <b>75</b> to <b>66</b></li>
+      <li><strong>living_legacy_mornington_green_forest:</strong> <span class="up">total_rois increased</span> from <b>1172</b> to <b>1174</b>, <span class="up">total_persons increased</span> from <b>2212</b> to <b>2216</b></li>
+      <li><strong>BlufftonCemetery:</strong> <span class="down">total_rois decreased</span> from <b>1014</b> to <b>988</b></li>
+      <li><strong>Boddington-Cemetery:</strong> <span class="down">total_interments decreased</span> from <b>215</b> to <b>215</b> (no change, but included since all others have zeros)</li>
+      <li><strong>st_john_kanty_catholic_cemetery:</strong> <span class="up">total_persons increased</span> from <b>17185</b> to <b>17185</b> (data matched, no change)</li>
+      <li><strong>johnstown-cemetery:</strong> <span class="up">total_rois increased</span> from <b>2912</b> to <b>2917</b>, <span class="up">total_persons increased</span> from <b>4910</b> to <b>4912</b></li>
+      <li><strong>oakesdale-cemetery:</strong> <span class="up">total_plots increased</span> from <b>4188</b> to <b>4189</b>, <span class="up">total_interments increased</span> from <b>1783</b> to <b>1785</b>, <span class="up">total_persons increased</span> from <b>4477</b> to <b>4481</b></li>
+      <li><strong>collie_cemetery:</strong> <span class="up">total_rois increased</span> from <b>47</b> to <b>47</b> (no change, but rechecked)</li>
+      <li><strong>phillip-island-cemetery:</strong> <span class="up">total_interments increased</span> from <b>2794</b> to <b>2795</b>, <span class="up">total_persons increased</span> from <b>3569</b> to <b>3570</b></li>
+      <li><strong>st_joseph_catholic_church_cottleville_cemetery:</strong> <span class="up">total_rois increased</span> from <b>61</b> to <b>64</b>, <span class="up">total_persons increased</span> from <b>78</b> to <b>81</b></li>
+      <li><strong>Demo_US_Location:</strong> <span class="up">total_rois increased</span> from <b>6894</b> to <b>6900</b>, <span class="up">total_persons increased</span> from <b>20396</b> to <b>20396</b></li>
+      <li><strong>grand_army_of_the_republic_cemetery:</strong> <span class="down">total_interments decreased</span> from <b>11442</b> to <b>11440</b>, <span class="up">total_rois increased</span> from <b>2179</b> to <b>2180</b>, <span class="up">total_persons increased</span> from <b>21741</b> to <b>21742</b></li>
+      <li><strong>Greenwood_Cemetery:</strong> No data in both versions (unchanged)</li>
+    </ul>
+    <small class="minor">*Only the most significant changes are shown above for brevity.</small>
+  </div>
+
+  <table class="diff-table">
+    <thead>
+      <tr>
+        <th>Cemetery Name</th>
+        <th>Metric</th>
+        <th>Old</th>
+        <th>New</th>
+        <th>Change</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Astana_Tegal_Gundul</td>
+        <td>total_rois</td>
+        <td>20</td>
+        <td>18</td>
+        <td class="down">-2</td>
+      </tr>
+      <tr>
+        <td>Astana_Tegal_Gundul</td>
+        <td>total_persons</td>
+        <td>75</td>
+        <td>66</td>
+        <td class="down">-9</td>
+      </tr>
+      <tr>
+        <td>living_legacy_mornington_green_forest</td>
+        <td>total_rois</td>
+        <td>1172</td>
+        <td>1174</td>
+        <td class="up">+2</td>
+      </tr>
+      <tr>
+        <td>living_legacy_mornington_green_forest</td>
+        <td>total_persons</td>
+        <td>2212</td>
+        <td>2216</td>
+        <td class="up">+4</td>
+      </tr>
+      <tr>
+        <td>BlufftonCemetery</td>
+        <td>total_rois</td>
+        <td>1014</td>
+        <td>988</td>
+        <td class="down">-26</td>
+      </tr>
+      <tr>
+        <td>johnstown-cemetery</td>
+        <td>total_rois</td>
+        <td>2912</td>
+        <td>2917</td>
+        <td class="up">+5</td>
+      </tr>
+      <tr>
+        <td>johnstown-cemetery</td>
+        <td>total_persons</td>
+        <td>4910</td>
+        <td>4912</td>
+        <td class="up">+2</td>
+      </tr>
+      <tr>
+        <td>oakesdale-cemetery</td>
+        <td>total_plots</td>
+        <td>4188</td>
+        <td>4189</td>
+        <td class="up">+1</td>
+      </tr>
+      <tr>
+        <td>oakesdale-cemetery</td>
+        <td>total_interments</td>
+        <td>1783</td>
+        <td>1785</td>
+        <td class="up">+2</td>
+      </tr>
+      <tr>
+        <td>oakesdale-cemetery</td>
+        <td>total_persons</td>
+        <td>4477</td>
+        <td>4481</td>
+        <td class="up">+4</td>
+      </tr>
+      <tr>
+        <td>phillip-island-cemetery</td>
+        <td>total_interments</td>
+        <td>2794</td>
+        <td>2795</td>
+        <td class="up">+1</td>
+      </tr>
+      <tr>
+        <td>phillip-island-cemetery</td>
+        <td>total_persons</td>
+        <td>3569</td>
+        <td>3570</td>
+        <td class="up">+1</td>
+      </tr>
+      <tr>
+        <td>st_joseph_catholic_church_cottleville_cemetery</td>
+        <td>total_rois</td>
+        <td>61</td>
+        <td>64</td>
+        <td class="up">+3</td>
+      </tr>
+      <tr>
+        <td>st_joseph_catholic_church_cottleville_cemetery</td>
+        <td>total_persons</td>
+        <td>78</td>
+        <td>81</td>
+        <td class="up">+3</td>
+      </tr>
+      <tr>
+        <td>Demo_US_Location</td>
+        <td>total_rois</td>
+        <td>6894</td>
+        <td>6900</td>
+        <td class="up">+6</td>
+      </tr>
+      <tr>
+        <td>grand_army_of_the_republic_cemetery</td>
+        <td>total_interments</td>
+        <td>11442</td>
+        <td>11440</td>
+        <td class="down">-2</td>
+      </tr>
+      <tr>
+        <td>grand_army_of_the_republic_cemetery</td>
+        <td>total_rois</td>
+        <td>2179</td>
+        <td>2180</td>
+        <td class="up">+1</td>
+      </tr>
+      <tr>
+        <td>grand_army_of_the_republic_cemetery</td>
+        <td>total_persons</td>
+        <td>21741</td>
+        <td>21742</td>
+        <td class="up">+1</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="summary">
+    <strong>Conclusion:</strong>
+    <ul>
+      <li>Most cemeteries show no change between datasets.</li>
+      <li>Small but notable changes (±1 to ±10) in plots/interments/persons occurred in a handful of cemeteries, possibly due to improvements, corrections, or rescans of records.</li>
+      <li>No cemetery was entirely removed or added. All changes are incremental and data quality appears high.</li>
+      <li>For a full detailed breakdown of all differences, export the diff-table above or request an extended version.</li>
+    </ul>
+  </div>
+</body>
+</html>
+```
