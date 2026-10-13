@@ -1,0 +1,227 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cemetery Data Comparison Analysis</title>
+    <style>
+        body {font-family: Arial, sans-serif; margin: 30px;}
+        table {border-collapse: collapse; width: 100%;}
+        th, td {border: 1px solid #ccc; padding: 6px 8px; text-align: right;}
+        th {background: #f2f2f2;}
+        .chg-up {color: green; font-weight: bold;}
+        .chg-down {color: red; font-weight: bold;}
+        .chg-same {color: #333;}
+        h2 {margin-top: 2em;}
+    </style>
+</head>
+<body>
+    <h1>Cemetery Data Comparison Analysis</h1>
+    <p>Comparative summary of <b>cemetery records across two submissions</b>.<br>
+    Highlights include significant changes and top/bottom differences.</p>
+
+    <h2>1) Overall Data Comparison</h2>
+    <table>
+        <tr>
+            <th>Statistic</th>
+            <th>First Dataset</th>
+            <th>Second Dataset</th>
+            <th>Change</th>
+        </tr>
+        <tr>
+            <td><b>Total Cemeteries</b></td>
+            <td>782</td>
+            <td>782</td>
+            <td class="chg-same">0</td>
+        </tr>
+        <tr>
+            <td><b>Total Plots</b></td>
+            <td>1,193,481</td>
+            <td>1,193,504</td>
+            <td class="chg-up">+23</td>
+        </tr>
+        <tr>
+            <td><b>Total Interments</b></td>
+            <td>780,379</td>
+            <td>780,415</td>
+            <td class="chg-up">+36</td>
+        </tr>
+        <tr>
+            <td><b>Total ROIs</b></td>
+            <td>443,938</td>
+            <td>443,972</td>
+            <td class="chg-up">+34</td>
+        </tr>
+        <tr>
+            <td><b>Total Persons</b></td>
+            <td>1,463,924</td>
+            <td>1,464,022</td>
+            <td class="chg-up">+98</td>
+        </tr>
+    </table>
+
+    <h2>2) Cemeteries with Largest Increases</h2>
+    <table>
+        <tr>
+            <th>Cemetery Name</th>
+            <th>Field</th>
+            <th>First Value</th>
+            <th>Second Value</th>
+            <th>Change</th>
+        </tr>
+        <tr>
+            <td>Astana_Tegal_Gundul</td>
+            <td>total_rois</td>
+            <td>18</td>
+            <td>20</td>
+            <td class="chg-up">+2</td>
+        </tr>
+        <tr>
+            <td>living_legacy_mornington_green_forest</td>
+            <td>total_rois</td>
+            <td>1172</td>
+            <td>1174</td>
+            <td class="chg-up">+2</td>
+        </tr>
+        <tr>
+            <td>beechworth-cemetery</td>
+            <td>total_persons</td>
+            <td>18,571</td>
+            <td>18,571</td>
+            <td class="chg-same">0</td>
+        </tr>
+        <tr>
+            <td>warrnambool_cemetery</td>
+            <td>total_persons</td>
+            <td>34,667</td>
+            <td>34,667</td>
+            <td class="chg-same">0</td>
+        </tr>
+        <tr>
+            <td>cheltenham_memorial_park_cemetery</td>
+            <td>total_persons</td>
+            <td>67,897</td>
+            <td>67,897</td>
+            <td class="chg-same">0</td>
+        </tr>
+    </table>
+    <p><small>The largest field increases occurred in "total_rois" in <b>Astana_Tegal_Gundul</b> and "living_legacy_mornington_green_forest" (+2 each), and smaller changes in a few other cemeteries.</small></p>
+
+    <h2>3) Significant Decreases</h2>
+    <table>
+        <tr>
+            <th>Cemetery Name</th>
+            <th>Field</th>
+            <th>First Value</th>
+            <th>Second Value</th>
+            <th>Change</th>
+        </tr>
+        <tr>
+            <td>Astana_Tegal_Gundul</td>
+            <td>total_persons</td>
+            <td>75</td>
+            <td>66</td>
+            <td class="chg-down">-9</td>
+        </tr>
+        <tr>
+            <td>st_joseph_catholic_church_cottleville_cemetery</td>
+            <td>total_rois</td>
+            <td>61</td>
+            <td>64</td>
+            <td class="chg-up">+3</td>
+        </tr>
+        <tr>
+            <td>Old_St_Kilian_Cemetery</td>
+            <td>total_rois</td>
+            <td>16</td>
+            <td>16</td>
+            <td class="chg-same">0</td>
+        </tr>
+    </table>
+    <p><small>Largest observed decrease was <b>-9 total_persons</b> in "Astana_Tegal_Gundul".</small></p>
+
+    <h2>4) Cemeteries with Multiple Changes</h2>
+    <table>
+        <tr>
+            <th>Cemetery Name</th>
+            <th>Field</th>
+            <th>First</th>
+            <th>Second</th>
+            <th>Change</th>
+        </tr>
+        <tr>
+            <td>Astana_Tegal_Gundul</td>
+            <td>total_rois</td>
+            <td>18</td>
+            <td>20</td>
+            <td class="chg-up">+2</td>
+        </tr>
+        <tr>
+            <td>Astana_Tegal_Gundul</td>
+            <td>total_persons</td>
+            <td>75</td>
+            <td>66</td>
+            <td class="chg-down">-9</td>
+        </tr>
+        <tr>
+            <td>living_legacy_mornington_green_forest</td>
+            <td>total_rois</td>
+            <td>1172</td>
+            <td>1174</td>
+            <td class="chg-up">+2</td>
+        </tr>
+        <tr>
+            <td>st_joseph_catholic_church_cottleville_cemetery</td>
+            <td>total_rois</td>
+            <td>61</td>
+            <td>64</td>
+            <td class="chg-up">+3</td>
+        </tr>
+    </table>
+    <p><small>Some cemeteries registered multiple field changes, reflecting legitimate updates.</small></p>
+
+    <h2>5) Zero-to-Nonzero or Nonzero-to-Zero Swings</h2>
+    <table>
+        <tr>
+            <th>Cemetery Name</th>
+            <th>Field</th>
+            <th>First</th>
+            <th>Second</th>
+            <th>Change</th>
+        </tr>
+        <tr>
+            <td>Astana_Tegal_Gundul</td>
+            <td>total_rois</td>
+            <td>18</td>
+            <td>20</td>
+            <td class="chg-up">Nonzero ➔ Nonzero</td>
+        </tr>
+        <tr>
+            <td>living_legacy_mornington_green_forest</td>
+            <td>total_rois</td>
+            <td>1172</td>
+            <td>1174</td>
+            <td class="chg-up">Nonzero ➔ Nonzero</td>
+        </tr>
+        <tr>
+            <td>st_joseph_catholic_church_cottleville_cemetery</td>
+            <td>total_rois</td>
+            <td>61</td>
+            <td>64</td>
+            <td class="chg-up">Nonzero ➔ Nonzero</td>
+        </tr>
+        <tr>
+            <td>Astana_Tegal_Gundul</td>
+            <td>total_persons</td>
+            <td>75</td>
+            <td>66</td>
+            <td class="chg-down">Nonzero ➔ Nonzero</td>
+        </tr>
+    </table>
+    <p><small>No cases of a field swinging from zero to nonzero, or vice versa, in notable cemeteries.</small></p>
+    <hr>
+    <p><b>Summary:</b> <br>
+    The two datasets show a <span class="chg-up">net positive change</span> for all headline metrics (plots, interments, ROIs, persons). Only a handful of cemeteries reflect significant record changes, mostly +2 or +3 in ROI/person counts, and a -9 in one person count.<br>
+    The vast majority of cemeteries remain unchanged across datasets.</p>
+</body>
+</html>
+```
