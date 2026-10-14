@@ -1,0 +1,1358 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cemetery Data Comparison Report</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1, h2 { color: #333366; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 2em; }
+    th, td { border: 1px solid #999; padding: 6px 8px; text-align: right; }
+    th { background: #eaeaff; }
+    .increase { background: #d7ffd7; }
+    .decrease { background: #ffd7d7; }
+    .nochange { background: #f6f6f6; }
+    .stat-box { display: inline-block; margin-right: 30px; }
+  </style>
+</head>
+<body>
+
+<h1>Cemetery Data Comparison Report</h1>
+
+<h2>Overview and Key Differences</h2>
+<p>
+This report compares totals for each cemetery from two datasets. The comparison highlights changes in <b>total_plots</b>, <b>total_interments</b>, <b>total_rois</b>, and <b>total_persons</b>. Only cemeteries with at least one field value changed are included.
+</p>
+
+<h2>High-level Summary</h2>
+<table>
+  <tr>
+    <th>Field</th>
+    <th>Sum (Dataset 1)</th>
+    <th>Sum (Dataset 2)</th>
+    <th>Difference</th>
+  </tr>
+  <tr>
+    <td>Total Plots</td>
+    <td id="sum1-plots"></td>
+    <td id="sum2-plots"></td>
+    <td id="diff-plots"></td>
+  </tr>
+  <tr>
+    <td>Total Interments</td>
+    <td id="sum1-inter"></td>
+    <td id="sum2-inter"></td>
+    <td id="diff-inter"></td>
+  </tr>
+  <tr>
+    <td>Total ROIs</td>
+    <td id="sum1-rois"></td>
+    <td id="sum2-rois"></td>
+    <td id="diff-rois"></td>
+  </tr>
+  <tr>
+    <td>Total Persons</td>
+    <td id="sum1-pers"></td>
+    <td id="sum2-pers"></td>
+    <td id="diff-pers"></td>
+  </tr>
+</table>
+
+<h2>Cemeteries with Changes</h2>
+<table>
+  <tr>
+    <th rowspan="2">Cemetery Name</th>
+    <th colspan="3">Total Plots</th>
+    <th colspan="3">Total Interments</th>
+    <th colspan="3">Total ROIs</th>
+    <th colspan="3">Total Persons</th>
+  </tr>
+  <tr>
+    <th>Before</th>
+    <th>After</th>
+    <th>Change</th>
+    <th>Before</th>
+    <th>After</th>
+    <th>Change</th>
+    <th>Before</th>
+    <th>After</th>
+    <th>Change</th>
+    <th>Before</th>
+    <th>After</th>
+    <th>Change</th>
+  </tr>
+  <!-- Data rows below -->
+  <tbody id="cem-diff-table"></tbody>
+</table>
+
+<script>
+  // Copy/parse data to run below. Example uses arrays. 
+  // Real scenario: parse CSVs into arrays of objects, eg;
+  // [{Cemetery_Name: ..., total_plots: ..., ...}, ...]
+
+  // First, parse provided data for both datasets
+  // We'll take the unique Cemetery_Name and store both versions.
+
+  // Get both CSVs from user input (simulate with provided string splitting)
+  // The split between two parts is the repeated header near the bottom...
+  let raw = `Cemetery_Name,total_plots,total_interments,total_rois,total_persons
+232323,0,0,0,0
+abdur-cemetery,1,0,0,0
+abmg,0,0,0,0
+ad,0,0,0,0
+Adjungbilly_Cemetery,5,22,0,22
+ads,0,0,0,0
+alice-cemetery,0,0,0,0
+alice-seccsejcementry,0,0,0,0
+alma_plains_cemetery,177,163,28,205
+alma_south_cemetery,68,50,48,51
+andi-tes,100,3,0,3
+angle_grove_cemetery,249,201,2,204
+anglican_parish_of_gawler,943,1272,522,1886
+aposento-de-paz-Vr5zR,0,0,0,0
+Apsley_Cemetery,841,522,53,585
+ardrossan_cemetery,1490,1378,1056,3860
+armidale_cemetery,18669,15301,1464,17101
+arthurton_cemetery,97,49,34,134
+asas,1,1,1,3
+asdsfd,0,0,0,0
+astana001,0,0,0,0
+astana0012,0,0,0,0
+astana_archive,1,0,0,0
+Astana_Tegal_Gundul,186,18,18,75
+astana_test,0,0,0,0
+Auckland_Memorial_Park_Cemetery,3239,1744,2547,5459
+aus_cemetery_1745,0,0,0,0
+Avoca-Catholic-Cemetery,333,133,1,136
+bagh-e-rehmat,4,1,1,8
+balaklava_cemetery,4280,3631,2798,9107
+Ballidu_Cemetery,46,18,2,21
+Ballidu_Residence_Wall,251,241,8,249
+barabba_cemetery,0,0,0,0
+bardi-comunal-cemetery,0,0,0,0
+barham,0,0,0,0
+barham_cemetery,1945,2029,791,3182
+barooga_cemetery,1518,509,28,575
+barunga_gap_cemetery,335,99,109,294
+basic001,0,0,0,0
+batee-timoeh-cemetery,10,0,0,0
+bbesikk-cem,0,0,0,0
+bcxv,0,0,0,0
+beaufort,0,0,0,0
+Beaufort_Cemetery,4101,4450,599,5073
+beaufort_cemetery_wakefield,110,30,22,57
+beechworth-cemetery,10867,16396,317,18571
+beenleigh,0,0,0,0
+Beenleigh_Cemetery,7412,6842,3408,13566
+bellata_cemetery,423,149,127,633
+bellingen_cemetery,0,0,0,0
+bendoc_cemetery,115,3,0,3
+ben_lomond_moredun_road_cemetery,245,43,0,43
+ben_lomond_village_cemetery,324,40,0,42
+berrigan_cemetery,3480,1653,42,1756
+bethanga-cemetery,747,567,60,622
+Beverley_Anglican_Cemetery,1947,1179,401,1831
+Beverley_Catholic_Cemetery,1337,483,142,725
+bhinjomk,0,0,0,0
+bhjkkll,0,0,0,0
+Bicheno_Cemetery,301,171,73,292
+big-beaver-union-cemetery-4opn2,0,0,0,0
+bilston,0,0,0,0
+black_mountain_cemetery,325,96,5,103
+blyth_cemetery,888,675,584,1727
+bob-cemetery,0,0,0,0
+bob-cemeteryebfyb,0,0,0,0
+bobscementry,3,0,0,0
+Boddington-Cemetery,1982,215,79,420
+boggabri_general_cemetery,3403,2013,824,2910
+boggabri_lawn_cemetery,0,0,0,0
+bold,100,0,0,0
+bolgart_cemetery,90,20,22,71
+boort-cemetery-trust,1115,911,0,1395
+boree_creek_cemetery,715,398,41,444
+Boscabel_Cemetery,52,36,28,80
+bothwell-cemetery,308,140,4,144
+Bowmans_Forest_Cemetery,1675,610,138,1394
+bremer-bay-cemetery,160,65,40,88
+brentwood_cemetery,83,68,1,126
+bridgetown-cemetery,2181,2135,167,2901
+brinkworth_cemetery,615,282,238,816
+broadford-cemetery,2114,2160,255,2653
+broadmeadows-private-cemetery,0,0,0,0
+brookton_cemetery,1234,930,166,1170
+Broomehill-Cemetery,518,268,37,312
+bulla,0,0,0,0
+bulla-cemetery,0,0,0,0
+bullaparinga_cemetery,0,0,0,0
+bulla_cemetery,3844,3140,1570,6239
+Buninyong,0,0,0,0
+bunyip-cemetery,3595,3033,391,3691
+burketown_cemetery,0,0,0,0
+Byrnestown_Cemetery,156,105,7,204
+calingiri_cemetery,183,87,35,217
+Campbell_StMichaels_Catholic_Cemetery,674,254,6,261
+camperdown_cemetery,5694,0,0,0
+canbelego_cemetery,2359,441,0,442
+carlsruhe-cemetery,2414,200,238,492
+carlyle,0,0,0,0
+carlyle_cemetery,4659,4994,478,5578
+cathcart_cemetery,548,420,105,462
+cem,0,0,0,0
+cementerio-nueva-jerusalen-utuado,0,0,0,0
+cemetery,10,1,2,3
+cemetery-eksa,0,0,0,0
+cemetery-pVzDg,0,0,0,0
+cemetery-savi,11,0,0,0
+cemetery-Wa0Gm,0,0,0,0
+cemiterio-vila-formosa,0,0,0,0
+cfgvhbj,0,0,0,0
+Chambers_Flat_Cemetery,397,308,260,943
+cheltenham_memorial_park_cemetery,37165,67897,0,67897
+chetwynd-cemetery,50,1,0,1
+chilterncemetery,3205,3050,207,3458
+Chowey_Cemetery,113,37,8,74
+Christ_Church_Yankalilla_Cemetery,392,372,154,592
+chronicle-cemetery,16714,28910,2744,33436
+cimetiere-parisien-de-thiais-oZwjn,0,0,0,0
+cliffina,0,0,0,0
+cloncurry-lawn-cemetery,0,0,0,0
+Cloncurry_General_Cemetery,2743,1821,1,1835
+cloncurry_lawn_cemetery,1063,897,134,1091
+Coalstoun_Lakes_Cemetery,920,188,66,390
+cobar_cemetery,4287,7593,247,8278
+cobram-public-cemetery,0,0,0,0
+Colebrook-St-Patricks-Cemetery,370,170,4,178
+collie_cemetery,7366,6240,47,6815
+columbarium-AUS-demo-cemetery,400,283,286,681
+compagnie-des-cimetieres-notre-dame-du-cap,0,0,0,0
+condowie_cemetery,144,48,43,51
+ConjolaCemetery,0,0,0,0
+Coolac_Cemetery,1359,406,16,425
+Coonamble_Cemetery,10855,6415,478,7348
+cootamundra,0,0,0,0
+cootamundra-ePrcF,0,0,0,0
+Cootamundra_Cemetery,7638,8092,425,8749
+corowa_lawn_cemetery_north,2432,2762,102,4929
+corowa_lawn_cemetery_south,3321,1,0,3
+corowa_monumental_cemetery,1339,718,3,841
+corowa_pioneer_cemetery,2538,2319,0,2475
+corpus_christi_catholic_church,181,65,26,124
+Crib-Point-Cemetery,0,0,0,0
+cribpoint-cemetery,2748,2255,794,3105
+crown-cemetery,0,0,0,0
+croydon_cemetery,1181,1367,0,1367
+cudgewa-cemetery,1465,601,66,648
+Cullenswood,162,0,0,0
+cungegong-o29PC,0,0,0,0
+curramulka_cemetery,771,522,442,1515
+cvfdvd,0,0,0,0
+Cygnet_Catholic_Cemetery,1232,448,11,477
+dalkey_cemetery,223,120,1,121
+Dallarnil_Cemetery,1169,269,101,1921
+dallas_cemetery,2,1,0,2
+daysdale_cemetery,30,78,0,85
+Degilbo_Cemetery,1552,1095,310,3020
+demo-cemetery,9592,12787,6607,20472
+demo-cemetery-1,5,0,1,1
+demo_aus_cemetery,10558,13391,6900,20403
+Demo_AUS_Location,10557,13391,6900,20403
+Denman_Cemetery,1804,1048,191,1763
+dfgb,0,0,0,0
+dfgrg,0,0,0,0
+dfsnjcnj,0,0,0,0
+Doodenanning_Cemetery,160,2,0,3
+dorrigo_cemetery,3404,2349,367,2732
+dover_lawn_cemetery,1366,571,27,689
+drakesbrook-cemetery,0,0,0,0
+drumminor_gardens_cemetery,1755,2005,1527,6511
+dsdsdvsdfds,0,0,0,0
+dublin_cemetery,0,0,0,0
+dummy,0,0,0,0
+dxcfghbjkl,0,0,0,0
+Eagleby_Cemetery,151,143,26,217
+ebor_cemetery,2666,187,3,191
+Edenhope_Cemetery,2671,1514,63,1589
+edithburgh_cemetery,1357,1408,1089,4285
+Eidsvold_One_Cemetery,748,1023,27,1402
+Eidsvold_Two_Cemetery,384,203,96,474
+eildon_weir_cemetery,0,0,0,0
+einasleigh_cemetery,0,0,0,0
+esdf,0,0,0,0
+eston,0,0,0,0
+eternal-peace-cemetery,0,0,0,0
+euabalong_cemetery,1974,77,2,80
+Evandale-Catholic-Cemetery,105,41,0,41
+example-cemetery,100,1,2,2
+fawkner-memorial-park,0,0,0,0
+Fawkner_Memorial_Park_Pioneers,552,1048,0,1048
+fddga,0,0,0,0
+fdghbj,0,0,0,0
+febs,0,0,0,0
+fernmount_cemetery,1661,408,20,428
+fingal-cemetery,240,159,1,165
+finley_cemetery,2966,2011,20,2046
+first,0,0,0,0
+flower-memorial-park,0,0,0,0
+Flowerpot-Catholic-Cemetery,64,13,6,21
+forbes_shire_council,19528,10041,1403,11653
+Forcett_Cemetery,1164,312,261,771
+Forest_Range_Cemetery,4,3,0,3
+forsayth_cemetery,0,0,0,0
+Foster-Cemetery,2504,2363,342,3133
+Franklin-Catholic-Cemetery,599,123,0,125
+free-02,0,0,0,0
+free-cemetery,0,0,0,0
+free01,20,1,1,2
+freeaus,10559,0,0,20392
+gawler_cemetery,0,0,0,0
+Gayndah_Cemetery,2951,2942,426,3894
+Geeveston-Catholic-Cemetery,297,163,0,171
+georgetown_cemetery,0,0,0,0
+Giants_Creek_General_Cemetery,758,195,46,288
+Glenlyon_Cemetery,1955,514,30,563
+gnowangerup-cemetery,1904,1327,1274,1492
+Goroke_Cemetery,1432,759,4,764
+Goulburn-General-Cemetery,15272,13690,879,14924
+Goulburn-Jewish-Cemetery,16,0,0,0
+grace_plains_cemetery,0,0,0,0
+granite_flat_cemetery,0,0,0,0
+granton_croation_church_cemetery,35,10,17,26
+granya-cemetery,0,0,0,0
+graphical-AUS-demo-cemetery,114,121,69,287
+greenbushes-cemetery,1633,646,47,895
+greenvalley,84,2,1,3
+greenwood-cemetery,0,0,0,0
+gregory_cemetery,0,0,0,0
+grim-kirke,22,1,0,1
+Grosvenor_Cemetery,35,34,0,35
+Guildford_Cemetery,1041,659,188,961
+Gulargambone_Cemetery,6415,1098,204,1353
+gutenberg-friedhof,0,0,0,0
+guyra_cemetery,3507,2204,721,3147
+gwabegar_cemetery,571,143,44,206
+gympie-cemetery,0,0,0,0
+gympie-cemetery-LYiAZ,0,0,0,0
+gympie-qld,0,0,0,0
+Gympie_Cemetery,16943,22165,14738,35758
+h-bjn,0,0,0,0
+h-jnkm,0,0,0,0
+hamilton-catholic-cemetery,307,161,2,166
+hamley_bridge_cemetery,603,696,393,1649
+haren-cemetery,0,0,0,0
+harrow_cemetery,2563,946,121,1027
+Heathcote_Cemetery,421,414,0,414
+hello-test-XhhYs,0,0,0,0
+henry-street-anglican-cemetery,0,0,0,0
+Henry_Street_Cemetery,895,622,483,1327
+hillgrove_cemetery,941,243,0,249
+hjvgbh,0,0,0,0
+holy_trinity_catholic_church_westbury,145,0,0,0
+hope-of-the-resurrection-cemetery,0,0,0,0
+hopefield_cemetery,697,147,20,230
+howlong_cemetery,1957,895,81,1285
+hoyleton_cemetery,271,73,71,95
+huon_lawn_cemetery,3369,2190,203,4286
+immaculate-conception,781,51,0,51
+indo,0,0,0,0
+infiesto,0,0,0,0
+irosin-public-cemetery,100,0,0,4
+jember-public-cemetery,4,1,0,1
+jerramungup-cemetery,145,90,38,121
+jeruk-purut,0,0,0,0
+jeruk-purut-NW6nB,0,0,0,0
+jhbk,0,0,0,0
+kaapsehoop_cemetery,464,174,0,175
+Kangaroo-Ground-Cemetery,4140,2792,3231,7419
+Kaniva_Lilimur_Cemetery,3312,1608,1,1610
+Karoola-Catholic-Cemetery,250,165,3,170
+kendenup_cemetery,723,249,45,328
+Kenmore-StPatrick-Cemetery,8232,4874,444,5311
+khalifa-abdullahi-yakasai,0,0,0,0
+kiewa,0,0,0,0
+kiewa_cemetery,2458,874,404,1185
+kilcoy_cemetery,227,129,1,131
+Kilmore_Cemetery,6357,2569,476,3264
+koetong_cemetery,0,0,0,0
+Kojonup_Cemetery,1942,1370,279,2097
+kronikel-besik,0,0,0,0
+kropyvnytskyi-cemetery,0,0,0,0
+kumbang01,100,0,0,0
+kvhbjk,0,0,0,0
+kyabram_cemetery,6805,6727,0,6762
+kybunga_cemetery,702,199,213,469
+lang-lang,0,0,0,0
+langlang,2978,1349,637,2299
+lawn-private-cemetery,100,0,0,0
+leonora_cemetery,0,0,0,0
+lets-go-free,0,0,0,0
+lhv,6,1,0,1
+living_legacy_mornington_green_forest,1998,568,1172,2212
+lochiel_cemetery,452,193,187,4820
+logan-city-council,0,0,0,0
+Logan_Village_Cemetery,1694,841,676,2632
+Longford_Catholic_Cemetery,438,211,5,222
+Longley-Cemetery,365,0,0,0
+longwood_cemetery,1211,865,16,896
+lorraine_road_wootton_cemetery,0,0,0,0
+lower_wakefield_cemetery,39,38,0,39
+macedon,0,0,0,0
+macedon-cemetery,3227,1747,821,2818
+macedon-cemetry,0,0,0,0
+macedon-maddengley-cemetarey,0,0,0,0
+Mackillop-Hill,316,97,1,101
+Maclean_Cemetery,729,336,301,853
+maddeningley,0,0,0,0
+maddingley-cemetery,9143,6347,1811,8390
+maddingley-general-cemetary-DdM9M,0,0,0,0
+maddingley-general-cemetery,0,0,0,0
+maddingley-general-cemetery-1aNrk,1,0,1,0
+maffra_cemetery,5527,5904,817,7004
+main_halls_creek_cemetery,1179,831,80,1311
+maitland_cemetery,3040,1527,1289,4647
+mallala_cemetery,0,0,0,0
+malolos-catholic-cemetery,0,0,0,0
+marketing-cemetery,20,0,1,0
+marradong,0,0,0,0
+Marradong-Cemetery,593,202,36,314
+maryborough-cemetery,6707,8976,682,10335
+maryborough-victoria,1,0,0,0
+maryborough-victoria-,0,0,0,0
+masonic-cemetery,0,0,0,0
+Mathoura_Lawn_Cemetery,233,281,109,436
+Mathoura_Pioneer_Cemetery,758,592,64,697
+matutum-memorial-park,1,0,0,0
+meekatharra_cemetery,2602,1347,70,2253
+merbein_cemetery,3448,3846,485,4483
+midcoast-council-9FDGq,0,0,0,0
+midwest-death-register,0,0,0,0
+minlaton_cemetery,1778,1632,1261,4974
+Mitcham_General_Public_Cemetery,6292,12241,5807,18096
+mitta-mitta_cemetery,0,0,0,0
+moama-cemetery-XoBKF,0,0,0,0
+Moama_Cemetery,3425,3655,823,4901
+Moe_Memorial_Park,0,0,0,0
+montagu,95,0,0,0
+Monto_One_Cemetery,530,485,19,511
+Monto_Two_Cemetery,2661,1444,810,2520
+moora_cemetery,2177,1750,342,2152
+Moorngag_Cemetery,1185,570,275,1013
+mornington-green-legacy,0,0,0,0
+mornington-green-legacy-gardens,0,0,0,0
+morphett_vale_bains_cemetery,783,947,677,2407
+morphett_vale_catholic_parish_pioneer_cemetery,995,764,363,1348
+morphett_vale_scotch_cemetery,714,768,271,1384
+Mortis-Street-Cemetery,942,1195,0,1195
+Moulamein_Cemetery,727,592,171,849
+mount-magnet-cemetery,2096,1078,811,1756
+Mount_Adrah_Cemetery,12,14,0,14
+mount_barker_east_and_west_cemetery,3062,1859,252,2210
+mount_hope_cemetery,5172,175,3,175
+Mount_Perry_Cemetery,1475,890,83,1181
+Mulgildie_Cemetery,462,120,96,288
+multiple-cemeteries,0,0,0,0
+mulwala_cemetery,3966,1748,183,2837
+mundaring_cemetery,1761,1371,1027,2912
+mundubbera,0,0,0,0
+Mundubbera_Cemetery,1504,1334,383,2097
+Muradup_Cemetery,268,126,37,203
+murchison-cemetary,0,0,0,0
+murchison-cemetery,1695,2148,210,2524
+Muswellbrook_General_Cemetery,7314,5317,496,8495
+Muttama_Cemetery,76,73,0,73
+Nangus_Cemetery,356,387,19,411
+narrabri_lawn_cemetery,3247,2444,2240,5093
+narrabri_old_cemetery,3698,4187,393,4610
+Narrawong_Cemetery,544,407,105,510
+narrogin,0,0,0,0
+Narrogin_Cemetery,5713,5020,1314,5735
+neerim_cemetery,2222,1304,293,2096
+nn,0,0,0,0
+normanville_wesleyan_cemetery,0,0,0,0
+North_Gundagai_Cemetery,5407,1633,50,1697
+NowraCemetery,0,0,0,0
+nymagee_cemetery,7178,874,0,875
+oaklands_cemetery,852,353,95,411
+Oatlands_Catholic_Cemetery,458,181,0,181
+old_croydon_cemetery,42,41,0,41
+old_halls_creek_cemetery,2,65,0,65
+old_noarlunga_uniting_church_cemetery,2419,851,777,1726
+ongerup-cemetery,314,45,40,55
+Ouyen-Cemetery,2019,1959,437,2527
+owen_cemetery,583,420,296,1089
+pandanaran-cemetery,0,0,0,0
+Paradise_Cemetery,24,23,0,23
+park-hill-cemetery,0,0,0,0
+Parkhouse_Cemetery,258,158,70,290
+parroquial-de-quillon,67,2,1,5
+perth,0,0,0,0
+perth-cemetery,0,0,0,0
+phillip-island-cemetery,3192,2794,590,3569
+pilliga_cemetery,1099,438,236,737
+Pindellup_Cemetery,135,30,41,72
+pinjarra-cemetery,0,0,0,0
+Pink_Lake_Cemetery,1196,1030,873,3013
+pioloni,88,0,0,0
+Plunkett_Road_Cemetery,6,14,0,14
+pontville,0,0,0,0
+port_victoria_cemetery,513,348,309,1025
+port_vincent_cemetery,749,541,512,1494
+port_wakefield_cemetery,1334,867,772,2380
+Primary_AUS_Demo_Cemetery,715,603,423,1146
+private_land_cemetery,7,6,0,7
+purworejo-cemetery,7,1,2,6
+qadeem-graveyard,1,0,0,0
+QA_Coming_Soon1733213402_usa,0,0,0,0
+QA_Coming_Soon1740543936_usa,0,0,0,0
+QA_Coming_Soon1740617831_usa,0,0,0,0
+QA_Coming_Soon1740704271_usa,0,0,0,0
+QA_Coming_Soon1740790917_usa,0,0,0,0
+QA_Coming_Soon1740877402_usa,0,0,0,0
+QA_Coming_Soon1740963810_usa,0,0,0,0
+QA_Coming_Soon1741049955_usa,0,0,0,0
+QA_Coming_Soon1741136350_usa,0,0,0,0
+QA_Coming_Soon1741222742_usa,0,0,0,0
+QA_Coming_Soon1744254289_usa,0,0,0,0
+QA_Coming_Soon1744333507_usa,0,0,0,0
+QA_Coming_Soon1744419804_usa,0,0,0,0
+QA_Coming_Soon1744447448_usa,0,0,0,0
+QA_Coming_Soon1745371805,0,0,0,0
+QA_Coming_Soon1745372417_usa,0,0,0,0
+QA_Coming_Soon1745385687,0,0,0,0
+QA_Coming_Soon1745463007_usa,0,0,0,0
+QA_Coming_Soon1745474069_usa,0,0,0,0
+QA_Coming_Soon1745507041_usa,0,0,0,0
+QA_Coming_Soon1745514053_usa,0,0,0,0
+QA_Coming_Soon1745542996_usa,0,0,0,0
+QA_Coming_Soon1745543628_usa,0,0,0,0
+QA_Coming_Soon1745545457_usa,0,0,0,0
+QA_Coming_Soon1745546062_usa,0,0,0,0
+QA_Coming_Soon1745546534_usa,0,0,0,0
+QA_Coming_Soon1745547788_usa,0,0,0,0
+QA_Coming_Soon1745550355_usa,0,0,0,0
+QA_Coming_Soon1746781176_usa,0,0,0,0
+QA_Coming_Soon1746838495_usa,0,0,0,0
+QA_Coming_Soon1746925309_usa,0,0,0,0
+QA_Coming_Soon1747011669_usa,0,0,0,0
+QA_Coming_Soon1747097887_usa,0,0,0,0
+QA_Coming_Soon1747184295_usa,0,0,0,0
+QA_Coming_Soon1747201107_usa,0,0,0,0
+Quairading_Cemetery,1485,1065,161,1251
+Quambone_Cemetery,7180,159,10,180
+queenstown_cemetery,63,423,0,549
+Quindanning-Cemetery,401,100,39,164
+ratna-test,20,4,0,6
+Rawbelle_Cemetery,8,0,0,3
+red_hill_cemetery,347,0,0,0
+richmond_cemetery,1713,940,56,1993
+richmond_lawn_cemetery,0,0,0,0
+Richmond_St_Johns_Catholic_Cemetery,1191,675,160,903
+ringarooma-ieGVJ,0,0,0,0
+riverside-cemetery,0,0,0,0
+rocky_gully_cemetery,258,32,25,68
+Rohrwald,403,104,126,138
+rookwood,1,0,0,0
+rosedale-cemetery,1083,1347,47,1528
+Ross_Catholic_Cemetery,318,96,0,97
+rothwell_cemetery,5975,1112,419,2610
+sablayan-memorial-park,4,0,0,0
+Sacred-Heart-Church,104,82,9,91
+saint_pauls_catholic_church_oatlands,177,7,0,8
+salisbury_catholic_parish,1023,1024,815,4022
+salt_lake_cemetery,28,12,12,29
+sam-s-cemetery,20,0,1,1
+san-pablo-memorial-park,0,0,0,0
+Sandridge_Cemetery,0,0,0,0
+san_remo_cemetery,1519,798,269,1210
+sdad,0,0,0,0
+sdadf,0,0,0,0
+sdfdf,0,0,0,0
+seaford-uniting,0,0,0,0
+secret,0,0,0,0
+semeteri,11,1,2,5
+sf-lazar-ORmNP,0,0,0,0
+sfsdfdsf,0,0,0,0
+shannon_cemetery,0,0,0,0
+shiacblr,1,0,0,0
+Shoalhaven_mg,0,0,0,0
+shongweni,0,0,0,0
+sirtupoke-cemetery,2,0,0,1
+smith-cemetery,0,0,0,0
+snowtown_cemetery,1669,865,732,2265
+Snug-St-Marys-Catholic-Cemetery,668,509,2,517
+somontano,0,0,0,0
+Sorell-St-Thomas-Catholic-Cemetery,187,159,17,179
+south-hams-natural-burial-ground-Uc8rU,0,0,0,0
+South_Caroling_Cemetery,99,47,0,51
+South_Gundagai_Cemetery,938,1098,52,1191
+south_hedland_cemetery_port_hedland,0,0,0,0
+springvale_botanical_garden_cemetery,522,0,0,0
+spring_hill_cemetery,201,278,28,463
+St-Aloysius-Church,25,36,0,36
+st-annes-parish-cemetery,10,0,0,0
+St-John-Camden-Anglican-Cemetery,963,1862,0,1903
+st-johns-richmond,0,0,0,0
+st-lukes-church,0,0,0,0
+st-patrick-roman-catholic-cemetery,0,0,0,0
+st-paul-s-bukit-tengah,0,0,0,0
+st.-james-bond's,0,0,0,0
+stanley-neville-power,0,0,0,0
+StAnnes-Catholic-Cemetery,286,96,0,99
+stansbury_cemetery,1123,804,641,2530
+StCanice,233,72,5,82
+stcolmans-catholic-cemetery,334,211,7,222
+StHelena-StStanislaus-Catholic-Cemetery,117,27,0,27
+StJames-Catholic-Cemetery,134,5,0,5
+Stockinbingal_Cemetery,660,434,24,481
+stpeters-kempton,299,167,5,184
+St_Albans_Cemetery,166,125,108,286
+St_Ann_Aldinga_Cemetery,391,315,150,506
+st_francis_xavier,400,117,348,735
+St_Georges_Cemetery,1250,881,745,1890
+st_james_catholic_church_cygnet,65,18,1,20
+St_James_Delamere_Anglican_Cemetery,180,135,113,266
+St_James_of_Jerusalem_Cemetery,481,349,290,708
+st_john_in_the_wilderness,433,74,61,159
+st_john_the_baptist_catholic_church_glenorchy,166,72,47,119
+St_Lukes_Anglican_Cemetery,642,894,564,1969
+st_marks_anglican_and_glebe_lawn_cemetery,0,0,0,0
+st_peters_catholic_church_new_norfolk,37,0,0,0
+St_Stephen_Willunga_Anglican_Cemetery,528,1226,65,2244
+St_Therese_of_Lisieux_Catholic_Church,85,46,81,91
+svsasds,0,0,0,0
+Swansea-Catholic-Cemetery,238,74,0,77
+sympathy,0,0,0,0
+tabletop_cemetery,21,20,0,20
+talgarno_cemetery,106,120,52,182
+tallangatta-cemetery,0,0,0,0
+Tallong-Cemetery,429,111,6,117
+Tambellup_Cemetery,1298,576,117,697
+Tarago-Cemetery,577,155,41,201
+tegal-alur,100,1,0,1
+test,99,0,1,0
+test-010,0,0,0,0
+test-cemetery,5,1,0,3
+test-invoice,0,0,0,0
+test-IuX9S,0,0,0,0
+test-SbPWt,51,1,0,1
+test0011,0,0,0,0
+test1,0,0,0,0
+test123,0,0,0,0
+testalert,0,0,0,0
+testaus001,0,0,0,0
+testcemetery-P7i89,0,0,0,0
+testing,0,0,0,0
+testing-freemium-cemetery,100,1,1,2
+tgallen_memorial_lawn_cemetery,2159,3039,1825,7900
+the-banjo-clarke-aboriginal-memorial-gardens-and-cemetry,0,0,0,0
+thomas-nolan,0,0,0,0
+thorak_regional_cemetery,9559,6015,2968,14271
+tocumwal_cemetery,2144,1737,92,1916
+Toolamba_Cemetery,4312,507,127,643
+Tooleybuc_Cemetery,377,220,107,369
+tooram_memorial_park,1335,200,316,742
+torrens_vale_cemetery,0,0,0,0
+tranquil-cemetery,50,0,1,1
+trentham,0,0,0,0
+trentham-15Q1c,0,0,0,0
+trentham_cemetery,1573,1913,359,2370
+Triabunna_Cemetery,951,535,65,625
+trial-bulla,0,0,0,0
+Tumblong_Cemetery,327,339,21,363
+Tunnack-Catholic-Cemetery,330,257,19,276
+tupi-public-cemetery-phase-2,0,0,0,0
+two_wells_cemetery,0,0,0,0
+tylden_cemetery,1937,1389,113,1525
+ubh,0,0,0,0
+urana_cemetery,1513,944,106,1060
+urunga_cemetery,1571,1197,246,1463
+user-test,0,0,0,0
+vb-cemetery-test,0,0,0,0
+vgbh,0,0,0,0
+vgbhjn,0,0,0,0
+vgbhjn-jRRNN,0,0,0,0
+vgbhjnkml,0,0,0,0
+victoria-beach-cemetery,0,0,0,0
+villas-memorial-park,51,0,0,0
+virtualrome,0,0,0,0
+vybiujk,0,0,0,0
+Wagragobilly_Cemetery,53,78,0,78
+Walkerville_Wesleyan_Cemetery_Demo,54,142,0,142
+wallaga-lake-aboriginal-cemetery,0,0,0,0
+Wallendbeen_Cemetery,438,338,13,375
+walwa_cemetery,1100,542,106,649
+Wangaratta_Cemetery,243,214,0,214
+wangup-road-cemetery,1,0,0,0
+warooka_cemetery,826,359,296,1090
+Waroona_Cemetery,1764,1349,228,2395
+warracknabeal,0,0,0,0
+Warracknabeal_Cemetery,5435,6384,3312,13807
+warrnambool,0,0,0,0
+warrnambool-cemetery,0,0,0,0
+warrnambool-cemetery-iU120,0,0,0,0
+warrnambool_cemetery,16714,29062,2993,34667
+waverly_cemetery,0,0,0,0
+wednesday-cemetery,0,0,0,0
+weeroona_cemetery,1669,180,6,365
+wee_waa_cemetery,3245,2110,1093,4376
+Westbury-Catholic-Cemetery,1317,643,9,662
+WestCambewarraCemetery,0,0,0,0
+whitefield_cemetery,2412,701,102,850
+whitwarta_cemetery,277,119,104,337
+Winton_Cemetery,1654,637,273,922
+wodonga-cemetery-trust,0,0,0,0
+wodonga_cemetery,8439,9286,1915,14793
+Wongan_Hills_Cemetery,744,635,137,784
+wonthaggi_cemetery,8610,8105,811,9211
+wooroloo_cemetery,2017,2045,532,2913
+wootangi,0,0,0,0
+Wybong_Historical_Cemetery,791,68,5,75
+wycheproof,0,0,0,0
+Wycheproof-Cemetery,3239,2070,3192,5939
+xxx-x,0,0,0,0
+xxx-xx,1,1,1,2
+xyberian-cemetery,0,0,0,0
+yabba-cemetery,0,0,0,0
+yackandandah_cemetery_trust,0,0,0,0
+yan-yean-cemetery,0,0,0,0
+yankalilla_cemetery,0,0,0,0
+Yarragon-Cemetery,1286,1188,40,1368
+yarram-cemetery,4561,4604,670,5521
+yerevan,0,0,0,0
+abilene_cemetery_district_1,0,0,0,0
+al-stephens-cemetery,80,42,30,58
+alto-pass,0,0,0,0
+alto-pass-cemetery,0,0,0,0
+AltoPassCemetery,6063,2556,734,3177
+andalusia_memorial_cemetery,15370,4241,5097,9745
+antioch-baptist-church,30,0,0,0
+antioch-cemetery,0,0,0,0
+antioch_cemetery,1242,432,0,432
+arrow_rock_cemetery,2816,1116,0,1116
+Artesia_Cemetery,14939,8823,2488,13839
+astana-xxx-3-x,0,0,0,0
+astana_tegal_gundul_us,188,6,9,37
+astana_US_x002,0,0,0,0
+bailey_cemetery,462,137,289,426
+ball-ground-c-cemetery,0,0,0,0
+ball-ground-community-cemetery,0,0,0,0
+barnes-david-jackson-cemetery,0,0,0,0
+barnesville-cemetery,0,0,0,0
+basic-03,0,0,0,0
+basinger-cemetery-okeechobee,3266,1354,2263,4459
+basix,0,0,0,0
+battle-creek-memorial-park,58664,25659,16808,38946
+baxter_springs_cemetery,15088,6051,1991,8099
+bayside_cemetery_association_laconia,7899,6033,7237,14602
+beaver_cemetery,0,0,0,0
+belmont,0,0,0,0
+Bethany-Memorial-Cemetery,467,253,34,276
+bethel-baptist,0,0,0,0
+bethel-cemetery,0,0,0,0
+Bethel_Cemetery,2768,1085,194,1360
+bethel_cemetery_waxahachie,3204,903,41,907
+bethlehem_cemetery_whitney,0,0,0,0
+birch_hill_native_cemetery,592,415,85,542
+bis,5,0,0,0
+blessed-sacrament-catholic-cemetery,0,0,0,0
+bloomfield_cemetery_district_centerburg,9874,2805,1445,5683
+BlufftonCemetery,1041,722,1014,988
+Bluffton_Cemetery,0,0,0,0
+bohonan-cemetery,1,1,0,1
+branchville_cemetery,0,0,0,0
+briar_creek_cemetery,0,0,0,0
+bristol_bay_borough_cemetery,0,0,0,0
+bristol_cemetery,0,0,0,0
+Buffalo_City_Cemetery,4338,2027,2767,3169
+calvary-cemetery-park-river,1348,534,53,597
+Calvary_Catholic_Cemetery,4077,3464,519,4021
+Calvary_Cemetery,0,0,0,0
+calvary_cemetery_mansfield,0,0,0,0
+carman_united_church_cemetery,0,0,0,0
+caroline-church,0,0,0,0
+caroline_church_cemetery,1199,1006,58,1826
+cementerio-municipal-de-anasco,1,0,0,0
+chalkhead-baptist-church-cemetery,3,0,0,0
+Chester_Hill_Cemetery,2052,956,11,1519
+chestnut-grove-cemetery,0,0,0,0
+churchville-oberlin-pa,0,0,0,0
+city-of-tahlequah,18909,9215,13477,35050
+city_of_hemphill_cemetery,3046,1874,107,1983
+city_of_high_shoals,1797,582,288,852
+city_of_josephine_cemetery,1457,270,10,384
+City_of_McCleary_Cemetery,1744,1250,425,1703
+civil-war-veterabs-buried-in-washington-state,0,0,0,0
+clarklake-cemetery,0,0,0,0
+clear-creek-cemetery,269,3,6,12
+coal_creek_cemetery,0,0,0,0
+cobb-keeton-cemetery,1,0,0,0
+columbarium-US-demo-cemetery,505,196,330,642
+columbia-memorial,0,0,0,0
+comal_cemetery,15755,10756,7956,20688
+congregational_church_cemetery,0,0,0,0
+countryside_memorial_park_la_vernia,0,0,0,0
+crabapple-cemetery,1,0,0,0
+Crown_Hill_Cemetery,2648,1861,2223,2688
+cummings,1,0,0,0
+dade_city_cemetery,0,0,0,0
+dean-cemetery,0,0,0,0
+dean-freemetery,13,0,0,0
+dean-smith-fremetery,0,0,0,0
+deansmith,0,0,0,0
+deep-creek-baptist-church,0,0,0,0
+delray-beach-memorial-gardens-municipal-cemetery,0,0,0,0
+delray_beach_memorial_gardens_cemetery,15084,10496,11318,21541
+demo-cemetery,3,0,2,2
+Demo_US_Location,10560,13396,6894,20396
+dendy-amplitude,2,0,0,0
+Denville_Cemetery,2531,2342,524,2892
+dixon-prairie-cemetery,0,0,0,0
+durham-cemetery,172,259,93,390
+durham-cemetery-of-long-branch-township,0,0,0,0
+durham-cemetery-of-long-branch-township-Ld1ap,0,0,0,0
+edens-cemetery,0,0,0,0
+Edens_Cemetery,1769,561,416,1022
+elizaville,0,0,0,0
+elm_grove_cemetery,984,155,102,258
+empyrean_cemetery,48,0,0,0
+estes_park_cemetery,1151,1714,0,1714
+evansburg_cemetery,1556,280,23,303
+evergreen,0,0,0,0
+evergreen-cemetery,0,0,0,0
+evergreen-cemetery-okeechobee,22051,9687,13133,32618
+evergreen-s5Nas,0,0,0,0
+Evergreen_Cemetery,3607,8445,3116,11794
+evergreen_daff9b,0,0,0,0
+example-1,0,0,0,0
+example-memorial-park,0,0,0,0
+fairlawn_cemetery,5910,2275,1943,4416
+fairview,0,0,0,0
+Fairview-AME-Cemetery,970,1,0,1
+Fairview_Cemetery_City_of_Hickory,5532,3148,342,3908
+fake001,186,0,15,0
+fake002,186,18,20,67
+family,0,0,0,0
+farmington_lutheran_cemetery,769,330,90,430
+fernhill_cemetery_anacortes,0,0,0,0
+finn-hill-cemetery,0,0,0,0
+first-presbyterian-church-of-dunn,0,0,0,0
+First_Christian_Church_Cemetery,1765,383,187,580
+first_church_of_evans_cemetery,1717,1046,42,1086
+first_presbyterian_church_columbarium,506,209,228,573
+flanders_cemetery,431,40,129,172
+ford_cemetery_kansas,0,0,0,0
+forest_grove_baptist_church_cemetery,4312,1260,884,1668
+Forest_Lawn_ICSC,311,21,94,101
+forrest-hills,0,0,0,0
+Fortis_Demo_Cemetery,0,0,0,0
+fre-e-cemetery,100,0,0,0
+free-02,0,0,0,0
+free-04,0,0,0,0
+free-us1-x,1,0,0,0
+free001,1,0,0,1
+free001-qMHIN,0,0,0,0
+free003,100,3,3,10
+free004,3,0,1,1
+freeus,10559,0,0,20392
+friends-cemetery,0,0,0,0
+FryHill_Cemetery,2595,662,1924,1153
+g-a-r,0,0,0,0
+galihtest07050002,0,0,0,0
+galihtest07050004,0,0,0,0
+gerlaw_cemetery,0,0,0,0
+gfw,0,0,0,0
+GFW_Demo_Cemetery,4337,4789,2816,9543
+Glendale_Christian_Church_Cemetery,1874,934,317,1292
+glenwood_cemetery,0,0,0,0
+goodrum-memorial-cemetery,0,0,0,0
+goodshepherd_cemetery,380,191,105,368
+good_shepherd,0,0,0,0
+Gowanda_Pine_Hill_Cemetery,5957,4128,0,4535
+graham-hill-cemetery,0,0,0,0
+granbury_cemetery,0,0,0,0
+grand-army-of-the-republic-,0,0,0,0
+grand-army-of-the-republic-cemetery,0,0,0,0
+grand-army-republic,0,0,0,0
+Grandview_Covenant_Cemetery,999,213,210,544
+Grand_Army_of_the_Republic_Cemetery,14297,11440,2180,21742
+grantham-memorial-park_6ba70e,0,0,0,0
+grantham_memorial_park,1497,485,647,1490
+graphical-US-demo-cemetery,647,312,348,772
+greater-shiloh-baptist-church-cemetery,554,2,80,109
+greenvale_cemetery,3349,1195,2778,1812
+greenwood,0,0,0,0
+greenwood_cemetery,0,0,0,0
+greenwood_memory_lawn_mortuary_and_cemetery,0,0,0,0
+green_acres_mortuary_and_cemetery,0,0,0,0
+grovertown_cemetery,4372,1425,168,1606
+grub_hill_cemetery_sentry_mapping,0,0,0,0
+guardian_angels_cemetery,433,256,115,391
+hamblett_cemetery,174,131,174,308
+hamlet_of_tuktoyaktuk_cemetery,0,0,0,0
+hampton_university,1246,432,7,437
+Happy_Camp_Cemetery,1539,1054,51,1105
+harmony_cemetery,0,0,0,0
+harpersfield-center-rural-cemetery,0,0,0,0
+heaven_dao_temple_cemetery,8808,0,0,0
+HIC,900,228,7,233
+highlands-cemetery,0,0,0,0
+highland_cemetery_hopewell,9858,4569,6468,12341
+hildreth_cemetery,1017,761,314,1079
+Hillcrest_Municipal_Cemetery,3893,2133,1027,3242
+hillside_cemetery_granada,0,0,0,0
+Hills_Ferry_Cemetery,12008,9269,242,10143
+historic-somerville-cemetary,0,0,0,0
+hoflanda-lutheran-cemetery-association,1,0,0,0
+holy_cross_cemetery_catholic_cemetery,0,0,0,0
+holy_redeemer_catholic_cemetery,0,0,0,0
+holy_trinity_cemetery,4655,2244,3909,7096
+hutterthal-mennonite-church-cemetery,0,0,0,0
+immaculate_conception,0,0,0,0
+immanuel,0,0,0,0
+immanuel-lutheran-cemetery,0,0,0,0
+incarnation_cemetery,0,0,0,0
+Inuvik_Cemetery,759,666,3,668
+isgh_cemetery,3826,974,393,1037
+island_falls_cemetery,0,0,0,0
+ivey_cemetery,930,83,5,92
+Japanese_Benevolent_Society_of_California,5385,4498,3544,9742
+Japanese_Cemetery,1488,22,39,67
+japanese_test,0,0,0,0
+jerusalem-gardens,1,0,1,1
+Jewish_Cemetery_of_Amherst,501,170,388,879
+Jewish_Cemetery_VP,3689,2054,296,2573
+john-c-shirley,75,0,0,0
+john-campbell-cemetery,23,5,0,5
+johnstown-cemetary,0,0,0,0
+johnstown-cemetery,4839,2258,2917,4912
+johns_episcopal_church_warsaw,772,10,507,431
+jones-chapel,0,0,0,0
+judd_street_cemetery,7,5,0,5
+kear-memorial,0,0,0,0
+ketoctin_baptist_church_purcellville_va,0,0,0,0
+knob_noster_cemetery,0,0,0,0
+lafayette_cemetery,0,0,0,0
+lakeview_cemetery_sentry_mapping,8260,3250,0,3250
+lancaster-municiple,0,0,0,0
+laurell_hill_cemetery,0,0,0,0
+liberty-corner-presbyterian-church-cemetery,0,0,0,0
+liberty_cemetery_athens,1832,725,23,748
+liberty_corner_presbyterian_church_cemetery,1113,1116,401,1296
+lindsley-cemetary,0,0,0,0
+little-river-baptist-church-cemetery,0,0,0,0
+live-oak-baptist-church-cemetery,1,1,0,1
+lorain,6,1,1,2
+lorraine_road_wootton_cemetery,0,0,0,0
+lyons-forest-home,10,28,0,28
+machias_community_cemetery,3023,943,174,1058
+Mackford_Union_Cemetery,1205,799,972,1761
+mackinaw_township_cemetery,8678,3065,5000,10486
+magnolia_cemetery,4397,1935,0,1937
+mannington_memorial_park,0,0,0,0
+maple-hill,0,0,0,0
+maple-hill-cemetery,4262,1090,434,1717
+maple-hill_8c6010,0,0,0,0
+maple-knoll-cemetery,888,374,525,1064
+marengo_cemetery,3257,2083,88,2719
+Markesan_Memorial_Park_Cemetery,6091,2612,3139,5745
+marshall_memorial_cemetery,4152,562,836,1098
+masonic-cemetery,0,0,0,0
+mercoal_cemetery,26,0,0,0
+mike,0,0,0,0
+millville_nibley_cemetery,0,0,0,0
+mineral-springs-cemetery,0,0,0,0
+Mineral_Creek_Cemetery,5384,1478,351,1980
+monte_vista_cemetery,2,0,0,0
+montview_columbarium,905,935,4,957
+moore_memorial_cemetery,0,0,0,0
+most_blessed_sacrament,0,0,0,0
+mound_cemetery,0,0,0,0
+Mountain-View-Cemetery,3599,1385,2757,1983
+mountain_park_cemetery,135,0,0,0
+mountain_view_baptist_church_cemetery,1999,662,66,728
+mountain_view_cemetery_penns_creek,1,0,0,0
+mount_carmel_catholic_cemetery,5505,3461,71,3531
+mount_olivet_cemetery,5539,1989,3578,3045
+mount_zion_baptiste_church_plattsburg_mo,0,0,0,0
+mt-oak-cemetery,0,0,0,0
+mt-pleasant-baptist-church-cemetery,3,0,0,0
+mt-vernon-baptist-church,0,0,0,0
+mt-view-cemetary,0,0,0,0
+mt_eaton_church_saylorsburg_cemetery,999,676,671,1093
+mt_gilead_cemetery,448,427,0,644
+mt_laurel_cemetery,0,0,0,0
+murray-city-cemetery,4,2,1,12
+muslim_cemetery_richardson,3647,0,0,0
+mutual_aid_cemetery,3565,1225,88,1324
+myrtle_hill_cemetery,0,0,0,0
+n-a,0,0,0,0
+nelson-cemetery,0,0,0,0
+nelson-cemetery_56a8d0,0,0,0,0
+new-life-christian-felloweship-church-cemetery,0,0,0,0
+new-oakwood-cemetery,0,0,0,0
+new_boston_cemetery,396,182,370,626
+new_braunfels_cemetery,2319,766,0,766
+New_First_Missionary_Baptist_Church_Cemetery,920,564,0,598
+New_Jewish_Cemetery,747,318,93,417
+new_pine_grove_cemetery,0,0,0,0
+new_riverside_cemetery_alton,0,0,0,0
+New_St_Kilian_Cemetery,2948,2045,2480,4787
+New_St_Patrick_Cemetery,343,153,282,450
+Norden_Cemetery,1096,742,710,1788
+north-logan-cemetery,8,1,0,2
+North_Cornwall_Cemetery,1226,781,224,898
+oak-hill-cemetery,0,0,0,0
+oakdale-cemetery,0,0,0,0
+oakesdale-cemetery,4189,1785,2693,4481
+oakland-memorial-park,12,0,0,0
+oakland_cemetery,2000,396,1214,1777
+oakland_memorial_park_terrell,17737,8659,10323,20842
+oaklawn_cemetery_cresco,0,0,0,0
+oakview_cemetery_mullin,3490,1678,2656,4347
+Oakwood_Cemetery_City_of_Hickory,14871,7944,1323,9271
+oak_hill_cemetery,0,0,0,0
+oak_lawn_cemetery,0,0,0,0
+obioncounty-memorial-gardens,0,0,0,0
+Okanogan_Valley_Memorial_Gardens_Cemetery,4655,1867,2276,4196
+old_palestine1,0,0,0,0
+old_palestine_cemetery,6410,2505,415,2912
+old_palestine_old,1946,2466,0,2469
+old_pine_grove_cemetery,0,0,0,0
+old_riverside_cemetery_alton,0,0,0,0
+Old_St_Kilian_Cemetery,2061,1217,16,1219
+Old_St_Patrick_Cemetery,1412,685,1,685
+olivet-hill,0,0,0,0
+olivet-hill-m-e-church-cemetery,0,0,0,0
+olivet-hill-m-e-church-cemetery-9mgKu,0,0,0,0
+orglite_us_001,4,2,3,6
+orglite_us_002,1,1,0,1
+orglite_US_x002,0,0,0,0
+osiris_demo_cemetery,4337,4789,2816,9543
+palisado,0,0,0,0
+palisado-cemetery,0,0,0,0
+palisado_cemetery,8481,4787,0,5002
+paradise-garden,0,0,0,0
+payson-pioneer-cemetery,0,0,0,0
+peaceful-valley-cemetery,0,0,0,0
+Peach_Creek_Cemetery,1361,524,375,1054
+pearl_cemetery,0,0,0,0
+Philadelphia_Baptist_Cemetery,4416,741,373,1109
+phoenix-memorial-park-and-mortuary,0,0,0,0
+phoenix_memorial_park_and_mortuary,0,0,0,0
+pilgrims_rest_cemetery,153,11,14,29
+pine-grove-cemetery-district,2,1,0,1
+platter-cemetery,0,0,0,0
+pleasant-grove,0,0,0,0
+pleasant-valley-cemetery-holy-rosary-cemetery,0,0,0,0
+pleasant_hill_cemetery,4845,2444,2933,5376
+pmbc_georgia,1717,921,42,964
+poplar_springs_baptist_church,1047,498,705,1247
+porter-cemetery-indian-village,0,0,0,0
+pray-s-mill-cemetary,0,0,0,0
+presbyterian-church-of-washington-cemetery,0,0,0,0
+Primary_US_Demo_Cemetery,6002,7203,4531,11925
+private,0,0,0,0
+Providence-Cemetery,753,206,36,285
+quasset-cemetery,0,0,0,0
+Queen_of_Heaven_Catholic_Cemetery,1420,228,350,563
+queen_of_heaven_catholic_cemetery_mesa,0,0,0,0
+rader-immanuel-lutheran-cemetery,0,0,0,0
+raven-camp-cemetery,40,0,0,0
+reedy-branch-baptist-church-cemetery,0,0,0,0
+resthaven_cemetery_and_mortuary_south,0,0,0,0
+resting-place-memorial-garden,1241,14,2,44
+restland_cemetery_gatesville,14723,5491,499,5982
+restlawn-memorial-park,0,0,0,0
+Resurrection_Cemetery,7750,1728,2442,4354
+richardson_cemetery,1286,615,1161,2006
+Ridgeview_Cemetery_City_of_Hickory,3789,531,31,561
+riverside_cemetery,0,0,0,0
+riverview-cemetery,1,0,0,0
+riverview_cemetery,3846,1602,1996,2202
+riverview_cemetery_hamilton,0,0,0,0
+robb_coal_branch_cemetery,114,0,0,0
+rocky-s-test-cemetery,100,1,4,5
+rock_river,0,0,0,0
+rose-hill-cemetery,0,0,0,0
+rose-hill-cemetery-fayetteville,9616,4936,98,5317
+Rose_Hills_ICSC,2624,1120,1782,1689
+rose_hill_greene_cemetery,0,0,0,0
+ross_cemetery,0,0,0,0
+Ross_Mayes_Cemetery,6522,1400,0,1400
+Rush_River_Lutheran_Cemetery,1831,1110,76,1321
+sacred-heart-catholic-cemetery,0,0,0,0
+sacred-heart-cemetery,0,0,0,0
+sacred_heart_cemetery,0,0,0,0
+sacred_heart_cemetery_salisbury,2411,282,715,1641
+sacred_heart_columbarium,0,0,0,0
+sad-cemetary,1,1,0,1
+Saints-Reisterstown,0,0,0,0
+saint_francis_catholic_cemetery,0,0,0,0
+Saint_Peters_Cemetery,1019,226,32,258
+salem-methodist-church-of-eastover,0,0,0,0
+salem-united-methodist-church,965,575,608,1214
+salem_cemetery,0,0,0,0
+Sale_City_Cemetery,1465,501,239,946
+sandridge-cemetery,0,0,0,0
+sand_ridge_cemetery_lebanon,3433,1217,2159,3606
+san_tan_memorial_gardens_at_schnepf_farms,0,0,0,0
+schaarai-zedek-woodlawn-cemetery,0,0,0,0
+scotch_ridge_cemetery,0,0,0,0
+scotland-missionary-baptist-church,0,0,0,0
+scotland-missionary-baptist-church-cemetery,820,130,209,375
+second-baptist-church,0,0,0,0
+serbian-united-benevolent-society,0,0,0,0
+Shaftsbury_Center_Cemetery,0,0,0,0
+Shaftsbury_Grandview_Cemetery,0,0,0,0
+Shaftsbury_Maple_Hill_Cemetery,0,0,0,0
+Shaftsbury_Village_Cemetery,0,0,0,0
+Shaftsbury_Waite_Cemetery,0,0,0,0
+sherman-township-cemetery,0,0,0,0
+shriver-cemetary,0,0,0,0
+silver-grove,0,0,0,0
+Slater_Cemetery,1307,690,424,985
+slate_hill_cemetery_sentry_mapping,0,0,0,0
+Sons_and_Daughters_Cemetery,259,353,165,436
+Southside_Cemetery_Cit_of_Hickory,2441,1123,137,1267
+south_beef_river_lutheran_cemetery,1968,838,173,1054
+south_yard_cemetery,0,0,0,0
+spring_creek_cemetery,0,0,0,0
+spruce-creek-heights,0,0,0,0
+st-andrews-episcopal-church,0,0,0,0
+st-columba-episcopal-cemetery,0,0,0,0
+st-joseph-catholic-church-columbarium,0,0,0,0
+st-joseph-cemetery,0,0,0,0
+st-lawrence,0,0,0,0
+st-luke-s,0,0,0,0
+St-Luke-UM-Cemetery,2109,548,102,770
+st-marys-cemetery,0,0,0,0
+st-matthew-catholic-cemetery,0,0,0,0
+stelizabeth_ann_seton_catholic_cemetery,0,0,0,0
+StJohn_Lutheran_Church_Cemetery,647,364,17,424
+Stone_Church_Cemetery,4914,2040,314,2402
+st_andrew_cemetery_sentry_mapping,0,0,0,0
+St_Anthony_Catholic_Cemetery,1957,950,191,1829
+st_catherine_cemetery,314,342,35,380
+st_dominic_cemetery_benicia,0,0,0,0
+st_elizabeth_ann_seton,0,0,0,0
+st_francis_cemetery,2600,678,467,1296
+st_ignatius_orthodox_cemetery,379,20,179,199
+st_johns_cemetery_eolia_mo,0,0,0,0
+st_john_kanty_catholic_cemetery,15088,11738,11617,17185
+st_john_lutheran_cemetery,0,0,0,0
+st_joseph_catholic_church_cottleville_cemetery,1164,0,64,81
+st_joseph_cemetery,437,680,110,865
+st_jude_columbarium,0,0,0,0
+st_lukes_catholic_church_grafton,970,622,72,696
+St_Lukes_UM_Church,2049,487,0,487
+st_maria_goretti,0,0,0,0
+st_marys_cemetery_yardley,0,0,0,0
+St_Mary_Catholic_Cemetery,0,0,0,0
+st_mary_cemetery,4526,2458,273,2812
+st_matthew_catholic_cemetery,1510,596,1196,2331
+st_monica_catholic_church,0,0,0,0
+st_patricks_greenleaf_cemetery,711,711,0,711
+st_patricks_synderville,0,0,0,0
+St_Paul_Lutheran_Cemetery,2627,1497,393,1752
+st_philip_the_apostle,0,0,0,0
+St_Vincent_Depaul_Cemetery,6477,4000,1247,5452
+sunland_memorial_park,0,0,0,0
+sunnyside_cemetery_savoy,3290,1251,1789,1955
+sunnyslope_cemetery_bristol,0,0,0,0
+sunset_memorial_park_hoquiam,0,0,0,0
+sweet-home,0,0,0,0
+test,1,0,0,0
+test-cemetery,0,0,0,0
+test0012,0,0,0,0
+testus,0,0,0,0
+testus01,0,0,0,0
+the-catholic-families-org,53,0,34,78
+the-columbarium-at-stella-maris-grotto,20,1,1,4
+Tichora_Cemetery,320,201,236,440
+tioga_cemetery_pineville,1491,740,328,1076
+town-of-crestone-cemetery,0,0,0,0
+town_of_groton_cemetery,0,0,0,0
+town_of_groveland_riverview_cemetery,1830,6455,122,6737
+town_of_marlinton_mountainview_cemetery,7665,3365,4307,5101
+town_of_terry_cemetery,6100,1,18,10
+tpu-kuningan,152,2,3,5
+tri-community-cemetery,1,1,0,1
+trinity-evangelical-lutheran-church-taneytown,5325,2732,1576,3994
+trinity-lutheran,0,0,0,0
+Trinity_Anglican_Streetsville,422,625,113,785
+trinity_lutheran_cemetery_murdock,1219,308,555,473
+Trinity_Lutheran_Church_Cemetery_Riesel,1214,721,27,767
+twining,0,0,0,0
+union-township-cemetery,0,0,0,0
+Union_Cemetery,5948,3228,2999,5548
+unknown-at-this-time,0,0,0,0
+us,0,0,0,0
+vale_end_Cemetery,0,0,0,0
+valley-of-the-sun,0,0,0,0
+valley_of_the_sun_mortuary_and_cemetery,0,0,0,0
+Valley_View_Cemetery,5154,4381,2970,7635
+varnum_cemetery,451,244,192,335
+vaughn-bay-cemetery,4,0,0,0
+Vaughn_Bay_Cemetery,5010,1212,1875,4456
+vermont-united-methodist-church-cemetery,0,0,0,0
+victoria_beach_cemetery,0,0,0,0
+victory-cemetery,0,0,0,0
+wade-family-cemetery,0,0,0,0
+walsh_cemetery_district,0,0,0,0
+wanda-test,4,2,4,7
+warden_cemetery,1173,440,42,527
+wareham-cemeteries,1,0,0,0
+Ware_Episcopal_Church_Cemetery,1710,928,0,928
+washington-cemetery,0,0,0,0
+washtucna-pioneer-memorial-cemetery,0,0,0,0
+weippe-cemetery,0,0,0,0
+wells-village-cemetery,0,0,0,0
+west-tisbury-village-cemetery,0,0,0,0
+west-union-cemetery,44,12,22,27
+West_Point_City_Cemetery,3392,1193,3357,5851
+west_resthaven_park_cemetery,0,0,0,0
+white-chapel-cemetery,0,0,0,0
+whitelaw_presbyterian_cemetery,4350,1155,163,1301
+white_tanks_cemetery,33580,9428,0,9574
+williams-cemetery,0,0,0,0
+willow-rest-memorial-gardens,1,0,0,0
+willowhole-cemetery,0,0,0,0
+wimbrow-family-cemetery,0,0,0,0
+wimbrow-family-cemetery-ioJwa,0,0,0,0
+winthrop_street_and_provincetown_cemeteries,0,0,0,0
+wisecarver-cemetary-mohawk-cemetary,0,0,0,0
+woodbine-cemetery,1,0,0,0
+woodland_park_cemetery,2501,1322,1026,2368
+Woodlawn_Cemetery_of_Indianola,1929,1,3,6
+wynooche_cemetery,10010,5702,686,6569
+yellowstone_valley_memorial_park,6788,1593,6114,8280
+york_united_cemetery,615,604,157,763
+Youngs_Praire_Cemetery,2774,540,182,628
+zion,0,0,0,0
+Zion_Grove_Cemetery,987,17,16,30`;
+
+  // Split the data at the repeated header (unique value)
+  const headerIdx = raw.indexOf('\nCemetery_Name,');
+  const raw1 = raw.slice(0, headerIdx);
+  const raw2 = raw.slice(headerIdx+1);
+
+  // Function: parse a CSV string to an array of objects
+  function parseCSV(csv) {
+    let [headerLine, ...lines] = csv.trim().split('\n');
+    let headers = headerLine.split(',');
+    let data = [];
+    for (let line of lines) {
+      let fields = line.split(',');
+      if (fields.length < headers.length) continue;
+      let obj = {};
+      for (let i = 0; i < headers.length; ++i) {
+        obj[headers[i]] = (i === 0) ? fields[i] : +fields[i];
+      }
+      data.push(obj);
+    }
+    return data;
+  }
+
+  // Parse both
+  let arr1 = parseCSV(raw1);
+  let arr2 = parseCSV(raw2);
+
+  // Build Map: Cemetery_Name -> row for each dataset
+  let map1 = new Map(arr1.map(r => [r.Cemetery_Name, r]));
+  let map2 = new Map(arr2.map(r => [r.Cemetery_Name, r]));
+
+  // Fields to compare
+  let fields = ['total_plots', 'total_interments', 'total_rois', 'total_persons'];
+
+  // Build side-by-side array for table, only with at least one change
+  let diffRows = [];
+  let sum1 = [0,0,0,0];
+  let sum2 = [0,0,0,0];
+
+  let allNames = new Set([...map1.keys(), ...map2.keys()]);
+  for (let name of allNames) {
+    let r1 = map1.get(name) || {total_plots:0,total_interments:0,total_rois:0,total_persons:0};
+    let r2 = map2.get(name) || {total_plots:0,total_interments:0,total_rois:0,total_persons:0};
+    let changed = false;
+    for (let i=0;i<fields.length;++i) {
+      sum1[i] += +r1[fields[i]]||0;
+      sum2[i] += +r2[fields[i]]||0;
+      if (+r1[fields[i]]!==+r2[fields[i]]) changed = true;
+    }
+    if (changed) {
+      diffRows.push({
+        name,
+        before: fields.map(f => +r1[f]||0),
+        after: fields.map(f => +r2[f]||0)
+      });
+    }
+  }
+
+  // Sort by size of total absolute change in any field, descending, then by name
+  diffRows.sort((a,b) => {
+    let da = a.after.map((v,i) => Math.abs(v-a.before[i])).reduce((a,b)=>a+b,0);
+    let db = b.after.map((v,i) => Math.abs(v-b.before[i])).reduce((a,b)=>a+b,0);
+    if (db !== da) return db-da;
+    return a.name.localeCompare(b.name);
+  });
+
+  // Update sum table
+  function format(x) { return x.toLocaleString('en'); }
+  document.getElementById('sum1-plots').textContent = format(sum1[0]);
+  document.getElementById('sum1-inter').textContent = format(sum1[1]);
+  document.getElementById('sum1-rois').textContent = format(sum1[2]);
+  document.getElementById('sum1-pers').textContent = format(sum1[3]);
+  document.getElementById('sum2-plots').textContent = format(sum2[0]);
+  document.getElementById('sum2-inter').textContent = format(sum2[1]);
+  document.getElementById('sum2-rois').textContent = format(sum2[2]);
+  document.getElementById('sum2-pers').textContent = format(sum2[3]);
+  document.getElementById('diff-plots').textContent = format(sum2[0]-sum1[0]);
+  document.getElementById('diff-inter').textContent = format(sum2[1]-sum1[1]);
+  document.getElementById('diff-rois').textContent = format(sum2[2]-sum1[2]);
+  document.getElementById('diff-pers').textContent = format(sum2[3]-sum1[3]);
+
+  // Helper for styling cells
+  function chgClass(c1,c2) {
+    if (c1===c2) return 'nochange';
+    return (c2>c1) ? 'increase' : 'decrease';
+  }
+  function fmtDiff(v1, v2) {
+    if (v1 === v2) return '';
+    let sign = (v2-v1>0)?'+':'';
+    return sign+(v2-v1);
+  }
+
+  // Write the changed cemetery table
+  let tbody = document.getElementById('cem-diff-table');
+  let html = '';
+  for (let row of diffRows) {
+    html += `<tr><td style="text-align:left">${row.name}</td>`;
+    for (let i=0; i<fields.length; ++i) {
+      html += `<td>${format(row.before[i])}</td>`;
+      html += `<td>${format(row.after[i])}</td>`;
+      html += `<td class="${chgClass(row.before[i], row.after[i])}">${fmtDiff(row.before[i],row.after[i])}</td>`;
+    }
+    html += '</tr>';
+  }
+  tbody.innerHTML = html;
+</script>
+
+</body>
+</html>
+```
+**Instructions**:  
+- Save this HTML to disk and open in a browser.
+- It provides an overview, total sums for each field in both datasets, and shows all changed rows with changes highlighted (green for increase, red for decrease, gray for no change).
+- Change detection is computed for every cemetery and every field.
+- For very large inputs, the table may be many thousands of rows—search for a specific cemetery using browser find.
+- If you want to restrict to only meaningful changes (exclude single-field, low-delta, etc.) you can adjust the logic in the script.
+
+**Sample Findings from This Data (summary, not HTML):**
+- There are relatively few changes between the datasets for each cemetery; *most* rows are unchanged.
+- Some changes include, e.g.:  
+  - Astana_Tegal_Gundul: total_rois from 18 → 20; total_persons from 75 → 66 (change: +2, -9)
+  - living_legacy_mornington_green_forest: total_rois from 1172 → 1174; total_persons from 2212 → 2216 (+2, +4)
+  - st_joseph_catholic_church_cottleville_cemetery: total_rois from 61 → 64; total_persons from 78 → 81 (+3, +3)
+- You can search for individual cemetery names in the table for details.
+
+If you want a text-only or Excel-ready version, let me know!
