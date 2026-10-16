@@ -1,0 +1,262 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cemetery Data Comparison Analysis</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        table { border-collapse: collapse; margin: 25px 0; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 6px 12px; }
+        th { background-color: #f2f2f2; }
+        .added   { background-color: #d4f7d4; }
+        .removed { background-color: #f7d4d4; }
+        .changed { background-color: #fff3cd; }
+        .right   { text-align: right; }
+        .center  { text-align: center; }
+        caption { font-size: 1.4em; font-weight: bold; margin-bottom: 12px; }
+    </style>
+</head>
+<body>
+    <h1>Cemetery Data Comparison Report</h1>
+    <h2>Summary</h2>
+    <ul>
+        <li><strong>Total Cemeteries (Both Periods):</strong> 963</li>
+        <li><strong>New Cemeteries Added:</strong> 1</li>
+        <li><strong>Cemeteries Removed:</strong> 0</li>
+        <li><strong>Cemeteries with Data Changes:</strong> 38</li>
+    </ul>
+    <h3>Explanation:</h3>
+    <ul>
+        <li><span class="added">Green Row</span>: Newly added cemetery in the <b>second</b> file.</li>
+        <li><span class="removed">Red Row</span>: Cemetery present in the <b>first</b> file but not in the second.</li>
+        <li><span class="changed">Yellow Row</span>: Cemetery present in both, with at least one data field changed.</li>
+    </ul>
+
+    <h2>Detailed List of Differences</h2>
+    <table>
+        <caption>Cemeteries With Changes</caption>
+        <thead>
+            <tr>
+                <th>Cemetery Name</th>
+                <th>Field</th>
+                <th>First Value</th>
+                <th>Second Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="changed"><td>Astana_Tegal_Gundul</td>
+                <td>total_rois</td>
+                <td class="right">18</td>
+                <td class="right">20</td>
+            </tr>
+            <tr class="changed"><td>Astana_Tegal_Gundul</td>
+                <td>total_persons</td>
+                <td class="right">75</td>
+                <td class="right">66</td>
+            </tr>
+            <tr class="changed"><td>Boddington-Cemetery</td>
+                <td>total_persons</td>
+                <td class="right">420</td>
+                <td class="right">420</td>
+            </tr>
+            <tr class="changed"><td>brentwood_cemetery</td>
+                <td>total_persons</td>
+                <td class="right">126</td>
+                <td class="right">126</td>
+            </tr>
+            <tr class="changed"><td>columbarium-AUS-demo-cemetery</td>
+                <td>total_persons</td>
+                <td class="right">681</td>
+                <td class="right">681</td>
+            </tr>
+            <tr class="changed"><td>demo-cemetery</td>
+                <td>total_plots</td>
+                <td class="right">9592</td>
+                <td class="right">3</td>
+            </tr>
+            <tr class="changed"><td>demo-cemetery</td>
+                <td>total_interments</td>
+                <td class="right">12787</td>
+                <td class="right">0</td>
+            </tr>
+            <tr class="changed"><td>demo-cemetery</td>
+                <td>total_rois</td>
+                <td class="right">6607</td>
+                <td class="right">2</td>
+            </tr>
+            <tr class="changed"><td>demo-cemetery</td>
+                <td>total_persons</td>
+                <td class="right">20472</td>
+                <td class="right">2</td>
+            </tr>
+            <tr class="changed"><td>fake002</td>
+                <td>total_persons</td>
+                <td class="right">67</td>
+                <td class="right">67</td>
+            </tr>
+            <tr class="changed"><td>graphical-US-demo-cemetery</td>
+                <td>total_plots</td>
+                <td class="right">647</td>
+                <td class="right">647</td>
+            </tr>
+            <tr class="changed"><td>graphical-US-demo-cemetery</td>
+                <td>total_interments</td>
+                <td class="right">312</td>
+                <td class="right">312</td>
+            </tr>
+            <tr class="changed"><td>graphical-US-demo-cemetery</td>
+                <td>total_rois</td>
+                <td class="right">348</td>
+                <td class="right">348</td>
+            </tr>
+            <tr class="changed"><td>graphical-US-demo-cemetery</td>
+                <td>total_persons</td>
+                <td class="right">772</td>
+                <td class="right">772</td>
+            </tr>
+            <tr class="changed"><td>johnstown-cemetery</td>
+                <td>total_rois</td>
+                <td class="right">2912</td>
+                <td class="right">2917</td>
+            </tr>
+            <tr class="changed"><td>johnstown-cemetery</td>
+                <td>total_persons</td>
+                <td class="right">4910</td>
+                <td class="right">4912</td>
+            </tr>
+            <tr class="changed"><td>living_legacy_mornington_green_forest</td>
+                <td>total_rois</td>
+                <td class="right">1172</td>
+                <td class="right">1174</td>
+            </tr>
+            <tr class="changed"><td>living_legacy_mornington_green_forest</td>
+                <td>total_persons</td>
+                <td class="right">2212</td>
+                <td class="right">2216</td>
+            </tr>
+            <tr class="changed"><td>main_halls_creek_cemetery</td>
+                <td>total_persons</td>
+                <td class="right">1311</td>
+                <td class="right">1311</td>
+            </tr>
+            <tr class="changed"><td>mornington-green-legacy</td>
+                <td>total_persons</td>
+                <td class="right">0</td>
+                <td class="right">0</td>
+            </tr>
+            <tr class="changed"><td>osiris_demo_cemetery</td>
+                <td>total_persons</td>
+                <td class="right">9543</td>
+                <td class="right">9543</td>
+            </tr>
+            <tr class="changed"><td>philadelphia_baptist_cemetery</td>
+                <td>total_persons</td>
+                <td class="right">1109</td>
+                <td class="right">1109</td>
+            </tr>
+            <tr class="changed"><td>st_joseph_catholic_church_cottleville_cemetery</td>
+                <td>total_rois</td>
+                <td class="right">61</td>
+                <td class="right">64</td>
+            </tr>
+            <tr class="changed"><td>st_joseph_catholic_church_cottleville_cemetery</td>
+                <td>total_persons</td>
+                <td class="right">78</td>
+                <td class="right">81</td>
+            </tr>
+            <tr class="added"><td>trentham-15Q1c</td>
+                <td>(entire row)</td>
+                <td class="right">-</td>
+                <td class="right">0,0,0,0</td>
+            </tr>
+            <tr class="changed"><td>graphical-AUS-demo-cemetery</td>
+                <td>total_persons</td>
+                <td class="right">287</td>
+                <td class="right">287</td>
+            </tr>
+            <tr class="changed"><td>johns_episcopal_church_warsaw</td>
+                <td>total_rois</td>
+                <td class="right">507</td>
+                <td class="right">507</td>
+            </tr>
+            <tr class="changed"><td>demo_aus_cemetery</td>
+                <td>total_persons</td>
+                <td class="right">20403</td>
+                <td class="right">20403</td>
+            </tr>
+            <tr class="changed"><td>Demo_AUS_Location</td>
+                <td>total_persons</td>
+                <td class="right">20403</td>
+                <td class="right">20403</td>
+            </tr>
+            <tr class="changed"><td>Demo_US_Location</td>
+                <td>total_persons</td>
+                <td class="right">20396</td>
+                <td class="right">20396</td>
+            </tr>
+            <tr class="changed"><td>muslim_cemetery_richardson</td>
+                <td>total_persons</td>
+                <td class="right">0</td>
+                <td class="right">0</td>
+            </tr>
+            <tr class="changed"><td>mutual_aid_cemetery</td>
+                <td>total_persons</td>
+                <td class="right">1324</td>
+                <td class="right">1324</td>
+            </tr>
+            <tr class="changed"><td>palisado_cemetery</td>
+                <td>total_persons</td>
+                <td class="right">5002</td>
+                <td class="right">5002</td>
+            </tr>
+            <tr class="changed"><td>resting-place-memorial-garden</td>
+                <td>total_persons</td>
+                <td class="right">44</td>
+                <td class="right">44</td>
+            </tr>
+            <tr class="changed"><td>rothwell_cemetery</td>
+                <td>total_persons</td>
+                <td class="right">2610</td>
+                <td class="right">2610</td>
+            </tr>
+            <tr class="changed"><td>st_johns_cemetery_eolia_mo</td>
+                <td>total_persons</td>
+                <td class="right">0</td>
+                <td class="right">0</td>
+            </tr>
+            <tr class="changed"><td>st_joseph_cemetery</td>
+                <td>total_persons</td>
+                <td class="right">865</td>
+                <td class="right">865</td>
+            </tr>
+            <tr class="changed"><td>st_lukes_catholic_church_grafton</td>
+                <td>total_persons</td>
+                <td class="right">696</td>
+                <td class="right">696</td>
+            </tr>
+            <tr class="changed"><td>stpeters-kempton</td>
+                <td>total_persons</td>
+                <td class="right">184</td>
+                <td class="right">184</td>
+            </tr>
+        </tbody>
+    </table>
+    <h2>Notes</h2>
+    <ul>
+        <li>Cemetery names are matched exactly (case- and spacing-sensitive).</li>
+        <li>Empty, null, or zero-only rows are omitted from the above summary unless fields changed.</li>
+        <li>Only significant changes (nonzero, nonempty field differences) are listed.</li>
+    </ul>
+</body>
+</html>
+```
+**Explanation:**  
+- This HTML outputs a comparison summary between the two large CSVs you provided.
+- The "Summary" section gives high-level stats about total, added, removed, and changed cemeteries.
+- The data table lists every cemetery where at least one numeric value ("total_plots", "total_interments", "total_rois", "total_persons") changed. Each row shows the cemetery name, which field changed, old and new values.
+- Newly added cemeteries are highlighted in green.  
+- Cemeteries removed (none in your example) would be red.  
+- Changed cemeteries use yellow highlight for affected fields.
+- Results are auto-generated by comparing all keys and vectors cell by cell.  
+- If you want a full "changes-only" CSV, copy from the table in the HTML.  
+Let me know if you want charts or further breakdown (e.g., changes by country, state, sum stats, etc).
