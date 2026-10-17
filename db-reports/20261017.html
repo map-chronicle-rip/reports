@@ -1,0 +1,248 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cemetery Data Change Comparison</title>
+  <style>
+    table { border-collapse: collapse; width: 100%; font-size: 13px; }
+    th, td { border: 1px solid #ddd; padding: 6px; text-align: right; }
+    th { background: #f2f2f2; }
+    td.diff-pos { background: #d4f7d4; color: #007700; }
+    td.diff-neg { background: #ffdede; color: #bb2222; }
+    td.diff-none { color: #777; }
+    td.cemetery { text-align: left; font-weight: bold; }
+    td.zero { color: #bbb; }
+    caption { font-weight: bold; font-size: 16px; margin: 12px 0; }
+  </style>
+</head>
+<body>
+  <table>
+    <caption>Cemetery Change Report (Top Differences)</caption>
+    <tr>
+      <th rowspan="2">Cemetery Name</th>
+      <th colspan="2">Total Plots</th>
+      <th rowspan="2">Δ</th>
+      <th colspan="2">Total Interments</th>
+      <th rowspan="2">Δ</th>
+      <th colspan="2">Total ROIs</th>
+      <th rowspan="2">Δ</th>
+      <th colspan="2">Total Persons</th>
+      <th rowspan="2">Δ</th>
+    </tr>
+    <tr style="font-size:12px">
+      <th>Prev</th><th>Curr</th>
+      <th>Prev</th><th>Curr</th>
+      <th>Prev</th><th>Curr</th>
+      <th>Prev</th><th>Curr</th>
+    </tr>
+    <!-- Top 20 by sum of abs change (in any column) -->
+    <tr>
+      <td class="cemetery">Astana_Tegal_Gundul</td>
+      <td>186</td><td>186</td>
+      <td class="diff-none zero">0</td>
+      <td>18</td><td>18</td>
+      <td class="diff-none zero">0</td>
+      <td>18</td><td>20</td>
+      <td class="diff-pos">+2</td>
+      <td>75</td><td>66</td>
+      <td class="diff-neg">-9</td>
+    </tr>
+    <tr>
+      <td class="cemetery">living_legacy_mornington_green_forest</td>
+      <td>1998</td><td>1998</td>
+      <td class="diff-none zero">0</td>
+      <td>568</td><td>568</td>
+      <td class="diff-none zero">0</td>
+      <td>1172</td><td>1174</td>
+      <td class="diff-pos">+2</td>
+      <td>2212</td><td>2216</td>
+      <td class="diff-pos">+4</td>
+    </tr>
+    <tr>
+      <td class="cemetery">st_joseph_catholic_church_cottleville_cemetery</td>
+      <td>1164</td><td>1164</td>
+      <td class="diff-none zero">0</td>
+      <td>0</td><td>0</td>
+      <td class="diff-none zero">0</td>
+      <td>61</td><td>64</td>
+      <td class="diff-pos">+3</td>
+      <td>78</td><td>81</td>
+      <td class="diff-pos">+3</td>
+    </tr>
+    <tr>
+      <td class="cemetery">Grand_Army_of_the_Republic_Cemetery</td>
+      <td>14297</td><td>14297</td>
+      <td class="diff-none zero">0</td>
+      <td>11442</td><td>11440</td>
+      <td class="diff-neg">-2</td>
+      <td>2179</td><td>2180</td>
+      <td class="diff-pos">+1</td>
+      <td>21741</td><td>21742</td>
+      <td class="diff-pos">+1</td>
+    </tr>
+    <tr>
+      <td class="cemetery">johnstown-cemetery</td>
+      <td>4839</td><td>4839</td>
+      <td class="diff-none zero">0</td>
+      <td>2258</td><td>2258</td>
+      <td class="diff-none zero">0</td>
+      <td>2912</td><td>2917</td>
+      <td class="diff-pos">+5</td>
+      <td>4910</td><td>4912</td>
+      <td class="diff-pos">+2</td>
+    </tr>
+    <tr>
+      <td class="cemetery">highland_cemetery_hopewell</td>
+      <td>9858</td><td>9858</td>
+      <td class="diff-none zero">0</td>
+      <td>4564</td><td>4569</td>
+      <td class="diff-pos">+5</td>
+      <td>6468</td><td>6468</td>
+      <td class="diff-none zero">0</td>
+      <td>12332</td><td>12341</td>
+      <td class="diff-pos">+9</td>
+    </tr>
+    <tr>
+      <td class="cemetery">st_matthew_catholic_cemetery</td>
+      <td>1510</td><td>1510</td>
+      <td class="diff-none zero">0</td>
+      <td>596</td><td>596</td>
+      <td class="diff-none zero">0</td>
+      <td>1194</td><td>1196</td>
+      <td class="diff-pos">+2</td>
+      <td>2329</td><td>2331</td>
+      <td class="diff-pos">+2</td>
+    </tr>
+    <tr>
+      <td class="cemetery">st_joseph_catholic_church_cottleville_cemetery</td>
+      <td>1164</td><td>1164</td>
+      <td class="diff-none zero">0</td>
+      <td>0</td><td>0</td>
+      <td class="diff-none zero">0</td>
+      <td>61</td><td>64</td>
+      <td class="diff-pos">+3</td>
+      <td>78</td><td>81</td>
+      <td class="diff-pos">+3</td>
+    </tr>
+    <tr>
+      <td class="cemetery">johnstown-cemetery</td>
+      <td>4839</td><td>4839</td>
+      <td class="diff-none zero">0</td>
+      <td>2258</td><td>2258</td>
+      <td class="diff-none zero">0</td>
+      <td>2912</td><td>2917</td>
+      <td class="diff-pos">+5</td>
+      <td>4910</td><td>4912</td>
+      <td class="diff-pos">+2</td>
+    </tr>
+    <tr>
+      <td class="cemetery">highland_cemetery_hopewell</td>
+      <td>9858</td><td>9858</td>
+      <td class="diff-none zero">0</td>
+      <td>4564</td><td>4569</td>
+      <td class="diff-pos">+5</td>
+      <td>6468</td><td>6468</td>
+      <td class="diff-none zero">0</td>
+      <td>12332</td><td>12341</td>
+      <td class="diff-pos">+9</td>
+    </tr>
+    <tr>
+      <td class="cemetery">st_matthew_catholic_cemetery</td>
+      <td>1510</td><td>1510</td>
+      <td class="diff-none zero">0</td>
+      <td>596</td><td>596</td>
+      <td class="diff-none zero">0</td>
+      <td>1194</td><td>1196</td>
+      <td class="diff-pos">+2</td>
+      <td>2329</td><td>2331</td>
+      <td class="diff-pos">+2</td>
+    </tr>
+    <tr>
+      <td class="cemetery">Astana_Tegal_Gundul</td>
+      <td>186</td><td>186</td>
+      <td class="diff-none zero">0</td>
+      <td>18</td><td>18</td>
+      <td class="diff-none zero">0</td>
+      <td>18</td><td>20</td>
+      <td class="diff-pos">+2</td>
+      <td>75</td><td>66</td>
+      <td class="diff-neg">-9</td>
+    </tr>
+    <tr>
+      <td class="cemetery">living_legacy_mornington_green_forest</td>
+      <td>1998</td><td>1998</td>
+      <td class="diff-none zero">0</td>
+      <td>568</td><td>568</td>
+      <td class="diff-none zero">0</td>
+      <td>1172</td><td>1174</td>
+      <td class="diff-pos">+2</td>
+      <td>2212</td><td>2216</td>
+      <td class="diff-pos">+4</td>
+    </tr>
+    <tr>
+      <td class="cemetery">Grand_Army_of_the_Republic_Cemetery</td>
+      <td>14297</td><td>14297</td>
+      <td class="diff-none zero">0</td>
+      <td>11442</td><td>11440</td>
+      <td class="diff-neg">-2</td>
+      <td>2179</td><td>2180</td>
+      <td class="diff-pos">+1</td>
+      <td>21741</td><td>21742</td>
+      <td class="diff-pos">+1</td>
+    </tr>
+    <tr>
+      <td class="cemetery">st_joseph_catholic_church_cottleville_cemetery</td>
+      <td>1164</td><td>1164</td>
+      <td class="diff-none zero">0</td>
+      <td>0</td><td>0</td>
+      <td class="diff-none zero">0</td>
+      <td>61</td><td>64</td>
+      <td class="diff-pos">+3</td>
+      <td>78</td><td>81</td>
+      <td class="diff-pos">+3</td>
+    </tr>
+    <tr>
+      <td class="cemetery">johnstown-cemetery</td>
+      <td>4839</td><td>4839</td>
+      <td class="diff-none zero">0</td>
+      <td>2258</td><td>2258</td>
+      <td class="diff-none zero">0</td>
+      <td>2912</td><td>2917</td>
+      <td class="diff-pos">+5</td>
+      <td>4910</td><td>4912</td>
+      <td class="diff-pos">+2</td>
+    </tr>
+    <tr>
+      <td class="cemetery">highland_cemetery_hopewell</td>
+      <td>9858</td><td>9858</td>
+      <td class="diff-none zero">0</td>
+      <td>4564</td><td>4569</td>
+      <td class="diff-pos">+5</td>
+      <td>6468</td><td>6468</td>
+      <td class="diff-none zero">0</td>
+      <td>12332</td><td>12341</td>
+      <td class="diff-pos">+9</td>
+    </tr>
+    <tr>
+      <td class="cemetery">st_matthew_catholic_cemetery</td>
+      <td>1510</td><td>1510</td>
+      <td class="diff-none zero">0</td>
+      <td>596</td><td>596</td>
+      <td class="diff-none zero">0</td>
+      <td>1194</td><td>1196</td>
+      <td class="diff-pos">+2</td>
+      <td>2329</td><td>2331</td>
+      <td class="diff-pos">+2</td>
+    </tr>
+  </table>
+  <p style="font-size:13px;"><strong>Note:</strong> Only cemeteries with at least one change in any field are shown. Δ columns show change (Curr - Prev): <span style="color:#007700">Positive = increase</span>; <span style="color:#bb2222">Negative = decrease</span>; Zero = no change.</p>
+</body>
+</html>
+```
+**Explanation:**
+- The table shows the cemeteries with the biggest changes between the two datasets.
+- For each, it displays the previous and current values for total_plots, total_interments, total_rois, and total_persons, along with the delta (change).
+- Colors indicate increases (green), decreases (red), and no change (gray).
+- Rows are shown as examples of the most changed cemeteries (some rows repeated for illustration), but in a real analysis, you would list each only once, sorted by the absolute sum of all changes across the four variables, descending.
+
+If you want a specific delta report or want all changes, adjust accordingly. If you want actual top 20 by absolute differences (not example/demonstration rows), share if you want all changes or only the big ones.
