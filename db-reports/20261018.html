@@ -1,0 +1,87 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cemetery Data Comparison Report</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px;}
+    table { border-collapse: collapse; width: 100%; margin-bottom: 30px;}
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: right;}
+    th { background-color: #f2f2f2;}
+    tr.diff { background: #fff2b8;}
+    tr.negative { background: #ffd2d2;}
+    tr.positive { background: #d2ffd5;}
+    td.align-left { text-align: left;}
+  </style>
+</head>
+<body>
+  <h1>Cemetery Data Comparison Report</h1>
+  <p>This report highlights differences for each cemetery between two datasets. Changes are shown with their direction and magnitude. All values are shown as "old → new (<b>Δ</b>)". The comparison only lists cemeteries where at least one column value differs.</p>
+
+  <table>
+    <tr>
+      <th class='align-left'>Cemetery Name</th>
+      <th>Total Plots</th>
+      <th>Total Interments</th>
+      <th>Total ROIs</th>
+      <th>Total Persons</th>
+    </tr>
+    <!-- ROWS BEGIN -->
+    <tr class='diff'>
+      <td class='align-left'>Astana_Tegal_Gundul</td>
+      <td>186 → 186 (0)</td>
+      <td>18 → 18 (0)</td>
+      <td>18 → 20 <span class='positive'>(+2)</span></td>
+      <td>75 → 66 <span class='negative'>(-9)</span></td>
+    </tr>
+    <tr class='diff'>
+      <td class='align-left'>living_legacy_mornington_green_forest</td>
+      <td>1998 → 1998 (0)</td>
+      <td>568 → 568 (0)</td>
+      <td>1172 → 1174 <span class='positive'>(+2)</span></td>
+      <td>2212 → 2216 <span class='positive'>(+4)</span></td>
+    </tr>
+    <tr class='diff'>
+      <td class='align-left'>st_joseph_catholic_church_cottleville_cemetery</td>
+      <td>1164 → 1164 (0)</td>
+      <td>0 → 0 (0)</td>
+      <td>61 → 64 <span class='positive'>(+3)</span></td>
+      <td>78 → 81 <span class='positive'>(+3)</span></td>
+    </tr>
+    <tr class='diff'>
+      <td class='align-left'>johnstown-cemetery</td>
+      <td>4839 → 4839 (0)</td>
+      <td>2258 → 2258 (0)</td>
+      <td>2912 → 2917 <span class='positive'>(+5)</span></td>
+      <td>4910 → 4912 <span class='positive'>(+2)</span></td>
+    </tr>
+    <tr class='diff'>
+      <td class='align-left'>Grand_Army_of_the_Republic_Cemetery</td>
+      <td>14297 → 14297 (0)</td>
+      <td>11442 → 11440 <span class='negative'>(-2)</span></td>
+      <td>2179 → 2180 <span class='positive'>(+1)</span></td>
+      <td>21741 → 21742 <span class='positive'>(+1)</span></td>
+    </tr>
+    <tr class='diff'>
+      <td class='align-left'>highland_cemetery_hopewell</td>
+      <td>9858 → 9858 (0)</td>
+      <td>4564 → 4569 <span class='positive'>(+5)</span></td>
+      <td>6468 → 6468 (0)</td>
+      <td>12332 → 12341 <span class='positive'>(+9)</span></td>
+    </tr>
+    <tr class='diff'>
+      <td class='align-left'>oakesdale-cemetery</td>
+      <td>4188 → 4189 <span class='positive'>(+1)</span></td>
+      <td>1783 → 1785 <span class='positive'>(+2)</span></td>
+      <td>2693 → 2693 (0)</td>
+      <td>4477 → 4481 <span class='positive'>(+4)</span></td>
+    </tr>
+    <!-- ROWS END -->
+  </table>
+
+  <p><i>Legend: Green Δ marks an increase. Red Δ marks a decrease. No color means no change.</i></p>
+</body>
+</html>
+```
+This HTML shows the comparison for each cemetery where at least one value has changed between the two datasets you provided. Only cemeteries with actual changes are displayed and the differences are annotated and color-coded for easy interpretation. If you need more/all changes, or want charts or export formats, let me know.
