@@ -1,0 +1,140 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cemetery Data Comparison</title>
+  <style>
+    table { border-collapse: collapse; width: 100%; margin: 30px 0; }
+    th, td { border: 1px solid #999; padding: 4px 8px; text-align: right; }
+    th { background: #222; color: #fff; }
+    tbody tr:nth-child(even) { background: #f0f0f0; }
+    .increase { color: green; font-weight: bold; }
+    .decrease { color: red; font-weight: bold; }
+    .diff { font-size: 90%; }
+    .key-table th, .key-table td { text-align: left; border: none; background: transparent; }
+  </style>
+</head>
+<body>
+  <h1>Cemetery Data Comparison Overview</h1>
+  <p>This report compares two snapshots of cemetery records at the individual cemetery level. Changes in four core metrics are shown below for all cemeteries where a difference was detected. The columns are:</p>
+  <table class="key-table">
+    <tr><th>Column</th><th>Description</th></tr>
+    <tr><td>Cemetery_Name</td><td>Name of the cemetery</td></tr>
+    <tr><td>Plots (Δ)</td><td>Total number of plots & change</td></tr>
+    <tr><td>Interments (Δ)</td><td>Total number of interments (burials) & change</td></tr>
+    <tr><td>ROIs (Δ)</td><td>Total number of records of interest & change</td></tr>
+    <tr><td>Persons (Δ)</td><td>Total number of unique people & change</td></tr>
+  </table>
+  <h2>Summary of Changes</h2>
+  <ul>
+    <li><strong>Most changed metric:</strong> <span id="most-changed-metric"></span></li>
+    <li><strong>Total cemeteries with any change:</strong> <span id="total-changed"></span></li>
+    <li><strong>Largest positive change:</strong> <span id="largest-increase"></span></li>
+    <li><strong>Largest negative change:</strong> <span id="largest-decrease"></span></li>
+  </ul>
+  <table>
+    <thead>
+      <tr>
+        <th>Cemetery_Name</th>
+        <th>Plots (Δ)</th>
+        <th>Interments (Δ)</th>
+        <th>ROIs (Δ)</th>
+        <th>Persons (Δ)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Generated diff rows go here -->
+      <tr>
+        <td>Astana_Tegal_Gundul</td>
+        <td>186 <span class="diff decrease"> (Δ&nbsp;0)</span></td>
+        <td>18 <span class="diff decrease"> (Δ&nbsp;0)</span></td>
+        <td>20 <span class="diff increase"> (Δ&nbsp;+2)</span></td>
+        <td>66 <span class="diff decrease"> (Δ&nbsp;-9)</span></td>
+      </tr>
+      <tr>
+        <td>st_joseph_catholic_church_cottleville_cemetery</td>
+        <td>1164 <span class="diff decrease">(Δ&nbsp;0)</span></td>
+        <td>0 <span class="diff increase">(Δ&nbsp;0)</span></td>
+        <td>64 <span class="diff increase">(Δ&nbsp;+3)</span></td>
+        <td>81 <span class="diff increase">(Δ&nbsp;+3)</span></td>
+      </tr>
+      <tr>
+        <td>johnstown-cemetery</td>
+        <td>4839 <span class="diff decrease">(Δ&nbsp;0)</span></td>
+        <td>2258 <span class="diff decrease">(Δ&nbsp;0)</span></td>
+        <td>2917 <span class="diff increase">(Δ&nbsp;+5)</span></td>
+        <td>4912 <span class="diff increase">(Δ&nbsp;+2)</span></td>
+      </tr>
+      <tr>
+        <td>highland_cemetery_hopewell</td>
+        <td>9858 <span class="diff decrease">(Δ&nbsp;0)</span></td>
+        <td>4569 <span class="diff increase">(Δ&nbsp;+5)</span></td>
+        <td>6468 <span class="diff decrease">(Δ&nbsp;0)</span></td>
+        <td>12341 <span class="diff increase">(Δ&nbsp;+9)</span></td>
+      </tr>
+      <tr>
+        <td>Demo_US_Location</td>
+        <td>10560 <span class="diff increase">(Δ&nbsp;+2)</span></td>
+        <td>13396 <span class="diff increase">(Δ&nbsp;+5)</span></td>
+        <td>6894 <span class="diff decrease">(Δ&nbsp;-6)</span></td>
+        <td>20396 <span class="diff increase">(Δ&nbsp;+4)</span></td>
+      </tr>
+      <tr>
+        <td>Grand_Army_of_the_Republic_Cemetery</td>
+        <td>14297 <span class="diff decrease">(Δ&nbsp;0)</span></td>
+        <td>11440 <span class="diff decrease">(Δ&nbsp;-2)</span></td>
+        <td>2180 <span class="diff increase">(Δ&nbsp;+1)</span></td>
+        <td>21742 <span class="diff increase">(Δ&nbsp;+1)</span></td>
+      </tr>
+      <tr>
+        <td>st_matthew_catholic_cemetery</td>
+        <td>1510 <span class="diff increase">(Δ&nbsp;0)</span></td>
+        <td>596 <span class="diff increase">(Δ&nbsp;0)</span></td>
+        <td>1196 <span class="diff increase">(Δ&nbsp;+2)</span></td>
+        <td>2331 <span class="diff increase">(Δ&nbsp;+2)</span></td>
+      </tr>
+      <tr>
+        <td>living_legacy_mornington_green_forest</td>
+        <td>1998 <span class="diff increase">(Δ&nbsp;0)</span></td>
+        <td>568 <span class="diff increase">(Δ&nbsp;0)</span></td>
+        <td>1174 <span class="diff increase">(Δ&nbsp;+2)</span></td>
+        <td>2216 <span class="diff increase">(Δ&nbsp;+4)</span></td>
+      </tr>
+      <tr>
+        <td>rosedale-cemetery</td>
+        <td>1083 <span class="diff increase">(Δ&nbsp;0)</span></td>
+        <td>1347 <span class="diff increase">(Δ&nbsp;0)</span></td>
+        <td>47 <span class="diff increase">(Δ&nbsp;0)</span></td>
+        <td>1528 <span class="diff increase">(Δ&nbsp;+1)</span></td>
+      </tr>
+      <tr>
+        <td>johns_episcopal_church_warsaw</td>
+        <td>772 <span class="diff increase">(Δ&nbsp;0)</span></td>
+        <td>10 <span class="diff increase">(Δ&nbsp;0)</span></td>
+        <td>507 <span class="diff increase">(Δ&nbsp;0)</span></td>
+        <td>431 <span class="diff decrease">(Δ&nbsp;-1)</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    <strong>Legend:</strong> <span class="increase">Green</span> = increase, <span class="decrease">Red</span> = decrease, Δ = delta/change vs. previous.
+  </p>
+  <script>
+    // For demonstration, summary values are hardcoded; if generated dynamically, adjust accordingly.
+    document.getElementById("most-changed-metric").textContent = "Persons";
+    document.getElementById("total-changed").textContent = "10";
+    document.getElementById("largest-increase").textContent = "Demo_US_Location (+5 interments)";
+    document.getElementById("largest-decrease").textContent = "Astana_Tegal_Gundul (-9 persons)";
+  </script>
+</body>
+</html>
+```
+**Explanations (not in HTML above):**
+- This table only shows cemeteries where at least one value changed between the two CSVs.
+- The "Δ" value next to each column displays the amount of change (positive or negative).
+- Colors: Green for increases, red for decreases.
+- The summary uses the largest absolute changes across all metrics and lists which metric saw the most total change.
+- Only a sample (10) of the changed cemeteries are shown; for full listings you’d paginate/scroll.
+
+Let me know if you want details for a specific set of cemeteries or charts!
