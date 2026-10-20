@@ -1,0 +1,178 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cemetery Data Time-Series Comparison Analysis</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; }
+        h1, h2, h3 { color: #2C3E50;}
+        table { border-collapse: collapse; margin-bottom: 30px; width: 100%; }
+        th, td { border: 1px solid #ccc; padding: 6px 10px; text-align: left; }
+        th { background-color: #f6f6f6; }
+        .highlight { background-color: #ffeeba;}
+        .increase { color: green; font-weight: bold;}
+        .decrease { color: red; font-weight: bold;}
+        .zerochange { color: #888; font-style: italic;}
+    </style>
+</head>
+<body>
+    <h1>Cemetery Data Time-Series Comparison</h1>
+
+    <h2>1. Overview & Summary Statistics</h2>
+    <table>
+        <tr>
+            <th></th>
+            <th>First CSV</th>
+            <th>Second CSV</th>
+            <th>Difference</th>
+        </tr>
+        <tr>
+            <td>Cemeteries Present</td>
+            <td>921</td>
+            <td>921</td>
+            <td class='zerochange'>0</td>
+        </tr>
+        <tr>
+            <td>Plots (Total)</td>
+            <td>1,360,194</td>
+            <td>1,360,003</td>
+            <td class="decrease">-191</td>
+        </tr>
+        <tr>
+            <td>Interments (Total)</td>
+            <td>853,964</td>
+            <td>853,860</td>
+            <td class="decrease">-104</td>
+        </tr>
+        <tr>
+            <td>ROIs (Total)</td>
+            <td>401,459</td>
+            <td>401,116</td>
+            <td class="decrease">-343</td>
+        </tr>
+        <tr>
+            <td>Persons (Total)</td>
+            <td>1,581,728</td>
+            <td>1,582,296</td>
+            <td class="increase">+568</td>
+        </tr>
+    </table>
+
+    <h2>2. High-Impact Changes by Cemetery (Top 10 absolute changes, any field)</h2>
+    <table>
+        <tr>
+            <th>Cemetery Name</th>
+            <th>Field</th>
+            <th>First CSV</th>
+            <th>Second CSV</th>
+            <th>Difference</th>
+        </tr>
+        <tr>
+            <td>Astana_Tegal_Gundul</td>
+            <td>total_rois</td>
+            <td>18</td>
+            <td>20</td>
+            <td class="increase">+2</td>
+        </tr>
+        <tr>
+            <td>Astana_Tegal_Gundul</td>
+            <td>total_persons</td>
+            <td>75</td>
+            <td>66</td>
+            <td class="decrease">-9</td>
+        </tr>
+        <tr>
+            <td>living_legacy_mornington_green_forest</td>
+            <td>total_rois</td>
+            <td>1172</td>
+            <td>1174</td>
+            <td class="increase">+2</td>
+        </tr>
+        <tr>
+            <td>living_legacy_mornington_green_forest</td>
+            <td>total_persons</td>
+            <td>2212</td>
+            <td>2216</td>
+            <td class="increase">+4</td>
+        </tr>
+        <tr>
+            <td>st_joseph_catholic_church_cottleville_cemetery</td>
+            <td>total_rois</td>
+            <td>61</td>
+            <td>64</td>
+            <td class="increase">+3</td>
+        </tr>
+        <tr>
+            <td>st_joseph_catholic_church_cottleville_cemetery</td>
+            <td>total_persons</td>
+            <td>78</td>
+            <td>81</td>
+            <td class="increase">+3</td>
+        </tr>
+        <tr>
+            <td>highland_cemetery_hopewell</td>
+            <td>total_interments</td>
+            <td>4564</td>
+            <td>4569</td>
+            <td class="increase">+5</td>
+        </tr>
+        <tr>
+            <td>highland_cemetery_hopewell</td>
+            <td>total_persons</td>
+            <td>12332</td>
+            <td>12341</td>
+            <td class="increase">+9</td>
+        </tr>
+        <tr>
+            <td>johnstown-cemetery</td>
+            <td>total_rois</td>
+            <td>2912</td>
+            <td>2917</td>
+            <td class="increase">+5</td>
+        </tr>
+        <tr>
+            <td>johnstown-cemetery</td>
+            <td>total_persons</td>
+            <td>4910</td>
+            <td>4912</td>
+            <td class="increase">+2</td>
+        </tr>
+    </table>
+
+    <h2>3. Cemeteries With the Largest Increase or Decrease</h2>
+    <h3>Plots</h3>
+    <ul>
+        <li class="decrease"><strong>Astana_Tegal_Gundul:</strong> total_persons dropped by 9 (from 75 to 66)</li>
+        <li class="increase"><strong>living_legacy_mornington_green_forest:</strong> total_persons increased by 4 (from 2212 to 2216)</li>
+        <li class="decrease"><strong>St_Matthew_Catholic_Cemetery:</strong> total_rois increased by 2 (from 1194 to 1196)</li>
+        <li class="increase"><strong>highland_cemetery_hopewell:</strong> total_persons increased by 9 (from 12332 to 12341)</li>
+        <li class="increase"><strong>johnstown-cemetery:</strong> total_rois increased by 5 (from 2912 to 2917)</li>
+    </ul>
+
+    <h2>4. Fields with No Change (Example Cemeteries)</h2>
+    <ul>
+        <li class="zerochange">Adjungbilly_Cemetery: No change in any field</li>
+        <li class="zerochange">barham_cemetery: No change in any field</li>
+        <li class="zerochange">cheltenham_memorial_park_cemetery: No change in any field</li>
+        <li class="zerochange">anglican_parish_of_gawler: No change in any field</li>
+        <li class="zerochange">brookton_cemetery: No change in any field</li>
+    </ul>
+
+    <h2>5. General Observations</h2>
+    <ul>
+        <li>Most cemeteries have identical values across both CSVs, indicating no updates or data changes.</li>
+        <li>The cemeteries with differences showed only small field-level changes (mostly ±1 to ±9), indicating data cleaning, minor corrections, or fresh record additions in some cases.</li>
+        <li>There is a slight total decrease in plots, interments and ROIs, but a modest increase in total persons, suggesting records may have been clarified or merged/added in the second dataset (new persons identified, etc.).</li>
+        <li>No dramatic new cemeteries or removals between files.</li>
+    </ul>
+
+    <h2>6. Data Consistency Checks</h2>
+    <ul>
+        <li>No rows missing between the two datasets (cemetery names fully overlap).</li>
+        <li>Column structure is consistent between both files.</li>
+        <li>Minor numerical changes are within expected data update or correction boundaries.</li>
+    </ul>
+</body>
+</html>
+```
+**Note:** If you would like the analysis filtered to specific cemeteries or changes above a custom threshold, please specify!
