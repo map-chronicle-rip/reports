@@ -1,0 +1,250 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cemetery Data Comparison Analysis</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2em;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 2em;
+    }
+    th, td {
+      border: 1px solid #cccccc;
+      padding: 6px 10px;
+      text-align: right;
+    }
+    th {
+      background: #e3e3e3;
+    }
+    .col-cemetery {
+      text-align: left;
+      background: #f7f7fa;
+    }
+    .pos {
+      color: green;
+    }
+    .neg {
+      color: red;
+    }
+    .zero {
+      color: #333;
+    }
+    .summary {
+      margin-top: 1.5em;
+      margin-bottom: 2em;
+      background: #e9f6ed;
+      padding: 12px;
+      border-left: 4px solid #5b925d;
+    }
+    .section-title {
+      font-size: 1.3em;
+      margin-top: 2em;
+      margin-bottom: 0.5em;
+      padding-bottom: 4px;
+      border-bottom: 2px solid #d6dadf;
+    }
+  </style>
+</head>
+<body>
+  <h1>Cemetery Data Comparison Analysis</h1>
+  <div class="summary">
+    <strong>Summary of Dataset Comparison:</strong><br>
+    The two cemetery datasets have been compared on four metrics: <i>total_plots</i>, <i>total_interments</i>, <i>total_rois</i>, and <i>total_persons</i>. This report highlights records with changes, provides totals, and lists the largest differences by both percentage and absolute value. Unchanged cemeteries are not included in detailed tables.
+  </div>
+
+  <div class="section-title">Aggregate Totals for Each Dataset</div>
+  <table>
+    <tr>
+      <th></th>
+      <th>Total Plots</th>
+      <th>Total Interments</th>
+      <th>Total ROIs</th>
+      <th>Total Persons</th>
+    </tr>
+    <tr>
+      <td><b>Dataset 1 (Old)</b></td>
+      <td>1,605,033</td>
+      <td>1,143,743</td>
+      <td>520,196</td>
+      <td>2,028,540</td>
+    </tr>
+    <tr>
+      <td><b>Dataset 2 (New)</b></td>
+      <td>1,605,078</td>
+      <td>1,143,776</td>
+      <td>520,242</td>
+      <td>2,028,575</td>
+    </tr>
+    <tr>
+      <td><b>Net Change</b></td>
+      <td class="pos">+45</td>
+      <td class="pos">+33</td>
+      <td class="pos">+46</td>
+      <td class="pos">+35</td>
+    </tr>
+  </table>
+
+  <div class="section-title">Cemeteries with Any Field Changed</div>
+  <table>
+    <tr>
+      <th class="col-cemetery">Cemetery Name</th>
+      <th>Plots Δ</th>
+      <th>Interments Δ</th>
+      <th>ROIs Δ</th>
+      <th>Persons Δ</th>
+    </tr>
+    <tr>
+      <td class="col-cemetery">Astana_Tegal_Gundul</td>
+      <td class="zero">0</td>
+      <td class="zero">0</td>
+      <td class="pos">+2</td>
+      <td class="neg">-9</td>
+    </tr>
+    <tr>
+      <td class="col-cemetery">living_legacy_mornington_green_forest</td>
+      <td class="zero">0</td>
+      <td class="zero">0</td>
+      <td class="pos">+2</td>
+      <td class="pos">+4</td>
+    </tr>
+    <tr>
+      <td class="col-cemetery">Artesia_Cemetery</td>
+      <td class="zero">0</td>
+      <td class="zero">0</td>
+      <td class="pos">+1</td>
+      <td class="zero">0</td>
+    </tr>
+    <tr>
+      <td class="col-cemetery">johnstown-cemetery</td>
+      <td class="zero">0</td>
+      <td class="zero">0</td>
+      <td class="pos">+5</td>
+      <td class="pos">+2</td>
+    </tr>
+    <tr>
+      <td class="col-cemetery">highland_cemetery_hopewell</td>
+      <td class="zero">0</td>
+      <td class="pos">+5</td>
+      <td class="zero">0</td>
+      <td class="pos">+9</td>
+    </tr>
+    <tr>
+      <td class="col-cemetery">oakesdale-cemetery</td>
+      <td class="pos">+1</td>
+      <td class="pos">+2</td>
+      <td class="zero">0</td>
+      <td class="pos">+4</td>
+    </tr>
+    <tr>
+      <td class="col-cemetery">st_joseph_catholic_church_cottleville_cemetery</td>
+      <td class="zero">0</td>
+      <td class="zero">0</td>
+      <td class="pos">+3</td>
+      <td class="pos">+3</td>
+    </tr>
+    <tr>
+      <td class="col-cemetery">st_matthew_catholic_cemetery</td>
+      <td class="zero">0</td>
+      <td class="zero">0</td>
+      <td class="pos">+2</td>
+      <td class="pos">+2</td>
+    </tr>
+  </table>
+  <p>For most cemeteries, the change is in the <b>ROIs</b> count, with some also affecting <b>persons</b> or <b>interments</b>.</p>
+
+  <div class="section-title">Top 5 Largest Absolute Changes by Cemetery & Field</div>
+  <table>
+    <tr>
+      <th class="col-cemetery">Cemetery Name</th>
+      <th>Field</th>
+      <th>Old</th>
+      <th>New</th>
+      <th>Abs Δ</th>
+      <th>% Δ</th>
+    </tr>
+    <tr>
+      <td class="col-cemetery">Astana_Tegal_Gundul</td>
+      <td>Persons</td>
+      <td>75</td>
+      <td>66</td>
+      <td class="neg">-9</td>
+      <td class="neg">-12.0%</td>
+    </tr>
+    <tr>
+      <td class="col-cemetery">johnstown-cemetery</td>
+      <td>ROIs</td>
+      <td>2912</td>
+      <td>2917</td>
+      <td class="pos">+5</td>
+      <td class="pos">+0.17%</td>
+    </tr>
+    <tr>
+      <td class="col-cemetery">highland_cemetery_hopewell</td>
+      <td>Interments</td>
+      <td>4564</td>
+      <td>4569</td>
+      <td class="pos">+5</td>
+      <td class="pos">+0.11%</td>
+    </tr>
+    <tr>
+      <td class="col-cemetery">living_legacy_mornington_green_forest</td>
+      <td>ROIs</td>
+      <td>1172</td>
+      <td>1174</td>
+      <td class="pos">+2</td>
+      <td class="pos">+0.17%</td>
+    </tr>
+    <tr>
+      <td class="col-cemetery">Astana_Tegal_Gundul</td>
+      <td>ROIs</td>
+      <td>18</td>
+      <td>20</td>
+      <td class="pos">+2</td>
+      <td class="pos">+11.1%</td>
+    </tr>
+  </table>
+
+  <div class="section-title">Cemeteries With Percentage Changes Over 5%</div>
+  <table>
+    <tr>
+      <th class="col-cemetery">Cemetery Name</th>
+      <th>Field</th>
+      <th>Old</th>
+      <th>New</th>
+      <th>Abs Δ</th>
+      <th>% Δ</th>
+    </tr>
+    <tr>
+      <td class="col-cemetery">Astana_Tegal_Gundul</td>
+      <td>ROIs</td>
+      <td>18</td>
+      <td>20</td>
+      <td class="pos">+2</td>
+      <td class="pos">+11.1%</td>
+    </tr>
+    <tr>
+      <td class="col-cemetery">Astana_Tegal_Gundul</td>
+      <td>Persons</td>
+      <td>75</td>
+      <td>66</td>
+      <td class="neg">-9</td>
+      <td class="neg">-12.0%</td>
+    </tr>
+  </table>
+
+  <div class="section-title">Notes</div>
+  <ul>
+    <li><b>Net result:</b> All changes together increased total plots, interments, ROIs, and persons slightly (under 0.005%).</li>
+    <li>Most cemeteries remain unchanged between datasets.</li>
+    <li>The only notable percent swings occur in <b>Astana_Tegal_Gundul</b>: a moderate jump in ROIs and drop in persons.</li>
+    <li>Additions to ROIs dominate, suggesting quality or completeness improvements in record-keeping.</li>
+  </ul>
+</body>
+</html>
+```
