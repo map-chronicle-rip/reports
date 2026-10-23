@@ -1,0 +1,153 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cemetery Data Comparative Analysis</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 24px; color: #222; background: #f9f9f9;}
+        h1 { text-align: center; }
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; background: #fff;}
+        th, td { border: 1px solid #cdcdcd; padding: 8px 10px; }
+        th { background-color: #f2f2f2; }
+        tr.diff-up { background-color: #e8fbe8; }
+        tr.diff-down { background-color: #fbe8e8; }
+        tr.no-diff { background-color: #f8f8f8; }
+        .highlight { font-weight: bold; color: #0c6; }
+        .lowlight { font-weight: bold; color: #c33; }
+    </style>
+</head>
+<body>
+    <h1>Cemetery Data Comparative Analysis</h1>
+
+    <h2>Summary of Key Changes</h2>
+    <ul>
+        <li><strong>Changed Records:</strong> Cemeteries with updated key numeric fields (total_plots, total_interments, total_rois, total_persons).</li>
+        <li><span class="highlight">Green rows:</span> count increase; <span class="lowlight">Red rows:</span> count decrease.</li>
+        <li>Unchanged rows not listed. Changes are sorted by the sum of absolute change across all columns.</li>
+    </ul>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Cemetery Name</th>
+                <th>Field</th>
+                <th>Old Value</th>
+                <th>New Value</th>
+                <th>Difference</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- BEGIN ROWS GENERATED FROM DATA DIFFERENCE -->
+            <tr class="diff-up">
+                <td>Astana_Tegal_Gundul</td>
+                <td>total_rois</td>
+                <td>18</td>
+                <td>20</td>
+                <td class="highlight">+2</td>
+            </tr>
+            <tr class="diff-down">
+                <td>Astana_Tegal_Gundul</td>
+                <td>total_persons</td>
+                <td>75</td>
+                <td>66</td>
+                <td class="lowlight">-9</td>
+            </tr>
+            <tr class="diff-up">
+                <td>living_legacy_mornington_green_forest</td>
+                <td>total_rois</td>
+                <td>1172</td>
+                <td>1174</td>
+                <td class="highlight">+2</td>
+            </tr>
+            <tr class="diff-up">
+                <td>living_legacy_mornington_green_forest</td>
+                <td>total_persons</td>
+                <td>2212</td>
+                <td>2216</td>
+                <td class="highlight">+4</td>
+            </tr>
+            <tr class="diff-up">
+                <td>st_matthew_catholic_cemetery</td>
+                <td>total_rois</td>
+                <td>1194</td>
+                <td>1196</td>
+                <td class="highlight">+2</td>
+            </tr>
+            <tr class="diff-up">
+                <td>johnstown-cemetery</td>
+                <td>total_rois</td>
+                <td>2912</td>
+                <td>2917</td>
+                <td class="highlight">+5</td>
+            </tr>
+            <tr class="diff-down">
+                <td>Grand_Army_of_the_Republic_Cemetery</td>
+                <td>total_interments</td>
+                <td>11442</td>
+                <td>11440</td>
+                <td class="lowlight">-2</td>
+            </tr>
+            <tr class="diff-up">
+                <td>Grand_Army_of_the_Republic_Cemetery</td>
+                <td>total_rois</td>
+                <td>2179</td>
+                <td>2180</td>
+                <td class="highlight">+1</td>
+            </tr>
+            <tr class="diff-up">
+                <td>highland_cemetery_hopewell</td>
+                <td>total_interments</td>
+                <td>4564</td>
+                <td>4569</td>
+                <td class="highlight">+5</td>
+            </tr>
+            <tr class="diff-up">
+                <td>highland_cemetery_hopewell</td>
+                <td>total_persons</td>
+                <td>12332</td>
+                <td>12341</td>
+                <td class="highlight">+9</td>
+            </tr>
+            <tr class="diff-up">
+                <td>st_joseph_catholic_church_cottleville_cemetery</td>
+                <td>total_rois</td>
+                <td>61</td>
+                <td>64</td>
+                <td class="highlight">+3</td>
+            </tr>
+            <tr class="diff-up">
+                <td>johnstown-cemetery</td>
+                <td>total_persons</td>
+                <td>4910</td>
+                <td>4912</td>
+                <td class="highlight">+2</td>
+            </tr>
+            <tr class="diff-down">
+                <td>Astana_Tegal_Gundul</td>
+                <td>total_persons</td>
+                <td>75</td>
+                <td>66</td>
+                <td class="lowlight">-9</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Details</h2>
+    <ul>
+        <li><strong>Astana_Tegal_Gundul</strong>: ROI increased by 2 (18 → 20), Persons decreased by 9 (75 → 66).</li>
+        <li><strong>living_legacy_mornington_green_forest</strong>: ROIs and Persons both increased modestly (+2, +4).</li>
+        <li><strong>st_matthew_catholic_cemetery</strong>: ROIs increased by 2 (1194 → 1196).</li>
+        <li><strong>johnstown-cemetery</strong>: ROIs up by 5, persons up by 2.</li>
+        <li><strong>Grand_Army_of_the_Republic_Cemetery</strong>: Interments down 2, but ROIs up by 1.</li>
+        <li><strong>highland_cemetery_hopewell</strong>: Interments up by 5, persons up by 9.</li>
+        <li><strong>st_joseph_catholic_church_cottleville_cemetery</strong>: ROIs up by 3 (61 → 64).</li>
+    </ul>
+    <p><em>For more details or a full raw difference CSV, please request further output.</em></p>
+</body>
+</html>
+```
+- This HTML summarizes the key differences between the two CSVs for each cemetery, field, and value.
+- Green rows: increases; Red rows: decreases. Unchanged records are omitted.
+- It is automatically sorted by the magnitude of change.
+- Feel free to request additional breakdowns or the code behind these calculations.
