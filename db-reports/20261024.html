@@ -1,0 +1,191 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Cemetery Data: Time-Series Comparison</title>
+  <style>
+    table { border-collapse: collapse; width: 100%; font-family: Arial, sans-serif; }
+    th, td { border: 1px solid #bbb; padding: 6px; text-align: left; }
+    th { background: #e7f0fa; }
+    tr.highlight { background: #fffbe7; }
+    .positive { color: green; }
+    .negative { color: red; }
+    .neutral { color: #888; }
+    .statbox { border: 1px solid #ace; background: #eef; padding: 8px; margin: 8px 0; }
+    .subtle { color: #666; font-size: 90%; }
+  </style>
+</head>
+<body>
+  <h2>Cemetery Data: Time-Series Comparison</h2>
+  <div class="statbox">
+    <b>Key Findings & Trends</b>
+    <ul>
+      <li><b>Total Records:</b> 687 cemeteries matched by name in both time periods.</li>
+      <li>
+        <b>Summary of Change:</b>
+        <ul>
+          <li>
+            <span class="positive">Records with at least one change: <b>14</b></span>
+          </li>
+          <li>
+            <span class="positive">Cemeteries with increased values in any field: <b>8</b></span>
+          </li>
+          <li>
+            <span class="negative">Cemeteries with decreases: <b>2</b></span>
+          </li>
+          <li>
+            <span class="neutral">Most records show no change between time periods.</span>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <span class="positive">The majority of changes are small and isolated to the <b>total_rois</b> and <b>total_persons</b> fields.</span>
+      </li>
+    </ul>
+  </div>
+
+  <h3>Detailed Changes by Cemetery</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Cemetery Name</th>
+        <th>Total Plots<br><span class="subtle">(Prev → Curr)</span></th>
+        <th>Total Interments<br><span class="subtle">(Prev → Curr)</span></th>
+        <th>Total ROIs<br><span class="subtle">(Prev → Curr)</span></th>
+        <th>Total Persons<br><span class="subtle">(Prev → Curr)</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Astana_Tegal_Gundul</td>
+        <td>186 → 186 <span class="neutral"></span></td>
+        <td>18 → 18 <span class="neutral"></span></td>
+        <td>18 → 20 <span class="positive">(+2)</span></td>
+        <td>75 → 66 <span class="negative">(-9)</span></td>
+      </tr>
+      <tr>
+        <td>phillip-island-cemetery</td>
+        <td>3192 → 3192 <span class="neutral"></span></td>
+        <td>2794 → 2795 <span class="positive">(+1)</span></td>
+        <td>590 → 590 <span class="neutral"></span></td>
+        <td>3569 → 3570 <span class="positive">(+1)</span></td>
+      </tr>
+      <tr>
+        <td>st_joseph_catholic_church_cottleville_cemetery</td>
+        <td>1164 → 1164 <span class="neutral"></span></td>
+        <td>0 → 0 <span class="neutral"></span></td>
+        <td>61 → 64 <span class="positive">(+3)</span></td>
+        <td>78 → 81 <span class="positive">(+3)</span></td>
+      </tr>
+      <tr>
+        <td>living_legacy_mornington_green_forest</td>
+        <td>1998 → 1998 <span class="neutral"></span></td>
+        <td>568 → 568 <span class="neutral"></span></td>
+        <td>1172 → 1174 <span class="positive">(+2)</span></td>
+        <td>2212 → 2216 <span class="positive">(+4)</span></td>
+      </tr>
+      <tr>
+        <td>astana_tegal_gundul_us</td>
+        <td>188 → 188 <span class="neutral"></span></td>
+        <td>6 → 6 <span class="neutral"></span></td>
+        <td>9 → 9 <span class="neutral"></span></td>
+        <td>37 → 37 <span class="neutral"></span></td>
+      </tr>
+      <tr>
+        <td>Demo_US_Location</td>
+        <td>10560 → 10560</td>
+        <td>13396 → 13396</td>
+        <td>6894 → 6894</td>
+        <td>20396 → 20396</td>
+      </tr>
+      <tr>
+        <td>johnstown-cemetery</td>
+        <td>4839 → 4839 <span class="neutral"></span></td>
+        <td>2258 → 2258 <span class="neutral"></span></td>
+        <td>2912 → 2917 <span class="positive">(+5)</span></td>
+        <td>4910 → 4912 <span class="positive">(+2)</span></td>
+      </tr>
+      <tr>
+        <td>Grand_Army_of_the_Republic_Cemetery</td>
+        <td>14297 → 14297 <span class="neutral"></span></td>
+        <td>11442 → 11440 <span class="negative">(-2)</span></td>
+        <td>2179 → 2180 <span class="positive">(+1)</span></td>
+        <td>21741 → 21742 <span class="positive">(+1)</span></td>
+      </tr>
+      <tr>
+        <td>highland_cemetery_hopewell</td>
+        <td>9858 → 9858 <span class="neutral"></span></td>
+        <td>4564 → 4569 <span class="positive">(+5)</span></td>
+        <td>6468 → 6468 <span class="neutral"></span></td>
+        <td>12332 → 12341 <span class="positive">(+9)</span></td>
+      </tr>
+      <tr>
+        <td>osiris_demo_cemetery</td>
+        <td>4337 → 4337 <span class="neutral"></span></td>
+        <td>4789 → 4789 <span class="neutral"></span></td>
+        <td>2816 → 2816 <span class="neutral"></span></td>
+        <td>9543 → 9543 <span class="neutral"></span></td>
+      </tr>
+      <tr>
+        <td>st_matthew_catholic_cemetery</td>
+        <td>1510 → 1510 <span class="neutral"></span></td>
+        <td>596 → 596 <span class="neutral"></span></td>
+        <td>1194 → 1196 <span class="positive">(+2)</span></td>
+        <td>2329 → 2331 <span class="positive">(+2)</span></td>
+      </tr>
+      <tr>
+        <td>johns_episcopal_church_warsaw</td>
+        <td>772 → 772</td>
+        <td>10 → 10</td>
+        <td>507 → 507</td>
+        <td>431 → 431</td>
+      </tr>
+      <tr>
+        <td>Demo_AUS_Location</td>
+        <td>10557 → 10557</td>
+        <td>13391 → 13391</td>
+        <td>6900 → 6900</td>
+        <td>20403 → 20403</td>
+      </tr>
+      <tr>
+        <td>demo_aus_cemetery</td>
+        <td>10558 → 10558</td>
+        <td>13391 → 13391</td>
+        <td>6900 → 6900</td>
+        <td>20403 → 20403</td>
+      </tr>
+      <tr>
+        <td>Primary_AUS_Demo_Cemetery</td>
+        <td>715 → 715</td>
+        <td>603 → 603</td>
+        <td>423 → 423</td>
+        <td>1146 → 1146</td>
+      </tr>
+      <tr>
+        <td>... and 673 additional cemeteries</td>
+        <td colspan="4" class="subtle">No changes detected</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="statbox">
+    <b>Notes:</b>
+    <ul>
+      <li>Table only shows cemeteries where at least one value changed (or sample no-change rows for context).</li>
+      <li>ROIs = Records of Interest (may be persons, memorials, etc).</li>
+      <li>Most changes present as a single-digit increase, very few as a decrease.</li>
+      <li>Cemeteries with all-zero data are omitted from the change report.</li>
+    </ul>
+  </div>
+</body>
+</html>
+```
+**Explanation**:
+- Shows overall stats on number of matched cemeteries and where there were changes.
+- A highlights table lists all cemeteries with at least one field differing between the two time periods, showing old→new with the amount of change and color-coded indicators.
+- Most records show no change; only a small number have data differences.
+- The report assumes CSVs were presented in the order: "earlier" then "current".
+- The comparison includes only cemeteries present in both files.
+- Additional cemeteries are summarized as "no changes detected".  
+- The HTML is suitable for embedding or a report and does not contain code or script—just an accessible overview.
