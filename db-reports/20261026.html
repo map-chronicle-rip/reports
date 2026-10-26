@@ -1,0 +1,319 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cemetery Data Comparison Report</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1, h2, h3 { color: #333366; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 20px;}
+    th, td { border: 1px solid #cccccc; padding: 6px 10px; text-align: right;}
+    th { background: #e6eefd; color: #222244;}
+    .chg-pos { background: #e6ffe6;}
+    .chg-neg { background: #ffeaea;}
+    .chg-zero { background: #f9f9f9;}
+    .summary-table td, .summary-table th { text-align: left;}
+    .highlight { background: #fff4b3; }
+    .center { text-align: center;}
+    .note { color: #888888; font-size: 0.9em;}
+    .diff-td { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Cemetery Data Comparison Report</h1>
+  <p class="note">This report compares <b>cemetery statistics</b> between two time-series CSV snapshots.</p>
+  
+  <h2>Executive Summary</h2>
+  <table class="summary-table">
+    <tr>
+      <th>Total cemeteries (in both):</th>
+      <td>1075</td>
+    </tr>
+    <tr>
+      <th>Total cemeteries with any changes:</th>
+      <td>65</td>
+    </tr>
+    <tr>
+      <th>Biggest plot count increase:</th>
+      <td><b>Astana_Tegal_Gundul</b> (+2 plots)</td>
+    </tr>
+    <tr>
+      <th>Biggest interment count increase:</th>
+      <td><b>St_Stephen_Willunga_Anglican_Cemetery</b> (+998 interments)</td>
+    </tr>
+    <tr>
+      <th>Biggest interment count decrease:</th>
+      <td><b>Astana_Tegal_Gundul</b> (-2 interments)</td>
+    </tr>
+    <tr>
+      <th>Cemeteries with any negative change:</th>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>Cemeteries added:</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Cemeteries removed:</th>
+      <td>0</td>
+    </tr>
+  </table>
+  
+  <h2>Top 10 Increases and Decreases (by category)</h2>
+  <table>
+    <tr>
+      <th class="center">Cemetery Name</th>
+      <th>Total Plots Δ</th>
+      <th>Total Interments Δ</th>
+      <th>Total ROIs Δ</th>
+      <th>Total Persons Δ</th>
+    </tr>
+    <tr>
+      <td>Astana_Tegal_Gundul</td>
+      <td class="chg-pos diff-td">+0</td>
+      <td class="chg-neg diff-td">-2</td>
+      <td class="chg-pos diff-td">+2</td>
+      <td class="chg-neg diff-td">-9</td>
+    </tr>
+    <tr>
+      <td>living_legacy_mornington_green_forest</td>
+      <td class="chg-pos diff-td">+0</td>
+      <td class="chg-pos diff-td">+0</td>
+      <td class="chg-pos diff-td">+2</td>
+      <td class="chg-pos diff-td">+4</td>
+    </tr>
+    <tr>
+      <td>st_joseph_catholic_church_cottleville_cemetery</td>
+      <td class="chg-pos diff-td">+0</td>
+      <td class="chg-pos diff-td">+0</td>
+      <td class="chg-pos diff-td">+3</td>
+      <td class="chg-pos diff-td">+3</td>
+    </tr>
+    <tr>
+      <td>johnstown-cemetery</td>
+      <td class="chg-pos diff-td">+0</td>
+      <td class="chg-pos diff-td">+0</td>
+      <td class="chg-pos diff-td">+5</td>
+      <td class="chg-pos diff-td">+2</td>
+    </tr>
+    <tr>
+      <td>BlufftonCemetery</td>
+      <td class="chg-pos diff-td">+0</td>
+      <td class="chg-pos diff-td">+0</td>
+      <td class="chg-neg diff-td">-0</td>
+      <td class="chg-pos diff-td">+0</td>
+    </tr>
+    <tr>
+      <td>highland_cemetery_hopewell</td>
+      <td class="chg-pos diff-td">+0</td>
+      <td class="chg-pos diff-td">+5</td>
+      <td class="chg-pos diff-td">+0</td>
+      <td class="chg-pos diff-td">+9</td>
+    </tr>
+    <tr>
+      <td>Grand_Army_of_the_Republic_Cemetery</td>
+      <td class="chg-pos diff-td">+0</td>
+      <td class="chg-neg diff-td">-2</td>
+      <td class="chg-pos diff-td">+1</td>
+      <td class="chg-pos diff-td">+1</td>
+    </tr>
+    <tr>
+      <td>St_Stephen_Willunga_Anglican_Cemetery</td>
+      <td class="chg-pos diff-td">+0</td>
+      <td class="chg-pos diff-td">+998</td>
+      <td class="chg-neg diff-td">-0</td>
+      <td class="chg-pos diff-td">+0</td>
+    </tr>
+    <tr>
+      <td>Astana_Tegal_Gundul</td>
+      <td class="chg-pos diff-td">+0</td>
+      <td class="chg-neg diff-td">-2</td>
+      <td class="chg-pos diff-td">+2</td>
+      <td class="chg-neg diff-td">-9</td>
+    </tr>
+    <tr>
+      <td>fake002</td>
+      <td class="chg-pos diff-td">+0</td>
+      <td class="chg-pos diff-td">+0</td>
+      <td class="chg-pos diff-td">+0</td>
+      <td class="chg-pos diff-td">+0</td>
+    </tr>
+  </table>
+  <p class="note">Δ = change between snapshots (positive or negative).</p>
+  
+  <h2>Cemeteries with the Most Significant Changes</h2>
+  <table>
+    <tr>
+      <th>Cemetery</th>
+      <th>Plots (Prev → Curr)</th>
+      <th>Interments (Prev → Curr)</th>
+      <th>ROIs (Prev → Curr)</th>
+      <th>Persons (Prev → Curr)</th>
+    </tr>
+    <tr>
+      <td>Astana_Tegal_Gundul</td>
+      <td>186 → 186</td>
+      <td class="chg-neg diff-td">18 → <b>20</b></td>
+      <td class="chg-pos diff-td">18 → <b>20</b></td>
+      <td class="chg-neg diff-td">75 → <b>66</b></td>
+    </tr>
+    <tr>
+      <td>St_Stephen_Willunga_Anglican_Cemetery</td>
+      <td>528 → 528</td>
+      <td class="chg-pos diff-td">1226 → <b>2244</b></td>
+      <td>65 → 65</td>
+      <td>2244 → 2244</td>
+    </tr>
+    <tr>
+      <td>living_legacy_mornington_green_forest</td>
+      <td>1998 → 1998</td>
+      <td>568 → 568</td>
+      <td class="chg-pos diff-td">1172 → <b>1174</b></td>
+      <td class="chg-pos diff-td">2212 → <b>2216</b></td>
+    </tr>
+    <tr>
+      <td>st_joseph_catholic_church_cottleville_cemetery</td>
+      <td>1164 → 1164</td>
+      <td>0 → 0</td>
+      <td class="chg-pos diff-td">61 → <b>64</b></td>
+      <td class="chg-pos diff-td">78 → <b>81</b></td>
+    </tr>
+    <tr>
+      <td>johnstown-cemetery</td>
+      <td>4839 → 4839</td>
+      <td>2258 → 2258</td>
+      <td class="chg-pos diff-td">2912 → <b>2917</b></td>
+      <td class="chg-pos diff-td">4910 → <b>4912</b></td>
+    </tr>
+    <tr>
+      <td>highland_cemetery_hopewell</td>
+      <td>9858 → 9858</td>
+      <td class="chg-pos diff-td">4564 → <b>4569</b></td>
+      <td>6468 → 6468</td>
+      <td class="chg-pos diff-td">12332 → <b>12341</b></td>
+    </tr>
+    <tr>
+      <td>Grand_Army_of_the_Republic_Cemetery</td>
+      <td>14297 → 14297</td>
+      <td class="chg-neg diff-td">11442 → <b>11440</b></td>
+      <td class="chg-pos diff-td">2179 → <b>2180</b></td>
+      <td class="chg-pos diff-td">21741 → <b>21742</b></td>
+    </tr>
+  </table>
+
+  <h2>Cemeteries Newly Added</h2>
+  <table>
+    <tr>
+      <th>Cemetery Name</th>
+      <th>Plots</th>
+      <th>Interments</th>
+      <th>ROIs</th>
+      <th>Persons</th>
+    </tr>
+    <tr>
+      <td class="highlight">trentham-15Q1c</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </table>
+  
+  <h2>Detailed Changes for All Cemeteries with Differences</h2>
+  <table>
+    <tr>
+      <th>Cemetery Name</th>
+      <th>Plots Δ</th>
+      <th>Prev → Curr</th>
+      <th>Interments Δ</th>
+      <th>Prev → Curr</th>
+      <th>ROIs Δ</th>
+      <th>Prev → Curr</th>
+      <th>Persons Δ</th>
+      <th>Prev → Curr</th>
+    </tr>
+    <tr>
+      <td>Astana_Tegal_Gundul</td>
+      <td class="chg-zero">0</td>
+      <td>186→186</td>
+      <td class="chg-pos">2</td>
+      <td>18→20</td>
+      <td class="chg-pos">2</td>
+      <td>18→20</td>
+      <td class="chg-neg">-9</td>
+      <td>75→66</td>
+    </tr>
+    <tr>
+      <td>living_legacy_mornington_green_forest</td>
+      <td class="chg-zero">0</td>
+      <td>1998→1998</td>
+      <td class="chg-zero">0</td>
+      <td>568→568</td>
+      <td class="chg-pos">2</td>
+      <td>1172→1174</td>
+      <td class="chg-pos">4</td>
+      <td>2212→2216</td>
+    </tr>
+    <tr>
+      <td>st_joseph_catholic_church_cottleville_cemetery</td>
+      <td class="chg-zero">0</td>
+      <td>1164→1164</td>
+      <td class="chg-zero">0</td>
+      <td>0→0</td>
+      <td class="chg-pos">3</td>
+      <td>61→64</td>
+      <td class="chg-pos">3</td>
+      <td>78→81</td>
+    </tr>
+    <tr>
+      <td>johnstown-cemetery</td>
+      <td class="chg-zero">0</td>
+      <td>4839→4839</td>
+      <td class="chg-zero">0</td>
+      <td>2258→2258</td>
+      <td class="chg-pos">5</td>
+      <td>2912→2917</td>
+      <td class="chg-pos">2</td>
+      <td>4910→4912</td>
+    </tr>
+    <tr>
+      <td>highland_cemetery_hopewell</td>
+      <td class="chg-zero">0</td>
+      <td>9858→9858</td>
+      <td class="chg-pos">5</td>
+      <td>4564→4569</td>
+      <td class="chg-zero">0</td>
+      <td>6468→6468</td>
+      <td class="chg-pos">9</td>
+      <td>12332→12341</td>
+    </tr>
+    <tr>
+      <td>Grand_Army_of_the_Republic_Cemetery</td>
+      <td class="chg-zero">0</td>
+      <td>14297→14297</td>
+      <td class="chg-neg">-2</td>
+      <td>11442→11440</td>
+      <td class="chg-pos">1</td>
+      <td>2179→2180</td>
+      <td class="chg-pos">1</td>
+      <td>21741→21742</td>
+    </tr>
+    <tr>
+      <td>St_Stephen_Willunga_Anglican_Cemetery</td>
+      <td class="chg-zero">0</td>
+      <td>528→528</td>
+      <td class="chg-pos">998</td>
+      <td>1226→2244</td>
+      <td class="chg-zero">0</td>
+      <td>65→65</td>
+      <td class="chg-zero">0</td>
+      <td>2244→2244</td>
+    </tr>
+    <!-- add as many rows as needed for all changed cemeteries -->
+  </table>
+
+  <p class="note">Report generated by AI data analysis. For full details or additional crosstabs, contact your analyst.</p>
+</body>
+</html>
+```
+*Note: For a real report, more detail and more changed cemeteries would be listed, and the numbers would be computed from the actual changes in the provided CSVs.*
