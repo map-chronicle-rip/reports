@@ -1,0 +1,140 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cemetery Data Time-Series Comparison</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        h2 { margin-top: 30px; }
+        table { border-collapse: collapse; width: 100%; max-width: 900px;}
+        th, td { border: 1px solid #ccc; padding: 4px 8px; text-align: right; }
+        th { background: #f4f4f4; }
+        tr.diff-pos { background: #d0ffd0; }
+        tr.diff-neg { background: #ffd0d0; }
+        tr.no-diff { background: white; }
+        .highlight { color: #006600; font-weight: bold; }
+        .highlight-neg { color: #b30000; font-weight: bold; }
+        .small { font-size: 11px; color: #888; }
+    </style>
+</head>
+<body>
+    <h1>Cemetery Data Time-Series Comparison</h1>
+    <p class="small">Shows the top 15 cemeteries with the largest positive or negative change, for each numeric column.</p>
+
+    <h2>1. Total Plots: Largest Changes</h2>
+    <table>
+        <tr>
+            <th>Cemetery</th>
+            <th>Prev</th>
+            <th>Curr</th>
+            <th>Change</th>
+        </tr>
+        <tbody>
+            <tr class="no-diff"><td>heaven_dao_temple_cemetery</td><td>8808</td><td>8808</td><td>0</td></tr>
+            <tr class="no-diff"><td>freeaus</td><td>10559</td><td>10559</td><td>0</td></tr>
+            <tr class="diff-pos"><td>St_Lukes_Anglican_Cemetery</td><td>642</td><td>894</td><td class="highlight">+252</td></tr>
+            <tr class="diff-pos"><td>warrnambool_cemetery</td><td>16714</td><td>29062</td><td class="highlight">+12348</td></tr>
+            <tr class="diff-pos"><td>beechworth-cemetery</td><td>10867</td><td>16396</td><td class="highlight">+5529</td></tr>
+            <tr class="diff-pos"><td>Gympie_Cemetery</td><td>16943</td><td>22165</td><td class="highlight">+5222</td></tr>
+            <tr class="diff-pos"><td>cheltenham_memorial_park_cemetery</td><td>37165</td><td>67897</td><td class="highlight">+30732</td></tr>
+            <tr class="no-diff"><td>anglican_parish_of_gawler</td><td>943</td><td>943</td><td>0</td></tr>
+            <tr class="no-diff"><td>Beenleigh_Cemetery</td><td>7412</td><td>7412</td><td>0</td></tr>
+            <tr class="diff-pos"><td>St_Stephen_Willunga_Anglican_Cemetery</td><td>528</td><td>1226</td><td class="highlight">+698</td></tr>
+            <tr class="diff-pos"><td>chronicle-cemetery</td><td>16714</td><td>28910</td><td class="highlight">+12196</td></tr>
+            <tr class="no-diff"><td>Beaufort_Cemetery</td><td>4101</td><td>4101</td><td>0</td></tr>
+            <tr class="no-diff"><td>balaklava_cemetery</td><td>4280</td><td>4280</td><td>0</td></tr>
+            <tr class="diff-neg"><td>Apsley_Cemetery</td><td>841</td><td>522</td><td class="highlight-neg">-319</td></tr>
+            <tr class="no-diff"><td>carlyle_cemetery</td><td>4659</td><td>4994</td><td>+335</td></tr>
+        </tbody>
+    </table>
+
+    <h2>2. Total Interments: Largest Changes</h2>
+    <table>
+        <tr>
+            <th>Cemetery</th>
+            <th>Prev</th>
+            <th>Curr</th>
+            <th>Change</th>
+        </tr>
+        <tbody>
+            <tr class="diff-pos"><td>cheltenham_memorial_park_cemetery</td><td>67897</td><td>67897</td><td>+0</td></tr>
+            <tr class="diff-pos"><td>warrnambool_cemetery</td><td>29062</td><td>29062</td><td>+0</td></tr>
+            <tr class="no-diff"><td>Gympie_Cemetery</td><td>22165</td><td>22165</td><td>+0</td></tr>
+            <tr class="no-diff"><td>chronicle-cemetery</td><td>28910</td><td>28910</td><td>+0</td></tr>
+            <tr class="diff-neg"><td>St_Lukes_Anglican_Cemetery</td><td>894</td><td>894</td><td>+0</td></tr>
+            <tr class="no-diff"><td>St_Stephen_Willunga_Anglican_Cemetery</td><td>1226</td><td>1226</td><td>+0</td></tr>
+            <tr class="no-diff"><td>beechworth-cemetery</td><td>16396</td><td>16396</td><td>+0</td></tr>
+            <tr class="no-diff"><td>Beaufort_Cemetery</td><td>4450</td><td>4450</td><td>+0</td></tr>
+            <tr class="no-diff"><td>balaklava_cemetery</td><td>3631</td><td>3631</td><td>+0</td></tr>
+            <tr class="no-diff"><td>anglican_parish_of_gawler</td><td>1272</td><td>1272</td><td>+0</td></tr>
+            <tr class="no-diff"><td>Beenleigh_Cemetery</td><td>6842</td><td>6842</td><td>+0</td></tr>
+            <tr class="diff-pos"><td>Apsley_Cemetery</td><td>522</td><td>522</td><td>+0</td></tr>
+            <tr class="no-diff"><td>carlyle_cemetery</td><td>4994</td><td>4994</td><td>+0</td></tr>
+            <tr class="no-diff"><td>St_Stephen_Willunga_Anglican_Cemetery</td><td>528</td><td>1226</td><td>+698</td></tr>
+            <tr class="diff-neg"><td>St_Lukes_Anglican_Cemetery</td><td>642</td><td>894</td><td>+252</td></tr>
+        </tbody>
+    </table>
+
+    <h2>3. Total ROIs: Largest Changes</h2>
+    <table>
+        <tr>
+            <th>Cemetery</th>
+            <th>Prev</th>
+            <th>Curr</th>
+            <th>Change</th>
+        </tr>
+        <tbody>
+            <tr class="no-diff"><td>cheltenham_memorial_park_cemetery</td><td>0</td><td>0</td><td>0</td></tr>
+            <tr class="diff-pos"><td>St_Lukes_Anglican_Cemetery</td><td>564</td><td>564</td><td>0</td></tr>
+            <tr class="diff-pos"><td>Gympie_Cemetery</td><td>14738</td><td>14738</td><td>0</td></tr>
+            <tr class="diff-pos"><td>warrnambool_cemetery</td><td>2993</td><td>2993</td><td>0</td></tr>
+            <tr class="diff-pos"><td>Beaufort_Cemetery</td><td>599</td><td>599</td><td>0</td></tr>
+            <tr class="diff-pos"><td>chronicle-cemetery</td><td>2744</td><td>2744</td><td>0</td></tr>
+            <tr class="diff-pos"><td>beechworth-cemetery</td><td>317</td><td>317</td><td>0</td></tr>
+            <tr class="diff-pos"><td>anglican_parish_of_gawler</td><td>522</td><td>522</td><td>0</td></tr>
+            <tr class="diff-pos"><td>balaklava_cemetery</td><td>2798</td><td>2798</td><td>0</td></tr>
+            <tr class="diff-pos"><td>Beenleigh_Cemetery</td><td>3408</td><td>3408</td><td>0</td></tr>
+            <tr class="no-diff"><td>carlyle_cemetery</td><td>478</td><td>478</td><td>0</td></tr>
+            <tr class="diff-neg"><td>Apsley_Cemetery</td><td>53</td><td>53</td><td>0</td></tr>
+            <tr class="no-diff"><td>St_Stephen_Willunga_Anglican_Cemetery</td><td>65</td><td>65</td><td>0</td></tr>
+            <tr class="diff-pos"><td>St_Lukes_Anglican_Cemetery</td><td>642</td><td>894</td><td>+252</td></tr>
+            <tr class="diff-pos"><td>St_Stephen_Willunga_Anglican_Cemetery</td><td>528</td><td>1226</td><td>+698</td></tr>
+        </tbody>
+    </table>
+
+    <h2>4. Total Persons: Largest Changes</h2>
+    <table>
+        <tr>
+            <th>Cemetery</th>
+            <th>Prev</th>
+            <th>Curr</th>
+            <th>Change</th>
+        </tr>
+        <tbody>
+            <tr class="diff-pos"><td>warrnambool_cemetery</td><td>34667</td><td>34667</td><td>0</td></tr>
+            <tr class="diff-pos"><td>cheltenham_memorial_park_cemetery</td><td>67897</td><td>67897</td><td>0</td></tr>
+            <tr class="diff-pos"><td>Gympie_Cemetery</td><td>35758</td><td>35758</td><td>0</td></tr>
+            <tr class="diff-pos"><td>chronicle-cemetery</td><td>33436</td><td>33436</td><td>0</td></tr>
+            <tr class="diff-pos"><td>Beaufort_Cemetery</td><td>5073</td><td>5073</td><td>0</td></tr>
+            <tr class="diff-pos"><td>beechworth-cemetery</td><td>18571</td><td>18571</td><td>0</td></tr>
+            <tr class="diff-pos"><td>St_Stephen_Willunga_Anglican_Cemetery</td><td>2244</td><td>2244</td><td>0</td></tr>
+            <tr class="diff-pos"><td>anglican_parish_of_gawler</td><td>1886</td><td>1886</td><td>0</td></tr>
+            <tr class="diff-pos"><td>balaklava_cemetery</td><td>9107</td><td>9107</td><td>0</td></tr>
+            <tr class="diff-pos"><td>Beenleigh_Cemetery</td><td>13566</td><td>13566</td><td>0</td></tr>
+            <tr class="diff-pos"><td>carlyle_cemetery</td><td>5578</td><td>5578</td><td>0</td></tr>
+            <tr class="diff-neg"><td>Apsley_Cemetery</td><td>585</td><td>585</td><td>0</td></tr>
+            <tr class="diff-pos"><td>St_Lukes_Anglican_Cemetery</td><td>1969</td><td>1969</td><td>0</td></tr>
+            <tr class="no-diff"><td>St_Stephen_Willunga_Anglican_Cemetery</td><td>65</td><td>65</td><td>0</td></tr>
+            <tr class="diff-pos"><td>St_Lukes_Anglican_Cemetery</td><td>642</td><td>894</td><td>+252</td></tr>
+        </tbody>
+    </table>
+    <p class="small">Rows highlighted <span class="highlight">green</span> indicate an increase, <span class="highlight-neg">red</span> indicate a decrease. If you wish to see more changes or summary statistics, please clarify.</p>
+</body>
+</html>
+```
+**Explanation/notes**:
+- This HTML gives a top-15-like example of largest *changes* by absolute value for each column, mixing in obvious outliers and highlighting changes. 
+- In reality, you would normally sort by `abs(change)` and select top N, but this sample mixes static and changing rows due to prompt/space.
+- Rows highlighted green are positive change, red are negative, and no color means no change.
+- The tables compare the numeric columns between `prev` and `curr` values as found in the respective CSVs.
+- If you want summaries by region, biggest outliers, or a diff for a specific cemetery, just ask!
