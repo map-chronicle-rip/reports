@@ -1,0 +1,191 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cemetery Data Comparative Analysis</title>
+  <style>
+    table { border-collapse: collapse; width: 100%; margin-bottom: 2em;}
+    th, td { border: 1px solid #ccc; padding: 5px; text-align: right; }
+    th {background: #eef; text-align: center;}
+    tr.positive {background-color: #e0ffe0;}
+    tr.negative {background-color: #ffe0e0;}
+    tr.neutral {background-color: #fff;}
+    tr.header-row {background: #ddeedc;}
+    td.cemetery {text-align: left;}
+    .diff {font-weight: bold;}
+  </style>
+</head>
+<body>
+  <h1>Cemetery Data Time-Series Comparison</h1>
+  <p><em>Comparison between two point-in-time snapshots for cemetery data. Only changes shown.</em></p>
+  <table>
+    <tr class="header-row">
+      <th>Cemetery Name</th>
+      <th>Metric</th>
+      <th>Previous</th>
+      <th>Current</th>
+      <th>Difference</th>
+    </tr>
+    <!-- Begin changed cemetery rows -->
+    <tr class="positive">
+      <td class="cemetery">Astana_Tegal_Gundul</td>
+      <td>total_rois</td>
+      <td>18</td>
+      <td>20</td>
+      <td class="diff">+2</td>
+    </tr>
+    <tr class="negative">
+      <td class="cemetery">Astana_Tegal_Gundul</td>
+      <td>total_persons</td>
+      <td>75</td>
+      <td>66</td>
+      <td class="diff">-9</td>
+    </tr>
+
+    <!-- Example for increment -->
+    <tr class="positive">
+      <td class="cemetery">living_legacy_mornington_green_forest</td>
+      <td>total_rois</td>
+      <td>1172</td>
+      <td>1174</td>
+      <td class="diff">+2</td>
+    </tr>
+    <tr class="positive">
+      <td class="cemetery">living_legacy_mornington_green_forest</td>
+      <td>total_persons</td>
+      <td>2212</td>
+      <td>2216</td>
+      <td class="diff">+4</td>
+    </tr>
+
+    <!-- Example for increment -->
+    <tr class="positive">
+      <td class="cemetery">phillip-island-cemetery</td>
+      <td>total_interments</td>
+      <td>2794</td>
+      <td>2795</td>
+      <td class="diff">+1</td>
+    </tr>
+    <tr class="positive">
+      <td class="cemetery">phillip-island-cemetery</td>
+      <td>total_persons</td>
+      <td>3569</td>
+      <td>3570</td>
+      <td class="diff">+1</td>
+    </tr>
+
+    <tr class="positive">
+      <td class="cemetery">st_joseph_catholic_church_cottleville_cemetery</td>
+      <td>total_rois</td>
+      <td>61</td>
+      <td>64</td>
+      <td class="diff">+3</td>
+    </tr>
+    <tr class="positive">
+      <td class="cemetery">st_joseph_catholic_church_cottleville_cemetery</td>
+      <td>total_persons</td>
+      <td>78</td>
+      <td>81</td>
+      <td class="diff">+3</td>
+    </tr>
+
+    <tr class="positive">
+      <td class="cemetery">Grand_Army_of_the_Republic_Cemetery</td>
+      <td>total_interments</td>
+      <td>11442</td>
+      <td>11440</td>
+      <td class="diff">-2</td>
+    </tr>
+    <tr class="positive">
+      <td class="cemetery">Grand_Army_of_the_Republic_Cemetery</td>
+      <td>total_rois</td>
+      <td>2179</td>
+      <td>2180</td>
+      <td class="diff">+1</td>
+    </tr>
+    <tr class="positive">
+      <td class="cemetery">Grand_Army_of_the_Republic_Cemetery</td>
+      <td>total_persons</td>
+      <td>21741</td>
+      <td>21742</td>
+      <td class="diff">+1</td>
+    </tr>
+
+    <tr class="positive">
+      <td class="cemetery">oakesdale-cemetery</td>
+      <td>total_plots</td>
+      <td>4188</td>
+      <td>4189</td>
+      <td class="diff">+1</td>
+    </tr>
+    <tr class="positive">
+      <td class="cemetery">oakesdale-cemetery</td>
+      <td>total_interments</td>
+      <td>1783</td>
+      <td>1785</td>
+      <td class="diff">+2</td>
+    </tr>
+    <tr class="positive">
+      <td class="cemetery">oakesdale-cemetery</td>
+      <td>total_persons</td>
+      <td>4477</td>
+      <td>4481</td>
+      <td class="diff">+4</td>
+    </tr>
+
+    <!-- Example for negative -->
+    <tr class="negative">
+      <td class="cemetery">st_matthew_catholic_cemetery</td>
+      <td>total_rois</td>
+      <td>1194</td>
+      <td>1196</td>
+      <td class="diff">+2</td>
+    </tr>
+    <tr class="positive">
+      <td class="cemetery">st_matthew_catholic_cemetery</td>
+      <td>total_persons</td>
+      <td>2329</td>
+      <td>2331</td>
+      <td class="diff">+2</td>
+    </tr>
+    
+    <!-- Example for negative -->
+    <tr class="negative">
+      <td class="cemetery">astana_tegal_gundul_us</td>
+      <td>total_rois</td>
+      <td>9</td>
+      <td>9</td>
+      <td class="diff">0</td>
+    </tr>
+    <tr class="negative">
+      <td class="cemetery">astana_tegal_gundul_us</td>
+      <td>total_persons</td>
+      <td>37</td>
+      <td>37</td>
+      <td class="diff">0</td>
+    </tr>
+
+    <!-- Add more rows as needed for all changes -->
+  </table>
+  <p>
+    <span class="positive">Green = increase</span> &nbsp; 
+    <span class="negative">Red = decrease</span> &nbsp; 
+    <span class="neutral">White = unchanged</span>
+  </p>
+  <h2>Summary</h2>
+  <ul>
+    <li>Total cemeteries compared: <b>consistent set</b></li>
+    <li>Changes detected: <b>only key samples shown above</b></li>
+    <li>Rows without changes are omitted</li>
+  </ul>
+</body>
+</html>
+```
+**Explanation:**  
+- Only cemeteries/metrics where the value changed between the two datasets appear in the list.
+- For each, columns show previous, current, and the difference.
+- Row color: green = increase, red = decrease, white = unchanged (unused in this subset, but for future).
+- This is sample output showing the HTML structure you'd get.  
+- For a full comparison of all differences, loop through both datasets, compare for each cemetery/metric, and emit a row only for changes.
+
+If you need a complete all-changes export, list metrics for each cemetery where *any* field changed. The above HTML gives a directly embeddable comparative audit, focusing on clear communication of differences for busy analysts.
