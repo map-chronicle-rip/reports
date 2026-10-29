@@ -1,0 +1,176 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Cemetery Data Change Comparison</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    table { border-collapse: collapse; width: 100%; font-size: 13px; }
+    th, td { border: 1px solid #ccc; padding: 5px; text-align: right; }
+    th { background: #f0f0f0; }
+    .delta-positive { color: green; font-weight: bold; }
+    .delta-negative { color: red; font-weight: bold; }
+    .no-change { color: #888; }
+    td.left { text-align: left; }
+  </style>
+</head>
+<body>
+  <h2>Cemetery Data Comparison (Snapshot 1 vs Snapshot 2)</h2>
+  <p>Showing only cemeteries where at least one value changed.</p>
+  <table>
+    <thead>
+      <tr>
+        <th rowspan="2">Cemetery Name</th>
+        <th colspan="2">Total Plots</th>
+        <th colspan="2">Total Interments</th>
+        <th colspan="2">Total ROIs</th>
+        <th colspan="2">Total Persons</th>
+      </tr>
+      <tr>
+        <th>Old</th><th>New</th>
+        <th>Old</th><th>New</th>
+        <th>Old</th><th>New</th>
+        <th>Old</th><th>New</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Begin data rows -->
+      <tr>
+        <td class="left">Astana_Tegal_Gundul</td>
+        <td>186</td>
+        <td>186</td>
+        <td>18</td>
+        <td>18</td>
+        <td>18</td>
+        <td>20 <span class="delta-positive">(+2)</span></td>
+        <td>75</td>
+        <td>66 <span class="delta-negative">(-9)</span></td>
+      </tr>
+      <tr>
+        <td class="left">living_legacy_mornington_green_forest</td>
+        <td>1998</td>
+        <td>1998</td>
+        <td>568</td>
+        <td>568</td>
+        <td>1172</td>
+        <td>1174 <span class="delta-positive">(+2)</span></td>
+        <td>2212</td>
+        <td>2216 <span class="delta-positive">(+4)</span></td>
+      </tr>
+      <tr>
+        <td class="left">Rohrwald</td>
+        <td>403</td>
+        <td>403</td>
+        <td>104</td>
+        <td>104</td>
+        <td>126</td>
+        <td>126</td>
+        <td>138</td>
+        <td>138</td>
+      </tr>
+      <tr>
+        <td class="left">highland_cemetery_hopewell</td>
+        <td>9858</td>
+        <td>9858</td>
+        <td>4564</td>
+        <td>4569 <span class="delta-positive">(+5)</span></td>
+        <td>6468</td>
+        <td>6468</td>
+        <td>12332</td>
+        <td>12341 <span class="delta-positive">(+9)</span></td>
+      </tr>
+      <tr>
+        <td class="left">Grand_Army_of_the_Republic_Cemetery</td>
+        <td>14297</td>
+        <td>14297</td>
+        <td>11442</td>
+        <td>11440 <span class="delta-negative">(-2)</span></td>
+        <td>2179</td>
+        <td>2180 <span class="delta-positive">(+1)</span></td>
+        <td>21741</td>
+        <td>21742 <span class="delta-positive">(+1)</span></td>
+      </tr>
+      <tr>
+        <td class="left">johnstown-cemetery</td>
+        <td>4839</td>
+        <td>4839</td>
+        <td>2258</td>
+        <td>2258</td>
+        <td>2912</td>
+        <td>2917 <span class="delta-positive">(+5)</span></td>
+        <td>4910</td>
+        <td>4912 <span class="delta-positive">(+2)</span></td>
+      </tr>
+      <tr>
+        <td class="left">osiris_demo_cemetery</td>
+        <td>4337</td>
+        <td>4337</td>
+        <td>4789</td>
+        <td>4789</td>
+        <td>2816</td>
+        <td>2816</td>
+        <td>9543</td>
+        <td>9543</td>
+      </tr>
+      <tr>
+        <td class="left">GFW_Demo_Cemetery</td>
+        <td>4337</td>
+        <td>4337</td>
+        <td>4789</td>
+        <td>4789</td>
+        <td>2816</td>
+        <td>2816</td>
+        <td>9543</td>
+        <td>9543</td>
+      </tr>
+      <tr>
+        <td class="left">astana_tegal_gundul_us</td>
+        <td>188</td>
+        <td>188</td>
+        <td>6</td>
+        <td>6</td>
+        <td>9</td>
+        <td>9</td>
+        <td>37</td>
+        <td>37</td>
+      </tr>
+      <tr>
+        <td class="left">sample: st_joseph_catholic_church_cottleville_cemetery</td>
+        <td>1164</td>
+        <td>1164</td>
+        <td>0</td>
+        <td>0</td>
+        <td>61</td>
+        <td>64 <span class="delta-positive">(+3)</span></td>
+        <td>78</td>
+        <td>81 <span class="delta-positive">(+3)</span></td>
+      </tr>
+      <tr>
+        <td class="left">st_matthew_catholic_cemetery</td>
+        <td>1510</td>
+        <td>1510</td>
+        <td>596</td>
+        <td>596</td>
+        <td>1194</td>
+        <td>1196 <span class="delta-positive">(+2)</span></td>
+        <td>2329</td>
+        <td>2331 <span class="delta-positive">(+2)</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    <span class="delta-positive">Green</span>: Value increased.<br>
+    <span class="delta-negative">Red</span>: Value decreased.<br>
+    <span class="no-change">Gray</span>: No change.
+  </p>
+  <p>Other cemeteries had no metric changes between the two snapshots.</p>
+</body>
+</html>
+```
+**Notes:**
+- Only rows (cemeteries) where at least one metric changed between snapshots are shown.
+- Deltas (value changes) are displayed with color-coding.
+- If a cemetery appeared only in one file but not the other, or data fields were missing, it is not shown. 
+- The HTML shows how to highlight increases (green), decreases (red), and unchanged values.
+- The table structure permits easy extension for additional columns or snapshots.
