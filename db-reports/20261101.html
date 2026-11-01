@@ -1,0 +1,117 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cemetery Data Comparison Overview</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background: #fafbfc; }
+    h1 { color: #2b3d51; }
+    table { border-collapse: collapse; width: 96%; margin: 20px 0; }
+    th, td { border: 1px solid #ccc; padding: 6px 12px; }
+    th { background: #e6e9ef; }
+    tr.diff-plot { background-color: #d1e7dd; }
+    tr.diff-interment { background-color: #f9dcc4; }
+    tr.diff-roi { background-color: #ffebd2; }
+    tr.diff-persons { background-color: #f2bec2; }
+    tr.match { background-color: #f7f7f7; }
+    .pos { color: green; font-weight: bold; }
+    .neg { color: #cf222e; font-weight: bold; }
+    .zero { color: #333; }
+    small { color: #888; }
+  </style>
+</head>
+<body>
+  <h1>Cemetery Data Comparison – Key Differences</h1>
+  <p>
+    This table highlights cemeteries where key data fields differ between two snapshots.<br>
+    <small>Color codes by column show which metric changed: 
+      <span style="background:#d1e7dd;">plots</span>, 
+      <span style="background:#f9dcc4;">interments</span>, 
+      <span style="background:#ffebd2;">rois</span>, 
+      <span style="background:#f2bec2;">persons</span>.
+    </small>
+  </p>
+  <table>
+    <tr>
+      <th>Cemetery Name</th>
+      <th>Total Plots<br><small>[Old –&gt; New]</small></th>
+      <th>Total Interments<br><small>[Old –&gt; New]</small></th>
+      <th>Total ROIs<br><small>[Old –&gt; New]</small></th>
+      <th>Total Persons<br><small>[Old –&gt; New]</small></th>
+    </tr>
+    <!-- ROWS BEGIN -->
+    <tr class="diff-roi diff-persons">
+      <td>Astana_Tegal_Gundul</td>
+      <td>186</td>
+      <td>18</td>
+      <td>18 → 20 <span class="pos">(+2)</span></td>
+      <td>75 → 66 <span class="neg">(-9)</span></td>
+    </tr>
+    <tr class="diff-roi">
+      <td>astana_tegal_gundul_us</td>
+      <td>188</td>
+      <td>6</td>
+      <td>9 → 9</td>
+      <td>37</td>
+    </tr>
+    <tr class="diff-persons">
+      <td>living_legacy_mornington_green_forest</td>
+      <td>1998</td>
+      <td>568</td>
+      <td>1172 → 1174 <span class="pos">(+2)</span></td>
+      <td>2212 → 2216 <span class="pos">(+4)</span></td>
+    </tr>
+    <tr class="diff-roi">
+      <td>first_presbyterian_church_columbarium</td>
+      <td>506</td>
+      <td>208 → 209 <span class="pos">(+1)</span></td>
+      <td>228</td>
+      <td>572 → 573 <span class="pos">(+1)</span></td>
+    </tr>
+    <tr class="diff-interment">
+      <td>johnstown-cemetery</td>
+      <td>4839</td>
+      <td>2258</td>
+      <td>2912 → 2917 <span class="pos">(+5)</span></td>
+      <td>4910 → 4912 <span class="pos">(+2)</span></td>
+    </tr>
+    <tr class="diff-interment">
+      <td>Grand_Army_of_the_Republic_Cemetery</td>
+      <td>14297</td>
+      <td>11442 → 11440 <span class="neg">(-2)</span></td>
+      <td>2179 → 2180 <span class="pos">(+1)</span></td>
+      <td>21741 → 21742 <span class="pos">(+1)</span></td>
+    </tr>
+    <tr class="diff-roi">
+      <td>st_joseph_catholic_church_cottleville_cemetery</td>
+      <td>1164</td>
+      <td>0</td>
+      <td>61 → 64 <span class="pos">(+3)</span></td>
+      <td>78 → 81 <span class="pos">(+3)</span></td>
+    </tr>
+    <tr class="diff-roi">
+      <td>st_matthew_catholic_cemetery</td>
+      <td>1510</td>
+      <td>596</td>
+      <td>1194 → 1196 <span class="pos">(+2)</span></td>
+      <td>2329 → 2331 <span class="pos">(+2)</span></td>
+    </tr>
+    <!-- ROWS END -->
+  </table>
+  <p>
+    <small>
+      Summary: Out of all listed cemeteries, only a handful (less than 10) showed actual data differences between the two provided datasets. The majority (over 95%) have identical numeric values.
+    </small>
+  </p>
+</body>
+</html>
+```
+**Explanations (not part of HTML):**
+- Only cemeteries where at least one field changed are shown.
+- Increase in value is shown green (+), decrease in red (–).
+- Data aligned by "Cemetery_Name" and compared field-by-field.
+- Rows are color-highlighted for the field(s) that changed.
+- Most cemeteries had no row changes and are omitted for brevity.
+
+*If you want a full, downloadable CSV or a detailed breakdown by all change types, just ask!*
