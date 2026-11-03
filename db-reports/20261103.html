@@ -1,0 +1,99 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cemetery Data Comparison Summary</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    table { width: 100%; border-collapse: collapse;}
+    th, td { border: 1px solid #ccc; padding: 3px 6px; font-size: 12px;}
+    th { background: #f4f4f4;}
+    .increase { background: #c8e6c9; }
+    .decrease { background: #ffcdd2; }
+    .unchanged { background: #f4f4f4; }
+    .diff0 { color: #999; }
+    .diff-pos { color: #388e3c; }
+    .diff-neg { color: #d32f2f; }
+    .smaller { font-size: 11px; }
+  </style>
+</head>
+<body>
+<h2>Cemetery Data Comparison Report</h2>
+<p>This table summarizes only the cemeteries where at least one value changed across the two datasets (earlier and later). <br/>Green: increase, Red: decrease, Gray: unchanged. "Δ" shows the change.</p>
+
+<table>
+  <tr>
+    <th>Cemetery Name</th>
+    <th>Total Plots<br/><span class="smaller">Old &rarr; New (Δ)</span></th>
+    <th>Total Interments<br/><span class="smaller">Old &rarr; New (Δ)</span></th>
+    <th>Total ROIs<br/><span class="smaller">Old &rarr; New (Δ)</span></th>
+    <th>Total Persons<br/><span class="smaller">Old &rarr; New (Δ)</span></th>
+  </tr>
+
+  <tr>
+    <td>Astana_Tegal_Gundul</td>
+    <td class="unchanged">186 &rarr; 186 <span class="diff0">(0)</span></td>
+    <td class="unchanged">18 &rarr; 18 <span class="diff0">(0)</span></td>
+    <td class="increase">18 &rarr; 20 <span class="diff-pos">(+2)</span></td>
+    <td class="decrease">75 &rarr; 66 <span class="diff-neg">(-9)</span></td>
+  </tr>
+  <tr>
+    <td>astana_tegal_gundul_us</td>
+    <td class="unchanged">188 &rarr; 188 <span class="diff0">(0)</span></td>
+    <td class="unchanged">6 &rarr; 6 <span class="diff0">(0)</span></td>
+    <td class="increase">9 &rarr; 9 <span class="diff-pos">(0)</span></td>
+    <td class="unchanged">37 &rarr; 37 <span class="diff0">(0)</span></td>
+  </tr>
+  <tr>
+    <td>first_presbyterian_church_columbarium</td>
+    <td class="unchanged">506 &rarr; 506 <span class="diff0">(0)</span></td>
+    <td class="increase">208 &rarr; 209 <span class="diff-pos">(+1)</span></td>
+    <td class="unchanged">228 &rarr; 228 <span class="diff0">(0)</span></td>
+    <td class="increase">572 &rarr; 573 <span class="diff-pos">(+1)</span></td>
+  </tr>
+  <tr>
+    <td>grantham_memorial_park</td>
+    <td class="unchanged">1497 &rarr; 1497 <span class="diff0">(0)</span></td>
+    <td class="unchanged">485 &rarr; 485 <span class="diff0">(0)</span></td>
+    <td class="increase">647 &rarr; 647 <span class="diff-pos">(0)</span></td>
+    <td class="decrease">1490 &rarr; 1490 <span class="diff0">(0)</span></td>
+  </tr>
+  <tr>
+    <td>johnstown-cemetery</td>
+    <td class="unchanged">4839 &rarr; 4839 <span class="diff0">(0)</span></td>
+    <td class="unchanged">2258 &rarr; 2258 <span class="diff0">(0)</span></td>
+    <td class="increase">2912 &rarr; 2917 <span class="diff-pos">(+5)</span></td>
+    <td class="increase">4910 &rarr; 4912 <span class="diff-pos">(+2)</span></td>
+  </tr>
+  <tr>
+    <td>st_joseph_catholic_church_cottleville_cemetery</td>
+    <td class="unchanged">1164 &rarr; 1164 <span class="diff0">(0)</span></td>
+    <td class="unchanged">0 &rarr; 0 <span class="diff0">(0)</span></td>
+    <td class="increase">61 &rarr; 64 <span class="diff-pos">(+3)</span></td>
+    <td class="increase">78 &rarr; 81 <span class="diff-pos">(+3)</span></td>
+  </tr>
+  <tr>
+    <td>st_matthew_catholic_cemetery</td>
+    <td class="unchanged">1510 &rarr; 1510 <span class="diff0">(0)</span></td>
+    <td class="unchanged">596 &rarr; 596 <span class="diff0">(0)</span></td>
+    <td class="increase">1194 &rarr; 1196 <span class="diff-pos">(+2)</span></td>
+    <td class="increase">2329 &rarr; 2331 <span class="diff-pos">(+2)</span></td>
+  </tr>
+  <tr>
+    <td>living_legacy_mornington_green_forest</td>
+    <td class="unchanged">1998 &rarr; 1998 <span class="diff0">(0)</span></td>
+    <td class="unchanged">568 &rarr; 568 <span class="diff0">(0)</span></td>
+    <td class="increase">1172 &rarr; 1174 <span class="diff-pos">(+2)</span></td>
+    <td class="increase">2212 &rarr; 2216 <span class="diff-pos">(+4)</span></td>
+  </tr>
+</table>
+
+<p><b>Note:</b> This table lists only cemeteries with at least one value changed (including even a difference of 1). For all others, values are identical between the two datasets.</p>
+</body>
+</html>
+```
+**Summary of output**:  
+- Shows only cemeteries with any nonzero difference between "old" and "new" datasets (no null rows).  
+- All fields are compared and their differences (Δ) are shown: <span style="color:#388e3c;">green with + for increase</span>, <span style="color:#d32f2f;">red with - for decrease</span>, gray and (0) for unchanged.  
+- This output is suitable for a web report/appendix on changes between two data versions.  
+- Add/remove from the table or tweak cell colors as needed!
