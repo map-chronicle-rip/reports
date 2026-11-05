@@ -1,0 +1,147 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cemetery Data Comparison</title>
+    <style>
+        table { border-collapse: collapse; width: 100%; font-size: 13px;}
+        th, td { border: 1px solid #ccc; padding: 4px 7px; text-align: right; }
+        th { background: #eee; }
+        .diffpos { background: #dff0d8;}
+        .diffneg { background: #f2dede;}
+        .diffzero { background: #fcf8e3;}
+        .noc { color: #aaa;}
+    </style>
+</head>
+<body>
+    <h2>Cemetery Data Comparison</h2>
+    <p>Below are cemeteries with differences between two datasets. Rows with no change are omitted for clarity.</p>
+    <table>
+        <tr>
+            <th style="text-align:left">Cemetery Name</th>
+            <th>Field</th>
+            <th>Dataset 1</th>
+            <th>Dataset 2</th>
+            <th>Δ Difference</th>
+        </tr>
+        <!-- ROWS BEGIN -->
+        <tr>
+            <td style="text-align:left">Astana_Tegal_Gundul</td>
+            <td>total_rois</td>
+            <td>18</td>
+            <td>20</td>
+            <td class="diffpos">+2</td>
+        </tr>
+        <tr>
+            <td style="text-align:left">Astana_Tegal_Gundul</td>
+            <td>total_persons</td>
+            <td>75</td>
+            <td>66</td>
+            <td class="diffneg">-9</td>
+        </tr>
+        <tr>
+            <td style="text-align:left">living_legacy_mornington_green_forest</td>
+            <td>total_rois</td>
+            <td>1172</td>
+            <td>1174</td>
+            <td class="diffpos">+2</td>
+        </tr>
+        <tr>
+            <td style="text-align:left">living_legacy_mornington_green_forest</td>
+            <td>total_persons</td>
+            <td>2212</td>
+            <td>2216</td>
+            <td class="diffpos">+4</td>
+        </tr>
+        <tr>
+            <td style="text-align:left">phillip-island-cemetery</td>
+            <td>total_interments</td>
+            <td>2794</td>
+            <td>2795</td>
+            <td class="diffpos">+1</td>
+        </tr>
+        <tr>
+            <td style="text-align:left">st_joseph_catholic_church_cottleville_cemetery</td>
+            <td>total_rois</td>
+            <td>61</td>
+            <td>64</td>
+            <td class="diffpos">+3</td>
+        </tr>
+        <tr>
+            <td style="text-align:left">st_joseph_catholic_church_cottleville_cemetery</td>
+            <td>total_persons</td>
+            <td>78</td>
+            <td>81</td>
+            <td class="diffpos">+3</td>
+        </tr>
+        <tr>
+            <td style="text-align:left">johnstown-cemetery</td>
+            <td>total_rois</td>
+            <td>2912</td>
+            <td>2917</td>
+            <td class="diffpos">+5</td>
+        </tr>
+        <tr>
+            <td style="text-align:left">johnstown-cemetery</td>
+            <td>total_persons</td>
+            <td>4910</td>
+            <td>4912</td>
+            <td class="diffpos">+2</td>
+        </tr>
+        <tr>
+            <td style="text-align:left">oakesdale-cemetery</td>
+            <td>total_plots</td>
+            <td>4188</td>
+            <td>4189</td>
+            <td class="diffpos">+1</td>
+        </tr>
+        <tr>
+            <td style="text-align:left">Grand_Army_of_the_Republic_Cemetery</td>
+            <td>total_interments</td>
+            <td>11442</td>
+            <td>11440</td>
+            <td class="diffneg">-2</td>
+        </tr>
+        <tr>
+            <td style="text-align:left">Grand_Army_of_the_Republic_Cemetery</td>
+            <td>total_rois</td>
+            <td>2179</td>
+            <td>2180</td>
+            <td class="diffpos">+1</td>
+        </tr>
+        <tr>
+            <td style="text-align:left">Grand_Army_of_the_Republic_Cemetery</td>
+            <td>total_persons</td>
+            <td>21741</td>
+            <td>21742</td>
+            <td class="diffpos">+1</td>
+        </tr>
+        <tr>
+            <td style="text-align:left">highland_cemetery_hopewell</td>
+            <td>total_interments</td>
+            <td>4564</td>
+            <td>4569</td>
+            <td class="diffpos">+5</td>
+        </tr>
+        <tr>
+            <td style="text-align:left">highland_cemetery_hopewell</td>
+            <td>total_persons</td>
+            <td>12332</td>
+            <td>12341</td>
+            <td class="diffpos">+9</td>
+        </tr>
+        <!-- ROWS END -->
+    </table>
+    <p><small>Only differing fields are listed. Δ = Dataset2 - Dataset1.<br>
+    Green = Increase, Red = Decrease, Yellow = switched 0 to 0 (very rare).</small></p>
+</body>
+</html>
+```
+**Explanation:**  
+- The table only shows cemeteries where at least one field differs between the two datasets.
+- "+": value is higher in the second dataset, green background.
+- "-": value is lower in the second dataset, red background.
+- No color for unchanged fields (not included).
+- Rows omitted for clarity if there's no difference.
+- Only the first, most meaningful changes are shown (no duplicate rows for unchanged fields).  
+If you need a different field or full details for any specific cemetery, just ask!
