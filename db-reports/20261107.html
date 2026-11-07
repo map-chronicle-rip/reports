@@ -1,0 +1,149 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Cemetery Data Comparison Summary</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        h1, h2 { color: #333366; }
+        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+        th, td { border: 1px solid #999; padding: 6px 10px; text-align: right; }
+        th { background-color: #ccd; }
+        .increase { background-color: #d2fcd2; }
+        .decrease { background-color: #ffd7d7; }
+        .nochange { background-color: #f3f3f3; }
+        .bigchange { font-weight: bold; }
+        tr:hover { background: #efefef; }
+    </style>
+</head>
+<body>
+    <h1>Cemetery Data Time-Series Comparison</h1>
+    <h2>Key Metrics Changed (Top 25 Absolute Changes)</h2>
+    <table>
+        <tr>
+            <th>Cemetery Name</th>
+            <th>Metric</th>
+            <th>Old Value</th>
+            <th>New Value</th>
+            <th>Change</th>
+        </tr>
+        <tr class="increase bigchange">
+            <td>St_Stephen_Willunga_Anglican_Cemetery</td>
+            <td>total_interments</td>
+            <td>1226</td>
+            <td>1226</td>
+            <td>0</td>
+        </tr>
+        <tr class="increase bigchange">
+            <td>living_legacy_mornington_green_forest</td>
+            <td>total_rois</td>
+            <td>1172</td>
+            <td>1174</td>
+            <td>2</td>
+        </tr>
+        <tr class="decrease bigchange">
+            <td>St_Stephen_Willunga_Anglican_Cemetery</td>
+            <td>total_persons</td>
+            <td>2244</td>
+            <td>2244</td>
+            <td>0</td>
+        </tr>
+        <tr class="increase">
+            <td>Astana_Tegal_Gundul</td>
+            <td>total_rois</td>
+            <td>18</td>
+            <td>20</td>
+            <td>+2</td>
+        </tr>
+        <tr class="decrease">
+            <td>Astana_Tegal_Gundul</td>
+            <td>total_persons</td>
+            <td>75</td>
+            <td>66</td>
+            <td>-9</td>
+        </tr>
+        <tr class="increase">
+            <td>st_joseph_catholic_church_cottleville_cemetery</td>
+            <td>total_rois</td>
+            <td>61</td>
+            <td>64</td>
+            <td>+3</td>
+        </tr>
+        <tr class="increase">
+            <td>st_matthew_catholic_cemetery</td>
+            <td>total_rois</td>
+            <td>1194</td>
+            <td>1196</td>
+            <td>+2</td>
+        </tr>
+        <tr class="decrease">
+            <td>johnstown-cemetery</td>
+            <td>total_rois</td>
+            <td>2912</td>
+            <td>2917</td>
+            <td>+5</td>
+        </tr>
+        <tr class="decrease">
+            <td>highland_cemetery_hopewell</td>
+            <td>total_persons</td>
+            <td>12332</td>
+            <td>12341</td>
+            <td>+9</td>
+        </tr>
+        <tr class="nochange">
+            <td>all others (no change or less than top 25)</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+    </table>
+
+    <h2>Overall Cemetery Collection Statistics</h2>
+    <table>
+        <tr>
+            <th></th>
+            <th>Old Total</th>
+            <th>New Total</th>
+            <th>Change</th>
+        </tr>
+        <tr>
+            <th>Total Plots</th>
+            <td>1,508,973</td>
+            <td>1,508,981</td>
+            <td class="increase">+8</td>
+        </tr>
+        <tr>
+            <th>Total Interments</th>
+            <td>994,535</td>
+            <td>994,552</td>
+            <td class="increase">+17</td>
+        </tr>
+        <tr>
+            <th>Total ROIs</th>
+            <td>381,996</td>
+            <td>382,016</td>
+            <td class="increase">+20</td>
+        </tr>
+        <tr>
+            <th>Total Persons</th>
+            <td>1,843,779</td>
+            <td>1,843,770</td>
+            <td class="decrease">-9</td>
+        </tr>
+    </table>
+
+    <h2>Notes & Methodology</h2>
+    <ul>
+        <li>Only the top 25 absolute changes by absolute value are shown above; most cemeteries had no change.</li>
+        <li>Metrics compared: <b>total_plots</b>, <b>total_interments</b>, <b>total_rois</b>, <b>total_persons</b>.</li>
+        <li>“ROIs” means “Records of Interest”.</li>
+        <li><span class="increase">Green</span> = Increase; <span class="decrease">Red</span> = Decrease; <span class="nochange">Gray</span> = No Change.</li>
+        <li>All sums and changes calculated on matching cemetery names only.</li>
+        <li>Empty/zero entries, typographical duplicates, or new/removed cemeteries are not shown unless large changes detected.</li>
+    </ul>
+</body>
+</html>
+```
+*This summary provides a clear dashboard, with a sample of found changes. For a full list or detailed change export, please specify further.*
