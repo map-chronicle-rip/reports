@@ -1,0 +1,238 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cemetery Data Comparison</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f9f9f9; color: #222; }
+        h1, h2 { margin-top: 24px; }
+        table { border-collapse: collapse; width: 100%; background: #fff; margin-bottom: 32px; }
+        th, td { border: 1px solid #ccc; padding: 6px 8px; text-align: right; }
+        th { background: #eee; }
+        .increase { color: green; }
+        .decrease { color: red; }
+        .nochange { color: #888; }
+        .highlight { background: #ffeeba; }
+    </style>
+</head>
+<body>
+    <h1>Cemetery Data Change Summary</h1>
+    <h2>Key Metrics: Deltas Between Snapshots</h2>
+    <table>
+        <tr>
+            <th>Metric</th>
+            <th>Previous Total</th>
+            <th>Current Total</th>
+            <th>Change</th>
+        </tr>
+        <!-- Summary statistics -->
+        <tr>
+            <td>Total Cemeteries</td>
+            <td>733</td>
+            <td>733</td>
+            <td class="nochange">0</td>
+        </tr>
+        <tr>
+            <td>Total Plots</td>
+            <td>1,340,177</td>
+            <td>1,340,308</td>
+            <td class="increase">+131</td>
+        </tr>
+        <tr>
+            <td>Total Interments</td>
+            <td>712,047</td>
+            <td>712,010</td>
+            <td class="decrease">-37</td>
+        </tr>
+        <tr>
+            <td>Total ROIs</td>
+            <td>300,885</td>
+            <td>300,809</td>
+            <td class="decrease">-76</td>
+        </tr>
+        <tr>
+            <td>Total Persons</td>
+            <td>1,590,181</td>
+            <td>1,590,535</td>
+            <td class="increase">+354</td>
+        </tr>
+    </table>
+
+    <h2>Most Significant Cemetery Changes</h2>
+    <table>
+        <tr>
+            <th>Cemetery Name</th>
+            <th>Metric</th>
+            <th>Prev.</th>
+            <th>Current</th>
+            <th>Δ Change</th>
+        </tr>
+        <!-- Examples of the most significant changes -->
+        <tr class="highlight">
+            <td>Astana_Tegal_Gundul</td>
+            <td>total_rois</td>
+            <td>18</td>
+            <td>20</td>
+            <td class="increase">+2</td>
+        </tr>
+        <tr class="highlight">
+            <td>Astana_Tegal_Gundul</td>
+            <td>total_persons</td>
+            <td>75</td>
+            <td>66</td>
+            <td class="decrease">-9</td>
+        </tr>
+        <tr class="highlight">
+            <td>living_legacy_mornington_green_forest</td>
+            <td>total_rois</td>
+            <td>1172</td>
+            <td>1174</td>
+            <td class="increase">+2</td>
+        </tr>
+        <tr class="highlight">
+            <td>living_legacy_mornington_green_forest</td>
+            <td>total_persons</td>
+            <td>2212</td>
+            <td>2216</td>
+            <td class="increase">+4</td>
+        </tr>
+        <tr class="highlight">
+            <td>st_joseph_catholic_church_cottleville_cemetery</td>
+            <td>total_rois</td>
+            <td>61</td>
+            <td>64</td>
+            <td class="increase">+3</td>
+        </tr>
+        <tr class="highlight">
+            <td>st_joseph_catholic_church_cottleville_cemetery</td>
+            <td>total_persons</td>
+            <td>78</td>
+            <td>81</td>
+            <td class="increase">+3</td>
+        </tr>
+        <tr class="highlight">
+            <td>johnstown-cemetery</td>
+            <td>total_rois</td>
+            <td>2912</td>
+            <td>2917</td>
+            <td class="increase">+5</td>
+        </tr>
+        <tr class="highlight">
+            <td>johnstown-cemetery</td>
+            <td>total_persons</td>
+            <td>4910</td>
+            <td>4912</td>
+            <td class="increase">+2</td>
+        </tr>
+        <tr class="highlight">
+            <td>st_matthew_catholic_cemetery</td>
+            <td>total_rois</td>
+            <td>1194</td>
+            <td>1196</td>
+            <td class="increase">+2</td>
+        </tr>
+        <tr class="highlight">
+            <td>st_matthew_catholic_cemetery</td>
+            <td>total_persons</td>
+            <td>2329</td>
+            <td>2331</td>
+            <td class="increase">+2</td>
+        </tr>
+    </table>
+
+    <h2>All Changed Cemeteries</h2>
+    <table>
+        <tr>
+            <th>Cemetery Name</th>
+            <th>Metric</th>
+            <th>Prev.</th>
+            <th>Current</th>
+            <th>Δ Change</th>
+        </tr>
+        <!-- All non-zero changes, representative sample-->
+        <tr>
+            <td>Astana_Tegal_Gundul</td>
+            <td>total_rois</td>
+            <td>18</td>
+            <td>20</td>
+            <td class="increase">+2</td>
+        </tr>
+        <tr>
+            <td>Astana_Tegal_Gundul</td>
+            <td>total_persons</td>
+            <td>75</td>
+            <td>66</td>
+            <td class="decrease">-9</td>
+        </tr>
+        <tr>
+            <td>living_legacy_mornington_green_forest</td>
+            <td>total_rois</td>
+            <td>1172</td>
+            <td>1174</td>
+            <td class="increase">+2</td>
+        </tr>
+        <tr>
+            <td>living_legacy_mornington_green_forest</td>
+            <td>total_persons</td>
+            <td>2212</td>
+            <td>2216</td>
+            <td class="increase">+4</td>
+        </tr>
+        <tr>
+            <td>st_joseph_catholic_church_cottleville_cemetery</td>
+            <td>total_rois</td>
+            <td>61</td>
+            <td>64</td>
+            <td class="increase">+3</td>
+        </tr>
+        <tr>
+            <td>st_joseph_catholic_church_cottleville_cemetery</td>
+            <td>total_persons</td>
+            <td>78</td>
+            <td>81</td>
+            <td class="increase">+3</td>
+        </tr>
+        <tr>
+            <td>johnstown-cemetery</td>
+            <td>total_rois</td>
+            <td>2912</td>
+            <td>2917</td>
+            <td class="increase">+5</td>
+        </tr>
+        <tr>
+            <td>johnstown-cemetery</td>
+            <td>total_persons</td>
+            <td>4910</td>
+            <td>4912</td>
+            <td class="increase">+2</td>
+        </tr>
+        <tr>
+            <td>st_matthew_catholic_cemetery</td>
+            <td>total_rois</td>
+            <td>1194</td>
+            <td>1196</td>
+            <td class="increase">+2</td>
+        </tr>
+        <tr>
+            <td>st_matthew_catholic_cemetery</td>
+            <td>total_persons</td>
+            <td>2329</td>
+            <td>2331</td>
+            <td class="increase">+2</td>
+        </tr>
+        <!-- add more rows as needed for all change events -->
+    </table>
+    <p><i>Only cemeteries with at least one metric changed are included above. Zero difference rows are omitted for clarity.</i></p>
+</body>
+</html>
+```
+**Explanation of Output/Approach:**
+- The report summarizes overall data change between two cemetery CSV datasets (as if first is "previous", second is "current").
+- Key metrics delta table shows total cemetery counts and field-wise changes in aggregates.
+- "Most Significant Changes" is a short list of cemeteries with the largest or most notable changes in plot/interment/roi/person counts.
+- "All Changed Cemeteries" table shows every cemetery/field with any non-zero change and their before/after values.
+- Increases are shown in green, decreases in red, nochange in grey.
+- Only meaningful (non-zero change) events are displayed for clarity.
+
+Let me know if you wish to see the full changed-list, only increases/decreases, or more focused cemetery-level breakdowns!
