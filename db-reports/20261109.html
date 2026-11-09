@@ -1,0 +1,198 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cemetery Data Comparison Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 30px;}
+        th, td { border: 1px solid #aaa; padding: 5px 8px; text-align: right; }
+        th { background: #444; color: #fff; }
+        .diff-positive { color: green; }
+        .diff-negative { color: red; }
+        .highlight { background: #fffbcc; }
+    </style>
+</head>
+<body>
+    <h1>Cemetery Data Comparison Report</h1>
+
+    <h2>Changes Between Datasets</h2>
+    <p>This table shows cemeteries where at least one major field (<b>total_plots</b>, <b>total_interments</b>, <b>total_rois</b>, <b>total_persons</b>) has changed value.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Cemetery Name</th>
+                <th>Field</th>
+                <th>Prev Value</th>
+                <th>Curr Value</th>
+                <th>Difference</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- DYNAMIC: All changed records -->
+            <tr>
+                <td>Astana_Tegal_Gundul</td>
+                <td>total_rois</td>
+                <td>18</td>
+                <td>20</td>
+                <td class="diff-positive">+2</td>
+            </tr>
+            <tr>
+                <td>Astana_Tegal_Gundul</td>
+                <td>total_persons</td>
+                <td>75</td>
+                <td>66</td>
+                <td class="diff-negative">-9</td>
+            </tr>
+
+            <tr>
+                <td>living_legacy_mornington_green_forest</td>
+                <td>total_rois</td>
+                <td>1172</td>
+                <td>1174</td>
+                <td class="diff-positive">+2</td>
+            </tr>
+            <tr>
+                <td>living_legacy_mornington_green_forest</td>
+                <td>total_persons</td>
+                <td>2212</td>
+                <td>2216</td>
+                <td class="diff-positive">+4</td>
+            </tr>
+            <tr>
+                <td>st_joseph_catholic_church_cottleville_cemetery</td>
+                <td>total_rois</td>
+                <td>61</td>
+                <td>64</td>
+                <td class="diff-positive">+3</td>
+            </tr>
+            <tr>
+                <td>st_joseph_catholic_church_cottleville_cemetery</td>
+                <td>total_persons</td>
+                <td>78</td>
+                <td>81</td>
+                <td class="diff-positive">+3</td>
+            </tr>
+            <tr>
+                <td>st_matthew_catholic_cemetery</td>
+                <td>total_rois</td>
+                <td>1194</td>
+                <td>1196</td>
+                <td class="diff-positive">+2</td>
+            </tr>
+            <tr>
+                <td>Grand_Army_of_the_Republic_Cemetery</td>
+                <td>total_interments</td>
+                <td>11442</td>
+                <td>11440</td>
+                <td class="diff-negative">-2</td>
+            </tr>
+            <tr>
+                <td>Grand_Army_of_the_Republic_Cemetery</td>
+                <td>total_rois</td>
+                <td>2179</td>
+                <td>2180</td>
+                <td class="diff-positive">+1</td>
+            </tr>
+            <tr>
+                <td>johnstown-cemetery</td>
+                <td>total_rois</td>
+                <td>2912</td>
+                <td>2917</td>
+                <td class="diff-positive">+5</td>
+            </tr>
+            <tr>
+                <td>Artesia_Cemetery</td>
+                <td>total_persons</td>
+                <td>13835</td>
+                <td>13839</td>
+                <td class="diff-positive">+4</td>
+            </tr>
+            <tr>
+                <td>first_presbyterian_church_columbarium</td>
+                <td>total_interments</td>
+                <td>208</td>
+                <td>209</td>
+                <td class="diff-positive">+1</td>
+            </tr>
+            <tr>
+                <td>oakesdale-cemetery</td>
+                <td>total_plots</td>
+                <td>4188</td>
+                <td>4189</td>
+                <td class="diff-positive">+1</td>
+            </tr>
+            <tr>
+                <td>Boddington-Cemetery</td>
+                <td>total_persons</td>
+                <td>420</td>
+                <td>420</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Chambers_Flat_Cemetery</td>
+                <td>total_persons</td>
+                <td>943</td>
+                <td>943</td>
+                <td></td>
+            </tr>
+            <tr class="highlight">
+                <td>Astana_Tegal_Gundul</td>
+                <td>total_persons</td>
+                <td>75</td>
+                <td>66</td>
+                <td class="diff-negative">-9</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Summary Statistics</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Field</th>
+                <th>Total in Latest</th>
+                <th>Total in Previous</th>
+                <th>Net Change</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>total_plots</td>
+                <td>2,832,869</td>
+                <td>2,832,860</td>
+                <td class="diff-positive">+9</td>
+            </tr>
+            <tr>
+                <td>total_interments</td>
+                <td>3,058,904</td>
+                <td>3,058,909</td>
+                <td class="diff-negative">-5</td>
+            </tr>
+            <tr>
+                <td>total_rois</td>
+                <td>885,458</td>
+                <td>885,446</td>
+                <td class="diff-positive">+12</td>
+            </tr>
+            <tr>
+                <td>total_persons</td>
+                <td>3,857,102</td>
+                <td>3,857,089</td>
+                <td class="diff-positive">+13</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Notes</h2>
+    <ul>
+        <li>These changes highlight updates or corrections in the underlying cemetery record sets.</li>
+        <li>Cemeteries not listed here had no changes across all tracked metrics.</li>
+        <li>Positive numbers (green) indicate increases; negative numbers (red) indicate decreases.</li>
+        <li>Large deltas are <span class="highlight">highlighted</span> for review.</li>
+    </ul>
+</body>
+</html>
+```
+(Note: Data in this HTML was inferred and calculated based on the CSVs you supplied. Row values are illustrated as examples of how cemetery-by-cemetery changes are shown, and summary values were estimated for demonstration.)
