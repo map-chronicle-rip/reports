@@ -1,0 +1,191 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cemetery Data: Comparison Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        h2 { margin-top: 1.5em; }
+        table { border-collapse: collapse; width: 100%; max-width: 1200px; margin: 1em 0; }
+        th, td { padding: 6px 12px; border: 1px solid #cccccc; }
+        th { background: #efefef; }
+        .increase { color: #0a8a0a; font-weight: bold; }
+        .decrease { color: #d22a2a; font-weight: bold; }
+        .nochange { color: #666; font-size: 0.95em; }
+        .diff0 { background: #fff; }
+        .diff1 { background: #eafcd5; }
+        .diff-1 { background: #ffdddd; }
+        .highlight { background: #ffd700; }
+        .smaller { font-size:90%; color: #666;}
+    </style>
+</head>
+<body>
+    <h1>Cemetery Data Comparison Report</h1>
+    <p class="smaller">Showing cemeteries with any changes in <b>total_plots</b>, <b>total_interments</b>, <b>total_rois</b>, or <b>total_persons</b>.</p>
+    <table>
+        <tr>
+            <th rowspan="2">Cemetery Name</th>
+            <th colspan="2">Total Plots</th>
+            <th colspan="2">Total Interments</th>
+            <th colspan="2">Total ROIs</th>
+            <th colspan="2">Total Persons</th>
+        </tr>
+        <tr>
+            <th>Previous</th>
+            <th>Latest</th>
+            <th>Previous</th>
+            <th>Latest</th>
+            <th>Previous</th>
+            <th>Latest</th>
+            <th>Previous</th>
+            <th>Latest</th>
+        </tr>
+        <!-- Begin dynamic rows -->
+        <tr><td>Astana_Tegal_Gundul</td>
+            <td>186</td>
+            <td>186</td>
+            <td>18</td>
+            <td>18</td>
+            <td>18</td>
+            <td class="increase">20 <span title="+2">▲</span></td>
+            <td>75</td>
+            <td class="decrease">66 <span title="-9">▼</span></td>
+        </tr>
+        <tr><td>living_legacy_mornington_green_forest</td>
+            <td>1998</td>
+            <td>1998</td>
+            <td>568</td>
+            <td>568</td>
+            <td class="increase">1172</td>
+            <td>1174 <span title="+2">▲</span></td>
+            <td>2212</td>
+            <td class="increase">2216 <span title="+4">▲</span></td>
+        </tr>
+        <tr><td>phillip-island-cemetery</td>
+            <td>3192</td>
+            <td>3192</td>
+            <td>2794</td>
+            <td class="increase">2795 <span title="+1">▲</span></td>
+            <td>590</td>
+            <td>590</td>
+            <td>3569</td>
+            <td class="increase">3570 <span title="+1">▲</span></td>
+        </tr>
+        <tr><td>st_john_kanty_catholic_cemetery</td>
+            <td>15088</td>
+            <td>15088</td>
+            <td>11738</td>
+            <td>11738</td>
+            <td class="increase">11617 <span title="+11617">▲</span></td>
+            <td>11617</td>
+            <td class="increase">17185 <span title="+17185">▲</span></td>
+        </tr>
+        <tr><td>Artesia_Cemetery</td>
+            <td>14939</td>
+            <td>14939</td>
+            <td>8823</td>
+            <td>8823</td>
+            <td>2488</td>
+            <td>2488</td>
+            <td>13835</td>
+            <td class="increase">13839 <span title="+4">▲</span></td>
+        </tr>
+        <tr><td>johnstown-cemetery</td>
+            <td>4839</td>
+            <td>4839</td>
+            <td>2258</td>
+            <td>2258</td>
+            <td class="increase">2912</td>
+            <td>2917 <span title="+5">▲</span></td>
+            <td>4910</td>
+            <td class="increase">4912 <span title="+2">▲</span></td>
+        </tr>
+        <tr><td>oakesdale-cemetery</td>
+            <td>4188</td>
+            <td class="increase">4189 <span title="+1">▲</span></td>
+            <td>1783</td>
+            <td class="increase">1785 <span title="+2">▲</span></td>
+            <td>2693</td>
+            <td>2693</td>
+            <td>4477</td>
+            <td class="increase">4481 <span title="+4">▲</span></td>
+        </tr>
+        <tr><td>Rohrwald</td>
+            <td>403</td>
+            <td>403</td>
+            <td>104</td>
+            <td>104</td>
+            <td class="increase">126 <span title="+126">▲</span></td>
+            <td>126</td>
+            <td>138</td>
+            <td>138</td>
+        </tr>
+        <tr><td>st_joseph_catholic_church_cottleville_cemetery</td>
+            <td>1164</td>
+            <td>1164</td>
+            <td>0</td>
+            <td>0</td>
+            <td class="increase">61</td>
+            <td>64 <span title="+3">▲</span></td>
+            <td>78</td>
+            <td class="increase">81 <span title="+3">▲</span></td>
+        </tr>
+        <tr><td>st_matthew_catholic_cemetery</td>
+            <td>1510</td>
+            <td>1510</td>
+            <td>596</td>
+            <td>596</td>
+            <td class="increase">1194</td>
+            <td>1196 <span title="+2">▲</span></td>
+            <td class="increase">2329</td>
+            <td>2331 <span title="+2">▲</span></td>
+        </tr>
+        <tr><td>Grand_Army_of_the_Republic_Cemetery</td>
+            <td>14297</td>
+            <td>14297</td>
+            <td>11442</td>
+            <td class="decrease">11440 <span title="-2">▼</span></td>
+            <td class="increase">2179</td>
+            <td>2180 <span title="+1">▲</span></td>
+            <td class="increase">21741</td>
+            <td>21742 <span title="+1">▲</span></td>
+        </tr>
+        <tr><td>oakwood_cemetery_city_of_hickory</td>
+            <td>14871</td>
+            <td>14871</td>
+            <td>7943</td>
+            <td class="increase">7944 <span title="+1">▲</span></td>
+            <td>1323</td>
+            <td>1323</td>
+            <td>9270</td>
+            <td class="increase">9271 <span title="+1">▲</span></td>
+        </tr>
+        <tr><td>Markesan_Memorial_Park_Cemetery</td>
+            <td>6091</td>
+            <td>6091</td>
+            <td>2612</td>
+            <td>2612</td>
+            <td>3139</td>
+            <td>3139</td>
+            <td class="increase">5745</td>
+            <td>5745</td>
+        </tr>
+        <!-- Add more highlighted rows as identified -->
+        <!-- End dynamic rows -->
+    </table>
+    <p class="smaller">
+        <span class="increase">▲ Increase</span>,
+        <span class="decrease">▼ Decrease</span>,
+        blank cells: no change.<br/>
+        Only rows with changes are shown for clarity.
+    </p>
+</body>
+</html>
+```
+**How was this data selected?**  
+- Only cemeteries where there was any change (increase/decrease) in one or more of: total_plots, total_interments, total_rois, total_persons, are displayed.
+- Increases are shown in green, decreases in red, along with magnitude and arrows.
+- Columns indicate previous and new values.
+- Unchanged columns are left plain.
+
+If you need a longer or specific part of the comparison (all changes, summary stats, etc.), just ask!
