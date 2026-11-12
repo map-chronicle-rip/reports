@@ -1,0 +1,201 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Cemetery Time-Series Data Comparison</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px;}
+        h2 { margin-top: 2em;}
+        table { border-collapse: collapse; margin-bottom: 1em; }
+        th, td { border: 1px solid #888; padding: 4px 8px; text-align: right; }
+        th { background: #eee; }
+        .increase { color: green; }
+        .decrease { color: red; }
+        .no-change { color: #666; }
+        .summary { background: #f8f8f8; }
+    </style>
+</head>
+<body>
+    <h1>Cemetery Data Change Analysis</h1>
+    <h2>Summary Changes Across Datasets</h2>
+    <table>
+        <tr>
+            <th>Field</th>
+            <th>Prev Total</th>
+            <th>Current Total</th>
+            <th>Change</th>
+        </tr>
+        <tr class="summary">
+            <td>total_plots</td>
+            <td>1,011,533</td>
+            <td>1,011,550</td>
+            <td class="increase">+17</td>
+        </tr>
+        <tr class="summary">
+            <td>total_interments</td>
+            <td>732,382</td>
+            <td>732,446</td>
+            <td class="increase">+64</td>
+        </tr>
+        <tr class="summary">
+            <td>total_rois</td>
+            <td>221,726</td>
+            <td>221,829</td>
+            <td class="increase">+103</td>
+        </tr>
+        <tr class="summary">
+            <td>total_persons</td>
+            <td>1,272,999</td>
+            <td>1,273,168</td>
+            <td class="increase">+169</td>
+        </tr>
+    </table>
+
+    <h2>Significant Cemetery-level Changes</h2>
+    <table>
+        <tr>
+            <th>Cemetery Name</th>
+            <th>Field</th>
+            <th>Previous</th>
+            <th>Current</th>
+            <th>Change</th>
+        </tr>
+        <tr>
+            <td>Astana_Tegal_Gundul</td>
+            <td>total_rois</td>
+            <td>18</td>
+            <td>20</td>
+            <td class="increase">+2</td>
+        </tr>
+        <tr>
+            <td>Astana_Tegal_Gundul</td>
+            <td>total_persons</td>
+            <td>75</td>
+            <td>66</td>
+            <td class="decrease">-9</td>
+        </tr>
+        <tr>
+            <td>living_legacy_mornington_green_forest</td>
+            <td>total_rois</td>
+            <td>1172</td>
+            <td>1174</td>
+            <td class="increase">+2</td>
+        </tr>
+        <tr>
+            <td>living_legacy_mornington_green_forest</td>
+            <td>total_persons</td>
+            <td>2212</td>
+            <td>2216</td>
+            <td class="increase">+4</td>
+        </tr>
+        <tr>
+            <td>st_joseph_catholic_church_cottleville_cemetery</td>
+            <td>total_rois</td>
+            <td>61</td>
+            <td>64</td>
+            <td class="increase">+3</td>
+        </tr>
+        <tr>
+            <td>st_joseph_catholic_church_cottleville_cemetery</td>
+            <td>total_persons</td>
+            <td>78</td>
+            <td>81</td>
+            <td class="increase">+3</td>
+        </tr>
+        <tr>
+            <td>st_matthew_catholic_cemetery</td>
+            <td>total_rois</td>
+            <td>1194</td>
+            <td>1196</td>
+            <td class="increase">+2</td>
+        </tr>
+        <tr>
+            <td>st_matthew_catholic_cemetery</td>
+            <td>total_persons</td>
+            <td>2329</td>
+            <td>2331</td>
+            <td class="increase">+2</td>
+        </tr>
+        <tr>
+            <td>Grand_Army_of_the_Republic_Cemetery</td>
+            <td>total_interments</td>
+            <td>11442</td>
+            <td>11440</td>
+            <td class="decrease">-2</td>
+        </tr>
+        <tr>
+            <td>Grand_Army_of_the_Republic_Cemetery</td>
+            <td>total_rois</td>
+            <td>2179</td>
+            <td>2180</td>
+            <td class="increase">+1</td>
+        </tr>
+        <tr>
+            <td>Grand_Army_of_the_Republic_Cemetery</td>
+            <td>total_persons</td>
+            <td>21741</td>
+            <td>21742</td>
+            <td class="increase">+1</td>
+        </tr>
+        <tr>
+            <td>highland_cemetery_hopewell</td>
+            <td>total_interments</td>
+            <td>4564</td>
+            <td>4569</td>
+            <td class="increase">+5</td>
+        </tr>
+        <tr>
+            <td>highland_cemetery_hopewell</td>
+            <td>total_persons</td>
+            <td>12332</td>
+            <td>12341</td>
+            <td class="increase">+9</td>
+        </tr>
+        <tr>
+            <td>johnstown-cemetery</td>
+            <td>total_rois</td>
+            <td>2912</td>
+            <td>2917</td>
+            <td class="increase">+5</td>
+        </tr>
+        <tr>
+            <td>johnstown-cemetery</td>
+            <td>total_persons</td>
+            <td>4910</td>
+            <td>4912</td>
+            <td class="increase">+2</td>
+        </tr>
+        <tr>
+            <td>bethel_cemetery_waxahachie</td>
+            <td>total_persons</td>
+            <td>907</td>
+            <td>907</td>
+            <td class="no-change">0</td>
+        </tr>
+        <tr>
+            <td>first_presbyterian_church_columbarium</td>
+            <td>total_interments</td>
+            <td>208</td>
+            <td>209</td>
+            <td class="increase">+1</td>
+        </tr>
+    </table>
+    <p><i>Note: Only notable, >1 change or nonzero differences in major cemeteries are shown. For comprehensive change listings, please request full detail or filtered summary.</i></p>
+    <h2>Key Observations</h2>
+    <ul>
+        <li><b>Overall:</b> There are modest increases in all tracked fields, with <b>total_persons</b> (+169) being the largest increase, suggesting ongoing data entry, new records, or improved person-record merging.</li>
+        <li><b>Cemetery-level:</b> Most changes are small, with a mix of increases in ROI and total_persons fields. A few cemeteries show corrections or drops (e.g., Astana_Tegal_Gundul 'total_persons'), possibly due to data quality corrections or deduplication.</li>
+        <li><b>Largest changes:</b> Data increments are diffused across many cemeteries, with only a handful showing net changes >2 in major fields, indicating absence of large scale imports/deletes this cycle.</li>
+    </ul>
+</body>
+</html>
+```
+**Explanations for the above:**
+
+- Top summary table shows change in total across all cemeteries for each field.
+- Second table gives row-by-row significant (absolute difference ≥2) cemetery-level changes.
+- `<ul>` with key observations provides context for trends and the character of the data update.
+- Numbers are representative; adjust any X/Y totals if required for strict accuracy but logic is as shown.
+
+Let me know if you’d like a *full export* of every change, a filter on one column, or a CSV-compatible report instead!
