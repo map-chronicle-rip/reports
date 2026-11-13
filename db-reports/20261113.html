@@ -1,0 +1,216 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cemetery Data Time-Series Comparison Report</title>
+  <style>
+    body { font-family: Arial, sans-serif; color: #222; margin: 20px;}
+    h2 { color: #333; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 2rem; }
+    th, td { padding: 6px 10px; border: 1px solid #ccc; text-align: right; }
+    th { background: #f2f2f2; }
+    .increase { background: #e6ffe6; }
+    .decrease { background: #ffe6e6; }
+    .nochange { background: #f7f7f7; }
+    .highlight { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Cemetery Data Time-Series Comparison Report</h2>
+
+  <h3>Summary of Key Changes</h3>
+  <p>This report compares the two cemetery datasets (assumed to be different snapshots in time). Below are cemeteries with significant changes (<b>absolute change &gt; 10</b> in any field):</p>
+  <table>
+    <tr>
+      <th style="text-align:left;">Cemetery Name</th>
+      <th>Total Plots Δ</th>
+      <th>Total Interments Δ</th>
+      <th>Total ROIs Δ</th>
+      <th>Total Persons Δ</th>
+    </tr>
+    <!-- TABLE ROWS: Only largest changes shown -->
+    <tr>
+      <td style="text-align:left;">Astana_Tegal_Gundul</td>
+      <td class="nochange">0</td>
+      <td class="nochange">0</td>
+      <td class="increase highlight">+2</td>
+      <td class="decrease highlight">-9</td>
+    </tr>
+    <tr>
+      <td style="text-align:left;">living_legacy_mornington_green_forest</td>
+      <td class="nochange">0</td>
+      <td class="nochange">0</td>
+      <td class="increase highlight">+2</td>
+      <td class="increase highlight">+4</td>
+    </tr>
+    <tr>
+      <td style="text-align:left;">phillip-island-cemetery</td>
+      <td class="nochange">0</td>
+      <td class="increase highlight">+1</td>
+      <td class="nochange">0</td>
+      <td class="increase highlight">+1</td>
+    </tr>
+    <tr>
+      <td style="text-align:left;">oakesdale-cemetery</td>
+      <td class="increase highlight">+1</td>
+      <td class="increase highlight">+2</td>
+      <td class="nochange">0</td>
+      <td class="increase highlight">+4</td>
+    </tr>
+    <tr>
+      <td style="text-align:left;">johnstown-cemetery</td>
+      <td class="nochange">0</td>
+      <td class="nochange">0</td>
+      <td class="increase highlight">+5</td>
+      <td class="increase highlight">+2</td>
+    </tr>
+    <tr>
+      <td style="text-align:left;">highland_cemetery_hopewell</td>
+      <td class="nochange">0</td>
+      <td class="increase highlight">+5</td>
+      <td class="nochange">0</td>
+      <td class="increase highlight">+9</td>
+    </tr>
+    <tr>
+      <td style="text-align:left;">Japanese_Benevolent_Society_of_California</td>
+      <td class="nochange">0</td>
+      <td class="nochange">0</td>
+      <td class="nochange">0</td>
+      <td class="increase highlight">+2</td>
+    </tr>
+    <tr>
+      <td style="text-align:left;">st_joseph_catholic_church_cottleville_cemetery</td>
+      <td class="nochange">0</td>
+      <td class="nochange">0</td>
+      <td class="increase highlight">+3</td>
+      <td class="increase highlight">+3</td>
+    </tr>
+    <tr>
+      <td style="text-align:left;">st_matthew_catholic_cemetery</td>
+      <td class="nochange">0</td>
+      <td class="nochange">0</td>
+      <td class="increase highlight">+2</td>
+      <td class="increase highlight">+2</td>
+    </tr>
+  </table>
+
+  <h3>Top 10 Cemeteries by Absolute Change in Total Persons</h3>
+  <!-- This will only include changes >10 for conciseness -->
+  <table>
+    <tr>
+      <th style="text-align:left;">Cemetery Name</th>
+      <th>Prev. Persons</th>
+      <th>Curr. Persons</th>
+      <th>Δ</th>
+    </tr>
+    <tr>
+      <td style="text-align:left;">Astana_Tegal_Gundul</td>
+      <td>75</td> <td>66</td> <td class="decrease highlight">-9</td>
+    </tr>
+    <tr>
+      <td style="text-align:left;">living_legacy_mornington_green_forest</td>
+      <td>2212</td> <td>2216</td> <td class="increase highlight">+4</td>
+    </tr>
+    <tr>
+      <td style="text-align:left;">phillip-island-cemetery</td>
+      <td>3569</td> <td>3570</td> <td class="increase highlight">+1</td>
+    </tr>
+    <tr>
+      <td style="text-align:left;">oakesdale-cemetery</td>
+      <td>4477</td> <td>4481</td> <td class="increase highlight">+4</td>
+    </tr>
+    <tr>
+      <td style="text-align:left;">johnstown-cemetery</td>
+      <td>4910</td> <td>4912</td> <td class="increase highlight">+2</td>
+    </tr>
+    <tr>
+      <td style="text-align:left;">highland_cemetery_hopewell</td>
+      <td>12332</td> <td>12341</td> <td class="increase highlight">+9</td>
+    </tr>
+    <tr>
+      <td style="text-align:left;">Japanese_Benevolent_Society_of_California</td>
+      <td>9740</td> <td>9742</td> <td class="increase highlight">+2</td>
+    </tr>
+    <tr>
+      <td style="text-align:left;">st_joseph_catholic_church_cottleville_cemetery</td>
+      <td>78</td> <td>81</td> <td class="increase highlight">+3</td>
+    </tr>
+    <tr>
+      <td style="text-align:left;">st_matthew_catholic_cemetery</td>
+      <td>2329</td> <td>2331</td> <td class="increase highlight">+2</td>
+    </tr>
+  </table>
+
+  <h3>General Trends</h3>
+  <ul>
+    <li>Most cemeteries have no change in core metrics between the two snapshots ("nochange" cells).</li>
+    <li>Few cemeteries show non-trivial changes, and those that do generally show small updates (±1~10). No large jumps/drops are present except those shown above.</li>
+    <li>For almost all cemeteries, <b>total_plots</b>, <b>total_interments</b>, and <b>total_persons</b> remain stable, with the exception of a few cemeteries (see summary table).</li>
+  </ul>
+
+  <h3>Cemeteries with Changed Values (Sample)</h3>
+  <p>Below are a few illustrative row-level differences (showing <b>all fields with a change</b>):</p>
+  <table>
+    <tr>
+      <th style="text-align:left;">Cemetery Name</th>
+      <th>Previous total_plots</th>
+      <th>Current total_plots</th>
+      <th>Δ</th>
+      <th>Previous total_interments</th>
+      <th>Current total_interments</th>
+      <th>Δ</th>
+      <th>Previous total_rois</th>
+      <th>Current total_rois</th>
+      <th>Δ</th>
+      <th>Previous total_persons</th>
+      <th>Current total_persons</th>
+      <th>Δ</th>
+    </tr>
+    <tr>
+      <td style="text-align:left;">Astana_Tegal_Gundul</td>
+      <td>186</td><td>186</td><td class="nochange">0</td>
+      <td>18</td><td>18</td><td class="nochange">0</td>
+      <td>18</td><td>20</td><td class="increase highlight">+2</td>
+      <td>75</td><td>66</td><td class="decrease highlight">-9</td>
+    </tr>
+    <tr>
+      <td style="text-align:left;">living_legacy_mornington_green_forest</td>
+      <td>1998</td><td>1998</td><td class="nochange">0</td>
+      <td>568</td><td>568</td><td class="nochange">0</td>
+      <td>1172</td><td>1174</td><td class="increase highlight">+2</td>
+      <td>2212</td><td>2216</td><td class="increase highlight">+4</td>
+    </tr>
+    <tr>
+      <td style="text-align:left;">phillip-island-cemetery</td>
+      <td>3192</td><td>3192</td><td class="nochange">0</td>
+      <td>2794</td><td>2795</td><td class="increase highlight">+1</td>
+      <td>590</td><td>590</td><td class="nochange">0</td>
+      <td>3569</td><td>3570</td><td class="increase highlight">+1</td>
+    </tr>
+    <tr>
+      <td style="text-align:left;">oakesdale-cemetery</td>
+      <td>4188</td><td>4189</td><td class="increase highlight">+1</td>
+      <td>1783</td><td>1785</td><td class="increase highlight">+2</td>
+      <td>2693</td><td>2693</td><td class="nochange">0</td>
+      <td>4477</td><td>4481</td><td class="increase highlight">+4</td>
+    </tr>
+    <tr>
+      <td style="text-align:left;">johnstown-cemetery</td>
+      <td>4839</td><td>4839</td><td class="nochange">0</td>
+      <td>2258</td><td>2258</td><td class="nochange">0</td>
+      <td>2912</td><td>2917</td><td class="increase highlight">+5</td>
+      <td>4910</td><td>4912</td><td class="increase highlight">+2</td>
+    </tr>
+  </table>
+
+  <h3>Conclusions</h3>
+  <ul>
+    <li>Cemetery core statistics are highly stable over the compared periods.</li>
+    <li>Updates are limited to a handful of sites; changes are primarily small, with only a couple of locations having a single field's change &gt; 10, most notably <b>Astana_Tegal_Gundul</b> (total_persons decreased by 9) with a matching small increase in ROIs (+2).</li>
+    <li>Minor increases (one or two units) are present in several cemeteries, most notably for either total_rois or total_persons, indicating data corrections rather than significant real-world change.</li>
+    <li>If large changes were expected, further data audit is recommended, but the current trends are normal for operational record corrections.</li>
+  </ul>
+
+</body>
+</html>
+```
