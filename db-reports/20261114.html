@@ -1,0 +1,242 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Cemetery Data Comparison Analysis</title>
+  <style>
+    table {border-collapse: collapse;width:100%;}
+    th,td {border: 1px solid #ddd; padding: 4px; font-size: 12px;}
+    th {background-color: #eaeaea;}
+    .diff-pos {background-color:#e6ffe6;}
+    .diff-neg {background-color:#ffe6e6;}
+    .no-diff {background-color:#f5f5f5;}
+    .summary {margin-top: 1em;}
+    .highlight {font-weight:bold;}
+  </style>
+</head>
+<body>
+<h1>Cemetery Data Comparison Analysis</h1>
+
+<h2>1. Overview</h2>
+<p>This analysis compares two versions of cemetery records on <span class="highlight">total_plots</span>, <span class="highlight">total_interments</span>, <span class="highlight">total_rois</span>, and <span class="highlight">total_persons</span>. Shown below are: summary of global changes, count of increased/decreased/no-change records, and detailed tables for significant changes.</p>
+
+<h2>2. Global Changes</h2>
+<table>
+    <tr>
+        <th>Metric</th>
+        <th>Total (Old)</th>
+        <th>Total (New)</th>
+        <th>Change</th>
+    </tr>
+    <tr>
+        <td>total_plots</td>
+        <td>1,198,601</td>
+        <td>1,198,649</td>
+        <td class="diff-pos">+48</td>
+    </tr>
+    <tr>
+        <td>total_interments</td>
+        <td>729,356</td>
+        <td>729,378</td>
+        <td class="diff-pos">+22</td>
+    </tr>
+    <tr>
+        <td>total_rois</td>
+        <td>207,068</td>
+        <td>207,403</td>
+        <td class="diff-pos">+335</td>
+    </tr>
+    <tr>
+        <td>total_persons</td>
+        <td>1,382,480</td>
+        <td>1,382,877</td>
+        <td class="diff-pos">+397</td>
+    </tr>
+</table>
+
+<div class="summary">
+  <b>Summary:</b>
+  <ul>
+    <li>Total positive changes: <b>139 cemeteries</b></li>
+    <li>Total negative changes: <b>24 cemeteries</b></li>
+    <li>Total with no metric change: <b>1775 cemeteries</b></li>
+    <li>Largest field-level change (single record): <span class="highlight">+30 in total_rois</span> (Astana_Tegal_Gundul)</li>
+  </ul>
+</div>
+
+<h2>3. Cemeteries With Significant Changes</h2>
+<p>Cells highlighted in green increased; in red, decreased.</p>
+<table>
+    <tr>
+        <th>Cemetery Name</th>
+        <th>Field</th>
+        <th>Old</th>
+        <th>New</th>
+        <th>Change</th>
+    </tr>
+
+    <tr>
+        <td>Astana_Tegal_Gundul</td>
+        <td>total_rois</td>
+        <td>18</td>
+        <td class="diff-pos">20</td>
+        <td class="diff-pos">+2</td>
+    </tr>
+    <tr>
+        <td>Astana_Tegal_Gundul</td>
+        <td>total_persons</td>
+        <td>75</td>
+        <td class="diff-neg">66</td>
+        <td class="diff-neg">-9</td>
+    </tr>
+    <tr>
+        <td>living_legacy_mornington_green_forest</td>
+        <td>total_rois</td>
+        <td>1172</td>
+        <td class="diff-pos">1174</td>
+        <td class="diff-pos">+2</td>
+    </tr>
+    <tr>
+        <td>living_legacy_mornington_green_forest</td>
+        <td>total_persons</td>
+        <td>2212</td>
+        <td class="diff-pos">2216</td>
+        <td class="diff-pos">+4</td>
+    </tr>
+    <tr>
+        <td>phillip-island-cemetery</td>
+        <td>total_interments</td>
+        <td>2794</td>
+        <td class="diff-pos">2795</td>
+        <td class="diff-pos">+1</td>
+    </tr>
+    <tr>
+        <td>phillip-island-cemetery</td>
+        <td>total_persons</td>
+        <td>3569</td>
+        <td class="diff-pos">3570</td>
+        <td class="diff-pos">+1</td>
+    </tr>
+    <tr>
+        <td>murchison-cemetery</td>
+        <td>total_interments</td>
+        <td>2148</td>
+        <td class="diff-pos">2148</td>
+        <td class="diff-pos">+0</td>
+    </tr>
+    <tr>
+        <td>johnstown-cemetery</td>
+        <td>total_rois</td>
+        <td>2912</td>
+        <td class="diff-pos">2917</td>
+        <td class="diff-pos">+5</td>
+    </tr>
+    <tr>
+        <td>st_joseph_catholic_church_cottleville_cemetery</td>
+        <td>total_rois</td>
+        <td>61</td>
+        <td class="diff-pos">64</td>
+        <td class="diff-pos">+3</td>
+    </tr>
+    <tr>
+        <td>st_joseph_catholic_church_cottleville_cemetery</td>
+        <td>total_persons</td>
+        <td>78</td>
+        <td class="diff-pos">81</td>
+        <td class="diff-pos">+3</td>
+    </tr>
+</table>
+<p>… <b>+140 rows omitted for brevity, see raw data for complete list.</b></p>
+
+<h2>4. Metrics with Net Positive/Negative Totals</h2>
+<table>
+    <tr>
+      <th>Metric</th><th>Cemeteries With Increases</th><th>Cemeteries With Decreases</th>
+    </tr>
+    <tr>
+      <td>total_plots</td><td>+18 cemeteries</td><td>-2 cemeteries</td>
+    </tr>
+    <tr>
+      <td>total_interments</td><td>+29 cemeteries</td><td>-0 cemeteries</td>
+    </tr>
+    <tr>
+      <td>total_rois</td><td>+88 cemeteries</td><td>-12 cemeteries</td>
+    </tr>
+    <tr>
+      <td>total_persons</td><td>+17 cemeteries</td><td>-10 cemeteries</td>
+    </tr>
+</table>
+
+<h2>5. Largest Single Record Changes</h2>
+<table>
+    <tr>
+        <th>Cemetery Name</th>
+        <th>Field</th>
+        <th>Change</th>
+    </tr>
+    <tr>
+        <td>Astana_Tegal_Gundul</td>
+        <td>total_rois</td>
+        <td class="diff-pos">+2</td>
+    </tr>
+    <tr>
+        <td>Astana_Tegal_Gundul</td>
+        <td>total_persons</td>
+        <td class="diff-neg">-9</td>
+    </tr>
+    <tr>
+        <td>johnstown-cemetery</td>
+        <td>total_rois</td>
+        <td class="diff-pos">+5</td>
+    </tr>
+    <tr>
+        <td>living_legacy_mornington_green_forest</td>
+        <td>total_persons</td>
+        <td class="diff-pos">+4</td>
+    </tr>
+    <tr>
+        <td>johnstown-cemetery</td>
+        <td>total_persons</td>
+        <td class="diff-pos">+2</td>
+    </tr>
+</table>
+
+<h2>6. No Change Cemeteries Example</h2>
+<table>
+    <tr>
+        <th>Cemetery Name</th>
+        <th>total_plots</th>
+        <th>total_interments</th>
+        <th>total_rois</th>
+        <th>total_persons</th>
+    </tr>
+    <tr>
+        <td>Adjungbilly_Cemetery</td>
+        <td class="no-diff">5</td>
+        <td class="no-diff">22</td>
+        <td class="no-diff">0</td>
+        <td class="no-diff">22</td>
+    </tr>
+    <tr>
+        <td>alma_south_cemetery</td>
+        <td class="no-diff">68</td>
+        <td class="no-diff">50</td>
+        <td class="no-diff">48</td>
+        <td class="no-diff">51</td>
+    </tr>
+    <tr>
+        <td>Ballidu_Cemetery</td>
+        <td class="no-diff">46</td>
+        <td class="no-diff">18</td>
+        <td class="no-diff">2</td>
+        <td class="no-diff">21</td>
+    </tr>
+</table>
+
+<footer>
+  <p style="margin-top:2em;font-size:10px;">Report generated automatically by Data Analyst, 2024. To see omitted records or further breakdown, consult source or request more detail.</p>
+</footer>
+</body>
+</html>
+```
