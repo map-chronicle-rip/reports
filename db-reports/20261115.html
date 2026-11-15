@@ -1,0 +1,106 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cemetery Data Comparative Analysis</title>
+    <style>
+        body {font-family: Arial, sans-serif; font-size: 15px;}
+        table {border-collapse: collapse; width: 100%;}
+        th, td {border: 1px solid #cccccc; padding: 4px 8px; text-align: right;}
+        th {background-color: #f4f4f4;}
+        tr.diff-inc {background-color: #e4ffe4;}
+        tr.diff-dec {background-color: #ffe4e4;}
+        tr.diff {font-weight: bold;}
+    </style>
+</head>
+<body>
+    <h2>Cemetery Data: Comparative Time-Series Analysis</h2>
+    <p>This report lists all cemeteries where there is at least one difference in their metrics between the two CSVs provided.</p>
+    <table>
+        <thead>
+            <tr>
+                <th rowspan="2" style="text-align:left">Cemetery Name</th>
+                <th colspan="2">Total Plots</th>
+                <th colspan="2">Total Interments</th>
+                <th colspan="2">Total ROIs</th>
+                <th colspan="2">Total Persons</th>
+            </tr>
+            <tr>
+                <th>Old</th><th>New</th>
+                <th>Old</th><th>New</th>
+                <th>Old</th><th>New</th>
+                <th>Old</th><th>New</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="diff-inc">
+                <td style="text-align:left">Astana_Tegal_Gundul</td>
+                <td>186</td><td>186</td>
+                <td>18</td><td>18</td>
+                <td>18</td><td><b>20</b></td>
+                <td><b>75</b></td><td>66</td>
+            </tr>
+            <tr class="diff">
+                <td style="text-align:left">astana_tegal_gundul_us</td>
+                <td>188</td><td>188</td>
+                <td>6</td><td>6</td>
+                <td><b>9</b></td><td>9</td>
+                <td><b>37</b></td><td>37</td>
+            </tr>
+            <tr class="diff-inc">
+                <td style="text-align:left">living_legacy_mornington_green_forest</td>
+                <td>1998</td><td>1998</td>
+                <td>568</td><td>568</td>
+                <td><b>1172</b></td><td>1174</td>
+                <td><b>2212</b></td><td>2216</td>
+            </tr>
+            <tr class="diff-inc">
+                <td style="text-align:left">st_joseph_catholic_church_cottleville_cemetery</td>
+                <td>1164</td><td>1164</td>
+                <td>0</td><td>0</td>
+                <td><b>61</b></td><td>64</td>
+                <td><b>78</b></td><td>81</td>
+            </tr>
+            <tr class="diff-inc">
+                <td style="text-align:left">Grand_Army_of_the_Republic_Cemetery</td>
+                <td>14297</td><td>14297</td>
+                <td><b>11442</b></td><td>11440</td>
+                <td><b>2179</b></td><td>2180</td>
+                <td><b>21741</b></td><td>21742</td>
+            </tr>
+            <tr class="diff-inc">
+                <td style="text-align:left">johnstown-cemetery</td>
+                <td>4839</td><td>4839</td>
+                <td>2258</td><td>2258</td>
+                <td><b>2912</b></td><td>2917</td>
+                <td><b>4910</b></td><td>4912</td>
+            </tr>
+            <tr class="diff-inc">
+                <td style="text-align:left">first_presbyterian_church_columbarium</td>
+                <td>506</td><td>506</td>
+                <td><b>208</b></td><td>209</td>
+                <td>228</td><td>228</td>
+                <td><b>572</b></td><td>573</td>
+            </tr>
+            <tr class="diff-inc">
+                <td style="text-align:left">st_matthew_catholic_cemetery</td>
+                <td>1510</td><td>1510</td>
+                <td>596</td><td>596</td>
+                <td><b>1194</b></td><td>1196</td>
+                <td><b>2329</b></td><td>2331</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        <b>Legend:</b>  
+        <span style="background:#e4ffe4;">Green rows</span>: Metrics have increased.<br>
+        <span style="background:#ffe4e4;">Red rows</span>: Metrics have decreased.<br>
+        <b>Bold values</b>: Fields where a change occurred.
+    </p>
+    <p>
+        Cemeteries not shown had no changes between the two datasets.
+    </p>
+</body>
+</html>
+```
