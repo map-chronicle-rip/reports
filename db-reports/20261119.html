@@ -1,0 +1,221 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cemetery Data Time-Series Comparison</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        table { width: 98%; border-collapse: collapse; margin: 1em auto; }
+        th, td { border: 1px solid #ccc; padding: 4px 7px; text-align: right; }
+        th { background: #f2f2f2; }
+        tr.diff-up { background: #d4f8df; }
+        tr.diff-down { background: #ffe5e5; }
+        tr.diff-unchanged { background: #fff; }
+        .summary { margin: 1em auto; width: 98%; font-size: 1em; }
+        .summary th, .summary td { text-align: left; }
+    </style>
+</head>
+<body>
+    <h2>Cemetery Data Comparison – Earliest vs Latest</h2>
+    <p>
+        This report highlights changes in <b>total_plots</b>, <b>total_interments</b>, <b>total_rois</b>, and <b>total_persons</b>
+        per cemetery between two time-series snapshots (provided as two CSVs).
+    </p>
+    <table class="summary">
+        <tr>
+            <th>Metric</th>
+            <th>Increased Cemeteries</th>
+            <th>Decreased Cemeteries</th>
+            <th>Unchanged</th>
+            <th>Total Changed</th>
+        </tr>
+        <tr>
+            <td>Total Plots</td>
+            <td id="plots_up"></td>
+            <td id="plots_down"></td>
+            <td id="plots_unchanged"></td>
+            <td id="plots_total"></td>
+        </tr>
+        <tr>
+            <td>Total Interments</td>
+            <td id="interments_up"></td>
+            <td id="interments_down"></td>
+            <td id="interments_unchanged"></td>
+            <td id="interments_total"></td>
+        </tr>
+        <tr>
+            <td>Total ROIs</td>
+            <td id="rois_up"></td>
+            <td id="rois_down"></td>
+            <td id="rois_unchanged"></td>
+            <td id="rois_total"></td>
+        </tr>
+        <tr>
+            <td>Total Persons</td>
+            <td id="persons_up"></td>
+            <td id="persons_down"></td>
+            <td id="persons_unchanged"></td>
+            <td id="persons_total"></td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <th>Cemetery Name</th>
+            <th>Total Plots (Old)</th>
+            <th>Total Plots (New)</th>
+            <th>Δ Plots</th>
+            <th>Total Interments (Old)</th>
+            <th>Total Interments (New)</th>
+            <th>Δ Interments</th>
+            <th>Total ROIs (Old)</th>
+            <th>Total ROIs (New)</th>
+            <th>Δ ROIs</th>
+            <th>Total Persons (Old)</th>
+            <th>Total Persons (New)</th>
+            <th>Δ Persons</th>
+        </tr>
+        <!-- rows will be inserted by script -->
+    </table>
+    <script>
+        // --- Data Loading Section (truncated example for brevity; insert your full parsed CSVs converted to JS arrays here) ---
+        // Data format: [{Cemetery_Name, total_plots, total_interments, total_rois, total_persons}, ...]
+        // The following is a placeholder; replace this with actual parsed data arrays:
+        const oldDataCSV = `
+Cemetery_Name,total_plots,total_interments,total_rois,total_persons
+Adjungbilly_Cemetery,5,22,0,22
+Astana_Tegal_Gundul,186,18,18,75
+living_legacy_mornington_green_forest,1998,568,1172,2212
+...`;
+
+        const newDataCSV = `
+Cemetery_Name,total_plots,total_interments,total_rois,total_persons
+Adjungbilly_Cemetery,5,22,0,22
+Astana_Tegal_Gundul,186,18,20,66
+living_legacy_mornington_green_forest,1998,568,1174,2216
+...`;
+
+        function parseCsv(csv) {
+            const lines = csv.trim().split('\n');
+            const headers = lines[0].split(',');
+            const data = {};
+            for (let i = 1; i < lines.length; i++) {
+                if (!lines[i].trim()) continue;
+                const obj = {};
+                const vals = lines[i].split(',');
+                headers.forEach((h, idx) => {
+                    obj[h] = h === 'Cemetery_Name' ? vals[idx] : +vals[idx];
+                });
+                data[obj.Cemetery_Name] = obj;
+            }
+            return data;
+        }
+
+        // Simulate using the real data (populate these variables with your real parsed CSVs!)
+        const oldData = parseCsv(`Cemetery_Name,total_plots,total_interments,total_rois,total_persons
+Adjungbilly_Cemetery,5,22,0,22
+Astana_Tegal_Gundul,186,18,18,75
+living_legacy_mornington_green_forest,1998,568,1172,2212
+zzz-demo,20,3,0,7`);
+        const newData = parseCsv(`Cemetery_Name,total_plots,total_interments,total_rois,total_persons
+Adjungbilly_Cemetery,5,22,0,22
+Astana_Tegal_Gundul,186,18,20,66
+living_legacy_mornington_green_forest,1998,568,1174,2216
+zzz-demo,20,3,0,8`);
+
+        // --- Analysis Section ---
+        function rowDiffClass(delta) {
+            if (delta > 0) return "diff-up";
+            if (delta < 0) return "diff-down";
+            return "diff-unchanged";
+        }
+
+        // Track summary stats
+        const summary = {
+            plots: {up: 0, down: 0, unchanged: 0, total: 0},
+            interments: {up: 0, down: 0, unchanged: 0, total: 0},
+            rois: {up: 0, down: 0, unchanged: 0, total: 0},
+            persons: {up: 0, down: 0, unchanged: 0, total: 0},
+        };
+
+        // Compute comparison rows
+        let rowsHtml = '';
+        for (const name in newData) {
+            const old = oldData[name] || {total_plots:0, total_interments:0, total_rois:0, total_persons:0};
+            const cur = newData[name];
+
+            const dPlots = cur.total_plots - (old.total_plots || 0);
+            const dInterments = cur.total_interments - (old.total_interments || 0);
+            const dRois = cur.total_rois - (old.total_rois || 0);
+            const dPersons = cur.total_persons - (old.total_persons || 0);
+
+            // Only display if there is any difference in any metric
+            if (dPlots || dInterments || dRois || dPersons) {
+                summary.plots[dPlots > 0 ? "up" : dPlots < 0 ? "down" : "unchanged"]++;
+                summary.interments[dInterments > 0 ? "up" : dInterments < 0 ? "down" : "unchanged"]++;
+                summary.rois[dRois > 0 ? "up" : dRois < 0 ? "down" : "unchanged"]++;
+                summary.persons[dPersons > 0 ? "up" : dPersons < 0 ? "down" : "unchanged"]++;
+                summary.plots.total++;
+                summary.interments.total++;
+                summary.rois.total++;
+                summary.persons.total++;
+            }
+
+            // Build row if there is a change
+            if (dPlots || dInterments || dRois || dPersons) {
+                const rowClass = 
+                    dPlots > 0 || dInterments > 0 || dRois > 0 || dPersons > 0 ? 'diff-up' :
+                    dPlots < 0 || dInterments < 0 || dRois < 0 || dPersons < 0 ? 'diff-down' :
+                    'diff-unchanged';
+                rowsHtml += `<tr class="${rowClass}">
+                    <td style="text-align:left">${name}</td>
+                    <td>${old.total_plots}</td>
+                    <td>${cur.total_plots}</td>
+                    <td>${dPlots >= 0 ? "+" : ""}${dPlots}</td>
+                    <td>${old.total_interments}</td>
+                    <td>${cur.total_interments}</td>
+                    <td>${dInterments >= 0 ? "+" : ""}${dInterments}</td>
+                    <td>${old.total_rois}</td>
+                    <td>${cur.total_rois}</td>
+                    <td>${dRois >= 0 ? "+" : ""}${dRois}</td>
+                    <td>${old.total_persons}</td>
+                    <td>${cur.total_persons}</td>
+                    <td>${dPersons >= 0 ? "+" : ""}${dPersons}</td>
+                </tr>`;
+            }
+        }
+
+        // Place summary stats
+        document.getElementById('plots_up').textContent = summary.plots.up;
+        document.getElementById('plots_down').textContent = summary.plots.down;
+        document.getElementById('plots_unchanged').textContent = summary.plots.unchanged;
+        document.getElementById('plots_total').textContent = summary.plots.total;
+
+        document.getElementById('interments_up').textContent = summary.interments.up;
+        document.getElementById('interments_down').textContent = summary.interments.down;
+        document.getElementById('interments_unchanged').textContent = summary.interments.unchanged;
+        document.getElementById('interments_total').textContent = summary.interments.total;
+
+        document.getElementById('rois_up').textContent = summary.rois.up;
+        document.getElementById('rois_down').textContent = summary.rois.down;
+        document.getElementById('rois_unchanged').textContent = summary.rois.unchanged;
+        document.getElementById('rois_total').textContent = summary.rois.total;
+
+        document.getElementById('persons_up').textContent = summary.persons.up;
+        document.getElementById('persons_down').textContent = summary.persons.down;
+        document.getElementById('persons_unchanged').textContent = summary.persons.unchanged;
+        document.getElementById('persons_total').textContent = summary.persons.total;
+
+        // Insert rows
+        document.querySelectorAll("table")[1].innerHTML += rowsHtml;
+    </script>
+    <p><small>Color code: <span style="background:#d4f8df">green</span> means increased; <span style="background:#ffe5e5">red</span> means decreased; white is unchanged.</small></p>
+</body>
+</html>
+```
+**Instructions:**  
+- Populate `oldData` and `newData` with your full parsed CSVs as JS objects (mapping from `Cemetery_Name` to row data).
+- The script compares all cemeteries present in the new data to their old values and displays any changes.
+- The summary table shows count of cemeteries with increase/decrease/no change per metric.
+- The difference table highlights per-metric changes and is color-coded for easier review.
+
+**Note:** For a real use, you should replace the small placeholder CSVs with your full parsed data arrays; if you want this purely as static HTML (no JS), provide the actual rows server-side, or let me know if you want a static HTML direct dump from your CSVs!
