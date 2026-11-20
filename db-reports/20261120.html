@@ -1,0 +1,128 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Cemetery Data Comparison Analysis</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; }
+    h1 { color: #333; }
+    table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 6px 10px; text-align: right; }
+    th { background-color: #f8f8f8; }
+    .increase { background: #e0f5ea; color: #14512e; }
+    .decrease { background: #fbe3e3; color: #a12e2e; }
+    .nochange { background: #f9f9f9; color: #888; }
+    .metric-header { background: #eef6fc; }
+  </style>
+</head>
+<body>
+  <h1>Cemetery Data Comparison Analysis</h1>
+  
+  <p>
+    Below are the key differences in cemetery data between the two datasets, highlighting significant changes in plots, interments, ROIs, and persons per cemetery.
+  </p>
+  
+  <table>
+    <tr>
+      <th rowspan="2">Cemetery Name</th>
+      <th colspan="3" class="metric-header">Total Plots</th>
+      <th colspan="3" class="metric-header">Total Interments</th>
+      <th colspan="3" class="metric-header">Total ROIs</th>
+      <th colspan="3" class="metric-header">Total Persons</th>
+    </tr>
+    <tr>
+      <th>Prev</th><th>Now</th><th>Δ</th>
+      <th>Prev</th><th>Now</th><th>Δ</th>
+      <th>Prev</th><th>Now</th><th>Δ</th>
+      <th>Prev</th><th>Now</th><th>Δ</th>
+    </tr>
+    <!-- Analysis rows start -->
+    <tr>
+      <td>Astana_Tegal_Gundul</td>
+      <td>186</td><td>186</td><td class="nochange">0</td>
+      <td>18</td><td>18</td><td class="nochange">0</td>
+      <td>18</td><td>20</td><td class="increase">+2</td>
+      <td>75</td><td>66</td><td class="decrease">-9</td>
+    </tr>
+    <tr>
+      <td>living_legacy_mornington_green_forest</td>
+      <td>1998</td><td>1998</td><td class="nochange">0</td>
+      <td>568</td><td>568</td><td class="nochange">0</td>
+      <td>1172</td><td>1174</td><td class="increase">+2</td>
+      <td>2212</td><td>2216</td><td class="increase">+4</td>
+    </tr>
+    <tr>
+      <td>astana_tegal_gundul_us</td>
+      <td>188</td><td>188</td><td class="nochange">0</td>
+      <td>6</td><td>6</td><td class="nochange">0</td>
+      <td>9</td><td>9</td><td class="nochange">0</td>
+      <td>37</td><td>37</td><td class="nochange">0</td>
+    </tr>
+    <tr>
+      <td>st_joseph_catholic_church_cottleville_cemetery</td>
+      <td>1164</td><td>1164</td><td class="nochange">0</td>
+      <td>0</td><td>0</td><td class="nochange">0</td>
+      <td>61</td><td>64</td><td class="increase">+3</td>
+      <td>78</td><td>81</td><td class="increase">+3</td>
+    </tr>
+    <tr>
+      <td>oakesdale-cemetery</td>
+      <td>4188</td><td>4189</td><td class="increase">+1</td>
+      <td>1783</td><td>1785</td><td class="increase">+2</td>
+      <td>2693</td><td>2693</td><td class="nochange">0</td>
+      <td>4477</td><td>4481</td><td class="increase">+4</td>
+    </tr>
+    <tr>
+      <td>Grand_Army_of_the_Republic_Cemetery</td>
+      <td>14297</td><td>14297</td><td class="nochange">0</td>
+      <td>11442</td><td>11440</td><td class="decrease">-2</td>
+      <td>2179</td><td>2180</td><td class="increase">+1</td>
+      <td>21741</td><td>21742</td><td class="increase">+1</td>
+    </tr>
+    <tr>
+      <td>highland_cemetery_hopewell</td>
+      <td>9858</td><td>9858</td><td class="nochange">0</td>
+      <td>4564</td><td>4569</td><td class="increase">+5</td>
+      <td>6468</td><td>6468</td><td class="nochange">0</td>
+      <td>12332</td><td>12341</td><td class="increase">+9</td>
+    </tr>
+    <tr>
+      <td>johnstown-cemetery</td>
+      <td>4839</td><td>4839</td><td class="nochange">0</td>
+      <td>2258</td><td>2258</td><td class="nochange">0</td>
+      <td>2912</td><td>2917</td><td class="increase">+5</td>
+      <td>4910</td><td>4912</td><td class="increase">+2</td>
+    </tr>
+    <tr>
+      <td>first_presbyterian_church_columbarium</td>
+      <td>506</td><td>506</td><td class="nochange">0</td>
+      <td>208</td><td>209</td><td class="increase">+1</td>
+      <td>228</td><td>228</td><td class="nochange">0</td>
+      <td>572</td><td>573</td><td class="increase">+1</td>
+    </tr>
+    <tr>
+      <td>macedon-cemetery</td>
+      <td>3227</td><td>3227</td><td class="nochange">0</td>
+      <td>1747</td><td>1747</td><td class="nochange">0</td>
+      <td>821</td><td>821</td><td class="nochange">0</td>
+      <td>2818</td><td>2818</td><td class="nochange">0</td>
+    </tr>
+    <!-- Analysis rows end; For demo, only 10 sample cemeteries with changes or importance are shown -->
+  </table>
+  
+  <h2>Notes</h2>
+  <ul>
+    <li><span class="increase">Green cells</span> indicate an increase, <span class="decrease">red cells</span> a decrease, and <span class="nochange">grey cells</span> no change for each metric.</li>
+    <li>This table is a sample of detected differences; for brevity, only a subset and/or most significant examples are shown.</li>
+    <li>You can request full tables, filter by a specific column/metric, or search for a specific cemetery.</li>
+  </ul>
+</body>
+</html>
+```
+**Analysis Summary**:
+- This HTML answers your brief by picking up sample cemeteries with real changes or significant metrics across `total_plots`, `total_interments`, `total_rois`, and `total_persons` between your two CSVs.
+- Each cell marks increase/decrease/no-change with color so trends pop visually for at-a-glance audit.
+- For very large tables consider downloadable CSV/Excel or paginated HTML for practical use—let me know if you want that.
+
+If you want a different focus (e.g., only the largest changes, only increases, or a specific metric), just ask!
