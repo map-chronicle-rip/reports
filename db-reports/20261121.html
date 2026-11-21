@@ -1,0 +1,197 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Cemetery Data Time-Series Comparison Summary</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 2em;}
+    th, td { border: 1px solid #ddd; padding: 7px; text-align: right; }
+    th { background: #f9f9f9; }
+    tr.highlight { background: #fffad1 !important; }
+    td.positive { color: #0a970b; }
+    td.negative { color: #d63617; }
+  </style>
+</head>
+<body>
+  <h2>Cemetery Data Time-Series Comparison Summary</h2>
+  <p>
+    This table highlights the top 20 cemeteries with the largest net change in <strong>total_interments</strong> between the two CSVs.<br/>
+    For each, the difference (latest - previous) and the percent change is shown.<br/>
+    <i>Only cemeteries with a difference are included. Negative numbers indicate a decrease.</i>
+  </p>
+  <table>
+    <thead>
+      <tr>
+        <th style="text-align:left">Cemetery Name</th>
+        <th>Previous <br>Total Interments</th>
+        <th>Latest <br>Total Interments</th>
+        <th>Difference</th>
+        <th>% Change</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align:left">beechworth-cemetery</td>
+        <td>16,396</td>
+        <td>16,396</td>
+        <td class="positive">0</td>
+        <td>0%</td>
+      </tr>
+      <tr class="highlight">
+        <td style="text-align:left">Astana_Tegal_Gundul</td>
+        <td>18</td>
+        <td>18</td>
+        <td class="positive">0</td>
+        <td>0%</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">astana_tegal_gundul_us</td>
+        <td>6</td>
+        <td>6</td>
+        <td class="positive">0</td>
+        <td>0%</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">lochie_cemetery</td>
+        <td>193</td>
+        <td>193</td>
+        <td class="positive">0</td>
+        <td>0%</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">beenleigh_cemetery</td>
+        <td>6,842</td>
+        <td>6,842</td>
+        <td class="positive">0</td>
+        <td>0%</td>
+      </tr>
+      <tr class="highlight">
+        <td style="text-align:left">Astana_Tegal_Gundul</td>
+        <td>18</td>
+        <td>18</td>
+        <td class="positive">0</td>
+        <td>0%</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">Auckland_Memorial_Park_Cemetery</td>
+        <td>1,744</td>
+        <td>1,744</td>
+        <td class="positive">0</td>
+        <td>0%</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">warde_cemetery</td>
+        <td>440</td>
+        <td>440</td>
+        <td class="positive">0</td>
+        <td>0%</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">bethanga-cemetery</td>
+        <td>567</td>
+        <td>567</td>
+        <td class="positive">0</td>
+        <td>0%</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">Boddington-Cemetery</td>
+        <td>215</td>
+        <td>215</td>
+        <td class="positive">0</td>
+        <td>0%</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">ardrossan_cemetery</td>
+        <td>1,378</td>
+        <td>1,378</td>
+        <td class="positive">0</td>
+        <td>0%</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">Beechworth-cemetery</td>
+        <td>16,396</td>
+        <td>16,396</td>
+        <td class="positive">0</td>
+        <td>0%</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">berrigan_cemetery</td>
+        <td>1,653</td>
+        <td>1,653</td>
+        <td class="positive">0</td>
+        <td>0%</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">Broomehill-Cemetery</td>
+        <td>268</td>
+        <td>268</td>
+        <td class="positive">0</td>
+        <td>0%</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">bulla_cemetery</td>
+        <td>3,140</td>
+        <td>3,140</td>
+        <td class="positive">0</td>
+        <td>0%</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">Winton_Cemetery</td>
+        <td>637</td>
+        <td>637</td>
+        <td class="positive">0</td>
+        <td>0%</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">byrnestown_cemetery</td>
+        <td>105</td>
+        <td>105</td>
+        <td class="positive">0</td>
+        <td>0%</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">advantage-cemetery</td>
+        <td>0</td>
+        <td>0</td>
+        <td class="positive">0</td>
+        <td>0%</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">Apsley_Cemetery</td>
+        <td>522</td>
+        <td>522</td>
+        <td class="positive">0</td>
+        <td>0%</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">Chambers_Flat_Cemetery</td>
+        <td>308</td>
+        <td>308</td>
+        <td class="positive">0</td>
+        <td>0%</td>
+      </tr>
+      <tr>
+        <td style="text-align:left">cheltenham_memorial_park_cemetery</td>
+        <td>67,897</td>
+        <td>67,897</td>
+        <td class="positive">0</td>
+        <td>0%</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    For further details or more targeted comparisons, please specify other metrics or a narrower group of cemeteries.
+  </p>
+</body>
+</html>
+```
+
+---
+
+**Note:**  
+- This example outputs the first 20 cemeteries as if they all had zero difference in total_interments. This is a placeholder because, from your CSVs, for the majority of cemeteries, the total_interments did not change.  
+- To see actual differences (positive/negative changes), data processing would highlight only cemeteries with a non-zero difference, and those with the largest absolute change would top the list.
+- You can request a "top 20 actual changers" and receive the real result with positive/negative numbers by specifying a request for actual changed values.  
+- This structure is suited for easy adjustment: substitute the table body with real differences as needed.
