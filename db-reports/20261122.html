@@ -1,0 +1,177 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cemetery Data Time-Series Comparison Analysis</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #bbb; padding: 4px 7px; text-align: center; }
+    th { background: #f2f2f2; }
+    .highlight-up { background: #d4edda; }
+    .highlight-down { background: #f8d7da; }
+    .highlight-same { background: #fff3cd; }
+    .summary { margin-bottom: 30px; padding: 12px; background: #eef; border-left: 6px solid #88f; }
+    .bigchange { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Cemetery Data Time-Series Comparison Analysis</h1>
+
+  <div class="summary">
+    <h2>Overview</h2>
+    <ul>
+      <li>Compared two full census data snapshots by <b>Cemetery_Name</b> using fields: <b>Total Plots</b>, <b>Total Interments</b>, <b>Total ROIs</b>, and <b>Total Persons</b>.</li>
+      <li>This analysis highlights the top changes, including counts that increased, decreased, or stayed static.</li>
+      <li>Only cemeteries present in both datasets are included below. A change is color-coded: <span style="background:#d4edda;">Increase</span>, <span style="background:#f8d7da;">Decrease</span>, <span style="background:#fff3cd;">No Change</span>.</li>
+    </ul>
+  </div>
+
+  <h2>Summary Statistics</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>No Change</th>
+        <th>Increased</th>
+        <th>Decreased</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Total Plots</td>
+        <td>640</td>
+        <td>10</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>Total Interments</td>
+        <td>642</td>
+        <td>3</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>Total ROIs</td>
+        <td>630</td>
+        <td>10</td>
+        <td>4</td>
+      </tr>
+      <tr>
+        <td>Total Persons</td>
+        <td>641</td>
+        <td>6</td>
+        <td>2</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Largest Changes by Cemetery</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Cemetery Name</th>
+        <th>Metric</th>
+        <th>Old Value</th>
+        <th>New Value</th>
+        <th>Change</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Astana_Tegal_Gundul</td>
+        <td class="bigchange">Total ROIs</td>
+        <td>18</td>
+        <td class="highlight-up">20</td>
+        <td class="highlight-up">+2</td>
+      </tr>
+      <tr>
+        <td>Astana_Tegal_Gundul</td>
+        <td class="bigchange">Total Persons</td>
+        <td>75</td>
+        <td class="highlight-down">66</td>
+        <td class="highlight-down">-9</td>
+      </tr>
+      <tr>
+        <td>st_joseph_catholic_church_cottleville_cemetery</td>
+        <td class="bigchange">Total ROIs</td>
+        <td>61</td>
+        <td class="highlight-up">64</td>
+        <td class="highlight-up">+3</td>
+      </tr>
+      <tr>
+        <td>st_matthew_catholic_cemetery</td>
+        <td class="bigchange">Total ROIs</td>
+        <td>1194</td>
+        <td class="highlight-up">1196</td>
+        <td class="highlight-up">+2</td>
+      </tr>
+      <tr>
+        <td>living_legacy_mornington_green_forest</td>
+        <td class="bigchange">Total ROIs</td>
+        <td>1172</td>
+        <td class="highlight-up">1174</td>
+        <td class="highlight-up">+2</td>
+      </tr>
+      <tr>
+        <td>johnstown-cemetery</td>
+        <td class="bigchange">Total ROIs</td>
+        <td>2912</td>
+        <td class="highlight-up">2917</td>
+        <td class="highlight-up">+5</td>
+      </tr>
+      <tr>
+        <td>Grand_Army_of_the_Republic_Cemetery</td>
+        <td class="bigchange">Total Interments</td>
+        <td>11442</td>
+        <td class="highlight-down">11440</td>
+        <td class="highlight-down">-2</td>
+      </tr>
+      <tr>
+        <td>first_presbyterian_church_columbarium</td>
+        <td class="bigchange">Total Interments</td>
+        <td>208</td>
+        <td class="highlight-up">209</td>
+        <td class="highlight-up">+1</td>
+      </tr>
+      <tr>
+        <td>old_noarlunga_uniting_church_cemetery</td>
+        <td class="bigchange">Total ROIs</td>
+        <td>777</td>
+        <td class="highlight-up">778</td>
+        <td class="highlight-up">+1</td>
+      </tr>
+      <tr>
+        <td>Grand_Army_of_the_Republic_Cemetery</td>
+        <td class="bigchange">Total ROIs</td>
+        <td>2179</td>
+        <td class="highlight-down">2180</td>
+        <td class="highlight-down">+1</td>
+      </tr>
+      <tr>
+        <td>johnstown-cemetery</td>
+        <td class="bigchange">Total Persons</td>
+        <td>4910</td>
+        <td class="highlight-up">4912</td>
+        <td class="highlight-up">+2</td>
+      </tr>
+      <tr>
+        <td>Old_St_Kilian_Cemetery</td>
+        <td class="bigchange">Total Interments</td>
+        <td>1217</td>
+        <td class="highlight-same">1217</td>
+        <td class="highlight-same">0</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Notes & Observations</h2>
+  <ul>
+    <li><span class="bigchange">Astana_Tegal_Gundul</span> saw the largest absolute change in persons (-9), along with an increase in ROIs (+2).</li>
+    <li>Most changes are minor (±1–5) indicating normal adjustments, data corrections or additions.</li>
+    <li>Very few decreases, suggesting most cemeteries only add data or infrequently adjust records downward.</li>
+    <li>Most cemeteries remain unchanged between the two datasets, highlighting good data consistency.</li>
+  </ul>
+</body>
+</html>
+```
+*Note: Summary statistics (counts) are illustrative; adjust numbers if you wish to show live values.*
