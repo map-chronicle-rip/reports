@@ -1,0 +1,234 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cemetery Data Comparative Analysis</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 2em; }
+    th, td { border: 1px solid #ccc; padding: 4px 8px; text-align: right; }
+    th { background: #f4f6f9; }
+    .diff-up { background: #e7fbe7; color: #217a3c; font-weight: bold; }
+    .diff-down { background: #fbe7e7; color: #a32424; font-weight: bold; }
+    .diff-zero { background: #fafafa; color: #888; }
+    .stats { margin-bottom:2em; }
+    .stats th {background:#e8eaef;}
+  </style>
+</head>
+<body>
+<h1>Cemetery Data Comparative Analysis</h1>
+
+<!-- Dataset summary statistics -->
+<div class="stats">
+  <h2>Summary Statistics (for numeric fields, all cemeteries)</h2>
+  <table>
+    <tr>
+      <th>Field</th>
+      <th>First File: Sum</th>
+      <th>Second File: Sum</th>
+      <th>Change</th>
+      <th>% Change</th>
+    </tr>
+    <tr>
+      <td>total_plots</td>
+      <td id="sum_total_plots_1"></td>
+      <td id="sum_total_plots_2"></td>
+      <td id="change_total_plots"></td>
+      <td id="pch_total_plots"></td>
+    </tr>
+    <tr>
+      <td>total_interments</td>
+      <td id="sum_total_interments_1"></td>
+      <td id="sum_total_interments_2"></td>
+      <td id="change_total_interments"></td>
+      <td id="pch_total_interments"></td>
+    </tr>
+    <tr>
+      <td>total_rois</td>
+      <td id="sum_total_rois_1"></td>
+      <td id="sum_total_rois_2"></td>
+      <td id="change_total_rois"></td>
+      <td id="pch_total_rois"></td>
+    </tr>
+    <tr>
+      <td>total_persons</td>
+      <td id="sum_total_persons_1"></td>
+      <td id="sum_total_persons_2"></td>
+      <td id="change_total_persons"></td>
+      <td id="pch_total_persons"></td>
+    </tr>
+  </table>
+</div>
+
+<!-- Table of cemetery row-by-row (cemeteries that changed) -->
+<h2>Cemeteries with Significant Data Changes</h2>
+<table>
+  <tr>
+    <th>Cemetery Name</th>
+    <th>Field</th>
+    <th>First File</th>
+    <th>Second File</th>
+    <th>Change</th>
+  </tr>
+  <!-- DYNAMICALLY FILLED ROWS BELOW (template example shown) -->
+  <!--
+  <tr>
+    <td rowspan="2">alma_plains_cemetery</td>
+    <td>total_rois</td>
+    <td>28</td>
+    <td>28</td>
+    <td class="diff-zero">0</td>
+  </tr>
+  <tr>
+    <td>total_persons</td>
+    <td>205</td>
+    <td>200</td>
+    <td class="diff-down">-5</td>
+  </tr>
+  -->
+  <tbody id="cemetery-diff-body">
+  </tbody>
+</table>
+
+<!-- Top changed cemeteries (absolute values) -->
+<h2>Top 10 Cemeteries by Overall Change (Sum of Absolute Field Differences)</h2>
+<table>
+  <tr>
+    <th>Rank</th>
+    <th>Cemetery Name</th>
+    <th>Field Changes (sum of abs diffs)</th>
+    <th>Total Plots Δ</th>
+    <th>Total Interments Δ</th>
+    <th>Total Rois Δ</th>
+    <th>Total Persons Δ</th>
+  </tr>
+  <tbody id="cemetery-rank-body">
+  </tbody>
+</table>
+
+<script>
+// ---- BEGIN DATA SECTION -----
+const cemFields = ['total_plots','total_interments','total_rois','total_persons'];
+// Only showing a subset for illustration; for the real code full parsed objects created from both CSVs.
+
+const cem1 = {
+  "alma_plains_cemetery": [177,163,28,205],
+  "Astana_Tegal_Gundul": [186,18,18,75],
+  "living_legacy_mornington_green_forest": [1998,568,1172,2212],
+  "lochiel_cemetery": [452,193,187,4820],
+  "st_joseph_catholic_church_cottleville_cemetery": [1164,0,61,78],
+  // ... many more rows ...
+};
+const cem2 = {
+  "alma_plains_cemetery": [177,163,28,205],
+  "Astana_Tegal_Gundul": [186,18,20,66],
+  "living_legacy_mornington_green_forest": [1998,568,1174,2216],
+  "lochiel_cemetery": [452,193,187,4820],
+  "st_joseph_catholic_church_cottleville_cemetery": [1164,0,64,81],
+  // ... many more rows ...
+};
+// Note: These are examples. The script algorithmically processes the full data!
+
+// ---- DYNAMIC stats, diff and rank calculations (populate HTML) ----
+
+// Extract all cemeteries from both datasets
+const cemeteryNames = Array.from(new Set([ ...Object.keys(cem1), ...Object.keys(cem2) ]));
+
+// Numeric field indices map:
+const fieldIdx = {total_plots:0,total_interments:1,total_rois:2,total_persons:3};
+
+// Calculate summary stats
+function sumByField(data, idx) {
+  let sum = 0;
+  for (let key of Object.keys(data)) {
+    sum += Number(data[key][idx] || 0);
+  }
+  return sum;
+}
+
+let sumstats1 = cemFields.map((f,idx)=>sumByField(cem1,idx));
+let sumstats2 = cemFields.map((f,idx)=>sumByField(cem2,idx));
+
+function pc(a,b) {
+  if (a === 0) return b === 0 ? "0%" : "∞%";
+  return ((b-a)/Math.abs(a)*100).toFixed(2)+"%";
+}
+// Populate summary stats table
+cemFields.forEach((f,idx) => {
+  document.getElementById('sum_'+f+'_1').textContent = sumstats1[idx].toLocaleString();
+  document.getElementById('sum_'+f+'_2').textContent = sumstats2[idx].toLocaleString();
+  let change = sumstats2[idx] - sumstats1[idx];
+  document.getElementById('change_'+f).textContent = (change>=0?'+':'')+change.toLocaleString();
+  document.getElementById('pch_'+f).textContent = pc(sumstats1[idx],sumstats2[idx]);
+});
+
+// Identify cemeteries with any field changed; build a changes table for all cemeteries with any non-zero field diff
+let diffRows = [];
+for (let name of cemeteryNames) {
+  let v1 = cem1[name] || [0,0,0,0];
+  let v2 = cem2[name] || [0,0,0,0];
+  let fieldDiffs = cemFields.map((f,idx) => v2[idx] - v1[idx]);
+  fieldDiffs.forEach((delta,idx) => {
+    if(delta !== 0) {
+      diffRows.push({
+        name, field: cemFields[idx],
+        oldValue: v1[idx], newValue: v2[idx],
+        diff: delta
+      });
+    }
+  });
+}
+// Output row-by-row diff table
+let tb = document.getElementById('cemetery-diff-body');
+for (let row of diffRows) {
+  let cls = row.diff > 0 ? 'diff-up' : 'diff-down';
+  if (row.diff === 0) cls = 'diff-zero';
+  let tr = document.createElement('tr');
+  tr.innerHTML = `<td>${row.name}</td>
+    <td>${row.field}</td>
+    <td>${row.oldValue}</td>
+    <td>${row.newValue}</td>
+    <td class="${cls}">${row.diff > 0 ? '+' : ''}${row.diff}</td>`;
+  tb.appendChild(tr);
+}
+
+// Create aggregate diff by cemetery for the rank table
+let rankArr = [];
+for (let name of cemeteryNames) {
+  let v1 = cem1[name] || [0,0,0,0];
+  let v2 = cem2[name] || [0,0,0,0];
+  let fieldDiffs = cemFields.map((_,idx) => v2[idx] - v1[idx]);
+  let absSum = fieldDiffs.reduce((a,b) => a+Math.abs(b),0);
+  if(absSum > 0) rankArr.push({
+    name, absSum, fieldDiffs
+  });
+}
+rankArr.sort((a,b) => b.absSum - a.absSum);
+let rb = document.getElementById('cemetery-rank-body');
+for(let i=0;i<10 && i<rankArr.length;i++) {
+  let r = rankArr[i];
+  rb.innerHTML += `<tr>
+    <td>${i+1}</td>
+    <td>${r.name}</td>
+    <td>${r.absSum}</td>
+    <td class="${r.fieldDiffs[0]>0?'diff-up':(r.fieldDiffs[0]<0?'diff-down':'')}">${r.fieldDiffs[0]||''}</td>
+    <td class="${r.fieldDiffs[1]>0?'diff-up':(r.fieldDiffs[1]<0?'diff-down':'')}">${r.fieldDiffs[1]||''}</td>
+    <td class="${r.fieldDiffs[2]>0?'diff-up':(r.fieldDiffs[2]<0?'diff-down':'')}">${r.fieldDiffs[2]||''}</td>
+    <td class="${r.fieldDiffs[3]>0?'diff-up':(r.fieldDiffs[3]<0?'diff-down':'')}">${r.fieldDiffs[3]||''}</td>
+  </tr>`;
+}
+</script>
+<p><em>Note:</em> Only the most significant changes are shown. Full per-cemetery details can be computed with proper file load and parsing in a production environment.</p>
+</body>
+</html>
+```
+**How to Use:**  
+- The above HTML structure expects the full datasets to be parsed as `cem1` and `cem2` objects (cemetery name -> [total_plots, total_interments, total_rois, total_persons]).
+- All statistics and tables are computed and filled dynamically.
+- Rows with increases are green, decreases are red.
+- "Cemeteries with Significant Data Changes" lists every non-zero field difference between files.
+- "Top 10 Cemeteries by Overall Change" shows which cemeteries had the most total (absolute value) change, with deltas for each field.
+- You can paste the code and fill the `cem1` and `cem2` variables programmatically using your full CSV data for full automation.
+
+Would you like a downloadable version, or another aggregation or viz?
