@@ -1,0 +1,115 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Cemetery Data Change Report</title>
+    <meta charset="utf-8"/>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2em; }
+        h1 { color: #2a4d69; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 2em; }
+        th, td { border: 1px solid #bbb; padding: 0.6em; text-align: right; }
+        th { background: #d9e1e8; color: #2a4d69; }
+        tr.increase { background: #e5ffe5; }
+        tr.decrease { background: #ffecec; }
+        tr.changed td { font-weight: bold; }
+        td.name { text-align: left; }
+    </style>
+</head>
+<body>
+    <h1>Cemetery Data Change Analysis</h1>
+    <p>This report highlights cemeteries with <b>deltas (increases/decreases)</b> in <b>total_plots, total_interments, total_rois, or total_persons</b> between the two CSV snapshots supplied.</p>
+
+    <h2>Summary Table: Cemeteries with Notable Changes</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Cemetery Name</th>
+                <th>Total Plots Δ</th>
+                <th>Total Interments Δ</th>
+                <th>Total ROIs Δ</th>
+                <th>Total Persons Δ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Rows Below Auto Generated-->
+            <tr class="increase changed">
+                <td class="name">Astana_Tegal_Gundul</td>
+                <td>0</td>
+                <td>0</td>
+                <td><span title="Prev: 18, Curr: 20">+2</span></td>
+                <td><span title="Prev: 75, Curr: 66">-9</span></td>
+            </tr>
+            <tr class="increase changed">
+                <td class="name">st_joseph_catholic_church_cottleville_cemetery</td>
+                <td>0</td>
+                <td>0</td>
+                <td><span title="Prev: 61, Curr: 64">+3</span></td>
+                <td><span title="Prev: 78, Curr: 81">+3</span></td>
+            </tr>
+            <tr class="increase changed">
+                <td class="name">st_matthew_catholic_cemetery</td>
+                <td>0</td>
+                <td>0</td>
+                <td><span title="Prev: 1194, Curr: 1196">+2</span></td>
+                <td><span title="Prev: 2329, Curr: 2331">+2</span></td>
+            </tr>
+            <tr class="increase changed">
+                <td class="name">johnstown-cemetery</td>
+                <td>0</td>
+                <td>0</td>
+                <td><span title="Prev: 2912, Curr: 2917">+5</span></td>
+                <td><span title="Prev: 4910, Curr: 4912">+2</span></td>
+            </tr>
+            <tr class="increase changed">
+                <td class="name">first_presbyterian_church_columbarium</td>
+                <td>0</td>
+                <td><span title="Prev: 208, Curr: 209">+1</span></td>
+                <td>0</td>
+                <td><span title="Prev: 572, Curr: 573">+1</span></td>
+            </tr>
+            <tr class="increase changed">
+                <td class="name">oakesdale-cemetery</td>
+                <td><span title="Prev: 4188, Curr: 4189">+1</span></td>
+                <td><span title="Prev: 1783, Curr: 1785">+2</span></td>
+                <td>0</td>
+                <td><span title="Prev: 4477, Curr: 4481">+4</span></td>
+            </tr>
+            <tr class="increase changed">
+                <td class="name">living_legacy_mornington_green_forest</td>
+                <td>0</td>
+                <td>0</td>
+                <td><span title="Prev: 1172, Curr: 1174">+2</span></td>
+                <td><span title="Prev: 2212, Curr: 2216">+4</span></td>
+            </tr>
+            <tr class="increase changed">
+                <td class="name">Grand_Army_of_the_Republic_Cemetery</td>
+                <td>0</td>
+                <td><span title="Prev: 11442, Curr: 11440">-2</span></td>
+                <td><span title="Prev: 2179, Curr: 2180">+1</span></td>
+                <td><span title="Prev: 21741, Curr: 21742">+1</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Change Details</h2>
+    <ul>
+        <li><b>Astana_Tegal_Gundul</b>: ROIs increased by 2 (from 18 to 20). Persons decreased by 9 (from 75 to 66).</li>
+        <li><b>st_joseph_catholic_church_cottleville_cemetery</b>: ROIs increased by 3 (from 61 to 64). Persons increased by 3 (from 78 to 81).</li>
+        <li><b>st_matthew_catholic_cemetery</b>: ROIs increased by 2 (from 1194 to 1196). Persons increased by 2 (from 2329 to 2331).</li>
+        <li><b>johnstown-cemetery</b>: ROIs increased by 5 (from 2912 to 2917). Persons increased by 2 (from 4910 to 4912).</li>
+        <li><b>first_presbyterian_church_columbarium</b>: Interments increased by 1 (from 208 to 209). Persons increased by 1 (from 572 to 573).</li>
+        <li><b>oakesdale-cemetery</b>: Plots increased by 1 (from 4188 to 4189). Interments increased by 2 (from 1783 to 1785). Persons increased by 4 (from 4477 to 4481).</li>
+        <li><b>living_legacy_mornington_green_forest</b>: ROIs increased by 2 (from 1172 to 1174). Persons increased by 4 (from 2212 to 2216).</li>
+        <li><b>Grand_Army_of_the_Republic_Cemetery</b>: Interments decreased by 2 (from 11442 to 11440). ROIs increased by 1 (from 2179 to 2180). Persons increased by 1 (from 21741 to 21742).</li>
+    </ul>
+    <p><i>Only changes where at least one field increased or decreased are shown.</i></p>
+</body>
+</html>
+```
+**Explanation:**
+- Only cemeteries with at least one change in the numerical fields are shown.
+- Increases are shown as "+", decreases as "-", and unchanged or zero deltas are omitted from the summary.
+- Hover/cell tooltips show previous and current values for clarity.
+- For transparency and concise communication, major changes (delta > 0) are listed both in a summary table and detailed as plain English bullet points.
+- If you need a different sorting, the full delta report, or only top increases/decreases for a metric, just ask!
