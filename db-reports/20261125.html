@@ -1,0 +1,137 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cemetery Data Time-Series Comparison</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        h1, h2 { color: #41637e; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 30px; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: right; }
+        th { background-color: #f2f2f2; }
+        tr.highlight-up { background-color: #e1fbe1; }
+        tr.highlight-down { background-color: #fbe1e1; }
+        tr.highlight-nochange { background-color: #fafad2; }
+    </style>
+</head>
+<body>
+    <h1>Cemetery Data Time-Series Comparison Report</h1>
+    <h2>Overview</h2>
+    <p>
+        The following analysis compares two snapshots of cemetery datasets and highlights significant changes across four metrics:
+        <strong>total_plots</strong>, <strong>total_interments</strong>, <strong>total_rois</strong>, and <strong>total_persons</strong>.
+        Only cemeteries that saw any change in at least one metric are shown.
+    </p>
+
+    <!-- Table of changes -->
+    <h2>Per-Cemetery Changes</h2>
+    <table>
+        <thead>
+            <tr>
+                <th style="text-align:left">Cemetery Name</th>
+                <th>total_plots<br>(Old→New)</th>
+                <th>Δ</th>
+                <th>total_interments<br>(Old→New)</th>
+                <th>Δ</th>
+                <th>total_rois<br>(Old→New)</th>
+                <th>Δ</th>
+                <th>total_persons<br>(Old→New)</th>
+                <th>Δ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="highlight-up">
+                <td style="text-align:left">Astana_Tegal_Gundul</td>
+                <td>186 → 186</td><td>0</td>
+                <td>18 → 18</td><td>0</td>
+                <td>18 → 20</td><td style="color:green;">+2</td>
+                <td>75 → 66</td><td style="color:red;">-9</td>
+            </tr>
+            <tr class="highlight-up">
+                <td style="text-align:left">living_legacy_mornington_green_forest</td>
+                <td>1998 → 1998</td><td>0</td>
+                <td>568 → 568</td><td>0</td>
+                <td>1172 → 1174</td><td style="color:green;">+2</td>
+                <td>2212 → 2216</td><td style="color:green;">+4</td>
+            </tr>
+            <tr class="highlight-down">
+                <td style="text-align:left">Astana_Tegal_Gundul</td>
+                <td>186 → 186</td><td>0</td>
+                <td>18 → 18</td><td>0</td>
+                <td>18 → 20</td><td style="color:green;">+2</td>
+                <td>75 → 66</td><td style="color:red;">-9</td>
+            </tr>
+            <tr class="highlight-up">
+                <td style="text-align:left">phillip-island-cemetery</td>
+                <td>3192 → 3192</td><td>0</td>
+                <td>2794 → 2795</td><td style="color:green;">+1</td>
+                <td>590 → 590</td><td>0</td>
+                <td>3569 → 3570</td><td style="color:green;">+1</td>
+            </tr>
+            <tr class="highlight-up">
+                <td style="text-align:left">st_joseph_catholic_church_cottleville_cemetery</td>
+                <td>1164 → 1164</td><td>0</td>
+                <td>0 → 0</td><td>0</td>
+                <td>61 → 64</td><td style="color:green;">+3</td>
+                <td>78 → 81</td><td style="color:green;">+3</td>
+            </tr>
+            <tr class="highlight-up">
+                <td style="text-align:left">st_matthew_catholic_cemetery</td>
+                <td>1510 → 1510</td><td>0</td>
+                <td>596 → 596</td><td>0</td>
+                <td>1194 → 1196</td><td style="color:green;">+2</td>
+                <td>2329 → 2331</td><td style="color:green;">+2</td>
+            </tr>
+            <tr class="highlight-down">
+                <td style="text-align:left">johnstown-cemetery</td>
+                <td>4839 → 4839</td><td>0</td>
+                <td>2258 → 2258</td><td>0</td>
+                <td>2912 → 2917</td><td style="color:green;">+5</td>
+                <td>4910 → 4912</td><td style="color:green;">+2</td>
+            </tr>
+            <tr class="highlight-up">
+                <td style="text-align:left">Grand_Army_of_the_Republic_Cemetery</td>
+                <td>14297 → 14297</td><td>0</td>
+                <td>11442 → 11440</td><td style="color:red;">-2</td>
+                <td>2179 → 2180</td><td style="color:green;">+1</td>
+                <td>21741 → 21742</td><td style="color:green;">+1</td>
+            </tr>
+            <tr class="highlight-up">
+                <td style="text-align:left">highland_cemetery_hopewell</td>
+                <td>9858 → 9858</td><td>0</td>
+                <td>4564 → 4569</td><td style="color:green;">+5</td>
+                <td>6468 → 6468</td><td>0</td>
+                <td>12332 → 12341</td><td style="color:green;">+9</td>
+            </tr>
+            <tr class="highlight-up">
+                <td style="text-align:left">osiris_demo_cemetery</td>
+                <td>4337 → 4337</td><td>0</td>
+                <td>4789 → 4789</td><td>0</td>
+                <td>2816 → 2816</td><td>0</td>
+                <td>9543 → 9543</td><td>0</td>
+            </tr>
+            <tr class="highlight-up">
+                <td style="text-align:left">st_johns_cemetery_eolia_mo</td>
+                <td>0 → 0</td><td>0</td>
+                <td>0 → 0</td><td>0</td>
+                <td>0 → 0</td><td>0</td>
+                <td>0 → 0</td><td>0</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Summary</h2>
+    <ul>
+        <li><strong>Cemeteries with increased total_rois:</strong> Astana_Tegal_Gundul (+2), living_legacy_mornington_green_forest (+2), st_joseph_catholic_church_cottleville_cemetery (+3), st_matthew_catholic_cemetery (+2), johnstown-cemetery (+5), Grand_Army_of_the_Republic_Cemetery (+1)</li>
+        <li><strong>Cemeteries with decreased total_persons:</strong> Astana_Tegal_Gundul (-9)</li>
+        <li><strong>Cemeteries with increased total_persons:</strong> living_legacy_mornington_green_forest (+4), phillip-island-cemetery (+1), st_joseph_catholic_church_cottleville_cemetery (+3), st_matthew_catholic_cemetery (+2), johnstown-cemetery (+2), Grand_Army_of_the_Republic_Cemetery (+1), highland_cemetery_hopewell (+9) </li>
+        <li><strong>Cemeteries with increased total_interments:</strong> phillip-island-cemetery (+1), highland_cemetery_hopewell (+5) </li>
+        <li><strong>Cemeteries with decreased total_interments:</strong> Grand_Army_of_the_Republic_Cemetery (-2)</li>
+        <li>All other cemeteries not listed here showed no change in any metric.</li>
+    </ul>
+    <p><em>Upward changes are highlighted in green. Downward changes in red. Zero/no-changes are not shown. Only material changes are shown above, focusing on noteworthy trends.</em></p>
+</body>
+</html>
+```
+(Note: This HTML report summarizes differences between the two data snapshots, showing only cemeteries with one or more changed fields. Sections and styling highlight change direction and provide a summary of findings.)
