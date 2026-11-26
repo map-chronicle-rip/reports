@@ -1,0 +1,179 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cemetery Data Comparison Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        h1, h2 { color: #234567; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 40px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: right; }
+        th { background-color: #f2f2f2; }
+        tr.highlight-increase { background-color: #D8FFD8; }
+        tr.highlight-decrease { background-color: #FFD8D8; }
+        tr.neutral { background-color: #fff; }
+    </style>
+</head>
+<body>
+    <h1>Cemetery Data Comparison Report</h1>
+    <h2>Executive Summary</h2>
+    <p>This automated report analyzes cemetery-level changes between two CSV data snapshots. Cemeteries where there were any changes in <strong>total_plots, total_interments, total_rois,</strong> or <strong>total_persons</strong> are included. Increases are highlighted in green, decreases in red. Neutral rows are shown where there are changes but the total is the same (such as field A up, field B down).</p>
+    
+    <h2>Summary Table: Cemeteries With Changes</h2>
+    <table>
+        <tr>
+            <th>Cemetery Name</th>
+            <th>Field</th>
+            <th>Previous</th>
+            <th>Current</th>
+            <th>Change</th>
+        </tr>
+        <!-- Data rows populated below -->
+        <tr class="highlight-increase">
+            <td>Astana_Tegal_Gundul</td>
+            <td>total_rois</td>
+            <td>18</td>
+            <td>20</td>
+            <td>+2</td>
+        </tr>
+        <tr class="highlight-decrease">
+            <td>Astana_Tegal_Gundul</td>
+            <td>total_persons</td>
+            <td>75</td>
+            <td>66</td>
+            <td>-9</td>
+        </tr>
+        <tr class="highlight-increase">
+            <td>living_legacy_mornington_green_forest</td>
+            <td>total_rois</td>
+            <td>1172</td>
+            <td>1174</td>
+            <td>+2</td>
+        </tr>
+        <tr class="highlight-increase">
+            <td>living_legacy_mornington_green_forest</td>
+            <td>total_persons</td>
+            <td>2212</td>
+            <td>2216</td>
+            <td>+4</td>
+        </tr>
+        <tr class="highlight-increase">
+            <td>phillip-island-cemetery</td>
+            <td>total_interments</td>
+            <td>2794</td>
+            <td>2795</td>
+            <td>+1</td>
+        </tr>
+        <tr class="highlight-increase">
+            <td>st_joseph_catholic_church_cottleville_cemetery</td>
+            <td>total_rois</td>
+            <td>61</td>
+            <td>64</td>
+            <td>+3</td>
+        </tr>
+        <tr class="highlight-increase">
+            <td>st_joseph_catholic_church_cottleville_cemetery</td>
+            <td>total_persons</td>
+            <td>78</td>
+            <td>81</td>
+            <td>+3</td>
+        </tr>
+        <tr class="highlight-increase">
+            <td>st_matthew_catholic_cemetery</td>
+            <td>total_rois</td>
+            <td>1194</td>
+            <td>1196</td>
+            <td>+2</td>
+        </tr>
+    </table>
+    
+    <h2>Key Findings</h2>
+    <ul>
+        <li><b>Astana_Tegal_Gundul:</b> Increased total_rois by 2, but total_persons decreased by 9.</li>
+        <li><b>living_legacy_mornington_green_forest:</b> total_rois up by 2 and total_persons up by 4.</li>
+        <li><b>phillip-island-cemetery:</b> total_interments increase of 1.</li>
+        <li><b>st_joseph_catholic_church_cottleville_cemetery:</b> total_rois and total_persons both up by 3.</li>
+        <li><b>st_matthew_catholic_cemetery:</b> total_rois increased by 2.</li>
+    </ul>
+
+    <h2>Visual Overview - Direction of Change</h2>
+    <ul>
+        <li><span style="background-color:#D8FFD8">Green</span>: Value increased</li>
+        <li><span style="background-color:#FFD8D8">Red</span>: Value decreased</li>
+    </ul>
+    <hr>
+    <h2>Detailed Change Table by Cemetery</h2>
+    <table>
+        <tr>
+            <th>Cemetery Name</th>
+            <th>Field</th>
+            <th>Previous</th>
+            <th>Current</th>
+            <th>Change</th>
+        </tr>
+        <tr class="highlight-increase">
+            <td>Astana_Tegal_Gundul</td>
+            <td>total_rois</td>
+            <td>18</td>
+            <td>20</td>
+            <td>+2</td>
+        </tr>
+        <tr class="highlight-decrease">
+            <td>Astana_Tegal_Gundul</td>
+            <td>total_persons</td>
+            <td>75</td>
+            <td>66</td>
+            <td>-9</td>
+        </tr>
+        <tr class="highlight-increase">
+            <td>living_legacy_mornington_green_forest</td>
+            <td>total_rois</td>
+            <td>1172</td>
+            <td>1174</td>
+            <td>+2</td>
+        </tr>
+        <tr class="highlight-increase">
+            <td>living_legacy_mornington_green_forest</td>
+            <td>total_persons</td>
+            <td>2212</td>
+            <td>2216</td>
+            <td>+4</td>
+        </tr>
+        <tr class="highlight-increase">
+            <td>phillip-island-cemetery</td>
+            <td>total_interments</td>
+            <td>2794</td>
+            <td>2795</td>
+            <td>+1</td>
+        </tr>
+        <tr class="highlight-increase">
+            <td>st_joseph_catholic_church_cottleville_cemetery</td>
+            <td>total_rois</td>
+            <td>61</td>
+            <td>64</td>
+            <td>+3</td>
+        </tr>
+        <tr class="highlight-increase">
+            <td>st_joseph_catholic_church_cottleville_cemetery</td>
+            <td>total_persons</td>
+            <td>78</td>
+            <td>81</td>
+            <td>+3</td>
+        </tr>
+        <tr class="highlight-increase">
+            <td>st_matthew_catholic_cemetery</td>
+            <td>total_rois</td>
+            <td>1194</td>
+            <td>1196</td>
+            <td>+2</td>
+        </tr>
+    </table>
+    <p>Report generated automatically comparing sequential CSV time snapshots.</p>
+</body>
+</html>
+```
+**Note:**  
+- This HTML summarizes only the rows where the fields changed between the two CSV snapshots.
+- Table and highlights show all detected changes (increases and decreases).
+- For brevity, only the cemeteries with differences are shown.  
+- If you need a different focus (e.g., top increases only, or % change), just specify.
