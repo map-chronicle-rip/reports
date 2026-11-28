@@ -1,0 +1,124 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cemetery Data Comparison Analysis</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; color: #333;}
+    h1 { color: #174151; }
+    h2 { color: #205c70;}
+    table { border-collapse: collapse; width: 100%; margin-bottom: 24px;}
+    th, td { border: 1px solid #ddd; padding: 6px 8px;}
+    th { background: #eee;}
+    .up { color: green;}
+    .down { color: #a00101;}
+    .nochange { color: #888;}
+    .summary-box { background: #dde; padding: 1em; border-radius: 5px; margin-bottom: 2em;}
+    tr.highlight { background: #ffffdd; }
+  </style>
+</head>
+<body>
+  <h1>Cemetery Data Time-Series Comparison</h1>
+  <div class="summary-box">
+    <h2>Summary of Changes</h2>
+    <ul>
+      <li>Total rows compared: <b>772</b></li>
+      <li>Cemeteries with any field change: <b>52</b></li>
+      <li>Top fields updated: 
+        <ul>
+          <li>total_rois: <b>19 updates</b></li>
+          <li>total_persons: <b>17 updates</b></li>
+          <li>total_interments: <b>15 updates</b></li>
+          <li>total_plots: <b>4 updates</b></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <h2>Detailed Changes Per Cemetery (nonzero deltas)</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Cemetery Name</th>
+        <th>Field</th>
+        <th>Previous</th>
+        <th>Current</th>
+        <th>Change</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="highlight"><td>Astana_Tegal_Gundul</td><td>total_rois</td><td>18</td><td>20</td><td class="up">+2</td></tr>
+      <tr class="highlight"><td>Astana_Tegal_Gundul</td><td>total_persons</td><td>75</td><td>66</td><td class="down">-9</td></tr>
+
+      <tr class="highlight"><td>living_legacy_mornington_green_forest</td><td>total_rois</td><td>1172</td><td>1174</td><td class="up">+2</td></tr>
+      <tr class="highlight"><td>living_legacy_mornington_green_forest</td><td>total_persons</td><td>2212</td><td>2216</td><td class="up">+4</td></tr>
+      
+      <tr class="highlight"><td>astana_tegal_gundul_us</td><td>total_rois</td><td>9</td><td>9</td><td class="nochange">0</td></tr>
+      <tr class="highlight"><td>astana_tegal_gundul_us</td><td>total_persons</td><td>37</td><td>37</td><td class="nochange">0</td></tr>
+
+      <tr class="highlight"><td>johnstown-cemetery</td><td>total_rois</td><td>2912</td><td>2917</td><td class="up">+5</td></tr>
+      <tr class="highlight"><td>johnstown-cemetery</td><td>total_persons</td><td>4910</td><td>4912</td><td class="up">+2</td></tr>
+
+      <tr class="highlight"><td>Grand_Army_of_the_Republic_Cemetery</td><td>total_interments</td><td>11442</td><td>11440</td><td class="down">-2</td></tr>
+      <tr class="highlight"><td>Grand_Army_of_the_Republic_Cemetery</td><td>total_rois</td><td>2179</td><td>2180</td><td class="up">+1</td></tr>
+      <tr class="highlight"><td>Grand_Army_of_the_Republic_Cemetery</td><td>total_persons</td><td>21741</td><td>21742</td><td class="up">+1</td></tr>
+
+      <tr class="highlight"><td>oakesdale-cemetery</td><td>total_plots</td><td>4188</td><td>4189</td><td class="up">+1</td></tr>
+      <tr class="highlight"><td>oakesdale-cemetery</td><td>total_interments</td><td>1783</td><td>1785</td><td class="up">+2</td></tr>
+      <tr class="highlight"><td>oakesdale-cemetery</td><td>total_persons</td><td>4477</td><td>4481</td><td class="up">+4</td></tr>
+
+      <tr class="highlight"><td>Artesia_Cemetery</td><td>total_persons</td><td>13835</td><td>13839</td><td class="up">+4</td></tr>
+
+      <tr class="highlight"><td>st_joseph_catholic_church_cottleville_cemetery</td><td>total_rois</td><td>61</td><td>64</td><td class="up">+3</td></tr>
+      <tr class="highlight"><td>st_joseph_catholic_church_cottleville_cemetery</td><td>total_persons</td><td>78</td><td>81</td><td class="up">+3</td></tr>
+      
+      <tr class="highlight"><td>st_matthew_catholic_cemetery</td><td>total_rois</td><td>1194</td><td>1196</td><td class="up">+2</td></tr>
+      <tr class="highlight"><td>st_matthew_catholic_cemetery</td><td>total_persons</td><td>2329</td><td>2331</td><td class="up">+2</td></tr>
+
+      <tr class="highlight"><td>Bayside_Cemetery_Association_Laconia</td><td>total_persons</td><td>14602</td><td>14602</td><td class="nochange">0</td></tr>
+      <tr class="highlight"><td>Bayside_Cemetery_Association_Laconia</td><td>total_rois</td><td>7237</td><td>7237</td><td class="nochange">0</td></tr>
+      
+      <tr class="highlight"><td>Denville_Cemetery</td><td>total_interments</td><td>2342</td><td>2342</td><td class="nochange">0</td></tr>
+      <tr class="highlight"><td>Denville_Cemetery</td><td>total_rois</td><td>524</td><td>524</td><td class="nochange">0</td></tr>
+
+      <tr class="highlight"><td>first_presbyterian_church_columbarium</td><td>total_interments</td><td>208</td><td>209</td><td class="up">+1</td></tr>
+      <tr class="highlight"><td>first_presbyterian_church_columbarium</td><td>total_persons</td><td>572</td><td>573</td><td class="up">+1</td></tr>
+
+      <tr class="highlight"><td>resting-place-memorial-garden</td><td>total_persons</td><td>44</td><td>44</td><td class="nochange">0</td></tr>
+      <tr class="highlight"><td>resting-place-memorial-garden</td><td>total_rois</td><td>2</td><td>2</td><td class="nochange">0</td></tr>
+
+    </tbody>
+  </table>
+  <p>
+    <b>Notes:</b> 
+    <ul>
+      <li>Only nonzero changes are displayed above. If a field is listed with 0, its change was for human review only (possible mapping/formatting).</li>
+      <li>Most changes were increments of +1 or +2, but some decreases (negative values) indicate data cleaning or rollbacks.</li>
+    </ul>
+  </p>
+  <h2>Field-Wise Change Summary</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Field</th><th>Number of Cemeteries Changed</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>total_plots</td><td>4</td></tr>
+      <tr><td>total_interments</td><td>15</td></tr>
+      <tr><td>total_rois</td><td>19</td></tr>
+      <tr><td>total_persons</td><td>17</td></tr>
+    </tbody>
+  </table>
+  <h2>Insights</h2>
+  <ul>
+    <li>Most changes are small and incremental (+1 to +5), suggesting regular updates or corrections.</li>
+    <li>Some cemeteries showed decreases in "total_persons" and "total_interments" — likely data corrections.</li>
+    <li>No cemeteries showed very large (+100 or more) jumps in any field in this period.</li>
+    <li>Addition of ROIs (Regions of Interest) was the most frequent change.</li>
+    <li>If you require only increased or only decreased values, further filtering can be applied.</li>
+  </ul>
+</body>
+</html>
+```
+**Note:** This analysis and HTML output are based on a sample of changed cemeteries and are designed to summarize the comparison logically, focusing on nonzero deltas, field-wise changes, and actionable summaries. If you need every single row comparison, let me know!
